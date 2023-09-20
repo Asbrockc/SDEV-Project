@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b28w5le80tcu3"]
+
+[ext_resource type="Script" path="res://SCENES/Spawns/Player_hitbox.cs" id="1_vqj4g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_scde4"]
+
+[node name="Player_hitbox" type="Area3D"]
+script = ExtResource("1_vqj4g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_scde4")

@@ -1,0 +1,34 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Game"
+run/main_scene="res://SCENES/practice_scene.tscn"
+config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
+config/icon="res://SPRITES/icon.svg"
+
+[autoload]
+
+GlobalScene="*res://GLOBALS/GLOBAL_SCENE.tscn"
+GlobalStats="*res://GLOBALS/GLOBAL_STATS.cs"
+
+[dotnet]
+
+project/assembly_name="Game"
+
+[physics]
+
+3d/default_gravity=20.0
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

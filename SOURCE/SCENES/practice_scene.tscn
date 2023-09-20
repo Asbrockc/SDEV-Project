@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddsxoieeaomi4"]
+
+[ext_resource type="Texture2D" uid="uid://cilwigrf1kmtc" path="res://SPRITES/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" id="1_ky5jj"]
+[ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
+[ext_resource type="Script" path="res://SCENES/Test_chat_2.cs" id="3_lopga"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwoec"]
+size = Vector3(8.40488, 1, 7.30062)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chcaa"]
+size = Vector3(1, 6.3633, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_syhhy"]
+
+[node name="level_one" type="Node3D"]
+
+[node name="L_floor_one" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 0)
+metadata/_edit_group_ = true
+
+[node name="Wall_C_1" type="CollisionShape3D" parent="L_floor_one"]
+shape = SubResource("BoxShape3D_hwoec")
+
+[node name="Test_tree" type="Area3D" parent="." groups=["Interact"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.175237, 1.43167, -2.98698)
+script = ExtResource("1_r8gkx")
+
+[node name="spr_tree" type="Sprite3D" parent="Test_tree"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+texture = ExtResource("1_ky5jj")
+
+[node name="tree_col" type="CollisionShape3D" parent="Test_tree"]
+shape = SubResource("BoxShape3D_chcaa")
+
+[node name="Test_chat_2" type="Area3D" parent="." groups=["Interact"]]
+transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -3.59717, 0.475301, 0)
+script = ExtResource("3_lopga")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Test_chat_2"]
+shape = SubResource("BoxShape3D_syhhy")
