@@ -15,6 +15,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		//GD.Print("Just a test to see if git finds this");
 		//GD.Print("well it's here");
 	}
 
