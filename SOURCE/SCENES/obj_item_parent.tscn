@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0e8r17453sx5"]
+
+[ext_resource type="Script" path="res://SCENES/Obj_item.cs" id="1_bytfk"]
+[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/icon.svg" id="2_hshav"]
+[ext_resource type="Script" path="res://SCENES/Item_bounce.cs" id="3_5i8ib"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b232m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dlymo"]
+height = 0.497543
+radius = 1.31051
+
+[node name="Obj_item" type="CharacterBody3D" groups=["Item"]]
+script = ExtResource("1_bytfk")
+
+[node name="Item_collision" type="CollisionShape3D" parent="." groups=["Item"]]
+shape = SubResource("BoxShape3D_b232m")
+
+[node name="Item_sprite" type="Sprite3D" parent="." groups=["Item"]]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+texture = ExtResource("2_hshav")
+
+[node name="Item_bounce_areat" type="Area3D" parent="."]
+script = ExtResource("3_5i8ib")
+
+[node name="Item_c_area" type="CollisionShape3D" parent="Item_bounce_areat"]
+shape = SubResource("CylinderShape3D_dlymo")
+
+[connection signal="body_entered" from="Item_bounce_areat" to="Item_bounce_areat" method="_bounce_area"]

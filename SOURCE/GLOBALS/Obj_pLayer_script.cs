@@ -105,6 +105,18 @@ public partial class Obj_pLayer_script : CharacterBody3D
 			_Animator.Play(_base + _motion);
 		}
 
+		handle_action_key();
+	
+		if (Input.IsKeyPressed(Key.Left))
+		{
+			player_state = 2;
+		}
+		
+		return velocity;
+	}
+
+	private void handle_action_key()
+	{
 		if (Input.IsKeyPressed(Key.Up))
 		{
 			if (_node_in_range == null)
@@ -141,13 +153,6 @@ public partial class Obj_pLayer_script : CharacterBody3D
 
 			}
 		}
-	
-		if (Input.IsKeyPressed(Key.Left))
-		{
-			player_state = 2;
-		}
-		
-		return velocity;
 	}
 
 	public void back_to_move_state()
@@ -175,6 +180,8 @@ public partial class Obj_pLayer_script : CharacterBody3D
 
 	public Vector3 Player_interact_state(double delta, Vector3 velocity)
 	{
+		_Animator.Play(_base + "idle");
+
 		if (velocity.Y > 0)
 			velocity.Y = 0;
 		velocity.X = 0;

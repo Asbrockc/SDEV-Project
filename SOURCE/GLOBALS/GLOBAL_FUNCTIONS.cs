@@ -33,4 +33,12 @@ public partial class GLOBAL_FUNCTIONS : Node
 			_active_chat.Set_Messages(_messages);
 		}
 	}
+
+	static public float Gradual_Stop(float _start_number, float _rate)
+	{
+		if (_rate != 0)
+			return _start_number - _start_number/_rate;
+		else
+			return 0;
+	}
 }

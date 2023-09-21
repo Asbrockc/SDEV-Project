@@ -298,7 +298,7 @@ radius = 1.2
 [node name="global_base_scene" type="Node3D"]
 script = ExtResource("1_1blth")
 
-[node name="Obj_pLayer" type="CharacterBody3D" parent="."]
+[node name="Obj_pLayer" type="CharacterBody3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_g7ry2")
 
