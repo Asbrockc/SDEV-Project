@@ -1,10 +1,11 @@
 using Godot;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class GLOBAL_FUNCTIONS : Node
 {
 
-	static public GLOBAL_SCENE _main_scene;
+
 	static public Chat_Box _active_chat = null;
 	
 	// Called when the node enters the scene tree for the first time.
@@ -29,9 +30,22 @@ public partial class GLOBAL_FUNCTIONS : Node
 		if (_active_chat == null)
 		{
 			_active_chat = (Chat_Box)ResourceLoader.Load<PackedScene>("res://SCENES/GUI/Chat_Box.tscn").Instantiate();
-			_main_scene.AddChild(_active_chat);
+			GLOBAL_STATS._main_scene.AddChild(_active_chat);
 			_active_chat.Set_Messages(_messages);
 		}
+	}
+
+	static public void Spawn_item(Vector3 _position)
+	{
+		Obj_item _curr_item = (Obj_item)ResourceLoader.Load<PackedScene>("res://SCENES/obj_item_parent.tscn").Instantiate();
+		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
+
+		_curr_item.Position = _position;
+		_curr_item.Scale = new Vector3(.2f, .2f, .2f);
+		Random r = new Random();
+		_curr_item._charge_up = r.Next(5, 10);
+		_curr_item._hspd = r.Next(-5, 5);
+		_curr_item._vspd = r.Next(-5, 5);
 	}
 
 	static public float Gradual_Stop(float _start_number, float _rate)

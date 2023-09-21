@@ -1,11 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddsxoieeaomi4"]
+[gd_scene load_steps=12 format=3 uid="uid://ddsxoieeaomi4"]
 
+[ext_resource type="Script" path="res://SCENES/Room_Town.cs" id="1_2jguh"]
 [ext_resource type="Texture2D" uid="uid://cilwigrf1kmtc" path="res://SPRITES/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" id="1_ky5jj"]
 [ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
 [ext_resource type="Script" path="res://SCENES/Test_chat_2.cs" id="3_lopga"]
-[ext_resource type="Script" path="res://SCENES/Obj_item.cs" id="4_rsfqb"]
-[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/icon.svg" id="5_ncaph"]
-[ext_resource type="Script" path="res://SCENES/Item_bounce.cs" id="6_74b3p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwoec"]
 size = Vector3(8.40488, 1, 7.30062)
@@ -27,13 +25,8 @@ size = Vector3(1, 6.3633, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_syhhy"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b232m"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_dlymo"]
-height = 0.497543
-radius = 1.31051
-
-[node name="level_one" type="Node3D"]
+[node name="Room_Town" type="Node3D"]
+script = ExtResource("1_2jguh")
 
 [node name="L_floor_one" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 0)
@@ -75,22 +68,3 @@ script = ExtResource("3_lopga")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Test_chat_2"]
 shape = SubResource("BoxShape3D_syhhy")
-
-[node name="Obj_item" type="CharacterBody3D" parent="." groups=["Item"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18843, 2.50371, -1.52077)
-script = ExtResource("4_rsfqb")
-
-[node name="Item_collision" type="CollisionShape3D" parent="Obj_item" groups=["Item"]]
-shape = SubResource("BoxShape3D_b232m")
-
-[node name="Item_sprite" type="Sprite3D" parent="Obj_item" groups=["Item"]]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-texture = ExtResource("5_ncaph")
-
-[node name="Item_bounce_areat" type="Area3D" parent="Obj_item"]
-script = ExtResource("6_74b3p")
-
-[node name="Item_c_area" type="CollisionShape3D" parent="Obj_item/Item_bounce_areat"]
-shape = SubResource("CylinderShape3D_dlymo")
-
-[connection signal="body_entered" from="Obj_item/Item_bounce_areat" to="Obj_item/Item_bounce_areat" method="_bounce_area"]

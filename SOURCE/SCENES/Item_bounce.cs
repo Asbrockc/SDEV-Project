@@ -19,27 +19,9 @@ public partial class Item_bounce : Area3D
 	{
 		if (!_node.IsInGroup("Item"))
 		{
-			//if (_node.IsInGroup("Player"))
+			if (_node.IsInGroup("Player") && _main_item.count > 30)
 			{
-				//GD.Print(_node);
-				//_main_item.Free();
-			}
-			//else
-			{
-				/*
-				     var spaceState = GetWorld3D().DirectSpaceState;
-					var query = PhysicsRayQueryParameters3D.Create(_main_item.Position, _node.Position);
-					query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
-					var result = spaceState.IntersectRay(query);
-
-					Vector3 _position_of_colidor = (Vector3)result["normal"];
-				//Vector3 _test = _node.Position - _main_item.Position;
-				GD.Print(result);
-
-				if (_position_of_colidor.X != 0)
-					_main_item._hspd = -_main_item._hspd;
-				else if (_position_of_colidor.Z != 0)
-					_main_item._vspd = -_main_item._vspd;*/
+				_main_item._used = true;
 			}
 		}
 	}

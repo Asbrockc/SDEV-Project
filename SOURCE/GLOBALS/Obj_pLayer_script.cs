@@ -157,6 +157,7 @@ public partial class Obj_pLayer_script : CharacterBody3D
 
 	public void back_to_move_state()
 	{
+		GLOBAL_FUNCTIONS.Spawn_item(Position);
 		if (_hitbox != null)
 		{
 			RemoveChild(_hitbox);
