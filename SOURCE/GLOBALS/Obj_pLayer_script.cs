@@ -32,6 +32,7 @@ public partial class Obj_pLayer_script : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		//GD.Print(GLOBAL_STATS._player_stats[0]);
 		//GD.Print(_Animator);
 		Vector3 velocity = Velocity;
 	
@@ -157,7 +158,8 @@ public partial class Obj_pLayer_script : CharacterBody3D
 
 	public void back_to_move_state()
 	{
-		GLOBAL_FUNCTIONS.Spawn_item(Position);
+		//GLOBAL_FUNCTIONS.Spawn_item(Position);
+		GLOBAL_STATS._Load_Game();
 		if (_hitbox != null)
 		{
 			RemoveChild(_hitbox);
