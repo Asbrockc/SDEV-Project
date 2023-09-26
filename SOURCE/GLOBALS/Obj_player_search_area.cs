@@ -3,11 +3,11 @@ using System;
 
 public partial class Obj_player_search_area : Area3D
 {
-	private Obj_pLayer_script _player_parent;
+	private Obj_player_base_script _player_parent;
 
 	public override void _Ready()
 	{
-		_player_parent = this.GetParent<Obj_pLayer_script>();
+		_player_parent = this.GetParent<Obj_player_base_script>();
 	}
 
 	public void _on_area_entered(Area3D _node)

@@ -1,21 +1,14 @@
 using Godot;
 using System;
 
-public partial class Obj_item : CharacterBody3D
+public partial class Obj_item : Obj_physics_base
 {
-	public const float Speed = 5.0f;
-	public const float JumpVelocity = 4.5f;
-	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
-
 	public float _bounce = 0;
-	public float _hspd = -3.5f;
-	public float _vspd = 6.5f;
 	public float _charge_up = 0.0f;
 
 	public bool _used = false;
 
 	public int count = 0;
-
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -30,10 +23,6 @@ public partial class Obj_item : CharacterBody3D
 		else
 		{
 			Vector3 velocity = Velocity;
-
-		
-
-
 			Vector3 _test = GetWallNormal();
 
 			if (_test.X != 0)
@@ -77,6 +66,7 @@ public partial class Obj_item : CharacterBody3D
 
 	public virtual void player_grab()
 	{
+		GLOBAL_STATS._player_stats[GLOBAL_STATS.I_EXPERIENCE]++;
 		GD.Print("Player Grabbed Item");
 	}
 }

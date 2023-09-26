@@ -1,25 +1,17 @@
 using Godot;
 using System;
 using System.Data;
+using System.Runtime.Versioning;
 
-public partial class Obj_pLayer_script : CharacterBody3D
+public partial class Obj_player_base_script : Obj_physics_base
 {
-	public const float Speed = 3.5f;
-	public const float JumpVelocity = 8f;
-	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
-
 
 	public GLOBAL_SCENE _Global_accessor;
 	public Obj_player_animator _Animator;
 	public Interactive_Action _node_in_range = null;
 	 
-
 	private string _base = "down_";
 
-
-	public int player_state = 0;
-	public float _hspd = 0.0f;
-	public float _vspd = 0.0f;
 
 	public Player_hitbox _hitbox = null;
 	private float _hitbox_range = 0.5f;
@@ -28,10 +20,15 @@ public partial class Obj_pLayer_script : CharacterBody3D
 	{
 		GLOBAL_STATS._player = this;
 		_Global_accessor = this.GetParent<GLOBAL_SCENE>();
+
+
+		//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Input.IsActionJustPressed("ui_right"))
+			GLOBAL_FUNCTIONS.Spawn_enemy(Position);
 		//GD.Print(GLOBAL_STATS._player_stats[0]);
 		//GD.Print(_Animator);
 		Vector3 velocity = Velocity;
@@ -39,7 +36,7 @@ public partial class Obj_pLayer_script : CharacterBody3D
 		if (!IsOnFloor())
 			velocity.Y -= gravity * (float)delta;
 
-		switch (player_state)
+		switch (_state)
 		{
 			case 0:
 				velocity = Player_move_state(delta, velocity);
@@ -80,10 +77,9 @@ public partial class Obj_pLayer_script : CharacterBody3D
 		else
 			_hspd = 0;
 
-		velocity.X = _hspd;
-		velocity.Z = _vspd;
 
 		//GD.Print(_hspd.ToString() + " " + _vspd.ToString());
+		velocity = apply_speed(velocity);
 
 		if (IsOnFloor())
 		{
@@ -110,11 +106,12 @@ public partial class Obj_pLayer_script : CharacterBody3D
 	
 		if (Input.IsKeyPressed(Key.Left))
 		{
-			player_state = 2;
+			_state = 2;
 		}
 		
 		return velocity;
 	}
+
 
 	private void handle_action_key()
 	{
@@ -122,13 +119,14 @@ public partial class Obj_pLayer_script : CharacterBody3D
 		{
 			if (_node_in_range == null)
 			{
-				player_state = 1;
+				_state = 1;
 
 				if (_hitbox == null)
 				{
 					_hitbox = (Player_hitbox)ResourceLoader.Load<PackedScene>("res://SCENES/Spawns/Player_hitbox.tscn").Instantiate();
 				
 					AddChild(_hitbox);
+					_hitbox._player_parent = this;
 
 					switch (_base)
 					{
@@ -149,7 +147,7 @@ public partial class Obj_pLayer_script : CharacterBody3D
 			}
 			else
 			{
-				player_state = 2;
+				_state = 2;
 				_node_in_range.Test_interact_function();
 
 			}
@@ -158,15 +156,19 @@ public partial class Obj_pLayer_script : CharacterBody3D
 
 	public void back_to_move_state()
 	{
-		//GLOBAL_FUNCTIONS.Spawn_item(Position);
-		GLOBAL_STATS._Load_Game();
+		//for (int i = 0; i < 10; i++)
+			//GLOBAL_FUNCTIONS.Spawn_item(Position);
+
+		//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+		//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+		//GLOBAL_STATS._Load_Game();
 		if (_hitbox != null)
 		{
 			RemoveChild(_hitbox);
 			_hitbox.Free();
 			_hitbox = null;
 		}
-		player_state = 0;
+		_state = 0;
 	}
 	
 	public Vector3 Player_attack_state(double delta, Vector3 velocity)

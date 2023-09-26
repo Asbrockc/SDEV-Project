@@ -92,7 +92,7 @@ public partial class Chat_Box : NinePatchRect
 			this.GetParent().RemoveChild(this);
 			this.Free();
 
-			GLOBAL_STATS._player.player_state = 0;
+			GLOBAL_STATS._player._state = 0;
 		}
 	}
 

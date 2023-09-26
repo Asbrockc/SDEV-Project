@@ -1,12 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://bswupu2hbeu5h"]
+[gd_scene load_steps=25 format=3 uid="uid://bswupu2hbeu5h"]
 
 [ext_resource type="Script" path="res://GLOBALS/GLOBAL_SCENE.cs" id="1_1blth"]
-[ext_resource type="Script" path="res://GLOBALS/Obj_pLayer_script.cs" id="1_g7ry2"]
 [ext_resource type="Texture2D" uid="uid://qtd1n41sktto" path="res://SPRITES/player_sprites/spr_player_move.png" id="2_llw8h"]
+[ext_resource type="Script" path="res://GLOBALS/Obj_player_base_script.cs" id="2_urwni"]
 [ext_resource type="Script" path="res://GLOBALS/Obj_player_sprite.cs" id="4_x152c"]
 [ext_resource type="Script" path="res://GLOBALS/Obj_player_animator.cs" id="5_vahu1"]
 [ext_resource type="Script" path="res://GLOBALS/Obj_player_camera.cs" id="6_sm16a"]
 [ext_resource type="Script" path="res://GLOBALS/Obj_player_search_area.cs" id="6_wrdox"]
+[ext_resource type="Script" path="res://GLOBALS/Obj_temp_label_stats.cs" id="8_vyf3m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv78r"]
 size = Vector3(0.507363, 1, 0.504795)
@@ -300,7 +301,7 @@ script = ExtResource("1_1blth")
 
 [node name="Obj_pLayer" type="CharacterBody3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("1_g7ry2")
+script = ExtResource("2_urwni")
 
 [node name="Obj_player_collision" type="CollisionShape3D" parent="Obj_pLayer"]
 shape = SubResource("BoxShape3D_bv78r")
@@ -330,6 +331,11 @@ shape = SubResource("CylinderShape3D_q6mhn")
 [node name="Obj_player_camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 8)
 script = ExtResource("6_sm16a")
+
+[node name="Obj_temp_label_stats" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("8_vyf3m")
 
 [connection signal="area_entered" from="Obj_pLayer/Obj_player_search_area" to="Obj_pLayer/Obj_player_search_area" method="_on_area_entered"]
 [connection signal="area_exited" from="Obj_pLayer/Obj_player_search_area" to="Obj_pLayer/Obj_player_search_area" method="_on_area_exited"]

@@ -7,5 +7,7 @@
 [node name="Player_hitbox" type="Area3D"]
 script = ExtResource("1_vqj4g")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Player_hitbox_col" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_scde4")
+
+[connection signal="body_entered" from="." to="." method="_hit_somthing"]

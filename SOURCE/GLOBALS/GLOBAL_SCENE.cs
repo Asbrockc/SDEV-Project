@@ -9,8 +9,8 @@ public partial class GLOBAL_SCENE : Node3D
 		GLOBAL_STATS._main_scene = this;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+    public override void _Process(double delta)
+    {
+        GLOBAL_STATS._Level_Manager();
+    }
 }
