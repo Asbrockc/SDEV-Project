@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0e8r17453sx5"]
 
 [ext_resource type="Script" path="res://SCENES/Obj_item.cs" id="1_bytfk"]
-[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/icon.svg" id="2_hshav"]
+[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="2_rjbvl"]
 [ext_resource type="Script" path="res://SCENES/Item_bounce.cs" id="3_5i8ib"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b232m"]
@@ -18,7 +18,7 @@ shape = SubResource("BoxShape3D_b232m")
 
 [node name="Item_sprite" type="Sprite3D" parent="." groups=["Item"]]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-texture = ExtResource("2_hshav")
+texture = ExtResource("2_rjbvl")
 
 [node name="Item_bounce_areat" type="Area3D" parent="."]
 script = ExtResource("3_5i8ib")

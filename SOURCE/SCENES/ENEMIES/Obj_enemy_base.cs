@@ -125,7 +125,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 		{
 			hit_timer = 0;
 			for (int i = 0; i < 10; i++)
-				GLOBAL_FUNCTIONS.Spawn_item(this.Position);
+				GLOBAL_FUNCTIONS.Spawn_item(this.Position, 0.2f, 2);
 			
 			Free();
 			_death_flag = true;

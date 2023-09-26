@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://c06v5glpjsqw4"]
+
+[ext_resource type="Script" path="res://SOUNDS/Emitters/Audio_Emt.cs" id="1_jfwrj"]
+[ext_resource type="Script" path="res://SOUNDS/Emitters/Music_player.cs" id="2_sh42w"]
+[ext_resource type="Script" path="res://SOUNDS/Emitters/Audio_player_base.cs" id="3_kyanp"]
+
+[node name="audio_emt" type="Node3D"]
+script = ExtResource("1_jfwrj")
+
+[node name="Music_player" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("2_sh42w")
+
+[node name="Audio_player_1" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_2" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_3" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_4" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_5" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_6" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_7" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_8" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_9" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[node name="Audio_player_10" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_kyanp")
+
+[connection signal="finished" from="Music_player" to="Music_player" method="_on_finished"]

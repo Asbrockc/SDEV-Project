@@ -9,5 +9,6 @@ script = ExtResource("1_vqj4g")
 
 [node name="Player_hitbox_col" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_scde4")
+disabled = true
 
 [connection signal="body_entered" from="." to="." method="_hit_somthing"]

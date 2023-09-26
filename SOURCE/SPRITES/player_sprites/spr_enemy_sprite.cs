@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Obj_player_sprite : Spr_base_script
+public partial class spr_enemy_sprite : Spr_base_script
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

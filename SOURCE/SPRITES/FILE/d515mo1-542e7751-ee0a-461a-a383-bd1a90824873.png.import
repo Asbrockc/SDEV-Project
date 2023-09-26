@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cilwigrf1kmtc"
-path.s3tc="res://.godot/imported/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png-334f264b4f81e39d7af4ac187cc63671.s3tc.ctex"
+path.s3tc="res://.godot/imported/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png-e6c7344c2a69042a28a1b0c888cf0219.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://SPRITES/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png"
-dest_files=["res://.godot/imported/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png-334f264b4f81e39d7af4ac187cc63671.s3tc.ctex"]
+source_file="res://SPRITES/FILE/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png"
+dest_files=["res://.godot/imported/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png-e6c7344c2a69042a28a1b0c888cf0219.s3tc.ctex"]
 
 [params]
 

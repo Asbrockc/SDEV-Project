@@ -11,10 +11,11 @@ using System;
 ///</summary>
 public partial class Obj_physics_base : CharacterBody3D
 {
-
 	public const float Speed = 3.5f;
 	public const float JumpVelocity = 8f;
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+
+	public Spr_animator _Animator;
 
 	public int _state = 0;
 	public float _hspd = 0.0f;

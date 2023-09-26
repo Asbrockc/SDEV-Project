@@ -4,9 +4,8 @@ using System.Reflection.Metadata.Ecma335;
 
 public partial class GLOBAL_FUNCTIONS : Node
 {
-
-
 	static public Chat_Box _active_chat = null;
+	static public Audio_Emt _audio_emitter = null;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,6 +17,11 @@ public partial class GLOBAL_FUNCTIONS : Node
 	{
 		//GD.Print("Just a test to see if git finds this");
 		//GD.Print("well it's here");
+	}
+
+	static public void play_sound(AudioStreamWav _sound)
+	{
+		_audio_emitter.play_sound(_sound);
 	}
 
 
@@ -35,17 +39,17 @@ public partial class GLOBAL_FUNCTIONS : Node
 		}
 	}
 
-	static public void Spawn_item(Vector3 _position)
+	static public void Spawn_item(Vector3 _position, float _scale, int _range)
 	{
 		Obj_item _curr_item = (Obj_item)ResourceLoader.Load<PackedScene>("res://SCENES/obj_item_parent.tscn").Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
 
 		_curr_item.Position = _position;
-		_curr_item.Scale = new Vector3(.2f, .2f, .2f);
+		_curr_item.Scale = new Vector3(_scale,_scale,_scale);
 		Random r = new Random();
-		_curr_item._charge_up = r.Next(5, 10);
-		_curr_item._hspd = r.Next(-5, 5);
-		_curr_item._vspd = r.Next(-5, 5);
+		_curr_item._charge_up = r.Next(_range, _range*2);
+		_curr_item._hspd = r.Next(-_range, _range);
+		_curr_item._vspd = r.Next(-_range, _range);
 	}
 
 	static public float distance_between_nodes(Node3D first, Node3D second)

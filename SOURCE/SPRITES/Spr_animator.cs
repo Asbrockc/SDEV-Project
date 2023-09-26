@@ -1,12 +1,12 @@
 using Godot;
 using System;
 
-public partial class Obj_player_animator : AnimationPlayer
+public partial class Spr_animator : AnimationPlayer
 {
 	public override void _Ready()
 	{
-		Obj_player_sprite _mysprite = this.GetParent<Obj_player_sprite>();
-		_mysprite.GetParent<Obj_player_base_script>()._Animator = this;
+		Spr_base_script _mysprite = this.GetParent<Spr_base_script>();
+		_mysprite.GetParent<Obj_physics_base>()._Animator = this;
 	}
 
 	public override void _Process(double delta)

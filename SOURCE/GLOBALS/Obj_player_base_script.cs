@@ -7,12 +7,15 @@ public partial class Obj_player_base_script : Obj_physics_base
 {
 
 	public GLOBAL_SCENE _Global_accessor;
-	public Obj_player_animator _Animator;
 	public Interactive_Action _node_in_range = null;
-	 
+
+	public AudioStreamWav _sword_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_hit.wav");
+	public AudioStreamWav _sword_swing = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_swing.wav");
+	public AudioStreamWav _item_pickup = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_item_pickup.wav");
+	public AudioStreamWav _level_up = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_level_up.wav");
+	
 	private string _base = "down_";
-
-
+	
 	public Player_hitbox _hitbox = null;
 	private float _hitbox_range = 0.5f;
 
@@ -119,12 +122,12 @@ public partial class Obj_player_base_script : Obj_physics_base
 		{
 			if (_node_in_range == null)
 			{
+				GLOBAL_FUNCTIONS.play_sound(_sword_swing);
 				_state = 1;
 
 				if (_hitbox == null)
 				{
 					_hitbox = (Player_hitbox)ResourceLoader.Load<PackedScene>("res://SCENES/Spawns/Player_hitbox.tscn").Instantiate();
-				
 					AddChild(_hitbox);
 					_hitbox._player_parent = this;
 
@@ -154,14 +157,15 @@ public partial class Obj_player_base_script : Obj_physics_base
 		}
 	}
 
+
+	public void activate_hitbox()
+	{
+		if (_hitbox != null)
+			_hitbox._active = true;
+	}
+
 	public void back_to_move_state()
 	{
-		//for (int i = 0; i < 10; i++)
-			//GLOBAL_FUNCTIONS.Spawn_item(Position);
-
-		//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
-		//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
-		//GLOBAL_STATS._Load_Game();
 		if (_hitbox != null)
 		{
 			RemoveChild(_hitbox);
@@ -173,6 +177,14 @@ public partial class Obj_player_base_script : Obj_physics_base
 	
 	public Vector3 Player_attack_state(double delta, Vector3 velocity)
 	{
+		if (_Animator.CurrentAnimationPosition > .4 && _hitbox != null && _hitbox._active)
+		{
+			_hitbox._active = false;
+			//GLOBAL_FUNCTIONS.play_sound(_sword_swing);
+			_hitbox.GetChild<CollisionShape3D>(0).Disabled = false;
+			GD.Print("bbomS");
+		}
+		
 		if (velocity.Y > 0)
 			velocity.Y = 0;
 		velocity.X = 0;

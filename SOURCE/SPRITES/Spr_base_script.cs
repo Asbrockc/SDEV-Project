@@ -1,8 +1,9 @@
 using Godot;
 using System;
 
-public partial class Obj_player_sprite : Spr_base_script
+public partial class Spr_base_script : Sprite3D
 {
+	public Spr_animator _Animator;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

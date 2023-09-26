@@ -13,7 +13,7 @@ config_version=5
 config/name="Game"
 run/main_scene="res://SCENES/practice_scene.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
-config/icon="res://SPRITES/icon.svg"
+config/icon="res://SPRITES/FILE/icon.svg"
 
 [autoload]
 

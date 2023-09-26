@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://tfr23fxio06c"]
 
-[ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/spr_nine_slice.png" id="1_qu7ga"]
+[ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="1_5dg55"]
 [ext_resource type="Script" path="res://SCENES/GUI/Chat_Box.cs" id="2_t68ay"]
 [ext_resource type="Script" path="res://SCENES/GUI/Chat_Type.cs" id="3_tnq3x"]
 [ext_resource type="Script" path="res://SCENES/GUI/Chat_Timer.cs" id="4_y4m5m"]
@@ -15,7 +15,7 @@ offset_left = 10.952
 offset_top = -40.0
 offset_right = -4.88806
 offset_bottom = 5.13599
-texture = ExtResource("1_qu7ga")
+texture = ExtResource("1_5dg55")
 region_rect = Rect2(0, 0, 60, 60)
 patch_margin_left = 10
 patch_margin_top = 10

@@ -22,6 +22,7 @@ public partial class Item_bounce : Area3D
 			if (_node.IsInGroup("Player") && _main_item.count > 30)
 			{
 				_main_item._used = true;
+				GLOBAL_FUNCTIONS.play_sound(((Obj_player_base_script)_node)._item_pickup);
 			}
 		}
 	}
