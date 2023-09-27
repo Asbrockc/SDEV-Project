@@ -20,6 +20,7 @@ public partial class GLOBAL_STATS : Node
 	public const int I_YY = 7;
 	public const int I_ZZ = 8;
 	public const int I_BONUS_POINTS = 9;
+	public const int I_MAX_HEALTH = 10;
 
 	/// <summary>Enums with int value that correspond to the completion flags lists</summary>
 	public enum Flag_Index : ushort
@@ -50,7 +51,9 @@ public partial class GLOBAL_STATS : Node
 		0, // x player locaton
 		0, // y player location
 		0, // z player location
-		0 //bonus points
+		0, //bonus points
+		3
+
 	};
 
 	/// <summary>List that contains all games completion flags</summary>
@@ -68,7 +71,7 @@ public partial class GLOBAL_STATS : Node
 
 		if (_exp >= _next_in)
 		{
-			GLOBAL_FUNCTIONS.play_sound(_player._level_up);
+			GLOBAL_FUNCTIONS.Play_Sound(_player._level_up, false);
 			int _remainder = _exp - _next_in;
 
 			_player_stats[I_NEXT_LEVEL_IN] += _player_stats[I_NEXT_LEVEL_IN]/2;

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddsxoieeaomi4"]
+[gd_scene load_steps=13 format=3 uid="uid://ddsxoieeaomi4"]
 
 [ext_resource type="Script" path="res://SCENES/Room_Town.cs" id="1_2jguh"]
 [ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
 [ext_resource type="Script" path="res://SCENES/Test_chat_2.cs" id="3_lopga"]
 [ext_resource type="Texture2D" uid="uid://cilwigrf1kmtc" path="res://SPRITES/FILE/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" id="3_u3uav"]
+[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="5_3b0wv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwoec"]
 size = Vector3(32.5026, 1, 30.677)
@@ -57,6 +58,7 @@ script = ExtResource("1_r8gkx")
 
 [node name="spr_tree" type="Sprite3D" parent="Test_tree"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
 texture = ExtResource("3_u3uav")
 
 [node name="tree_col" type="CollisionShape3D" parent="Test_tree"]
@@ -68,3 +70,13 @@ script = ExtResource("3_lopga")
 
 [node name="chat_collision" type="CollisionShape3D" parent="Test_chat_2"]
 shape = SubResource("BoxShape3D_syhhy")
+
+[node name="chat_test_spirte" type="Sprite3D" parent="Test_chat_2"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+texture = ExtResource("5_3b0wv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22959, -7.96597)
+light_color = Color(1, 0, 1, 1)
+omni_range = 1.421

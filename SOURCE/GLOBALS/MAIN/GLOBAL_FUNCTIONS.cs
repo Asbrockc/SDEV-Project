@@ -19,9 +19,20 @@ public partial class GLOBAL_FUNCTIONS : Node
 		//GD.Print("well it's here");
 	}
 
-	static public void play_sound(AudioStreamWav _sound)
+	static public void Play_Sound(AudioStreamWav _sound)
 	{
-		_audio_emitter.play_sound(_sound);
+		_audio_emitter.play_sound(_sound, true);
+	}
+
+	static public void Play_Sound(AudioStreamWav _sound, bool _shift_tone)
+	{
+		_audio_emitter.play_sound(_sound, _shift_tone);
+	}
+
+	static public float Choose_Float(params float[] _range)
+	{
+		Random _rand = new Random();
+		return _range[_rand.NextInt64(_range.Length)];
 	}
 
 

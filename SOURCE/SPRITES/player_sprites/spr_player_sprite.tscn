@@ -285,6 +285,7 @@ _data = {
 
 [node name="Obj_player_sprite" type="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
 texture = ExtResource("1_gblay")
 hframes = 32
 vframes = 8

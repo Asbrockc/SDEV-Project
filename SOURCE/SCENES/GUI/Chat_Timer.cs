@@ -3,6 +3,7 @@ using System;
 
 public partial class Chat_Timer : Timer
 {
+	public AudioStreamWav _item_pickup = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_chat_sound.wav");
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -11,6 +12,7 @@ public partial class Chat_Timer : Timer
 
 	public void _on_timeout()
 	{
-		this.GetParent<Chat_Type>().VisibleCharacters++;
+		GLOBAL_FUNCTIONS.Play_Sound(_item_pickup);
+		this.GetParent<Chat_Type>().VisibleCharacters += 2;
 	}
 }

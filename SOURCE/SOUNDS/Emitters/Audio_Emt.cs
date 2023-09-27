@@ -17,10 +17,14 @@ public partial class Audio_Emt : Node3D
 	{
 	}
 
-	
-	public void play_sound(AudioStreamWav _sound)
+	public void play_sound(AudioStreamWav _sound, bool _shift_tone)
 	{
 		_audio_player_list[_index_count].Stream = _sound;
+		if (_shift_tone)
+			_audio_player_list[_index_count].PitchScale = GLOBAL_FUNCTIONS.Choose_Float(0.9f, 1.0f, 1.1f);
+		else 
+			_audio_player_list[_index_count].PitchScale = 1.0f;
+
 		_audio_player_list[_index_count++].Play();
 		//GD.Print(_audio_player_list.Count);
 		if (_index_count >= _audio_player_list.Count)

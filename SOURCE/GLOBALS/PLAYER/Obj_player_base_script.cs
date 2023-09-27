@@ -13,27 +13,31 @@ public partial class Obj_player_base_script : Obj_physics_base
 	public AudioStreamWav _sword_swing = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_swing.wav");
 	public AudioStreamWav _item_pickup = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_item_pickup.wav");
 	public AudioStreamWav _level_up = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_level_up.wav");
+	public AudioStreamWav _player_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_player_hit.wav");
 	
 	private string _base = "down_";
 	
 	public Player_hitbox _hitbox = null;
 	private float _hitbox_range = 0.5f;
 
+	public float _hurt_hspd = 0;
+	public float _hurt_vspd = 0;	
+	public float _hurt_up_speed = 0;
+
 	public override void _Ready()
 	{
 		GLOBAL_STATS._player = this;
 		_Global_accessor = this.GetParent<GLOBAL_SCENE>();
 
+		//this._Animator.GetParent<Obj_player_sprite>().
 
-		//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		if (Input.IsActionJustPressed("ui_right"))
 			GLOBAL_FUNCTIONS.Spawn_enemy(Position);
-		//GD.Print(GLOBAL_STATS._player_stats[0]);
-		//GD.Print(_Animator);
+
 		Vector3 velocity = Velocity;
 	
 		if (!IsOnFloor())
@@ -51,6 +55,20 @@ public partial class Obj_player_base_script : Obj_physics_base
 				velocity = Player_interact_state(delta, velocity);
 				break;
 		}
+
+		velocity.X += _hurt_hspd;
+		velocity.Z += _hurt_vspd;
+
+		if (_hurt_up_speed > 0)
+		{
+			velocity.Y = _hurt_up_speed;
+			_hurt_up_speed = 0;
+		}
+
+		if (_hurt_hspd != 0)
+			_hurt_hspd = GLOBAL_FUNCTIONS.Gradual_Stop(_hurt_hspd, 20);
+		if (_hurt_vspd != 0)
+			_hurt_vspd = GLOBAL_FUNCTIONS.Gradual_Stop(_hurt_vspd, 20);
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -115,14 +133,13 @@ public partial class Obj_player_base_script : Obj_physics_base
 		return velocity;
 	}
 
-
 	private void handle_action_key()
 	{
 		if (Input.IsKeyPressed(Key.Up))
 		{
 			if (_node_in_range == null)
 			{
-				GLOBAL_FUNCTIONS.play_sound(_sword_swing);
+				GLOBAL_FUNCTIONS.Play_Sound(_sword_swing);
 				_state = 1;
 
 				if (_hitbox == null)
@@ -177,7 +194,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 	
 	public Vector3 Player_attack_state(double delta, Vector3 velocity)
 	{
-		if (_Animator.CurrentAnimationPosition > .4 && _hitbox != null && _hitbox._active)
+		if (_Animator.CurrentAnimationPosition > .2 && _hitbox != null && _hitbox._active)
 		{
 			_hitbox._active = false;
 			//GLOBAL_FUNCTIONS.play_sound(_sword_swing);

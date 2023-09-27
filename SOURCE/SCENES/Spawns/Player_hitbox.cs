@@ -10,7 +10,7 @@ public partial class Player_hitbox : Area3D
 	{
 		if (_node.IsInGroup("Enemy_hit_zone"))
 		{
-			GLOBAL_FUNCTIONS.play_sound(this._player_parent._sword_hit);
+			GLOBAL_FUNCTIONS.Play_Sound(this._player_parent._sword_hit);
 			((Obj_enemy_base)_node)._state = 2;
 			((Obj_enemy_base)_node)._hspd = 2.0f * -Math.Sign(this._player_parent.GlobalPosition.X - _node.GlobalPosition.X);
 			((Obj_enemy_base)_node)._vspd = 2.0f * -Math.Sign(this._player_parent.GlobalPosition.Z -_node.GlobalPosition.Z);

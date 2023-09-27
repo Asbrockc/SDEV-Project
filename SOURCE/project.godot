@@ -17,8 +17,8 @@ config/icon="res://SPRITES/FILE/icon.svg"
 
 [autoload]
 
-GlobalScene="*res://GLOBALS/GLOBAL_SCENE.tscn"
-GlobalStats="*res://GLOBALS/GLOBAL_STATS.cs"
+GlobalScene="*res://GLOBALS/MAIN/GLOBAL_SCENE.tscn"
+GlobalStats="*res://GLOBALS/MAIN/GLOBAL_STATS.cs"
 
 [dotnet]
 

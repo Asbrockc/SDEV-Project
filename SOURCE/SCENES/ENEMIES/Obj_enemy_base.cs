@@ -12,6 +12,10 @@ public partial class Obj_enemy_base : Obj_physics_base
 	private int hit_timer = 0;
 	private int delay_timer = 30;
 
+
+	public float _hit_force = 8.0f;
+	public int _hit_damage = 1;
+
     public override void _Ready()
     {
 		base._state = 1;
@@ -84,7 +88,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 	{
 		if (_target != null)
 		{
-			if (GLOBAL_FUNCTIONS.distance_between_nodes(_target, this) > 3)
+			if (GLOBAL_FUNCTIONS.distance_between_nodes(_target, this) > 0.1)
 			{
 				_hspd = Math.Sign(_target.GlobalPosition.X - this.GlobalPosition.X) * Speed/2;
 				_vspd = Math.Sign(_target.GlobalPosition.Z - this.GlobalPosition.Z) * Speed/2;

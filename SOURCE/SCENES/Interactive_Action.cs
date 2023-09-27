@@ -3,6 +3,8 @@ using System;
 
 public partial class Interactive_Action : Area3D
 {
+	public String _label = "???";
+	
 	public virtual void Test_interact_function()
 	{
 		GD.Print("here ya go");

@@ -38,7 +38,7 @@ visible_ratio = 0.0
 script = ExtResource("3_tnq3x")
 
 [node name="Chat_Timer" type="Timer" parent="Chat_Type"]
-wait_time = 0.02
+wait_time = 0.05
 script = ExtResource("4_y4m5m")
 
 [connection signal="timeout" from="Chat_Type/Chat_Timer" to="Chat_Type/Chat_Timer" method="_on_timeout"]
