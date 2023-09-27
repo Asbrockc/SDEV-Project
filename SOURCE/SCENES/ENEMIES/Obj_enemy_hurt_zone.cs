@@ -14,6 +14,7 @@ public partial class Obj_enemy_hurt_zone : Area3D
 			((Obj_player_base_script)_node)._hurt_up_speed = _enemy_parent._hit_force/2;
 			if (_enemy_parent._hit_damage > 0)
 			{
+				GLOBAL_FUNCTIONS.Create_Effect(_node, "Effect_hit.tscn", false);
 				GLOBAL_FUNCTIONS.Play_Sound(((Obj_player_base_script)_node)._player_hit);
 				GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] -= _enemy_parent._hit_damage;
 			}

@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://3oaoc7o68aa4"]
+
+[ext_resource type="Texture2D" uid="uid://dinkeynmfgfu4" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_hit.png" id="1_83ljq"]
+[ext_resource type="Script" path="res://SCENES/EFFECTS/Effect_parent.cs" id="2_87361"]
+
+[sub_resource type="Animation" id="Animation_qes1w"]
+resource_name = "Animate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free_myself"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_il2t5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41hxv"]
+_data = {
+"Animate": SubResource("Animation_qes1w"),
+"RESET": SubResource("Animation_il2t5")
+}
+
+[node name="Effect_hit" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+texture = ExtResource("1_83ljq")
+hframes = 6
+vframes = 5
+script = ExtResource("2_87361")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 4.0
+libraries = {
+"": SubResource("AnimationLibrary_41hxv")
+}

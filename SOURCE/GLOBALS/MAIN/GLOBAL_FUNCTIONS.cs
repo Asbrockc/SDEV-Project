@@ -55,6 +55,20 @@ public partial class GLOBAL_FUNCTIONS : Node
 		}
 	}
 
+	static public void Create_Effect(Node3D _target_node, String _effect_location, bool _is_global)
+	{
+		Effect_parent _test = (Effect_parent)ResourceLoader.Load<PackedScene>("res://SCENES/EFFECTS/" + _effect_location).Instantiate();
+		
+		if (_is_global)
+		{
+			GLOBAL_STATS._current_room_reference.AddChild(_test);
+			_test.Position = _target_node.GlobalPosition;
+		}
+		else
+			_target_node.AddChild(_test);
+	}
+
+
 	static public void Spawn_item(Vector3 _position, float _scale, int _range)
 	{
 		Obj_item _curr_item = (Obj_item)ResourceLoader.Load<PackedScene>("res://SCENES/obj_item_parent.tscn").Instantiate();

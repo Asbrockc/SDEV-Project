@@ -130,6 +130,8 @@ public partial class Obj_player_base_script : Obj_physics_base
 	
 		if (Input.IsActionJustPressed("ui_left"))
 		{
+			//Effect_parent _test = (Effect_parent)ResourceLoader.Load<PackedScene>("res://SCENES/EFFECTS/Effect_hit.tscn").Instantiate();
+			//AddChild(_test);
 			_state = 3;
 		}
 		

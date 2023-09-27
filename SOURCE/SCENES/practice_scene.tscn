@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cilwigrf1kmtc" path="res://SPRITES/FILE/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" id="3_u3uav"]
 [ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="5_3b0wv"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="6_jkt5d"]
-[ext_resource type="Script" path="res://SCENES/Spawns/Door_town_to_area_1.cs" id="7_xoseb"]
+[ext_resource type="Script" path="res://SCENES/Spawns/Door_1_A.cs" id="7_l77sr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwoec"]
 size = Vector3(32.5026, 1, 30.677)
@@ -81,6 +81,6 @@ texture = ExtResource("5_3b0wv")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.684178, 0.729315, 0, -0.729315, 0.684178, 0, 6.2722, 1.8696)
 
-[node name="Door_base" parent="." groups=["DOOR_TOWN_1"] instance=ExtResource("6_jkt5d")]
+[node name="Door_base" parent="." groups=["DOOR_1"] instance=ExtResource("6_jkt5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.08185, 0.226821, -14.8985)
-script = ExtResource("7_xoseb")
+script = ExtResource("7_l77sr")

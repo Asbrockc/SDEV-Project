@@ -35,7 +35,7 @@ texture = ExtResource("1_xq63a")
 layout_mode = 0
 offset_left = 105.0
 offset_top = 61.0
-offset_right = 307.0
+offset_right = 325.0
 offset_bottom = 88.0
 script = ExtResource("4_3rmqe")
 
