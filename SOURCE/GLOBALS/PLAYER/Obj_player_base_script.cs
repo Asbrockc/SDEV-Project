@@ -54,6 +54,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 			case 2:
 				velocity = Player_interact_state(delta, velocity);
 				break;
+			case 3:
+				velocity = Player_aim_state(delta, velocity);
+				break;
 		}
 
 		velocity.X += _hurt_hspd;
@@ -125,9 +128,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 		handle_action_key();
 	
-		if (Input.IsKeyPressed(Key.Left))
+		if (Input.IsActionJustPressed("ui_left"))
 		{
-			_state = 2;
+			_state = 3;
 		}
 		
 		return velocity;
@@ -174,7 +177,6 @@ public partial class Obj_player_base_script : Obj_physics_base
 		}
 	}
 
-
 	public void activate_hitbox()
 	{
 		if (_hitbox != null)
@@ -208,6 +210,38 @@ public partial class Obj_player_base_script : Obj_physics_base
 		velocity.Z = 0;
 
 		_Animator.Play(_base + "attack");
+
+		return velocity;
+	}
+
+	public Vector3 Player_aim_state(double delta, Vector3 velocity)
+	{
+		_hspd = 0;
+		_vspd = 0;
+		velocity.X = 0;
+		velocity.Z = 0;
+
+		if (Input.IsActionJustReleased("ui_left"))
+		{
+			_state = 0;
+		}
+		/*
+		if (_Animator.CurrentAnimationPosition > .2 && _hitbox != null && _hitbox._active)
+		{
+			_hitbox._active = false;
+			//GLOBAL_FUNCTIONS.play_sound(_sword_swing);
+			_hitbox.GetChild<CollisionShape3D>(0).Disabled = false;
+			GD.Print("bbomS");
+		}
+		
+		if (velocity.Y > 0)
+			velocity.Y = 0;
+		velocity.X = 0;
+		velocity.Z = 0;
+
+		_Animator.Play(_base + "attack");*/
+
+
 
 		return velocity;
 	}

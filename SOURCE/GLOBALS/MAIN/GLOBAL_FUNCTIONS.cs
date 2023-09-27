@@ -19,6 +19,11 @@ public partial class GLOBAL_FUNCTIONS : Node
 		//GD.Print("well it's here");
 	}
 
+	static public void Change_Scene(String _new_scene)
+	{
+		GLOBAL_STATS._main_scene.GetTree().ChangeSceneToFile(_new_scene);
+	}
+
 	static public void Play_Sound(AudioStreamWav _sound)
 	{
 		_audio_emitter.play_sound(_sound, true);

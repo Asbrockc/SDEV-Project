@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://baqvljgsu2v5m"]
+
+[ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="1_ta4c7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwjb2"]
+
+[node name="Door_base" type="Area3D"]
+
+[node name="Door_col" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xwjb2")
+
+[node name="Door_sprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+texture = ExtResource("1_ta4c7")
+
+[connection signal="body_entered" from="." to="." method="_on_player_collision"]
