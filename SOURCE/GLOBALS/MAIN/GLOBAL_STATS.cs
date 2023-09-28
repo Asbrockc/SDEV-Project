@@ -64,6 +64,11 @@ public partial class GLOBAL_STATS : Node
 	};
 
 
+	/// <summary>
+	/// Static function that will keep track of the experience the player is collecting 
+	/// Once enough is collected it will update the level, experence needed for next level
+	/// and give the player a bonus point to spend
+	/// </summary>
 	static public void _Level_Manager()
 	{
 		int _exp = _player_stats[I_EXPERIENCE];
@@ -71,6 +76,7 @@ public partial class GLOBAL_STATS : Node
 
 		if (_exp >= _next_in)
 		{
+			GLOBAL_FUNCTIONS.Create_Effect(_player, "Effect_levelup.tscn", false);
 			GLOBAL_FUNCTIONS.Play_Sound(_player._level_up, false);
 			int _remainder = _exp - _next_in;
 

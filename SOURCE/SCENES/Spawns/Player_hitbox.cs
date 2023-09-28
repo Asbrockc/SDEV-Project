@@ -16,6 +16,7 @@ public partial class Player_hitbox : Area3D
 			((Obj_enemy_base)_node)._vspd = 2.0f * -Math.Sign(this._player_parent.GlobalPosition.Z -_node.GlobalPosition.Z);
 			((Obj_enemy_base)_node)._jump_spd = 3.5f;
 			((Obj_enemy_base)_node)._health -= GLOBAL_STATS._player_stats[GLOBAL_STATS.I_STRENGTH];
+			GD.Print(GLOBAL_STATS._player_stats[GLOBAL_STATS.I_STRENGTH]);
 			GLOBAL_FUNCTIONS.Create_Effect(_node, "Effect_hit.tscn", false);
 		}
 	}

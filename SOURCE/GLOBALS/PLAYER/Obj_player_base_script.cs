@@ -8,6 +8,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 	public GLOBAL_SCENE _Global_accessor;
 	public Interactive_Action _node_in_range = null;
+	public Level_up_menu _current_menu = null;
 
 	public AudioStreamWav _sword_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_hit.wav");
 	public AudioStreamWav _sword_swing = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_swing.wav");
@@ -80,6 +81,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 	public Vector3 Player_move_state(double delta, Vector3 velocity)
 	{
+		if (Input.IsKeyPressed(Key.Enter) && _current_menu == null)
+			_current_menu = GLOBAL_FUNCTIONS.Summon_stat_menu();
+
 		// Handle Jump.
 		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
 			velocity.Y = JumpVelocity;

@@ -10,14 +10,17 @@ public partial class UI_health_dots : Sprite2D
 	private const float _space_offset = 150.0f;
 
 	private int curr_health = 0;
+	private int curr_max_health = 0;
 
 
     public override void _Process(double delta)
     {
-		if (curr_health != GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH])
+		if (curr_health != GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] ||
+			curr_max_health != GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH])
 		{
         	QueueRedraw();
 			curr_health = GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH];
+			curr_max_health = GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH];
 		}
     }
 

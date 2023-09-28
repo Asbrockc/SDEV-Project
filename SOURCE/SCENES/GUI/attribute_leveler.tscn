@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtex21kuo44di"]
+
+[ext_resource type="Script" path="res://SCENES/GUI/attribute_leveler_parent.cs" id="1_2x48s"]
+[ext_resource type="Script" path="res://SCENES/GUI/Attribute_up_button.cs" id="2_c68mh"]
+[ext_resource type="Script" path="res://SCENES/GUI/Attribute_down_button.cs" id="3_8d3qv"]
+
+[node name="Attribute_leveler" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 345.0
+offset_bottom = 100.0
+script = ExtResource("1_2x48s")
+
+[node name="Up_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 18.0
+offset_right = 314.0
+offset_bottom = 49.0
+text = "^"
+script = ExtResource("2_c68mh")
+
+[node name="Down_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 53.0
+offset_right = 314.0
+offset_bottom = 84.0
+text = "v"
+script = ExtResource("3_8d3qv")
+
+[node name="Current_bonus_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 25.0
+offset_right = 244.0
+offset_bottom = 77.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attribute_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 25.0
+offset_right = 168.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 25
+text = "Attribute"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Sep_up" type="HSeparator" parent="."]
+layout_mode = 0
+offset_right = 344.0
+offset_bottom = 25.0
+
+[node name="Sep_down" type="HSeparator" parent="."]
+layout_mode = 0
+offset_top = 76.0
+offset_right = 344.0
+offset_bottom = 101.0

@@ -11,6 +11,7 @@ height = 0.497543
 radius = 1.31051
 
 [node name="Obj_item" type="CharacterBody3D" groups=["Item"]]
+collision_layer = 2
 script = ExtResource("1_bytfk")
 
 [node name="Item_collision" type="CollisionShape3D" parent="." groups=["Item"]]

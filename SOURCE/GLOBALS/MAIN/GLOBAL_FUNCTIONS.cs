@@ -82,6 +82,15 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_curr_item._vspd = r.Next(-_range, _range);
 	}
 
+	static public Level_up_menu Summon_stat_menu()
+	{
+		Level_up_menu _curr_item = (Level_up_menu)ResourceLoader.Load<PackedScene>("res://SCENES/GUI/Level_up_menu.tscn").Instantiate();
+		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
+		GLOBAL_STATS._player._state = 2;
+
+		return _curr_item;
+	}
+
 	static public float distance_between_nodes(Node3D first, Node3D second)
 	{
 		return 
