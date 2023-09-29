@@ -31,7 +31,7 @@ size = Vector3(1, 6.3633, 1)
 [node name="Room_Town" type="Node3D"]
 script = ExtResource("1_2jguh")
 
-[node name="L_floor_one" type="StaticBody3D" parent="."]
+[node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 0)
 metadata/_edit_group_ = true
 

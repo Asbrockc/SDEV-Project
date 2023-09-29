@@ -6,6 +6,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 {
 	static public Chat_Box _active_chat = null;
 	static public Audio_Emt _audio_emitter = null;
+	static public Texture2D _broken_arrow = ResourceLoader.Load<Texture2D>("res://SPRITES/FILE/Arrow_2.png");
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,14 +25,14 @@ public partial class GLOBAL_FUNCTIONS : Node
 		GLOBAL_STATS._main_scene.GetTree().ChangeSceneToFile(_new_scene);
 	}
 
-	static public void Play_Sound(AudioStreamWav _sound)
+	static public void Play_Sound<T>(T _sound)
 	{
-		_audio_emitter.play_sound(_sound, true);
+		_audio_emitter.play_sound<T>(_sound, true);
 	}
 
-	static public void Play_Sound(AudioStreamWav _sound, bool _shift_tone)
+	static public void Play_Sound<T>(T _sound, bool _shift_tone)
 	{
-		_audio_emitter.play_sound(_sound, _shift_tone);
+		_audio_emitter.play_sound<T>(_sound, _shift_tone);
 	}
 
 	static public float Choose_Float(params float[] _range)
@@ -39,8 +40,6 @@ public partial class GLOBAL_FUNCTIONS : Node
 		Random _rand = new Random();
 		return _range[_rand.NextInt64(_range.Length)];
 	}
-
-
 
 	static public void Call_Chatbox(params string[] _messages)
 	{
@@ -88,6 +87,15 @@ public partial class GLOBAL_FUNCTIONS : Node
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
 		GLOBAL_STATS._player._state = 2;
 
+		return _curr_item;
+	}
+
+	static public Obj_projectile_parent Create_projectile(Node3D _source)
+	{
+		Obj_projectile_parent _curr_item = (Obj_projectile_parent)ResourceLoader.Load<PackedScene>("res://SCENES/EFFECTS/Obj_projectile_parent.tscn").Instantiate();
+		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
+
+		_curr_item.Position = _source.GlobalPosition;
 		return _curr_item;
 	}
 

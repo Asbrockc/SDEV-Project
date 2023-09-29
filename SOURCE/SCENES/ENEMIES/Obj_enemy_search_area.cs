@@ -30,7 +30,7 @@ public partial class Obj_enemy_search_area : Area3D
 	{
 		if (_enemy_base._target != null && node.IsInGroup("Player"))
 		{
-			_enemy_base._target = null;
+			//_enemy_base._target = null;
 			//_enemy_base._hspd = 0;
 			//_enemy_base._vspd = 0;
 		}

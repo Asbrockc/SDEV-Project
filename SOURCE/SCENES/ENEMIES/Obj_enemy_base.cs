@@ -5,13 +5,17 @@ using System.Data;
 
 public partial class Obj_enemy_base : Obj_physics_base
 {
+	public const int IDLE_STATE = 0;
+	public const int MOVE_STATE = 1;
+	public const int HIT_STATE = 2;
+	public const int DEATH_STATE = 3;
+
 	public bool _death_flag = false;
 	public int _health = 4;
 
 	public Node3D _target = null;
 	private int hit_timer = 0;
 	private int delay_timer = 30;
-
 
 	public float _hit_force = 8.0f;
 	public int _hit_damage = 1;
@@ -23,52 +27,56 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 	public override void _PhysicsProcess(double delta)
 	{
-			if (_health <= 0)
-				_state = 3;
+		if (_health <= 0)
+			_state = DEATH_STATE;
 
-			Vector3 velocity = Velocity;
+		Vector3 velocity = Velocity;
 
-			// Add the gravity.
-			if (!IsOnFloor())
-				velocity.Y -= gravity * (float)delta;
+		// Add the gravity.
+		if (!IsOnFloor())
+			velocity.Y -= gravity * (float)delta;
 
-			// Handle Jump.
-			if (_jump_spd != 0)
-			{
-				GD.Print("jump");
-				velocity.Y = _jump_spd;
-				_jump_spd = 0.0f;
-			}
+		// Handle Jump.
+		if (_jump_spd != 0)
+		{
+			velocity.Y = _jump_spd;
+			_jump_spd = 0.0f;
+		}
 
-			//if (_target != null) GD.Print(_target); else GD.Print("N/A");
-			switch (_state)
-			{
-				case 0: 
-					velocity = idle_state(delta, velocity);
-				break;
-				case 1: 
-					velocity = move_to_player_state(delta, velocity);
-				break;
-				case 2: 
-					velocity = hit_state(delta, velocity);
-				break;
-				case 3: 
-					velocity = death_state(delta, velocity);
-				break;
+		velocity = this.enemy_core_AI(delta, velocity);
 
-				default:
-					_hspd = 0;
-					_vspd = 0;
-					break;
-			}
-
-		//death flag to flag if the instance was destroyed before this step
 		if (!_death_flag)
 		{
 			velocity = apply_speed(velocity);
 			Velocity = velocity;
 			MoveAndSlide();
 		}
+	}
+
+	public Vector3 enemy_core_AI(double delta, Vector3 velocity)
+	{
+		switch (_state)
+		{
+			case IDLE_STATE: 
+				velocity = idle_state(delta, velocity);
+			break;
+			case MOVE_STATE: 
+				velocity = move_to_player_state(delta, velocity);
+			break;
+			case HIT_STATE: 
+				velocity = hit_state(delta, velocity);
+			break;
+			case DEATH_STATE: 
+				velocity = death_state(delta, velocity);
+			break;
+
+			default:
+				_hspd = 0;
+				_vspd = 0;
+				break;
+		}
+
+		return velocity;
 	}
 
 	public Vector3 idle_state(double delta, Vector3 velocity)
@@ -78,7 +86,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 		if (_target != null)
 		{
-			_state = 1;
+			_state = MOVE_STATE;
 		}
 		//GD.Print("Will walk to player soon enough");
 		return velocity;
@@ -95,7 +103,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 			}
 			else
 			{
-				_state = 0;
+				//_state = 0;
 			}
 		}
 
@@ -112,11 +120,25 @@ public partial class Obj_enemy_base : Obj_physics_base
 		else
 		{
 			hit_timer = 0;
-			_state = 0;
+			_state = IDLE_STATE;
 		}
 		//GD.Print("Will walk to player soon enough");
 		return velocity;
 	}
+
+	public void hit_me(Node3D _hit_by, float _hit_force, float _jump_force, int _damage)
+	{
+		this._state = HIT_STATE;
+		this._hspd = _hit_force * -Math.Sign(_hit_by.GlobalPosition.X - GlobalPosition.X);
+		this._vspd = _hit_force * -Math.Sign(_hit_by.GlobalPosition.Z - GlobalPosition.Z);
+		this._jump_spd = _jump_force;
+		this._health -= _damage;
+		GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_hit.tscn", false);
+
+		if (_target == null)
+			_target = GLOBAL_STATS._player;
+	}
+	
 
 	public Vector3 death_state(double delta, Vector3 velocity)
 	{

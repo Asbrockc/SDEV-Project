@@ -1,57 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1h3f6gqr6nws"]
+[gd_scene load_steps=6 format=3 uid="uid://b1h3f6gqr6nws"]
 
 [ext_resource type="Script" path="res://SCENES/GUI/Level_up_menu.cs" id="1_88vbo"]
 [ext_resource type="PackedScene" uid="uid://dtex21kuo44di" path="res://SCENES/GUI/attribute_leveler.tscn" id="1_vlrkc"]
 [ext_resource type="Script" path="res://SCENES/GUI/Bonus_button_applier.cs" id="3_07nlp"]
 [ext_resource type="Script" path="res://SCENES/GUI/Level_up_exit_button.cs" id="3_e0gv1"]
+[ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="5_mchnd"]
 
 [node name="Level_up_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 394.0
+offset_left = 419.0
 offset_top = 87.0
-offset_right = -405.0
+offset_right = -380.0
 offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_88vbo")
 
+[node name="Bonue_menu_background" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -94.0
+offset_right = 362.0
+offset_bottom = 468.0
+texture = ExtResource("5_mchnd")
+region_rect = Rect2(-1.70505, -0.705724, 61.4957, 60.8585)
+patch_margin_left = 13
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
 [node name="Attribute_leveler" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = 2.0
+offset_left = 15.0
 offset_top = 82.0
-offset_right = 347.0
+offset_right = 360.0
 offset_bottom = 182.0
 
 [node name="Attribute_leveler2" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = 1.0
+offset_left = 14.0
 offset_top = 179.0
-offset_right = 346.0
+offset_right = 359.0
 offset_bottom = 279.0
 
 [node name="Attribute_leveler3" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = 2.0
+offset_left = 15.0
 offset_top = 273.0
-offset_right = 347.0
+offset_right = 360.0
 offset_bottom = 373.0
 
 [node name="Bonus_points_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 72.0
-offset_top = 29.0
-offset_right = 203.0
-offset_bottom = 72.0
+offset_left = 39.0
+offset_top = 33.0
+offset_right = 170.0
+offset_bottom = 76.0
 text = "BONUS POINTS:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Bonus_points_number" type="Label" parent="."]
 layout_mode = 0
-offset_left = 204.0
-offset_top = 23.0
-offset_right = 269.0
-offset_bottom = 75.0
+offset_left = 171.0
+offset_top = 27.0
+offset_right = 246.0
+offset_bottom = 79.0
 theme_override_font_sizes/font_size = 30
 text = "0"
 horizontal_alignment = 1
@@ -59,10 +72,10 @@ vertical_alignment = 1
 
 [node name="Bonus_button_applier" type="Button" parent="."]
 layout_mode = 0
-offset_left = 172.0
-offset_top = 378.0
-offset_right = 302.0
-offset_bottom = 423.0
+offset_left = 138.0
+offset_top = 388.0
+offset_right = 268.0
+offset_bottom = 433.0
 theme_override_font_sizes/font_size = 25
 text = "APPLY"
 icon_alignment = 1
@@ -70,10 +83,10 @@ script = ExtResource("3_07nlp")
 
 [node name="Level_up_exit_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 378.0
-offset_right = 161.0
-offset_bottom = 423.0
+offset_left = -3.0
+offset_top = 388.0
+offset_right = 127.0
+offset_bottom = 433.0
 theme_override_font_sizes/font_size = 25
 text = "EXIT"
 script = ExtResource("3_e0gv1")

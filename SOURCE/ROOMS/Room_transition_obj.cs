@@ -91,7 +91,7 @@ public partial class Room_transition_obj : NinePatchRect
 		this.Position += (new Vector2(115.0f, 0));
 		this.SetSize(new Vector2(_scale, this.Size.Y));
 
-		GC.Collect();
-		GC.WaitForPendingFinalizers();
+		//GC.Collect();
+		//GC.WaitForPendingFinalizers();
 	}
 }

@@ -17,10 +17,10 @@ public partial class attribute_leveler_parent : Control
 	{
 		_parent_node = this.GetParent<Level_up_menu>();
 
-		_up_button = this.GetChild<Button>(0);
-		_down_button = this.GetChild<Button>(1);
-		_bonus_label = this.GetChild<Label>(2);
-		_attribute_label = this.GetChild<Label>(3);
+		_up_button = this.GetChild<Button>(2);
+		_down_button = this.GetChild<Button>(3);
+		_bonus_label = this.GetChild<Label>(4);
+		_attribute_label = this.GetChild<Label>(5);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

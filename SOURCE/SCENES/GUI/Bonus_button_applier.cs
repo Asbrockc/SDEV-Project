@@ -9,7 +9,7 @@ public partial class Bonus_button_applier : Button
 
 		for (int i = 0; i < 3; i++)
 		{
-			attribute_leveler_parent _curr = _menu.GetChild<attribute_leveler_parent>(i);
+			attribute_leveler_parent _curr = _menu.GetChild<attribute_leveler_parent>(i+1);
 
 			if (_curr._current_level > 0)
 			{

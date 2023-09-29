@@ -15,7 +15,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 	public AudioStreamWav _item_pickup = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_item_pickup.wav");
 	public AudioStreamWav _level_up = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_level_up.wav");
 	public AudioStreamWav _player_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_player_hit.wav");
-	
+	public AudioStreamMP3 _player_bow_shot = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_bow_shot_2.mp3");
 	private string _base = "down_";
 	
 	public Player_hitbox _hitbox = null;
@@ -24,6 +24,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 	public float _hurt_hspd = 0;
 	public float _hurt_vspd = 0;	
 	public float _hurt_up_speed = 0;
+
+	private bool _shoot_arrow = false;
+	private float _arrow_speed = 0.3f;
 
 	public override void _Ready()
 	{
@@ -58,6 +61,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 			case 3:
 				velocity = Player_aim_state(delta, velocity);
 				break;
+			case 4:
+				velocity = Player_shoot_state(delta, velocity);
+				break;
 		}
 
 		velocity.X += _hurt_hspd;
@@ -81,6 +87,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 	public Vector3 Player_move_state(double delta, Vector3 velocity)
 	{
+		_shoot_arrow = false;
 		if (Input.IsKeyPressed(Key.Enter) && _current_menu == null)
 			_current_menu = GLOBAL_FUNCTIONS.Summon_stat_menu();
 
@@ -229,26 +236,56 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 		if (Input.IsActionJustReleased("ui_left"))
 		{
-			_state = 0;
+			_state = 4;
 		}
-		/*
-		if (_Animator.CurrentAnimationPosition > .2 && _hitbox != null && _hitbox._active)
+
+		if (Input.IsKeyPressed(Key.W))
+			_base = "up_";
+		else if (Input.IsKeyPressed(Key.S))
+			_base = "down_";
+		else if (Input.IsKeyPressed(Key.A))
+			_base = "left_";
+		else if (Input.IsKeyPressed(Key.D))
+			_base = "right_";
+		else
+			_hspd = 0;
+
+
+		_Animator.Play(_base + "idle");
+
+		return velocity;
+	}
+
+	public Vector3 Player_shoot_state(double delta, Vector3 velocity)
+	{
+		_Animator.Play(_base + "bow");
+
+		if (!_shoot_arrow && _Animator.CurrentAnimationPosition > .3)
 		{
-			_hitbox._active = false;
-			//GLOBAL_FUNCTIONS.play_sound(_sword_swing);
-			_hitbox.GetChild<CollisionShape3D>(0).Disabled = false;
-			GD.Print("bbomS");
+			_shoot_arrow = true;
+			Obj_projectile_parent _arrow = GLOBAL_FUNCTIONS.Create_projectile(this);
+			GLOBAL_FUNCTIONS.Play_Sound(_player_bow_shot);
+			switch (_base)
+			{
+				case "left_": 
+					_arrow._hspd = -_arrow_speed;
+					_arrow._my_sprite.RotationDegrees = new Vector3(-45, 0, 90);
+				break;
+				case "right_": 
+					_arrow._hspd = _arrow_speed;
+					_arrow._my_sprite.RotationDegrees = new Vector3(-45, 0, -90);
+				break;
+				case "up_": 
+					_arrow._vspd = -_arrow_speed;
+					_arrow._my_sprite.RotationDegrees = new Vector3(-45, 0, 0);
+				break;
+				case "down_": 
+					_arrow._vspd = _arrow_speed;
+					_arrow._my_sprite.RotationDegrees = new Vector3(-45, 0, 180);
+				break;
+			}
 		}
 		
-		if (velocity.Y > 0)
-			velocity.Y = 0;
-		velocity.X = 0;
-		velocity.Z = 0;
-
-		_Animator.Play(_base + "attack");*/
-
-
-
 		return velocity;
 	}
 

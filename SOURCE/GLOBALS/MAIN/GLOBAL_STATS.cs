@@ -63,7 +63,6 @@ public partial class GLOBAL_STATS : Node
 		false, //second boss not beaten
 	};
 
-
 	/// <summary>
 	/// Static function that will keep track of the experience the player is collecting 
 	/// Once enough is collected it will update the level, experence needed for next level
