@@ -16,6 +16,8 @@ public partial class Obj_enemy_base : Obj_physics_base
 	public Node3D _target = null;
 	private int hit_timer = 0;
 	private int delay_timer = 30;
+	
+	public int drop_amount = 2;
 
 	public float _hit_force = 8.0f;
 	public int _hit_damage = 1;
@@ -98,6 +100,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 		{
 			if (GLOBAL_FUNCTIONS.distance_between_nodes(_target, this) > 0.1)
 			{
+				//this.Position += new Vector3(0.1f, 0, 0.1f);
 				_hspd = Math.Sign(_target.GlobalPosition.X - this.GlobalPosition.X) * Speed/2;
 				_vspd = Math.Sign(_target.GlobalPosition.Z - this.GlobalPosition.Z) * Speed/2;
 			}
@@ -112,15 +115,18 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 	public Vector3 hit_state(double delta, Vector3 velocity)
 	{
-		//GD.Print("hit");
-		if (hit_timer <  delay_timer)
+		if (!_death_flag)
 		{
-			hit_timer++;
-		}
-		else
-		{
-			hit_timer = 0;
-			_state = IDLE_STATE;
+			//GD.Print("hit");
+			if (hit_timer <  delay_timer)
+			{
+				hit_timer++;
+			}
+			else
+			{
+				hit_timer = 0;
+				_state = IDLE_STATE;
+			}
 		}
 		//GD.Print("Will walk to player soon enough");
 		return velocity;
@@ -150,9 +156,9 @@ public partial class Obj_enemy_base : Obj_physics_base
 		else
 		{
 			hit_timer = 0;
-			for (int i = 0; i < 10; i++)
-			
-			GLOBAL_FUNCTIONS.Spawn_item(this.Position, 0.2f, 2);
+			for (int i = 0; i < drop_amount; i++)
+				GLOBAL_FUNCTIONS.Spawn_item(this.Position, 0.2f, 1);
+
 			GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_blood.tscn", true);
 			QueueFree();
 			_death_flag = true;

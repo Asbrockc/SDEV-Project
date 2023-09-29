@@ -10,8 +10,11 @@ public partial class Obj_item : Obj_physics_base
 
 	public int count = 0;
 
+	public string _my_base = "exp";
+
 	public override void _PhysicsProcess(double delta)
 	{
+		this.GetChild<Effects_drops_sprite>(0)._curr_effect = _my_base;
 		count++;
 		
 		if (_used)
@@ -66,7 +69,16 @@ public partial class Obj_item : Obj_physics_base
 
 	public virtual void player_grab()
 	{
-		GLOBAL_STATS._player_stats[GLOBAL_STATS.I_EXPERIENCE]++;
-		GD.Print("Player Grabbed Item");
+		switch (_my_base)
+		{
+			case "exp":
+			GLOBAL_STATS._player_stats[GLOBAL_STATS.I_EXPERIENCE]++;
+			break;			
+			case "hp":
+			if (GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] < GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH])
+				GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH]++;
+			break;
+		}
+		//GD.Print("Player Grabbed Item");
 	}
 }

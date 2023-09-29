@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://bic5il6w5ilki"]
+
+[ext_resource type="Texture2D" uid="uid://dkfpydpbuc8fe" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_elements.png" id="1_pa84o"]
+[ext_resource type="Script" path="res://SCENES/EFFECTS/Effects_drops_sprite.cs" id="2_4istq"]
+[ext_resource type="Script" path="res://SCENES/EFFECTS/Effect_ani.cs" id="3_8hl2x"]
+
+[sub_resource type="Animation" id="Animation_ywxn8"]
+resource_name = "exp"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [49, 61, 73, 85]
+}
+
+[sub_resource type="Animation" id="Animation_v67pp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [49]
+}
+
+[sub_resource type="Animation" id="Animation_bpabc"]
+resource_name = "hp"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [55, 67, 79, 91]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b238x"]
+_data = {
+"RESET": SubResource("Animation_v67pp"),
+"exp": SubResource("Animation_ywxn8"),
+"hp": SubResource("Animation_bpabc")
+}
+
+[node name="Effect_drops_sprite" type="Sprite3D"]
+transform = Transform3D(3, 0, 0, 0, 2.12132, 2.12132, 0, -2.12132, 2.12132, 0, 1.2, 0)
+texture = ExtResource("1_pa84o")
+hframes = 12
+vframes = 8
+frame = 49
+script = ExtResource("2_4istq")
+
+[node name="Effect_ani" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b238x")
+}
+script = ExtResource("3_8hl2x")

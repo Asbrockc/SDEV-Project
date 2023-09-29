@@ -22,7 +22,10 @@ public partial class Item_bounce : Area3D
 			if (_node.IsInGroup("Player") && _main_item.count > 30)
 			{
 				_main_item._used = true;
-				GLOBAL_FUNCTIONS.Play_Sound(((Obj_player_base_script)_node)._item_pickup);
+				if (_main_item._my_base == "exp")
+					GLOBAL_FUNCTIONS.Play_Sound(((Obj_player_base_script)_node)._item_pickup);
+				else if (_main_item._my_base == "hp")
+					GLOBAL_FUNCTIONS.Play_Sound(((Obj_player_base_script)_node)._level_up);
 			}
 		}
 	}

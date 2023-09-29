@@ -35,7 +35,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_audio_emitter.play_sound<T>(_sound, _shift_tone);
 	}
 
-	static public float Choose_Float(params float[] _range)
+	static public T Choose<T>(params T[] _range)
 	{
 		Random _rand = new Random();
 		return _range[_rand.NextInt64(_range.Length)];
@@ -43,8 +43,6 @@ public partial class GLOBAL_FUNCTIONS : Node
 
 	static public void Call_Chatbox(params string[] _messages)
 	{
-		
-		
 		//GD.Print("make chat");
 		if (_active_chat == null)
 		{
@@ -79,6 +77,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_curr_item._charge_up = r.Next(_range, _range*2);
 		_curr_item._hspd = r.Next(-_range, _range);
 		_curr_item._vspd = r.Next(-_range, _range);
+		_curr_item._my_base = Choose<string>("exp","exp","exp","exp","exp","exp","exp","exp","exp","exp","hp");
 	}
 
 	static public Level_up_menu Summon_stat_menu()

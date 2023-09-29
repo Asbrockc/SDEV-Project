@@ -35,7 +35,7 @@ public partial class Audio_Emt : Node3D
 		}
 
 		if (_shift_tone)
-			_audio_player_list[_index_count].PitchScale = GLOBAL_FUNCTIONS.Choose_Float(0.9f, 1.0f, 1.1f);
+			_audio_player_list[_index_count].PitchScale = GLOBAL_FUNCTIONS.Choose<float>(0.9f, 1.0f, 1.1f);
 		else 
 			_audio_player_list[_index_count].PitchScale = 1.0f;
 

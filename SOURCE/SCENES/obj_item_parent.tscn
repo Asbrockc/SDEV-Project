@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0e8r17453sx5"]
+[gd_scene load_steps=7 format=3 uid="uid://c0e8r17453sx5"]
 
 [ext_resource type="Script" path="res://SCENES/Obj_item.cs" id="1_bytfk"]
+[ext_resource type="PackedScene" uid="uid://bic5il6w5ilki" path="res://SCENES/EFFECTS/Effects_drops_sprite.tscn" id="2_j2s16"]
 [ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="2_rjbvl"]
 [ext_resource type="Script" path="res://SCENES/Item_bounce.cs" id="3_5i8ib"]
 
@@ -14,11 +15,14 @@ radius = 1.31051
 collision_layer = 2
 script = ExtResource("1_bytfk")
 
+[node name="Effect_drops_sprite" parent="." instance=ExtResource("2_j2s16")]
+
 [node name="Item_collision" type="CollisionShape3D" parent="." groups=["Item"]]
 shape = SubResource("BoxShape3D_b232m")
 
 [node name="Item_sprite" type="Sprite3D" parent="." groups=["Item"]]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+visible = false
 texture = ExtResource("2_rjbvl")
 
 [node name="Item_bounce_areat" type="Area3D" parent="."]
