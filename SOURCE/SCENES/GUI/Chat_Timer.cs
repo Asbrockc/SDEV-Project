@@ -12,7 +12,7 @@ public partial class Chat_Timer : Timer
 
 	public void _on_timeout()
 	{
-		GLOBAL_FUNCTIONS.Play_Sound(_item_pickup);
+		GLOBAL_FUNCTIONS.Play_Sound(_item_pickup, 0.8f);
 		this.GetParent<Chat_Type>().VisibleCharacters += 2;
 	}
 }

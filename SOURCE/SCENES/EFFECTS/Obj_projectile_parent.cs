@@ -11,6 +11,7 @@ public partial class Obj_projectile_parent : Area3D
 	public bool _destroy = false;
 
 	public Sprite3D _my_sprite = null;
+	public Node3D _my_parent = null;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -38,7 +39,7 @@ public partial class Obj_projectile_parent : Area3D
 			{
 				this.GetParent<Node3D>().RemoveChild(this);
 				_stuck_in.AddChild(this);
-				((Obj_enemy_base)_stuck_in).hit_me(this, 1.5f, 2.0f, GLOBAL_STATS._player_stats[GLOBAL_STATS.I_DEFENCE]);
+				((Obj_enemy_base)_stuck_in).hit_me(this._my_parent, 1.5f, 2.0f, GLOBAL_STATS._player_stats[GLOBAL_STATS.I_DEFENCE]);
 				this.Position = new Vector3(0.0f, 0.0f, 0.0f);
 				this._my_sprite.Texture = GLOBAL_FUNCTIONS._broken_arrow;
 				GLOBAL_FUNCTIONS.Play_Sound(GLOBAL_STATS._player._sword_hit);

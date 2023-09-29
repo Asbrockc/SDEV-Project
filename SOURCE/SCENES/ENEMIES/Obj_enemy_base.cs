@@ -148,11 +148,8 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 	public Vector3 death_state(double delta, Vector3 velocity)
 	{
-		//GD.Print("hit");
 		if (hit_timer <  delay_timer)
-		{
 			hit_timer++;
-		}
 		else
 		{
 			hit_timer = 0;

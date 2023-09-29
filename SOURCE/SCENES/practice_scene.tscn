@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddsxoieeaomi4"]
+[gd_scene load_steps=17 format=3 uid="uid://ddsxoieeaomi4"]
 
 [ext_resource type="Script" path="res://SCENES/Room_Town.cs" id="1_2jguh"]
 [ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="5_3b0wv"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="6_jkt5d"]
 [ext_resource type="Script" path="res://SCENES/Spawns/Door_1_A.cs" id="7_l77sr"]
+[ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="8_jqc2e"]
+[ext_resource type="Script" path="res://FLOORS/Joke.cs" id="9_5lurq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwoec"]
 size = Vector3(32.5026, 1, 30.677)
@@ -32,7 +34,7 @@ size = Vector3(1, 6.3633, 1)
 script = ExtResource("1_2jguh")
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, -0.47, 0)
 metadata/_edit_group_ = true
 
 [node name="Wall_C_1" type="CollisionShape3D" parent="L_floor_one"]
@@ -84,3 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 0.684178, 0.729315, 0, -0.729315, 0.684178, 
 [node name="Door_base" parent="." groups=["DOOR_1"] instance=ExtResource("6_jkt5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.08185, 0.226821, -14.8985)
 script = ExtResource("7_l77sr")
+
+[node name="L_floor_one2" parent="." instance=ExtResource("8_jqc2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47, -6.29)
+script = ExtResource("9_5lurq")

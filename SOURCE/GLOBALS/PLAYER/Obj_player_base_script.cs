@@ -264,7 +264,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 		{
 			_shoot_arrow = true;
 			Obj_projectile_parent _arrow = GLOBAL_FUNCTIONS.Create_projectile(this);
-			GLOBAL_FUNCTIONS.Play_Sound(_player_bow_shot);
+			GLOBAL_FUNCTIONS.Play_Sound(_player_bow_shot, 0.9f);
 			switch (_base)
 			{
 				case "left_": 

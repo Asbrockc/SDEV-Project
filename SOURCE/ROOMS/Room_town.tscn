@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtc8jm8atntj"]
+[gd_scene load_steps=11 format=3 uid="uid://dtc8jm8atntj"]
 
 [ext_resource type="Script" path="res://SCENES/Room_Town.cs" id="1_2lgrx"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="2_ak1ia"]
 [ext_resource type="Script" path="res://SCENES/Spawns/Door_1_B.cs" id="3_5rxih"]
 [ext_resource type="PackedScene" uid="uid://5n88mst4cn3n" path="res://SCENES/ENEMIES/Enemy_base.tscn" id="4_5pmnv"]
+[ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="5_fgn71"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_paqfc"]
 size = Vector3(32.5026, 1, 30.677)
@@ -24,7 +25,7 @@ size = Vector3(34.5728, 3.93287, 1)
 script = ExtResource("1_2lgrx")
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["TEST"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, -0.47, 0)
 metadata/_edit_group_ = true
 
 [node name="Wall_C_1" type="CollisionShape3D" parent="L_floor_one"]
@@ -47,19 +48,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54913, 16.0127)
 shape = SubResource("BoxShape3D_yhocp")
 
 [node name="Door_base" parent="." groups=["DOOR_1"] instance=ExtResource("2_ak1ia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0296226, 0, 14.2768)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0296226, 0.528072, 14.2768)
 script = ExtResource("3_5rxih")
 
 [node name="Obj_enemy_base" parent="." instance=ExtResource("4_5pmnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99736, 0, 7.22282)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99736, 0.945859, 7.22282)
 
 [node name="Obj_enemy_base2" parent="." instance=ExtResource("4_5pmnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.22282)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.945859, 7.22282)
 
 [node name="Obj_enemy_base3" parent="." instance=ExtResource("4_5pmnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38189, 0, 7.22282)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38189, 0.945859, 7.22282)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.06716, 12.3577)
-spot_range = 8.31773
-spot_angle = 29.3438
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10.0617, 17.0708)
+spot_range = 28.5325
+spot_angle = 38.9711
+
+[node name="L_floor_one2" parent="." instance=ExtResource("5_fgn71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 4.62391)

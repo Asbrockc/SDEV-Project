@@ -8,14 +8,14 @@ public partial class Obj_item : Obj_physics_base
 
 	public bool _used = false;
 
-	public int count = 0;
+	public int count = 100;
 
 	public string _my_base = "exp";
 
 	public override void _PhysicsProcess(double delta)
 	{
 		this.GetChild<Effects_drops_sprite>(0)._curr_effect = _my_base;
-		count++;
+		//count++;
 		
 		if (_used)
 		{

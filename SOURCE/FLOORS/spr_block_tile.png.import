@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dku8yc0f0kh6o"
-path.s3tc="res://.godot/imported/Arrow_2.png-41f000e5b3ebb7e29fe9ee81300d31d6.s3tc.ctex"
+uid="uid://decm70x82ewav"
+path.s3tc="res://.godot/imported/spr_block_tile.png-5efbda64d7e36a73215128df192ac48d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://SPRITES/FILE/Arrow_2.png"
-dest_files=["res://.godot/imported/Arrow_2.png-41f000e5b3ebb7e29fe9ee81300d31d6.s3tc.ctex"]
+source_file="res://FLOORS/spr_block_tile.png"
+dest_files=["res://.godot/imported/spr_block_tile.png-5efbda64d7e36a73215128df192ac48d.s3tc.ctex"]
 
 [params]
 

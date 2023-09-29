@@ -21,7 +21,7 @@ public partial class Audio_Emt : Node3D
 	/// audio sound player function
 	/// Generic since Audio streams can handle wav, mp3, or ogg type files
 	/// </summary>
-	public void play_sound<T>(T _sound, bool _shift_tone)
+	public void play_sound<T>(T _sound, float _volume_in_perc ,bool _shift_tone)
 	{ 
 		Type _t_type = typeof(T);
 		switch(_t_type.ToString())
@@ -38,6 +38,9 @@ public partial class Audio_Emt : Node3D
 			_audio_player_list[_index_count].PitchScale = GLOBAL_FUNCTIONS.Choose<float>(0.9f, 1.0f, 1.1f);
 		else 
 			_audio_player_list[_index_count].PitchScale = 1.0f;
+		
+		
+		_audio_player_list[_index_count].VolumeDb = -(80.0f - (_volume_in_perc * 80.0f ));
 
 		_audio_player_list[_index_count++].Play();
 		//GD.Print(_audio_player_list.Count);

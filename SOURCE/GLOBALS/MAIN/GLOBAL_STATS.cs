@@ -76,7 +76,7 @@ public partial class GLOBAL_STATS : Node
 		if (_exp >= _next_in)
 		{
 			GLOBAL_FUNCTIONS.Create_Effect(_player, "Effect_levelup.tscn", false);
-			GLOBAL_FUNCTIONS.Play_Sound(_player._level_up, false);
+			GLOBAL_FUNCTIONS.Play_Sound(_player._level_up, 1, false);
 			int _remainder = _exp - _next_in;
 
 			_player_stats[I_NEXT_LEVEL_IN] += _player_stats[I_NEXT_LEVEL_IN]/2;

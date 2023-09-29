@@ -27,12 +27,17 @@ public partial class GLOBAL_FUNCTIONS : Node
 
 	static public void Play_Sound<T>(T _sound)
 	{
-		_audio_emitter.play_sound<T>(_sound, true);
+		_audio_emitter.play_sound<T>(_sound, 1 ,true);
 	}
 
-	static public void Play_Sound<T>(T _sound, bool _shift_tone)
+	static public void Play_Sound<T>(T _sound, float _volume_perc)
 	{
-		_audio_emitter.play_sound<T>(_sound, _shift_tone);
+		_audio_emitter.play_sound<T>(_sound, _volume_perc ,true);
+	}
+
+	static public void Play_Sound<T>(T _sound, float _volume_perc, bool _shift_tone)
+	{
+		_audio_emitter.play_sound<T>(_sound, _volume_perc, _shift_tone);
 	}
 
 	static public T Choose<T>(params T[] _range)
@@ -93,6 +98,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 	{
 		Obj_projectile_parent _curr_item = (Obj_projectile_parent)ResourceLoader.Load<PackedScene>("res://SCENES/EFFECTS/Obj_projectile_parent.tscn").Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
+		_curr_item._my_parent = _source;
 
 		_curr_item.Position = _source.GlobalPosition;
 		return _curr_item;
