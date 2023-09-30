@@ -3,7 +3,7 @@ using System;
 
 public partial class Joke : StaticBody3D
 {
-	private Vector3 _spacer = new Vector3(0.01f, 0.0f, 0.0f);
+	//private Vector3 _spacer = new Vector3(0.01f, 0.0f, 0.0f);
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

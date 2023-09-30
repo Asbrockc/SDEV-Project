@@ -66,6 +66,14 @@ public partial class Obj_player_base_script : Obj_physics_base
 				break;
 		}
 
+		velocity = manage_hurt_velocity(velocity);
+
+		Velocity = velocity;
+		MoveAndSlide();
+	}
+
+	private Vector3 manage_hurt_velocity(Vector3 velocity)
+	{
 		velocity.X += _hurt_hspd;
 		velocity.Z += _hurt_vspd;
 
@@ -75,13 +83,17 @@ public partial class Obj_player_base_script : Obj_physics_base
 			_hurt_up_speed = 0;
 		}
 
-		if (_hurt_hspd != 0)
+		if (Math.Abs(_hurt_hspd) > .2)
 			_hurt_hspd = GLOBAL_FUNCTIONS.Gradual_Stop(_hurt_hspd, 20);
-		if (_hurt_vspd != 0)
-			_hurt_vspd = GLOBAL_FUNCTIONS.Gradual_Stop(_hurt_vspd, 20);
+		else
+			_hurt_hspd = 0;
 
-		Velocity = velocity;
-		MoveAndSlide();
+		if (Math.Abs(_hurt_vspd) > .2)
+			_hurt_vspd = GLOBAL_FUNCTIONS.Gradual_Stop(_hurt_vspd, 20);
+		else
+			_hurt_vspd = 0;
+
+		return velocity;
 	}
 
 
@@ -113,7 +125,6 @@ public partial class Obj_player_base_script : Obj_physics_base
 			_hspd = 0;
 
 
-		//GD.Print(_hspd.ToString() + " " + _vspd.ToString());
 		velocity = apply_speed(velocity);
 
 		if (IsOnFloor())
@@ -141,8 +152,6 @@ public partial class Obj_player_base_script : Obj_physics_base
 	
 		if (Input.IsActionJustPressed("ui_left"))
 		{
-			//Effect_parent _test = (Effect_parent)ResourceLoader.Load<PackedScene>("res://SCENES/EFFECTS/Effect_hit.tscn").Instantiate();
-			//AddChild(_test);
 			_state = 3;
 		}
 		

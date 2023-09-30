@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddsxoieeaomi4"]
+[gd_scene load_steps=21 format=3 uid="uid://ddsxoieeaomi4"]
 
 [ext_resource type="Script" path="res://SCENES/Room_Town.cs" id="1_2jguh"]
 [ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://SCENES/Spawns/Door_1_A.cs" id="7_l77sr"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="8_jqc2e"]
 [ext_resource type="Script" path="res://FLOORS/Joke.cs" id="9_5lurq"]
+[ext_resource type="Script" path="res://SCENES/Path_follower_back_an_forth.cs" id="10_bw1ij"]
+[ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="11_gv6s6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwoec"]
 size = Vector3(32.5026, 1, 30.677)
@@ -29,6 +31,20 @@ size = Vector3(34.5728, 3.93287, 1)
 size = Vector3(1, 6.3633, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_syhhy"]
+
+[sub_resource type="Curve3D" id="Curve3D_yww7q"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.43774, 0.48553, -2.22403, 0, 0, 0, 0, 0, 0, 1.66407, 0.844305, -0.425037, 0, 0, 0, 0, 0, 0, -3.28763, 0.0267195, -2.18033, 0, 0, 0, 0, 0, 0, 0.151047, 1.74279, -3.3076, 0, 0, 0, 0, 0, 0, 3.16814, 1.8525, -1.4469),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_yiao8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.97887e-05, 0.228106, 0.00715419, 0, 0, 0, 0, 0, 0, 1.97887e-05, 6.9991, 0.0592456, 0, 0, 0, 0, 0, 0, 1.97887e-05, 0.0744581, -7.40664),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="Room_Town" type="Node3D"]
 script = ExtResource("1_2jguh")
@@ -90,3 +106,27 @@ script = ExtResource("7_l77sr")
 [node name="L_floor_one2" parent="." instance=ExtResource("8_jqc2e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47, -6.29)
 script = ExtResource("9_5lurq")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.669842, 0, 0)
+curve = SubResource("Curve3D_yww7q")
+
+[node name="Path_follower_back_an_forth" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.43774, 0.48553, -2.22403)
+rotation_mode = 0
+script = ExtResource("10_bw1ij")
+
+[node name="Moveable_platform" parent="Path3D/Path_follower_back_an_forth" instance=ExtResource("11_gv6s6")]
+transform = Transform3D(1.00002, 0, 0, 0, 0.300001, 0, 0, 0, 1.00002, 0, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.22121, 0.0803096, 0)
+curve = SubResource("Curve3D_yiao8")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97887e-05, 0.228106, 0.00715419)
+rotation_mode = 0
+script = ExtResource("10_bw1ij")
+
+[node name="Moveable_platform" parent="Path3D2/PathFollow3D" instance=ExtResource("11_gv6s6")]

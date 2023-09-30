@@ -5,8 +5,8 @@ public partial class Obj_player_camera : Camera3D
 {
 	public Node3D _target = null;
 
-	public float _y_dis = 4.0f;
-	public float _z_dis = 4.0f;
+	public float _y_dis = 3.0f; //4.0
+	public float _z_dis = 3.0f;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
