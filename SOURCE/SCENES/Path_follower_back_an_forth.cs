@@ -8,22 +8,19 @@ public partial class Path_follower_back_an_forth : PathFollow3D
 	private Vector3 _curr_zone;
 	private Move_player_zone _platform;
 
-	private float _rate = 0.002f;
+	private float _rate = 0.0002f;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_platform = this.GetChild(0).GetChild<Move_player_zone>(1);
+		_platform = this.GetChild<Standing_platform>(0)._Player_Zone;
 		_curr_zone = _platform.GlobalPosition;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_curr_zone = Position;
+		_curr_zone = GlobalPosition;
 
-		GD.Print(this.ProgressRatio);
-
-	//this.ProgressRatio = GLOBAL_FUNCTIONS.Choose(0,1);
 		switch (_forward)
 		{
 			case 0:
@@ -34,9 +31,10 @@ public partial class Path_follower_back_an_forth : PathFollow3D
 			break;
 		}
 
-		_platform._position_difference = _curr_zone - Position;
+		if (_platform._player != null)
+			_platform._player.GlobalPosition -= (_curr_zone - GlobalPosition);
 
-		//_curr_zone = _platform.GlobalPosition;
+
 	}
 
 	private void moveforward()

@@ -23,10 +23,11 @@ public partial class GLOBAL_STATS : Node
 	public const int I_MAX_HEALTH = 10;
 
 	/// <summary>Enums with int value that correspond to the completion flags lists</summary>
-	public enum Flag_Index : ushort
+	public enum FLAG_INDEX : ushort
 	{
 		Beat_boss_1 = 0,
 		Beat_boss_2 = 1,
+		Locked_door_1 = 2,
 	}
 
 	static public Obj_player_base_script _player;
@@ -61,6 +62,7 @@ public partial class GLOBAL_STATS : Node
 	{
 		false, //first boss not beaten
 		false, //second boss not beaten
+		false //door_one_open
 	};
 
 	/// <summary>

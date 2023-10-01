@@ -223,7 +223,6 @@ public partial class Obj_player_base_script : Obj_physics_base
 			_hitbox._active = false;
 			//GLOBAL_FUNCTIONS.play_sound(_sword_swing);
 			_hitbox.GetChild<CollisionShape3D>(0).Disabled = false;
-			GD.Print("bbomS");
 		}
 		
 		if (velocity.Y > 0)
@@ -244,9 +243,8 @@ public partial class Obj_player_base_script : Obj_physics_base
 		velocity.Z = 0;
 
 		if (Input.IsActionJustReleased("ui_left"))
-		{
 			_state = 4;
-		}
+
 
 		if (Input.IsKeyPressed(Key.W))
 			_base = "up_";

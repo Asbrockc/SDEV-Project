@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://1surjqne4n5o"]
+
+[ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="1_k0atr"]
+[ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="3_dul36"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8fhe"]
+albedo_texture = ExtResource("3_dul36")
+uv1_scale = Vector3(3, 2, 1)
+uv1_offset = Vector3(-1, -1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2s28c"]
+material = SubResource("StandardMaterial3D_m8fhe")
+
+[node name="Button_base" type="Node3D"]
+
+[node name="Moveable_platform" parent="." instance=ExtResource("1_k0atr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("BoxMesh_2s28c")

@@ -20,7 +20,11 @@ public partial class Obj_player_camera : Camera3D
 	{
 		if (_target != null)
 		{
-			Position = new Vector3(_target.Position.X, _target.Position.Y + _y_dis, _target.Position.Z + _z_dis);
+			float _test = 0;//0.01f;
+			Position = new Vector3(
+				_target.Position.X + GLOBAL_FUNCTIONS.Choose(-_test,_test), 
+				_target.Position.Y + _y_dis + GLOBAL_FUNCTIONS.Choose(-_test,_test), 
+				_target.Position.Z + _z_dis + GLOBAL_FUNCTIONS.Choose(-_test,_test));
 		}
 	}
 }

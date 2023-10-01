@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dvp4gqpqbtpk7" path="res://GLOBALS/UI_Player_stats.tscn" id="12_58p2h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv78r"]
-size = Vector3(0.507363, 1, 0.504795)
+size = Vector3(0.507363, 1.2178, 0.504795)
 
 [sub_resource type="Animation" id="Animation_0hjqt"]
 length = 0.001
