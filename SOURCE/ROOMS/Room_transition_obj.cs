@@ -21,15 +21,24 @@ public partial class Room_transition_obj : NinePatchRect
 			open_state();
 			break;
 			case 1:
-			move_room();
+			transition();
 			break;
 			case 2:
+			move_room();
+			break;
+			case 3:
 			close_state();
 			break;
 		}
 
 		if (_finished)
 			this.Free();
+	}
+	private void transition()
+	{
+		GLOBAL_FUNCTIONS.Change_Scene(_room);
+		GD.Print(_target_zone);
+		_state = 2;
 	}
 
 	private void open_state()
@@ -50,8 +59,6 @@ public partial class Room_transition_obj : NinePatchRect
 
 	private void move_room()
 	{
-		GLOBAL_FUNCTIONS.Change_Scene(_room);
-
 		Door_base _target_Door = null;
 
 		if (GLOBAL_STATS._current_room_reference != null)
@@ -71,7 +78,7 @@ public partial class Room_transition_obj : NinePatchRect
 					_target_Door.GlobalPosition.Y,
 					_target_Door.GlobalPosition.Z + _y_off);
 
-			_state = 2;
+			_state = 3;
 		}
 	}
 

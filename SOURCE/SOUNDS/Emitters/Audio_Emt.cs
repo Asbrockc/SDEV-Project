@@ -13,10 +13,6 @@ public partial class Audio_Emt : Node3D
 		GLOBAL_FUNCTIONS._audio_emitter = this;
 	}
 
-	public override void _Process(double delta)
-	{
-	}
-
 	/// <summary>
 	/// audio sound player function
 	/// Generic since Audio streams can handle wav, mp3, or ogg type files

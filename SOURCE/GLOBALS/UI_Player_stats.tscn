@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvp4gqpqbtpk7"]
 
 [ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="1_rflhk"]
-[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="1_xq63a"]
 [ext_resource type="Script" path="res://GLOBALS/UI_health_bar.cs" id="2_xrhwh"]
+[ext_resource type="Texture2D" uid="uid://dkfpydpbuc8fe" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_elements.png" id="3_mog7g"]
 [ext_resource type="Script" path="res://GLOBALS/UI_level_bar.cs" id="4_3rmqe"]
 [ext_resource type="Script" path="res://GLOBALS/UI_level_number.cs" id="5_fovgq"]
 [ext_resource type="Script" path="res://GLOBALS/UI_health_dots.cs" id="6_bwr6x"]
@@ -27,24 +27,31 @@ texture_progress = ExtResource("1_rflhk")
 script = ExtResource("2_xrhwh")
 
 [node name="UI_level_field" type="Sprite2D" parent="."]
-position = Vector2(50, 50)
-scale = Vector2(0.585938, 0.609375)
-texture = ExtResource("1_xq63a")
+modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(53.369, 51.25)
+scale = Vector2(2.64617, 2.56579)
+texture = ExtResource("3_mog7g")
+region_enabled = true
+region_rect = Rect2(164, 590, 30, 30)
 
 [node name="UI_level_bar" type="ProgressBar" parent="."]
+modulate = Color(0, 0.811765, 1, 1)
 layout_mode = 0
 offset_left = 105.0
 offset_top = 61.0
 offset_right = 325.0
 offset_bottom = 88.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+value = 50.0
 script = ExtResource("4_3rmqe")
 
 [node name="UI_level_number" type="Label" parent="."]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 14.0
-offset_right = 86.0
-offset_bottom = 87.0
+offset_right = 91.0
+offset_bottom = 86.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -54,5 +61,6 @@ vertical_alignment = 1
 script = ExtResource("5_fovgq")
 
 [node name="UI_health_dots" type="Sprite2D" parent="."]
-scale = Vector2(0.265625, 0.267578)
+scale = Vector2(0.3, 0.3)
+region_rect = Rect2(886, 592, 30, 30)
 script = ExtResource("6_bwr6x")

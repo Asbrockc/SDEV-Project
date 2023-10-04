@@ -1,18 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://ddsxoieeaomi4"]
+[gd_scene load_steps=22 format=3 uid="uid://ddsxoieeaomi4"]
 
-[ext_resource type="Script" path="res://SCENES/Room_Town.cs" id="1_2jguh"]
 [ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
+[ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_tru31"]
 [ext_resource type="Script" path="res://SCENES/Test_chat_2.cs" id="3_lopga"]
 [ext_resource type="Texture2D" uid="uid://cilwigrf1kmtc" path="res://SPRITES/FILE/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" id="3_u3uav"]
 [ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="5_3b0wv"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="6_jkt5d"]
-[ext_resource type="Script" path="res://SCENES/Spawns/Door_1_A.cs" id="7_l77sr"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="8_jqc2e"]
 [ext_resource type="Script" path="res://FLOORS/Joke.cs" id="9_5lurq"]
 [ext_resource type="Script" path="res://SCENES/Path_follower_back_an_forth.cs" id="10_bw1ij"]
 [ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="11_gv6s6"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="12_nwlkc"]
-[ext_resource type="Script" path="res://SCENES/Spawns/Test_button.cs" id="13_dq8jd"]
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="13_vt57t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwoec"]
@@ -50,10 +48,11 @@ _data = {
 point_count = 4
 
 [node name="Room_Town" type="Node3D"]
-script = ExtResource("1_2jguh")
+script = ExtResource("1_tru31")
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, -0.47, 0)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="Wall_C_1" type="CollisionShape3D" parent="L_floor_one"]
@@ -101,12 +100,14 @@ texture = ExtResource("5_3b0wv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.684178, 0.729315, 0, -0.729315, 0.684178, 0, 6.2722, 1.8696)
+shadow_enabled = true
+sky_mode = 1
 
 [node name="Door_base" parent="." groups=["DOOR_1"] instance=ExtResource("6_jkt5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02894, 0.226821, -16.5299)
-script = ExtResource("7_l77sr")
+_y_off = -1.0
 
-[node name="L_floor_one2" parent="." instance=ExtResource("8_jqc2e")]
+[node name="L_floor_one2" parent="." groups=["floor"] instance=ExtResource("8_jqc2e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47, -6.29)
 script = ExtResource("9_5lurq")
 
@@ -136,7 +137,6 @@ script = ExtResource("10_bw1ij")
 
 [node name="Button_base" parent="." instance=ExtResource("12_nwlkc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.03845, 0, -13.8065)
-script = ExtResource("13_dq8jd")
 
 [node name="Locked_door_base" parent="." instance=ExtResource("13_vt57t")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.01958, 1.00093, -16.0827)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.1195, 1.00093, -16.0827)

@@ -24,7 +24,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 	{
 		GLOBAL_STATS._main_scene.GetTree().ChangeSceneToFile(_new_scene);
 	}
-
+	/*
 	static public void Play_Sound<T>(T _sound)
 	{
 		_audio_emitter.play_sound<T>(_sound, 1 ,true);
@@ -34,10 +34,15 @@ public partial class GLOBAL_FUNCTIONS : Node
 	{
 		_audio_emitter.play_sound<T>(_sound, _volume_perc ,true);
 	}
-
-	static public void Play_Sound<T>(T _sound, float _volume_perc, bool _shift_tone)
+	*/
+	static public void Play_Sound<T>(T _sound, float _volume_perc = 1.0f, bool _shift_tone = true)
 	{
 		_audio_emitter.play_sound<T>(_sound, _volume_perc, _shift_tone);
+	}
+
+	static public bool GetFlag(GLOBAL_STATS.FLAG_INDEX _index)
+	{
+		return GLOBAL_STATS._completion_flags[(int)_index];
 	}
 
 	static public T Choose<T>(params T[] _range)
@@ -55,6 +60,16 @@ public partial class GLOBAL_FUNCTIONS : Node
 			GLOBAL_STATS._main_scene.AddChild(_active_chat);
 			_active_chat.Set_Messages(_messages);
 		}
+	}
+
+	static public void Room_Transition(string _room, string _group, int x_off, int y_off)
+	{
+		Room_transition_obj _active_chat = (Room_transition_obj)ResourceLoader.Load<PackedScene>("res://ROOMS/Room_transition_obj.tscn").Instantiate();
+		GLOBAL_STATS._main_scene.AddChild(_active_chat);
+		_active_chat._room = _room;
+		_active_chat._target_zone = _group;
+		_active_chat._x_off = x_off;
+		_active_chat._y_off = y_off;
 	}
 
 	static public void Create_Effect(Node3D _target_node, String _effect_location, bool _is_global)
@@ -87,11 +102,16 @@ public partial class GLOBAL_FUNCTIONS : Node
 
 	static public Level_up_menu Summon_stat_menu()
 	{
-		Level_up_menu _curr_item = (Level_up_menu)ResourceLoader.Load<PackedScene>("res://SCENES/GUI/Level_up_menu.tscn").Instantiate();
-		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
-		GLOBAL_STATS._player._state = 2;
+		if (GLOBAL_STATS._current_room_reference != null)
+		{
+			Level_up_menu _curr_item = (Level_up_menu)ResourceLoader.Load<PackedScene>("res://SCENES/GUI/Level_up_menu.tscn").Instantiate();
+			GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
+			GLOBAL_STATS._player._state = 2;
 
-		return _curr_item;
+			return _curr_item;
+		}
+
+		return null;
 	}
 
 	static public Obj_projectile_parent Create_projectile(Node3D _source)

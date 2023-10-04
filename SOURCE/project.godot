@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game"
-run/main_scene="res://SCENES/practice_scene.tscn"
+run/main_scene="res://SCENES/Title_Screen.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 config/icon="res://SPRITES/FILE/icon.svg"
 

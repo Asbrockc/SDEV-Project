@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7yc86s2wxaxc"]
 
-[ext_resource type="Script" path="res://SCENES/Spawns/Locked_door_base.cs" id="1_idxxs"]
+[ext_resource type="Script" path="res://SCENES/Spawns/Locked_door_base.cs" id="1_i3tuo"]
 [ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="2_ej1jf"]
 
 [node name="Locked_door_base" type="Node3D"]
-script = ExtResource("1_idxxs")
+script = ExtResource("1_i3tuo")
 
 [node name="Door_left" parent="." instance=ExtResource("2_ej1jf")]
 transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.2, -0.3, 0, 0)

@@ -8,6 +8,8 @@ public partial class Button_base : Node3D
 
 	public bool _set = false;
 
+	[Export] public GLOBAL_STATS.FLAG_INDEX _flag = GLOBAL_STATS.FLAG_INDEX.Beat_boss_1;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -39,6 +41,6 @@ public partial class Button_base : Node3D
 
 	public virtual void _on_press()
 	{
-		GD.Print("CLICK");
+		GLOBAL_STATS._completion_flags[(int)_flag] = true;
 	}
 }

@@ -9,20 +9,19 @@ public partial class Locked_door_base : Node3D
 
 	private float _open_size = 0.3f;
 	private Vector3 _open_rate = new Vector3(0.01f, 0.0f, 0.0f);
-	// Called when the node enters the scene tree for the first time.
+
+	[Export] public GLOBAL_STATS.FLAG_INDEX _flag = GLOBAL_STATS.FLAG_INDEX.Beat_boss_1;
+
 	public override void _Ready()
 	{
 		_left = this.GetChild<Standing_platform>(0);
 		_right = this.GetChild<Standing_platform>(1);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		this._open = GLOBAL_STATS._completion_flags[(int)GLOBAL_STATS.FLAG_INDEX.Locked_door_1];
-		//if (Input.IsActionJustPressed("ui_down"))
-			//_open = !_open;
-
+		_door_trigger();
+		
 		if (_open)
 		{
 			if (_right.Position.X < _open_size*2)
@@ -35,5 +34,10 @@ public partial class Locked_door_base : Node3D
 		}
 
 		_left.Position = -_right.Position;
+	}
+	
+	public virtual void _door_trigger()
+	{
+		this._open = GLOBAL_FUNCTIONS.GetFlag(_flag);
 	}
 }

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds5rk10u60akf"]
+
+[ext_resource type="PackedScene" uid="uid://47bt7y7re2wa" path="res://SCENES/GUI/Title_screen_menu.tscn" id="1_unjaa"]
+
+[node name="Title_Screen" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.47028)
+
+[node name="Title_screen_menu" parent="." instance=ExtResource("1_unjaa")]

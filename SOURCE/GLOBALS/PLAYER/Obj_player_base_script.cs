@@ -26,6 +26,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 	public float _hurt_up_speed = 0;
 
 	private bool _shoot_arrow = false;
+	private bool _jumped = false;
 	private float _arrow_speed = 0.3f;
 
 	public override void _Ready()
@@ -39,13 +40,24 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 	public override void _PhysicsProcess(double delta)
 	{
+		//GD.Print(GetTree().CurrentScene.Name);
 		if (Input.IsActionJustPressed("ui_right"))
-			GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+		{
+			GLOBAL_STATS._Load_Game();
+			//GLOBAL_STATS._Save_Game();
+			//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+
+			//GD.Print(GLOBAL_STATS._current_room_reference.GetTree().CurrentScene.SceneFilePath);
+		}
 
 		Vector3 velocity = Velocity;
-	
+
 		if (!IsOnFloor())
 			velocity.Y -= gravity * (float)delta;
+		else
+		{
+
+		}
 
 		switch (_state)
 		{
@@ -105,7 +117,16 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 		// Handle Jump.
 		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
+		{
+			_jumped = false;
 			velocity.Y = JumpVelocity;
+		}
+		else if (!_jumped)
+		{
+			_jumped = true;
+			_Animator.Play(_base + "jump");
+		}
+		
 
 		if (Input.IsActionJustReleased("ui_accept") && velocity.Y > 0)
 			velocity.Y = 0;
@@ -146,14 +167,16 @@ public partial class Obj_player_base_script : Obj_physics_base
 				_motion = "walk";
 
 			_Animator.Play(_base + _motion);
+
+			handle_action_key();
+			
+			if (Input.IsActionJustPressed("ui_left"))
+			{
+				_state = 4; //or 3
+			}
 		}
 
-		handle_action_key();
-	
-		if (Input.IsActionJustPressed("ui_left"))
-		{
-			_state = 3;
-		}
+
 		
 		return velocity;
 	}
@@ -265,6 +288,11 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 	public Vector3 Player_shoot_state(double delta, Vector3 velocity)
 	{
+		_hspd = 0;
+		_vspd = 0;
+		velocity.X = 0;
+		velocity.Z = 0;
+
 		_Animator.Play(_base + "bow");
 
 		if (!_shoot_arrow && _Animator.CurrentAnimationPosition > .3)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://x2ouuja1vix7"]
+
+[ext_resource type="PackedScene" uid="uid://tfr23fxio06c" path="res://SCENES/GUI/Chat_Box.tscn" id="1_0wln5"]
+[ext_resource type="Script" path="res://SCENES/GUI/Chat_billboard.cs" id="1_gt7wl"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_so1mk"]
+viewport_path = NodePath(".")
+
+[node name="Chat_billboard" type="SubViewport"]
+transparent_bg = true
+script = ExtResource("1_gt7wl")
+
+[node name="Chat_bullboard_sprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.85031, 0)
+texture = SubResource("ViewportTexture_so1mk")
+
+[node name="Chat_Box" parent="." instance=ExtResource("1_0wln5")]

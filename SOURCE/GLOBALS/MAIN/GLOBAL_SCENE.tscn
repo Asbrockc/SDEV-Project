@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bswupu2hbeu5h"]
+[gd_scene load_steps=40 format=3 uid="uid://bswupu2hbeu5h"]
 
 [ext_resource type="Script" path="res://GLOBALS/MAIN/GLOBAL_SCENE.cs" id="1_ri1y5"]
 [ext_resource type="Script" path="res://GLOBALS/PLAYER/Obj_player_base_script.cs" id="2_jd1tb"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" path="res://SPRITES/Spr_animator.cs" id="5_sknbe"]
 [ext_resource type="PackedScene" uid="uid://c06v5glpjsqw4" path="res://SOUNDS/Emitters/audio_emt.tscn" id="6_l24n1"]
 [ext_resource type="Script" path="res://GLOBALS/PLAYER/Obj_player_camera.cs" id="7_odlsd"]
+[ext_resource type="Texture2D" uid="uid://cxp7oymg2746r" path="res://SPRITES/FILE/spr_transition_nine_slice.png" id="8_1x563"]
 [ext_resource type="Script" path="res://GLOBALS/Obj_temp_label_stats.cs" id="8_g7bsr"]
 [ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="9_1kh05"]
+[ext_resource type="Script" path="res://GLOBALS/MAIN/Spr_shadow.cs" id="9_wmjs3"]
 [ext_resource type="Script" path="res://GLOBALS/Spr_sprite_interact_target.cs" id="10_yva51"]
 [ext_resource type="Script" path="res://GLOBALS/Interact_label.cs" id="11_fj1xl"]
 [ext_resource type="PackedScene" uid="uid://dvp4gqpqbtpk7" path="res://GLOBALS/UI_Player_stats.tscn" id="12_58p2h"]
@@ -107,6 +109,22 @@ tracks/0/keys = {
 "values": [1, 1, 24, 24]
 }
 
+[sub_resource type="Animation" id="Animation_0wphb"]
+resource_name = "down_jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [122, 121, 120]
+}
+
 [sub_resource type="Animation" id="Animation_w8mjp"]
 resource_name = "down_walk"
 length = 0.9
@@ -197,6 +215,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [13, 0]
+}
+
+[sub_resource type="Animation" id="Animation_74t6w"]
+resource_name = "left_jump"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [101, 102, 103]
 }
 
 [sub_resource type="Animation" id="Animation_4bjjh"]
@@ -290,6 +324,22 @@ tracks/0/keys = {
 "values": [25, 16]
 }
 
+[sub_resource type="Animation" id="Animation_7jrw5"]
+resource_name = "right_jump"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [114, 113, 112]
+}
+
 [sub_resource type="Animation" id="Animation_hiday"]
 resource_name = "right_walk"
 length = 0.8
@@ -381,6 +431,22 @@ tracks/0/keys = {
 "values": [37, 8]
 }
 
+[sub_resource type="Animation" id="Animation_pbeog"]
+resource_name = "up_jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [106, 105, 104]
+}
+
 [sub_resource type="Animation" id="Animation_xoiy7"]
 resource_name = "up_walk"
 loop_mode = 1
@@ -403,18 +469,22 @@ _data = {
 "down_attack": SubResource("Animation_plhnx"),
 "down_bow": SubResource("Animation_7vf75"),
 "down_idle": SubResource("Animation_6mis1"),
+"down_jump": SubResource("Animation_0wphb"),
 "down_walk": SubResource("Animation_w8mjp"),
 "left_attack": SubResource("Animation_caeni"),
 "left_bow": SubResource("Animation_myo5p"),
 "left_idle": SubResource("Animation_u3yuq"),
+"left_jump": SubResource("Animation_74t6w"),
 "left_walk": SubResource("Animation_4bjjh"),
 "right_attack": SubResource("Animation_xxks7"),
 "right_bow": SubResource("Animation_22lca"),
 "right_idle": SubResource("Animation_wlhve"),
+"right_jump": SubResource("Animation_7jrw5"),
 "right_walk": SubResource("Animation_hiday"),
 "up_attack": SubResource("Animation_yr4lx"),
 "up_bow": SubResource("Animation_ldqnf"),
 "up_idle": SubResource("Animation_gl20k"),
+"up_jump": SubResource("Animation_pbeog"),
 "up_walk": SubResource("Animation_xoiy7")
 }
 
@@ -435,6 +505,7 @@ shape = SubResource("BoxShape3D_bv78r")
 [node name="Obj_player_sprite" type="Sprite3D" parent="Obj_pLayer"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 shaded = true
+alpha_cut = 2
 texture = ExtResource("3_643tm")
 hframes = 32
 vframes = 8
@@ -458,6 +529,12 @@ shape = SubResource("CylinderShape3D_q6mhn")
 [node name="audio_emt" parent="Obj_pLayer" instance=ExtResource("6_l24n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
+[node name="Spr_shadow" type="Sprite3D" parent="Obj_pLayer"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 0, -0.61605, 0)
+visible = false
+texture = ExtResource("8_1x563")
+script = ExtResource("9_wmjs3")
+
 [node name="Obj_player_camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 8)
 script = ExtResource("7_odlsd")
@@ -479,6 +556,7 @@ font_size = 120
 script = ExtResource("11_fj1xl")
 
 [node name="UI_Player_stats" parent="." instance=ExtResource("12_58p2h")]
+visible = false
 
 [connection signal="area_entered" from="Obj_pLayer/Obj_player_search_area" to="Obj_pLayer/Obj_player_search_area" method="_on_area_entered"]
 [connection signal="area_exited" from="Obj_pLayer/Obj_player_search_area" to="Obj_pLayer/Obj_player_search_area" method="_on_area_exited"]

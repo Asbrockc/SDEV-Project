@@ -12,6 +12,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 	public bool _death_flag = false;
 	public int _health = 4;
+	public int _max_health = 4;
 
 	public Node3D _target = null;
 	private int hit_timer = 0;

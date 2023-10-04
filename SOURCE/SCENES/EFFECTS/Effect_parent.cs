@@ -16,7 +16,7 @@ public partial class Effect_parent : Sprite3D
 	public void free_myself()
 	{
 		this.GetParent<Node3D>().RemoveChild(this);
-		GD.Print("Cleared");
+		//GD.Print("Cleared");
 		this.QueueFree();
 	}
 }

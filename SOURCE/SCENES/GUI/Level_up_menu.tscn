@@ -11,10 +11,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 419.0
-offset_top = 87.0
-offset_right = -380.0
-offset_bottom = -99.0
+offset_left = 695.0
+offset_top = 108.0
+offset_right = -104.0
+offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_88vbo")
@@ -32,21 +32,21 @@ patch_margin_right = 11
 patch_margin_bottom = 11
 
 [node name="Attribute_leveler" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = 15.0
+offset_left = -76.0
 offset_top = 82.0
-offset_right = 360.0
+offset_right = 269.0
 offset_bottom = 182.0
 
 [node name="Attribute_leveler2" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = 14.0
+offset_left = -77.0
 offset_top = 179.0
-offset_right = 359.0
+offset_right = 268.0
 offset_bottom = 279.0
 
 [node name="Attribute_leveler3" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = 15.0
+offset_left = -76.0
 offset_top = 273.0
-offset_right = 360.0
+offset_right = 269.0
 offset_bottom = 373.0
 
 [node name="Bonus_points_label" type="Label" parent="."]

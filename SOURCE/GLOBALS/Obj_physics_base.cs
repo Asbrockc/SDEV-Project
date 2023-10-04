@@ -25,7 +25,6 @@ public partial class Obj_physics_base : CharacterBody3D
 
 	public override void _Ready()
 	{
-
 	}
 
 	public override void _Process(double delta)

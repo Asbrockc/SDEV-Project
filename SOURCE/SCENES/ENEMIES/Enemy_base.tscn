@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://5n88mst4cn3n"]
+[gd_scene load_steps=11 format=3 uid="uid://5n88mst4cn3n"]
 
 [ext_resource type="Script" path="res://SCENES/ENEMIES/Obj_enemy_base.cs" id="1_nv3ea"]
 [ext_resource type="Script" path="res://SCENES/ENEMIES/Obj_enemy_search_area.cs" id="2_0bfll"]
 [ext_resource type="PackedScene" uid="uid://jktek3v6dwd1" path="res://SPRITES/player_sprites/spr_player_sprite.tscn" id="3_irlln"]
 [ext_resource type="Script" path="res://SPRITES/player_sprites/spr_enemy_sprite.cs" id="4_v1d2o"]
 [ext_resource type="Script" path="res://SCENES/ENEMIES/Obj_enemy_hurt_zone.cs" id="5_vplbh"]
+[ext_resource type="PackedScene" uid="uid://bb11jrbpl5fjo" path="res://SCENES/ENEMIES/Enemy_healthbar.tscn" id="6_53160"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h4o83"]
 size = Vector3(0.491693, 1, 0.491693)
@@ -15,6 +16,9 @@ radius = 3.70089
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o4vir"]
 size = Vector3(0.707219, 1.19268, 0.77914)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3v6n8"]
+viewport_path = NodePath("Obj_enemy_health_bar_field")
 
 [node name="Obj_enemy_base" type="CharacterBody3D" groups=["Enemy_hit_zone"]]
 script = ExtResource("1_nv3ea")
@@ -36,6 +40,15 @@ script = ExtResource("5_vplbh")
 
 [node name="Obj_enemy_h_col" type="CollisionShape3D" parent="Obj_enemy_hurt_zone"]
 shape = SubResource("BoxShape3D_o4vir")
+
+[node name="Obj_enemy_health_bar_visual" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.7, -0.7)
+texture = SubResource("ViewportTexture_3v6n8")
+
+[node name="Obj_enemy_health_bar_field" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Enemy_healthbar" parent="Obj_enemy_health_bar_field" instance=ExtResource("6_53160")]
 
 [connection signal="body_entered" from="Obj_enemy_search_area" to="Obj_enemy_search_area" method="_enemy_search"]
 [connection signal="body_exited" from="Obj_enemy_search_area" to="Obj_enemy_search_area" method="_enemy_lost_track"]

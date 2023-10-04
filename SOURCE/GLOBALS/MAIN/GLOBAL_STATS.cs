@@ -28,17 +28,25 @@ public partial class GLOBAL_STATS : Node
 		Beat_boss_1 = 0,
 		Beat_boss_2 = 1,
 		Locked_door_1 = 2,
+		Boss_door_1 = 3,
 	}
+
+	static public bool _pause = false;
+
 
 	static public Obj_player_base_script _player;
 	static public Obj_player_camera _Camera;
-	static public Node3D _current_room_reference;
+	static public Node3D _current_room_reference = null;
 	static public GLOBAL_SCENE _main_scene;
 
 	static public int _current_save_slot = 0;
 	static public String _save_location = "user://save";
 	static public String _save_file_type = ".save";
+	
+	
 	static public String _player_name = "???";
+	static public String _player_room = "???";	
+	static public String _save_group = "???";
 
 	/// <summary>List that holds all of the player stats</summary>
 	static public List<int> _player_stats = new List<int>()
@@ -62,7 +70,8 @@ public partial class GLOBAL_STATS : Node
 	{
 		false, //first boss not beaten
 		false, //second boss not beaten
-		false //door_one_open
+		false, //door_one_open
+		false //boss_door_1
 	};
 
 	/// <summary>
@@ -94,11 +103,23 @@ public partial class GLOBAL_STATS : Node
 	/// </summary>
 	static public void _Save_Game()
 	{
-		String _current_save_location = _save_location + _current_save_slot.ToString() + _save_file_type;
 
+		String _current_save_location = _save_location + _current_save_slot.ToString() + _save_file_type;
 		ConfigFile _save_configure = new ConfigFile();
 
+		_player_stats[I_XX] = (int)_player.GlobalPosition.X;
+		_player_stats[I_YY] = (int)_player.GlobalPosition.Y;
+		_player_stats[I_ZZ] = (int)_player.GlobalPosition.Z;
+
+		_save_group = "DOOR_1";
+
+		_player_room = _current_room_reference.GetTree().CurrentScene.SceneFilePath;
+
 		_save_configure.SetValue("Player Name", 0.ToString(), _player_name);
+		_save_configure.SetValue("Player Loc", 0.ToString(), _player_room);
+		_save_configure.SetValue("Player Target", 0.ToString(), _save_group);
+		
+
 		for (int i = 0; i < _player_stats.Count; i++)
 			_save_configure.SetValue("Player Stat", i.ToString(), _player_stats[i]);
 
@@ -119,6 +140,8 @@ public partial class GLOBAL_STATS : Node
 		_load_configure.Load(_current_save_location);
 
 		_player_name = _load_configure.GetValue("Player Name", 0.ToString()).ToString();
+		_player_room = _load_configure.GetValue("Player Loc", 0.ToString()).ToString();
+		_save_group = _load_configure.GetValue("Player Target", 0.ToString()).ToString();
 
 		for (int i = 0; i < _player_stats.Count; i++)
 			_player_stats[i] = _load_configure.GetValue("Player Stat", i.ToString()).ToString().ToInt();
@@ -127,12 +150,13 @@ public partial class GLOBAL_STATS : Node
 			_completion_flags[i] = bool.Parse(_load_configure.GetValue("Player flags", i.ToString()).ToString());
 
 		GD.Print(_player_name);
-		for (int i = 0; i < _player_stats.Count; i++)
-			GD.Print(_player_stats[i].ToString());
+		GD.Print(_player_room);
+		//for (int i = 0; i < _player_stats.Count; i++)
+			//GD.Print(_player_stats[i].ToString());
 
-		for (int i = 0; i < _completion_flags.Count; i++)
-			GD.Print(_completion_flags[i].ToString());
+		//for (int i = 0; i < _completion_flags.Count; i++)
+			//GD.Print(_completion_flags[i].ToString());
 
-
+		GLOBAL_FUNCTIONS.Room_Transition(_player_room, _save_group, 0, 1);
 	}
 }

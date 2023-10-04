@@ -4,10 +4,11 @@ using System;
 public partial class Door_base : Area3D
 {
 
-	public String _desination = "res://ROOMS/Room_town.tscn";
+	[Export] public String _desination = "res://ROOMS/Room_town.tscn";
+	[Export] public float _x_off = 0;
+	[Export] public float _y_off = 0;
+
 	public String _target_zone = "null";
-	public float _x_off = 0;
-	public float _y_off = 0;
 
 	public void _on_player_collision(Node3D _node)
 	{
@@ -17,6 +18,7 @@ public partial class Door_base : Area3D
 
 			if (_desination != null)
 			{
+				//GD.Print(_desination);
 				Room_transition_obj _active_chat = (Room_transition_obj)ResourceLoader.Load<PackedScene>("res://ROOMS/Room_transition_obj.tscn").Instantiate();
 				GLOBAL_STATS._main_scene.AddChild(_active_chat);
 				_active_chat._room = _desination;
