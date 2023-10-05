@@ -36,7 +36,7 @@ public partial class GLOBAL_STATS : Node
 
 	static public Obj_player_base_script _player;
 	static public Obj_player_camera _Camera;
-	static public Node3D _current_room_reference = null;
+	static public Room_set_up _current_room_reference = null;
 	static public GLOBAL_SCENE _main_scene;
 
 	static public int _current_save_slot = 0;
@@ -111,7 +111,7 @@ public partial class GLOBAL_STATS : Node
 		_player_stats[I_YY] = (int)_player.GlobalPosition.Y;
 		_player_stats[I_ZZ] = (int)_player.GlobalPosition.Z;
 
-		_save_group = "DOOR_1";
+		_save_group = "Save_Point";
 
 		_player_room = _current_room_reference.GetTree().CurrentScene.SceneFilePath;
 

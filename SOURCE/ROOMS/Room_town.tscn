@@ -22,6 +22,7 @@ size = Vector3(34.5728, 3.93287, 1)
 
 [node name="Room_town" type="Node3D"]
 script = ExtResource("1_7y241")
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["TEST"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, -0.47, 0)

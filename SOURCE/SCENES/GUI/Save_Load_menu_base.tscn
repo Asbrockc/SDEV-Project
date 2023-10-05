@@ -21,39 +21,50 @@ script = ExtResource("1_l8nlm")
 
 [node name="Slot_1" parent="." instance=ExtResource("2_r2g6q")]
 layout_mode = 1
-anchor_top = 0.422
-anchor_right = 1.0
-anchor_bottom = 0.561
-offset_left = 374.134
-offset_top = -108.184
-offset_right = -377.866
-offset_bottom = -108.256
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.255
+anchor_right = 0.672
+anchor_bottom = 0.394
+offset_left = -0.266022
+offset_top = 0.0319824
+offset_right = -0.0100098
+offset_bottom = -0.0400238
 
 [node name="Slot_2" parent="." instance=ExtResource("2_r2g6q")]
 layout_mode = 1
-anchor_top = 0.267
-anchor_right = 1.0
-anchor_bottom = 0.406
-offset_left = 374.0
-offset_top = 91.984
-offset_right = -378.0
-offset_bottom = 91.912
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.409
+anchor_right = 0.672
+anchor_bottom = 0.548
+offset_left = -0.400024
+offset_top = -0.0320129
+offset_right = -0.144043
+offset_bottom = -0.104034
 
 [node name="Slot_3" parent="." instance=ExtResource("2_r2g6q")]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
 anchor_top = 0.576
-anchor_right = 1.0
-anchor_bottom = 0.715
-offset_left = 374.134
+anchor_right = 0.672
+anchor_bottom = 0.703
+offset_left = -0.266022
 offset_top = -7.97607
-offset_right = -377.866
-offset_bottom = -8.04807
+offset_right = -0.0100098
+offset_bottom = -0.272095
 
 [node name="x-button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 506.0
-offset_top = 122.0
-offset_right = 639.0
-offset_bottom = 157.0
-text = "CANCEL"
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.439
+anchor_top = 0.188
+anchor_right = 0.555
+anchor_bottom = 0.242
+offset_left = 0.271973
+offset_top = 0.175995
+offset_right = -0.359985
+offset_bottom = 0.18399
+text = "CLOSE"
 script = ExtResource("3_ft0hv")

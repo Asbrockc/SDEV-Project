@@ -8,18 +8,6 @@ public partial class GLOBAL_FUNCTIONS : Node
 	static public Audio_Emt _audio_emitter = null;
 	static public Texture2D _broken_arrow = ResourceLoader.Load<Texture2D>("res://SPRITES/FILE/Arrow_2.png");
 	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		//GD.Print("Just a test to see if git finds this");
-		//GD.Print("well it's here");
-	}
-
 	static public void Change_Scene(String _new_scene)
 	{
 		GLOBAL_STATS._main_scene.GetTree().ChangeSceneToFile(_new_scene);
@@ -38,6 +26,12 @@ public partial class GLOBAL_FUNCTIONS : Node
 	static public void Play_Sound<T>(T _sound, float _volume_perc = 1.0f, bool _shift_tone = true)
 	{
 		_audio_emitter.play_sound<T>(_sound, _volume_perc, _shift_tone);
+	}
+
+	static public void Change_Music(String _sound_location)
+	{
+		_audio_emitter._next_song = _sound_location;
+		_audio_emitter._music_run_state = 0;
 	}
 
 	static public bool GetFlag(GLOBAL_STATS.FLAG_INDEX _index)

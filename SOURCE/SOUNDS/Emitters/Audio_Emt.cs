@@ -8,10 +8,39 @@ public partial class Audio_Emt : Node3D
 	public List<Audio_player_base> _audio_player_list = new List<Audio_player_base>();
 	public int _index_count = 0;
 
+	public float _game_volume = 0.1f;
+
+
+	private float _fade_count = 100;
+
+	public float _music_run_state = -1;
+
+	public String _next_song;
+	//public AudioStreamWav _next_song;
+
 	public override void _Ready()
 	{
 		GLOBAL_FUNCTIONS._audio_emitter = this;
 	}
+
+    public override void _Process(double delta)
+    {
+        switch (_music_run_state)
+		{
+			case 0:
+				fade_out();
+			break;
+			case 1:
+				fade_in();
+			break;
+		}
+    }
+
+    /// <summary>
+    /// audio sound player function
+    /// Generic since Audio streams can handle wav, mp3, or ogg type files
+    /// </summary>
+    
 
 	/// <summary>
 	/// audio sound player function
@@ -42,5 +71,43 @@ public partial class Audio_Emt : Node3D
 		//GD.Print(_audio_player_list.Count);
 		if (_index_count >= _audio_player_list.Count)
 			_index_count = 0;
+	}
+
+	public void play_music<T>(T _sound)
+	{ 
+
+	}
+
+	private void fade_out()
+	{
+		if (_fade_count - 10 > 0)
+		{
+			_fade_count -= 1;
+		}
+		else
+		{
+			_fade_count = 0;
+			AudioStreamWav _next = ResourceLoader.Load<AudioStreamWav>(_next_song);
+			_music_player.Stream = _next;
+			_music_player.Play();
+			_music_run_state = 1;
+		}
+
+
+		_music_player.VolumeDb = -(80.0f - (_fade_count/100 * 80.0f ));
+	}
+
+
+	private void fade_in()
+	{
+		if (_fade_count + 10 < 100)
+			_fade_count += 1;
+		else
+		{
+			_fade_count = 100;
+			_music_run_state = -1;
+		}
+
+		_music_player.VolumeDb = -(80.0f - (_fade_count/100 * 80.0f ));
 	}
 }

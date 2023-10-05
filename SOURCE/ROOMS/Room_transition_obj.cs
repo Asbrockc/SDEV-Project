@@ -59,7 +59,7 @@ public partial class Room_transition_obj : NinePatchRect
 
 	private void move_room()
 	{
-		Door_base _target_Door = null;
+		Node3D _target_Door = null;
 
 		if (GLOBAL_STATS._current_room_reference != null)
 		{
@@ -67,7 +67,7 @@ public partial class Room_transition_obj : NinePatchRect
 			{
 				if (node.IsInGroup(_target_zone))
 				{
-					_target_Door = (Door_base)node;
+					_target_Door = (Node3D)node;
 					break;
 				}
 			}
@@ -79,6 +79,12 @@ public partial class Room_transition_obj : NinePatchRect
 					_target_Door.GlobalPosition.Z + _y_off);
 
 			_state = 3;
+
+			if (GLOBAL_STATS._current_room_reference._room_music != "null")
+			{
+				if (GLOBAL_STATS._current_room_reference._room_music != GLOBAL_FUNCTIONS._audio_emitter._next_song)
+					GLOBAL_FUNCTIONS.Change_Music(GLOBAL_STATS._current_room_reference._room_music);
+			}
 		}
 	}
 

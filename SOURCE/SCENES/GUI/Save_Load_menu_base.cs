@@ -3,8 +3,13 @@ using System;
 
 public partial class Save_Load_menu_base : Control
 {
+
+	public AudioStreamMP3 _save_game_sound = null;
+
 	public bool _save_set_up = false;
 	public bool _is_save_menu = true;
+
+	public string _save_group = "";
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -41,6 +46,7 @@ public partial class Save_Load_menu_base : Control
 		{
 			if (_is_save_menu)
 			{
+				_save_game_sound = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_save_game.mp3");
 				for (int i = 0; i < 3; i++)
 				{
 					((Save_Load_Menu_Section)GetChildren()[i])._save_button.Visible = true;

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://n5y6hj1jbex8"]
+
+[ext_resource type="Script" path="res://SCENES/Test_chat_2.cs" id="1_1p8j6"]
+[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="2_2hk76"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_syhhy"]
+
+[node name="Save_Game_point" type="Area3D" groups=["Interact", "Save_Point"]]
+transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -9.6146, 0.475301, 0)
+script = ExtResource("1_1p8j6")
+
+[node name="chat_collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_syhhy")
+
+[node name="chat_test_spirte" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+texture = ExtResource("2_2hk76")

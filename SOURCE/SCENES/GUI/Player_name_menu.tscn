@@ -85,5 +85,7 @@ offset_left = 688.0
 offset_top = 273.0
 offset_right = -433.0
 offset_bottom = -344.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "x"
 script = ExtResource("2_20lqy")

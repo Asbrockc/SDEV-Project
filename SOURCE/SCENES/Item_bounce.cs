@@ -23,9 +23,9 @@ public partial class Item_bounce : Area3D
 			{
 				_main_item._used = true;
 				if (_main_item._my_base == "exp")
-					GLOBAL_FUNCTIONS.Play_Sound(((Obj_player_base_script)_node)._item_pickup);
+					GLOBAL_FUNCTIONS.Play_Sound(((Obj_player_base_script)_node)._exp_pickup, .9f);
 				else if (_main_item._my_base == "hp")
-					GLOBAL_FUNCTIONS.Play_Sound(((Obj_player_base_script)_node)._level_up);
+					GLOBAL_FUNCTIONS.Play_Sound(((Obj_player_base_script)_node)._item_pickup);
 			}
 		}
 	}

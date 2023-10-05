@@ -33,8 +33,10 @@ public partial class Button_base : Node3D
 
 		if (_button.Position.Y <= -0.2 && !_set)
 		{
+			AudioStreamMP3 _button_sound = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_button_jump.mp3");
+			
 			_set = true;
-			GLOBAL_FUNCTIONS.Play_Sound(GLOBAL_STATS._player._player_hit);
+			GLOBAL_FUNCTIONS.Play_Sound(_button_sound);
 			_on_press();
 		}
 	}

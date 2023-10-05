@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddsxoieeaomi4"]
+[gd_scene load_steps=20 format=3 uid="uid://ddsxoieeaomi4"]
 
 [ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_tru31"]
-[ext_resource type="Script" path="res://SCENES/Test_chat_2.cs" id="3_lopga"]
 [ext_resource type="Texture2D" uid="uid://cilwigrf1kmtc" path="res://SPRITES/FILE/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" id="3_u3uav"]
-[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="5_3b0wv"]
+[ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="4_g3q3e"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="6_jkt5d"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="8_jqc2e"]
 [ext_resource type="Script" path="res://FLOORS/Joke.cs" id="9_5lurq"]
@@ -31,8 +30,6 @@ size = Vector3(34.5728, 3.93287, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_chcaa"]
 size = Vector3(1, 6.3633, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_syhhy"]
-
 [sub_resource type="Curve3D" id="Curve3D_yww7q"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.43774, 0.48553, -2.22403, 0, 0, 0, 0, 0, 0, 1.66407, 0.844305, -0.425037, 0, 0, 0, 0, 0, 0, -3.28763, 0.0267195, -2.18033, 0, 0, 0, 0, 0, 0, 0.151047, 1.74279, -3.3076, 0, 0, 0, 0, 0, 0, 3.16814, 1.8525, -1.4469),
@@ -49,6 +46,7 @@ point_count = 4
 
 [node name="Room_Town" type="Node3D"]
 script = ExtResource("1_tru31")
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_town_theme.wav"
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, -0.47, 0)
@@ -86,17 +84,7 @@ texture = ExtResource("3_u3uav")
 [node name="tree_col" type="CollisionShape3D" parent="Test_tree"]
 shape = SubResource("BoxShape3D_chcaa")
 
-[node name="Test_chat_2" type="Area3D" parent="." groups=["Interact"]]
-transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -9.6146, 0.475301, 0)
-script = ExtResource("3_lopga")
-
-[node name="chat_collision" type="CollisionShape3D" parent="Test_chat_2"]
-shape = SubResource("BoxShape3D_syhhy")
-
-[node name="chat_test_spirte" type="Sprite3D" parent="Test_chat_2"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-shaded = true
-texture = ExtResource("5_3b0wv")
+[node name="Save_Game_point" parent="." instance=ExtResource("4_g3q3e")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.684178, 0.729315, 0, -0.729315, 0.684178, 0, 6.2722, 1.8696)

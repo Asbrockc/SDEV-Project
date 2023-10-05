@@ -13,6 +13,8 @@ public partial class Obj_player_base_script : Obj_physics_base
 	public AudioStreamWav _sword_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_hit.wav");
 	public AudioStreamWav _sword_swing = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_swing.wav");
 	public AudioStreamWav _item_pickup = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_item_pickup.wav");
+	public AudioStreamWav _exp_pickup = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_exp_pickup.wav");
+	
 	public AudioStreamWav _level_up = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_level_up.wav");
 	public AudioStreamWav _player_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_player_hit.wav");
 	public AudioStreamMP3 _player_bow_shot = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_bow_shot_2.mp3");
@@ -45,7 +47,13 @@ public partial class Obj_player_base_script : Obj_physics_base
 		{
 			//GLOBAL_STATS._Load_Game();
 			//GLOBAL_STATS._Save_Game();
-			GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+			//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+
+			GLOBAL_FUNCTIONS.Change_Music(GLOBAL_FUNCTIONS.Choose(
+				"res://SOUNDS/ALL_SOUNDS/MUSIC/snd_dunguon_theme.wav",
+				"res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav",
+				"res://SOUNDS/ALL_SOUNDS/MUSIC/snd_town_theme.wav"
+				));
 
 			//GD.Print(GLOBAL_STATS._current_room_reference.GetTree().CurrentScene.SceneFilePath);
 		}
