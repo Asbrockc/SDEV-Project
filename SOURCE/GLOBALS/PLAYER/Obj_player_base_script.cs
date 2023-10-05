@@ -43,9 +43,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 		//GD.Print(GetTree().CurrentScene.Name);
 		if (Input.IsActionJustPressed("ui_right"))
 		{
-			GLOBAL_STATS._Load_Game();
+			//GLOBAL_STATS._Load_Game();
 			//GLOBAL_STATS._Save_Game();
-			//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+			GLOBAL_FUNCTIONS.Spawn_enemy(Position);
 
 			//GD.Print(GLOBAL_STATS._current_room_reference.GetTree().CurrentScene.SceneFilePath);
 		}

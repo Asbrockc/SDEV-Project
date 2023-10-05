@@ -84,8 +84,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 		else
 			_target_node.AddChild(_test);
 	}
-
-
+	
 	static public void Spawn_item(Vector3 _position, float _scale, int _range)
 	{
 		Obj_item _curr_item = (Obj_item)ResourceLoader.Load<PackedScene>("res://SCENES/obj_item_parent.tscn").Instantiate();

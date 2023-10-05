@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://blkr7w18s84m3"]
+
+[ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="1_okbds"]
+[ext_resource type="Script" path="res://SCENES/GUI/Save_Load_Menu_Section.cs" id="2_6khlp"]
+[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="2_uf66r"]
+[ext_resource type="Texture2D" uid="uid://4ytym1vt5x5r" path="res://SPRITES/FILE/Arrow.png" id="3_b03qv"]
+[ext_resource type="Script" path="res://SCENES/GUI/Save_Game_Button.cs" id="4_onayv"]
+[ext_resource type="Script" path="res://SCENES/GUI/Load_Game_Button.cs" id="6_ru54s"]
+
+[node name="Save_Load_Menu_Section" type="NinePatchRect"]
+anchors_preset = -1
+anchor_right = 0.312
+anchor_bottom = 0.116
+offset_left = -1.0
+offset_right = -0.424011
+offset_bottom = -0.167999
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_okbds")
+region_rect = Rect2(0, 0, 60, 60)
+patch_margin_left = 24
+patch_margin_top = 9
+patch_margin_right = 25
+patch_margin_bottom = 9
+script = ExtResource("2_6khlp")
+
+[node name="Save_Game_Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 300.0
+offset_top = 15.0
+offset_right = 436.0
+offset_bottom = 151.0
+scale = Vector2(0.3, 0.3)
+disabled = true
+icon = ExtResource("2_uf66r")
+script = ExtResource("4_onayv")
+
+[node name="Load_Game_Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 300.0
+offset_top = 15.0
+offset_right = 443.0
+offset_bottom = 183.0
+scale = Vector2(0.3, 0.3)
+icon = ExtResource("3_b03qv")
+script = ExtResource("6_ru54s")
+
+[node name="Name_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 13.0
+offset_right = 132.0
+offset_bottom = 39.0
+text = "NAME"
+vertical_alignment = 1
+
+[node name="Level_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 38.0
+offset_right = 64.0
+offset_bottom = 64.0
+text = "Lv. 1"

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Start_Button : Button
+public partial class Load_Button : Button
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -15,8 +15,10 @@ public partial class Start_Button : Button
 
     public override void _Pressed()
     {
-		Control _active_chat = (Control)ResourceLoader.Load<PackedScene>("res://SCENES/GUI/Player_name_menu.tscn").Instantiate();
+		Save_Load_menu_base _active_chat = (Save_Load_menu_base)ResourceLoader.Load<PackedScene>("res://SCENES/GUI/Save_Load_menu_base.tscn").Instantiate();
 		this.GetParent().AddChild(_active_chat);
 		_active_chat.Position += new Vector2(0, 150);
+		_active_chat._is_save_menu = false;
+		_active_chat._save_set_up = true;
     }
 }

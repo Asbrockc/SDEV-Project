@@ -61,7 +61,7 @@ public partial class GLOBAL_STATS : Node
 		0, // y player location
 		0, // z player location
 		0, //bonus points
-		3
+		3 //max health
 
 	};
 
@@ -101,10 +101,10 @@ public partial class GLOBAL_STATS : Node
 	/// <summary>
 	/// Function that will take the players name, current stats, and 
 	/// </summary>
-	static public void _Save_Game()
+	static public void _Save_Game(int slot)
 	{
 
-		String _current_save_location = _save_location + _current_save_slot.ToString() + _save_file_type;
+		String _current_save_location = _save_location + slot.ToString() + _save_file_type;
 		ConfigFile _save_configure = new ConfigFile();
 
 		_player_stats[I_XX] = (int)_player.GlobalPosition.X;
@@ -129,15 +129,19 @@ public partial class GLOBAL_STATS : Node
 		_save_configure.Save(_current_save_location);
 	}
 
+
+	static public bool _File_Exists(int slot)
+	{
+		String _current_save_location = _save_location + slot.ToString() + _save_file_type;
+		return FileAccess.FileExists(_current_save_location);
+	}
+
 	/// <summary>
 	/// Class <c>Point</c> models a point in a two-dimensional plane.
 	/// </summary>
-	static public void _Load_Game()
+	static public void _Load_Game(int slot)
 	{
-		String _current_save_location = _save_location + _current_save_slot.ToString() + _save_file_type;
-
-		ConfigFile _load_configure = new ConfigFile();
-		_load_configure.Load(_current_save_location);
+		ConfigFile _load_configure = _Load_Game_info(slot);
 
 		_player_name = _load_configure.GetValue("Player Name", 0.ToString()).ToString();
 		_player_room = _load_configure.GetValue("Player Loc", 0.ToString()).ToString();
@@ -158,5 +162,15 @@ public partial class GLOBAL_STATS : Node
 			//GD.Print(_completion_flags[i].ToString());
 
 		GLOBAL_FUNCTIONS.Room_Transition(_player_room, _save_group, 0, 1);
+	}
+
+	static public ConfigFile _Load_Game_info(int slot)
+	{
+		String _current_save_location = _save_location + slot.ToString() + _save_file_type;
+
+		ConfigFile _load_configure = new ConfigFile();
+		_load_configure.Load(_current_save_location);
+
+		return _load_configure;
 	}
 }

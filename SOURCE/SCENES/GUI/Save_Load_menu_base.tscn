@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvv6wmb5t4yac"]
+
+[ext_resource type="Script" path="res://SCENES/GUI/Save_Load_menu_base.cs" id="1_l8nlm"]
+[ext_resource type="PackedScene" uid="uid://blkr7w18s84m3" path="res://SCENES/GUI/Save_Load_Menu_Section.tscn" id="2_r2g6q"]
+[ext_resource type="Script" path="res://SCENES/GUI/Name_box_cancel.cs" id="3_ft0hv"]
+
+[node name="Save_Load_menu_base" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l8nlm")
+
+[node name="Slot_1" parent="." instance=ExtResource("2_r2g6q")]
+layout_mode = 1
+anchor_top = 0.422
+anchor_right = 1.0
+anchor_bottom = 0.561
+offset_left = 374.134
+offset_top = -108.184
+offset_right = -377.866
+offset_bottom = -108.256
+
+[node name="Slot_2" parent="." instance=ExtResource("2_r2g6q")]
+layout_mode = 1
+anchor_top = 0.267
+anchor_right = 1.0
+anchor_bottom = 0.406
+offset_left = 374.0
+offset_top = 91.984
+offset_right = -378.0
+offset_bottom = 91.912
+
+[node name="Slot_3" parent="." instance=ExtResource("2_r2g6q")]
+layout_mode = 1
+anchor_top = 0.576
+anchor_right = 1.0
+anchor_bottom = 0.715
+offset_left = 374.134
+offset_top = -7.97607
+offset_right = -377.866
+offset_bottom = -8.04807
+
+[node name="x-button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 122.0
+offset_right = 639.0
+offset_bottom = 157.0
+text = "CANCEL"
+script = ExtResource("3_ft0hv")

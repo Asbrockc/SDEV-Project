@@ -76,11 +76,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "WHAT IS YOUR NAME?"
 
-[node name="x-button" type="Button" parent="Name_menu_background"]
-layout_mode = 0
-offset_left = 276.5
-offset_top = 12.0
-offset_right = 307.5
-offset_bottom = 43.0
+[node name="x-button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 688.0
+offset_top = 273.0
+offset_right = -433.0
+offset_bottom = -344.0
 text = "x"
 script = ExtResource("2_20lqy")
