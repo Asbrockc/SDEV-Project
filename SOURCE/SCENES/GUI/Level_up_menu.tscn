@@ -1,92 +1,373 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1h3f6gqr6nws"]
+[gd_scene load_steps=9 format=3 uid="uid://b1h3f6gqr6nws"]
 
 [ext_resource type="Script" path="res://SCENES/GUI/Level_up_menu.cs" id="1_88vbo"]
 [ext_resource type="PackedScene" uid="uid://dtex21kuo44di" path="res://SCENES/GUI/attribute_leveler.tscn" id="1_vlrkc"]
 [ext_resource type="Script" path="res://SCENES/GUI/Bonus_button_applier.cs" id="3_07nlp"]
 [ext_resource type="Script" path="res://SCENES/GUI/Level_up_exit_button.cs" id="3_e0gv1"]
 [ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="5_mchnd"]
+[ext_resource type="Script" path="res://SCENES/GUI/Music_volume_bar.cs" id="6_d4rcm"]
+[ext_resource type="Script" path="res://SCENES/GUI/Sound_volume_bar.cs" id="7_hixjh"]
+[ext_resource type="Script" path="res://SCENES/GUI/Player_stats_menu.cs" id="8_g2tlw"]
 
 [node name="Level_up_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 695.0
+offset_left = 618.0
 offset_top = 108.0
-offset_right = -104.0
+offset_right = -154.0
 offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_88vbo")
 
 [node name="Bonue_menu_background" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = -94.0
-offset_right = 362.0
-offset_bottom = 468.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -234.0
+offset_right = 228.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_mchnd")
-region_rect = Rect2(-1.70505, -0.705724, 61.4957, 60.8585)
-patch_margin_left = 13
+patch_margin_left = 11
 patch_margin_top = 11
 patch_margin_right = 11
 patch_margin_bottom = 11
 
 [node name="Attribute_leveler" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = -76.0
-offset_top = 82.0
-offset_right = 269.0
-offset_bottom = 182.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.5
+offset_top = -150.0
+offset_right = 137.5
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Attribute_leveler2" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = -77.0
-offset_top = 179.0
-offset_right = 268.0
-offset_bottom = 279.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.5
+offset_top = -50.0
+offset_right = 137.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Attribute_leveler3" parent="." instance=ExtResource("1_vlrkc")]
-offset_left = -76.0
-offset_top = 273.0
-offset_right = 269.0
-offset_bottom = 373.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.5
+offset_top = 50.0
+offset_right = 137.5
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Bonus_points_label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 39.0
-offset_top = 33.0
-offset_right = 170.0
-offset_bottom = 76.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -230.5
+offset_right = 65.5
+offset_bottom = -187.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "BONUS POINTS:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Bonus_points_number" type="Label" parent="."]
-layout_mode = 0
-offset_left = 171.0
-offset_top = 27.0
-offset_right = 246.0
-offset_bottom = 79.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -196.0
+offset_right = 37.5
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Bonus_button_applier" type="Button" parent="."]
-layout_mode = 0
-offset_left = 138.0
-offset_top = 388.0
-offset_right = 268.0
-offset_bottom = 433.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 159.5
+offset_right = 140.0
+offset_bottom = 204.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "APPLY"
 icon_alignment = 1
 script = ExtResource("3_07nlp")
 
 [node name="Level_up_exit_button" type="Button" parent="."]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 388.0
-offset_right = 127.0
-offset_bottom = 433.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = 159.5
+offset_right = -10.0
+offset_bottom = 204.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "EXIT"
 script = ExtResource("3_e0gv1")
+
+[node name="Main_Menu_background" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -697.0
+offset_top = -234.0
+offset_right = -241.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_mchnd")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
+[node name="Music_volume" type="ProgressBar" parent="Main_Menu_background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = 62.0
+offset_right = 178.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 10.0
+script = ExtResource("6_d4rcm")
+
+[node name="Sound_volume" type="ProgressBar" parent="Main_Menu_background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = 143.0
+offset_right = 178.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 10.0
+script = ExtResource("7_hixjh")
+
+[node name="Label_sound" type="Label" parent="Main_Menu_background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = 117.0
+offset_right = 64.5
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SOUND VOLUME"
+
+[node name="Label_music" type="Label" parent="Main_Menu_background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = 37.0
+offset_right = 64.5
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MUSIC VOLUME"
+
+[node name="label_name" type="Label" parent="Main_Menu_background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -164.0
+offset_right = -5.5
+offset_bottom = -138.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME:"
+vertical_alignment = 1
+
+[node name="label_hp" type="Label" parent="Main_Menu_background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -134.0
+offset_right = -5.5
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HEALTH:"
+vertical_alignment = 1
+
+[node name="label_str" type="Label" parent="Main_Menu_background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -104.0
+offset_right = -5.5
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SWORD:"
+vertical_alignment = 1
+
+[node name="label_bow" type="Label" parent="Main_Menu_background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -74.0
+offset_right = -5.5
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BOW:"
+vertical_alignment = 1
+
+[node name="Player_stats_menu" type="Control" parent="Main_Menu_background"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_g2tlw")
+
+[node name="stats_label_num" type="Label" parent="Main_Menu_background/Player_stats_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 213.5
+offset_top = 50.0
+offset_right = 342.5
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stats_label_str6" type="Label" parent="Main_Menu_background/Player_stats_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 213.5
+offset_top = 80.0
+offset_right = 342.5
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SOUND VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stats_label_str7" type="Label" parent="Main_Menu_background/Player_stats_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 213.5
+offset_top = 110.0
+offset_right = 342.5
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SOUND VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stats_label_str8" type="Label" parent="Main_Menu_background/Player_stats_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 213.5
+offset_top = 140.0
+offset_right = 342.5
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SOUND VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1

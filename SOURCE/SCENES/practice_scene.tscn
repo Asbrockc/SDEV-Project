@@ -75,6 +75,8 @@ shape = SubResource("BoxShape3D_2lsea")
 [node name="Test_tree" type="Area3D" parent="." groups=["Interact"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.175237, 1.43167, -10.3886)
 script = ExtResource("1_r8gkx")
+_label = "TREE"
+_message = PackedStringArray("I am just a Tree.", "All I do is stand here", "I have no collision though, so you\'ll walk right through me.")
 
 [node name="spr_tree" type="Sprite3D" parent="Test_tree"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
@@ -127,4 +129,4 @@ script = ExtResource("10_bw1ij")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.03845, 0, -13.8065)
 
 [node name="Locked_door_base" parent="." instance=ExtResource("13_vt57t")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.1195, 1.00093, -16.0827)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.98421, 1.00093, -16.0827)

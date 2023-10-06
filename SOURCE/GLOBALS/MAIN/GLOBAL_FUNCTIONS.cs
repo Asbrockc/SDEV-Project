@@ -12,17 +12,12 @@ public partial class GLOBAL_FUNCTIONS : Node
 	{
 		GLOBAL_STATS._main_scene.GetTree().ChangeSceneToFile(_new_scene);
 	}
-	/*
-	static public void Play_Sound<T>(T _sound)
+
+	static public void UI_Visibiity(bool _visible)
 	{
-		_audio_emitter.play_sound<T>(_sound, 1 ,true);
+		GLOBAL_STATS._main_scene.GetNode<Control>("UI_Player_stats").Visible = _visible;
 	}
 
-	static public void Play_Sound<T>(T _sound, float _volume_perc)
-	{
-		_audio_emitter.play_sound<T>(_sound, _volume_perc ,true);
-	}
-	*/
 	static public void Play_Sound<T>(T _sound, float _volume_perc = 1.0f, bool _shift_tone = true)
 	{
 		_audio_emitter.play_sound<T>(_sound, _volume_perc, _shift_tone);

@@ -17,13 +17,9 @@ public partial class Name_confirmation : Button
     {
 
 		GLOBAL_STATS._player_name = this.GetParent<LineEdit>().Text;
-
-        Room_transition_obj _active_chat = (Room_transition_obj)ResourceLoader.Load<PackedScene>("res://ROOMS/Room_transition_obj.tscn").Instantiate();
-		GLOBAL_STATS._main_scene.AddChild(_active_chat);
-		_active_chat._room = "res://SCENES/practice_scene.tscn";
-		_active_chat._target_zone = "Save_Point";
-		_active_chat._x_off = 0;
-		_active_chat._y_off = 1;
+		GLOBAL_FUNCTIONS.Room_Transition("res://SCENES/practice_scene.tscn", "Save_Point", 0, 1);
+		GLOBAL_FUNCTIONS.UI_Visibiity(true);
+		//GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
 
     }
 }

@@ -47,13 +47,14 @@ public partial class Obj_player_base_script : Obj_physics_base
 		{
 			//GLOBAL_STATS._Load_Game();
 			//GLOBAL_STATS._Save_Game();
-			//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+			GLOBAL_FUNCTIONS.Spawn_enemy(Position);
 
+			/*
 			GLOBAL_FUNCTIONS.Change_Music(GLOBAL_FUNCTIONS.Choose(
 				"res://SOUNDS/ALL_SOUNDS/MUSIC/snd_dunguon_theme.wav",
 				"res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav",
 				"res://SOUNDS/ALL_SOUNDS/MUSIC/snd_town_theme.wav"
-				));
+				));*/
 
 			//GD.Print(GLOBAL_STATS._current_room_reference.GetTree().CurrentScene.SceneFilePath);
 		}
@@ -116,14 +117,8 @@ public partial class Obj_player_base_script : Obj_physics_base
 		return velocity;
 	}
 
-
-	public Vector3 Player_move_state(double delta, Vector3 velocity)
+	private Vector3 Player_jump_handle(double delta, Vector3 velocity)
 	{
-		_shoot_arrow = false;
-		if (Input.IsKeyPressed(Key.Enter) && _current_menu == null)
-			_current_menu = GLOBAL_FUNCTIONS.Summon_stat_menu();
-
-		// Handle Jump.
 		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
 		{
 			_jumped = false;
@@ -134,8 +129,19 @@ public partial class Obj_player_base_script : Obj_physics_base
 			_jumped = true;
 			_Animator.Play(_base + "jump");
 		}
-		
+	
+		return velocity;
+	}
 
+
+	public Vector3 Player_move_state(double delta, Vector3 velocity)
+	{
+		_shoot_arrow = false;
+		if (Input.IsKeyPressed(Key.Enter) && _current_menu == null)
+			_current_menu = GLOBAL_FUNCTIONS.Summon_stat_menu();
+
+		velocity = Player_jump_handle(delta, velocity);
+		
 		if (Input.IsActionJustReleased("ui_accept") && velocity.Y > 0)
 			velocity.Y = 0;
 
@@ -184,10 +190,10 @@ public partial class Obj_player_base_script : Obj_physics_base
 			}
 		}
 
-
-		
 		return velocity;
 	}
+
+
 
 	private void handle_action_key()
 	{

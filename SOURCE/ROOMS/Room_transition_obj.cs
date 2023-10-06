@@ -59,6 +59,7 @@ public partial class Room_transition_obj : NinePatchRect
 
 	private void move_room()
 	{
+		GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
 		Node3D _target_Door = null;
 
 		if (GLOBAL_STATS._current_room_reference != null)

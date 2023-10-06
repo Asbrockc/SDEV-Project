@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds5rk10u60akf"]
+[gd_scene load_steps=3 format=3 uid="uid://ds5rk10u60akf"]
 
 [ext_resource type="PackedScene" uid="uid://47bt7y7re2wa" path="res://SCENES/GUI/Title_screen_menu.tscn" id="1_unjaa"]
+[ext_resource type="Script" path="res://SCENES/Player_title_screen_lock.cs" id="2_vetmm"]
 
 [node name="Title_Screen" type="Node3D"]
 
@@ -11,3 +12,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.47028)
 
 [node name="Player_title_screen_lock" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78406, 0, 2.04675)
+script = ExtResource("2_vetmm")

@@ -8,7 +8,8 @@ public partial class Audio_Emt : Node3D
 	public List<Audio_player_base> _audio_player_list = new List<Audio_player_base>();
 	public int _index_count = 0;
 
-	public float _game_volume = 0.1f;
+	public int _music_volume = 8;
+	public int _game_volume = 8;
 
 
 	private float _fade_count = 100;
@@ -65,7 +66,7 @@ public partial class Audio_Emt : Node3D
 			_audio_player_list[_index_count].PitchScale = 1.0f;
 		
 		
-		_audio_player_list[_index_count].VolumeDb = -(80.0f - (_volume_in_perc * 80.0f ));
+		_audio_player_list[_index_count].VolumeDb = volumn_adjust(-(50.0f - (_volume_in_perc * 50.0f )), _game_volume);
 
 		_audio_player_list[_index_count++].Play();
 		//GD.Print(_audio_player_list.Count);
@@ -94,7 +95,17 @@ public partial class Audio_Emt : Node3D
 		}
 
 
-		_music_player.VolumeDb = -(80.0f - (_fade_count/100 * 80.0f ));
+		_music_player.VolumeDb = volumn_adjust(-(50.0f - (_fade_count/100 * 50.0f )), _music_volume);
+	}
+
+	private float volumn_adjust(float _curr, int _type)
+	{
+		return -50 + ((_curr + 50) * ((float)_type)/10.0f);
+	}
+
+	public void update_music_volumn()
+	{
+		_music_player.VolumeDb = volumn_adjust(-(50.0f - (_fade_count/100 * 50.0f )), _music_volume);
 	}
 
 

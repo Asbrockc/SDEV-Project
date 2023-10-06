@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvp4gqpqbtpk7"]
+[gd_scene load_steps=8 format=3 uid="uid://dvp4gqpqbtpk7"]
 
 [ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="1_rflhk"]
 [ext_resource type="Script" path="res://GLOBALS/UI_health_bar.cs" id="2_xrhwh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://GLOBALS/UI_level_bar.cs" id="4_3rmqe"]
 [ext_resource type="Script" path="res://GLOBALS/UI_level_number.cs" id="5_fovgq"]
 [ext_resource type="Script" path="res://GLOBALS/UI_health_dots.cs" id="6_bwr6x"]
+[ext_resource type="Texture2D" uid="uid://4ytym1vt5x5r" path="res://SPRITES/FILE/Arrow.png" id="7_5w88a"]
 
 [node name="UI_Player_stats" type="Control"]
 layout_mode = 3
@@ -64,3 +65,14 @@ script = ExtResource("5_fovgq")
 scale = Vector2(0.3, 0.3)
 region_rect = Rect2(886, 592, 30, 30)
 script = ExtResource("6_bwr6x")
+
+[node name="UI_text_hp_bar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 48.0
+offset_right = 400.0
+offset_bottom = 208.0
+value = 50.0
+texture_over = ExtResource("7_5w88a")
+texture_progress = ExtResource("1_rflhk")

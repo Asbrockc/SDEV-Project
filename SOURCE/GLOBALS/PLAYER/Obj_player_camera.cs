@@ -11,7 +11,7 @@ public partial class Obj_player_camera : Camera3D
 	public override void _Ready()
 	{
 		GLOBAL_STATS._Camera = this;
-		_target = GLOBAL_STATS._player;
+		//_target = GLOBAL_STATS._player;
 		//GLOBAL_SCENE _scene = GetParent<GLOBAL_SCENE>();
 	}
 

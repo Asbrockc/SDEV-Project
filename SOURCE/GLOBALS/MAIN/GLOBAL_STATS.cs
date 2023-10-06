@@ -16,8 +16,8 @@ public partial class GLOBAL_STATS : Node
 	public const int I_STRENGTH = 3;
 	public const int I_DEFENCE = 4;
 	public const int I_NEXT_LEVEL_IN = 5;
-	public const int I_XX = 6;
-	public const int I_YY = 7;
+	public const int I_MUSIC_VOLUME = 6;
+	public const int I_SOUND_VOLUME = 7;
 	public const int I_ZZ = 8;
 	public const int I_BONUS_POINTS = 9;
 	public const int I_MAX_HEALTH = 10;
@@ -57,8 +57,8 @@ public partial class GLOBAL_STATS : Node
 		1, //base strength
 		1, //base defence
 		10, //next level in 
-		0, // x player locaton
-		0, // y player location
+		0, // sound_volumne
+		0, // music_volumne
 		0, // z player location
 		0, //bonus points
 		3 //max health
@@ -107,9 +107,8 @@ public partial class GLOBAL_STATS : Node
 		String _current_save_location = _save_location + slot.ToString() + _save_file_type;
 		ConfigFile _save_configure = new ConfigFile();
 
-		_player_stats[I_XX] = (int)_player.GlobalPosition.X;
-		_player_stats[I_YY] = (int)_player.GlobalPosition.Y;
-		_player_stats[I_ZZ] = (int)_player.GlobalPosition.Z;
+		_player_stats[I_MUSIC_VOLUME] = GLOBAL_FUNCTIONS._audio_emitter._music_volume;
+		_player_stats[I_SOUND_VOLUME] = GLOBAL_FUNCTIONS._audio_emitter._game_volume;
 
 		_save_group = "Save_Point";
 
@@ -147,19 +146,17 @@ public partial class GLOBAL_STATS : Node
 		_player_room = _load_configure.GetValue("Player Loc", 0.ToString()).ToString();
 		_save_group = _load_configure.GetValue("Player Target", 0.ToString()).ToString();
 
+		_player_stats[I_MUSIC_VOLUME] = GLOBAL_FUNCTIONS._audio_emitter._music_volume;
+		_player_stats[I_SOUND_VOLUME] = GLOBAL_FUNCTIONS._audio_emitter._game_volume;
+
 		for (int i = 0; i < _player_stats.Count; i++)
 			_player_stats[i] = _load_configure.GetValue("Player Stat", i.ToString()).ToString().ToInt();
 
+		GLOBAL_FUNCTIONS._audio_emitter._music_volume = _player_stats[I_MUSIC_VOLUME];
+		GLOBAL_FUNCTIONS._audio_emitter._game_volume = _player_stats[I_SOUND_VOLUME];
+
 		for (int i = 0; i < _completion_flags.Count; i++)
 			_completion_flags[i] = bool.Parse(_load_configure.GetValue("Player flags", i.ToString()).ToString());
-
-		GD.Print(_player_name);
-		GD.Print(_player_room);
-		//for (int i = 0; i < _player_stats.Count; i++)
-			//GD.Print(_player_stats[i].ToString());
-
-		//for (int i = 0; i < _completion_flags.Count; i++)
-			//GD.Print(_completion_flags[i].ToString());
 
 		GLOBAL_FUNCTIONS.Room_Transition(_player_room, _save_group, 0, 1);
 	}

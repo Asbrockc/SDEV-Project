@@ -3,13 +3,11 @@ using System;
 
 public partial class Interactive_Action : Area3D
 {
-	public String _label = "???";
+	[Export] public String _label = "???";
+	[Export] public String[] _message = {"???","???","???"};
 	
 	public virtual void Test_interact_function()
 	{
-		GLOBAL_FUNCTIONS.Call_Chatbox(
-			"I guess I'll just talk to a tree to test this out", 
-			"At this point I can't see any reason it is not going to work.", 
-			"But I have been surpised before...");
+		GLOBAL_FUNCTIONS.Call_Chatbox(_message);
 	}
 }
