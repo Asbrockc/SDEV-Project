@@ -10,11 +10,6 @@ public partial class Item_bounce : Area3D
 		_main_item = GetParent<Obj_item>();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
 	public void _bounce_area(Node3D _node)
 	{
 		if (!_node.IsInGroup("Item"))

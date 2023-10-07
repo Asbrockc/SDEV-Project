@@ -51,7 +51,7 @@ public partial class GLOBAL_STATS : Node
 	/// <summary>List that holds all of the player stats</summary>
 	static public List<int> _player_stats = new List<int>()
 	{
-		3, //player health
+		6, //player health
 		0, //base experience
 		1, //base level
 		1, //base strength
@@ -61,7 +61,7 @@ public partial class GLOBAL_STATS : Node
 		0, // music_volumne
 		0, // z player location
 		0, //bonus points
-		3 //max health
+		6 //max health
 
 	};
 

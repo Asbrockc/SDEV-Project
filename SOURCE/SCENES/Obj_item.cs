@@ -76,7 +76,7 @@ public partial class Obj_item : Obj_physics_base
 			break;			
 			case "hp":
 			if (GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] < GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH])
-				GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH]++;
+				GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] += 2;
 			break;
 		}
 		//GD.Print("Player Grabbed Item");

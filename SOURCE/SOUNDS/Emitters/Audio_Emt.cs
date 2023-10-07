@@ -8,7 +8,7 @@ public partial class Audio_Emt : Node3D
 	public List<Audio_player_base> _audio_player_list = new List<Audio_player_base>();
 	public int _index_count = 0;
 
-	public int _music_volume = 8;
+	public int _music_volume = 6;
 	public int _game_volume = 8;
 
 
@@ -120,5 +120,6 @@ public partial class Audio_Emt : Node3D
 		}
 
 		_music_player.VolumeDb = -(80.0f - (_fade_count/100 * 80.0f ));
+		update_music_volumn();
 	}
 }

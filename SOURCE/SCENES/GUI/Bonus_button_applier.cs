@@ -16,7 +16,7 @@ public partial class Bonus_button_applier : Button
 				switch (i)
 				{
 					case 0: 
-					GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH] += _curr._current_level;
+					GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH] += _curr._current_level*2;
 					_curr._current_level = 0;
 					break;
 					case 1: 

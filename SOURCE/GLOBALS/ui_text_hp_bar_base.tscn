@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://mpwmvvmh4rsg"]
+
+[ext_resource type="Texture2D" uid="uid://bwkq27wesar2m" path="res://SPRITES/FILE/spr_health_bar_dot.png" id="1_c4aqa"]
+
+[node name="UI_text_hp_bar" type="TextureProgressBar"]
+offset_left = 110.0
+offset_top = 19.0
+offset_right = 142.0
+offset_bottom = 51.0
+max_value = 2.0
+value = 1.0
+texture_under = ExtResource("1_c4aqa")
+texture_progress = ExtResource("1_c4aqa")
+tint_under = Color(0, 0, 0, 1)

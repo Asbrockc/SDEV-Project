@@ -11,5 +11,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.47028)
 [node name="Title_screen_menu" parent="." instance=ExtResource("1_unjaa")]
 
 [node name="Player_title_screen_lock" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78406, 0, 2.04675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3636, 0, 2.04675)
 script = ExtResource("2_vetmm")
