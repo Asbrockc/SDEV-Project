@@ -1,9 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://5n88mst4cn3n"]
+[gd_scene load_steps=8 format=3 uid="uid://5n88mst4cn3n"]
 
-[ext_resource type="Script" path="res://SCENES/ENEMIES/Obj_enemy_base.cs" id="1_nv3ea"]
 [ext_resource type="Script" path="res://SCENES/ENEMIES/Obj_enemy_search_area.cs" id="2_0bfll"]
-[ext_resource type="PackedScene" uid="uid://jktek3v6dwd1" path="res://SPRITES/player_sprites/spr_player_sprite.tscn" id="3_irlln"]
-[ext_resource type="Script" path="res://SPRITES/player_sprites/spr_enemy_sprite.cs" id="4_v1d2o"]
 [ext_resource type="Script" path="res://SCENES/ENEMIES/Obj_enemy_hurt_zone.cs" id="5_vplbh"]
 [ext_resource type="PackedScene" uid="uid://bb11jrbpl5fjo" path="res://SCENES/ENEMIES/Enemy_healthbar.tscn" id="6_53160"]
 
@@ -21,7 +18,6 @@ size = Vector3(0.707219, 1.19268, 0.77914)
 viewport_path = NodePath("Obj_enemy_health_bar_field")
 
 [node name="Obj_enemy_base" type="CharacterBody3D" groups=["Enemy_hit_zone"]]
-script = ExtResource("1_nv3ea")
 
 [node name="Obj_enemy_base_collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_h4o83")
@@ -31,9 +27,6 @@ script = ExtResource("2_0bfll")
 
 [node name="Obj_enemy_search_shape" type="CollisionShape3D" parent="Obj_enemy_search_area"]
 shape = SubResource("CylinderShape3D_7havu")
-
-[node name="Obj_player_sprite" parent="." instance=ExtResource("3_irlln")]
-script = ExtResource("4_v1d2o")
 
 [node name="Obj_enemy_hurt_zone" type="Area3D" parent="."]
 script = ExtResource("5_vplbh")

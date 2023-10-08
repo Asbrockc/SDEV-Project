@@ -18,16 +18,16 @@ public partial class Room_transition_obj : NinePatchRect
 		switch (_state)
 		{
 			case 0:
-			open_state();
+				open_state();
 			break;
 			case 1:
-			transition();
+				transition();
 			break;
 			case 2:
-			move_room();
+				move_room();
 			break;
 			case 3:
-			close_state();
+				close_state();
 			break;
 		}
 
@@ -37,7 +37,6 @@ public partial class Room_transition_obj : NinePatchRect
 	private void transition()
 	{
 		GLOBAL_FUNCTIONS.Change_Scene(_room);
-		GD.Print(_target_zone);
 		_state = 2;
 	}
 

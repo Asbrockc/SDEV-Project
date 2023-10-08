@@ -57,7 +57,7 @@ public partial class Obj_item : Obj_physics_base
 				}
 			}
 
-			//GD.Print(_bounce);
+			//GD.Print("_bounce");
 
 			velocity.X = _hspd;
 			velocity.Z = _vspd;
@@ -75,8 +75,10 @@ public partial class Obj_item : Obj_physics_base
 			GLOBAL_STATS._player_stats[GLOBAL_STATS.I_EXPERIENCE]++;
 			break;			
 			case "hp":
-			if (GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] < GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH])
+			if (GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] + 2 < GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH])
 				GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] += 2;
+			else if (GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] < GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH])
+				GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] += 1;
 			break;
 		}
 		//GD.Print("Player Grabbed Item");

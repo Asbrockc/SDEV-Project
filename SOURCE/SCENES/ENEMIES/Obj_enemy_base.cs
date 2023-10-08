@@ -10,6 +10,8 @@ public partial class Obj_enemy_base : Obj_physics_base
 	public const int HIT_STATE = 2;
 	public const int DEATH_STATE = 3;
 
+	public string _base = "down_";
+
 	public bool _death_flag = false;
 	public int _health = 4;
 	public int _max_health = 4;
@@ -35,17 +37,6 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 		Vector3 velocity = Velocity;
 
-		// Add the gravity.
-		if (!IsOnFloor())
-			velocity.Y -= gravity * (float)delta;
-
-		// Handle Jump.
-		if (_jump_spd != 0)
-		{
-			velocity.Y = _jump_spd;
-			_jump_spd = 0.0f;
-		}
-
 		velocity = this.enemy_core_AI(delta, velocity);
 
 		if (!_death_flag)
@@ -56,8 +47,17 @@ public partial class Obj_enemy_base : Obj_physics_base
 		}
 	}
 
-	public Vector3 enemy_core_AI(double delta, Vector3 velocity)
+	public virtual Vector3 enemy_core_AI(double delta, Vector3 velocity)
 	{
+		if (!IsOnFloor())
+			velocity.Y -= gravity * (float)delta;
+
+		if (_jump_spd != 0)
+		{
+			velocity.Y = _jump_spd;
+			_jump_spd = 0.0f;
+		}
+
 		switch (_state)
 		{
 			case IDLE_STATE: 
@@ -79,10 +79,12 @@ public partial class Obj_enemy_base : Obj_physics_base
 				break;
 		}
 
+		_base = GLOBAL_FUNCTIONS.Entity_Dir(_base, _hspd, _vspd);
+
 		return velocity;
 	}
 
-	public Vector3 idle_state(double delta, Vector3 velocity)
+	public virtual Vector3 idle_state(double delta, Vector3 velocity)
 	{
 		_hspd = 0;
 		_vspd = 0;
@@ -95,11 +97,11 @@ public partial class Obj_enemy_base : Obj_physics_base
 		return velocity;
 	}
 
-	public Vector3 move_to_player_state(double delta, Vector3 velocity)
+	public virtual Vector3 move_to_player_state(double delta, Vector3 velocity)
 	{
 		if (_target != null)
 		{
-			if (GLOBAL_FUNCTIONS.distance_between_nodes(_target, this) > 0.1)
+			if (GLOBAL_FUNCTIONS.Distance_Between_Nodes(_target, this) > 0.1)
 			{
 				//this.Position += new Vector3(0.1f, 0, 0.1f);
 				_hspd = Math.Sign(_target.GlobalPosition.X - this.GlobalPosition.X) * Speed/2;
@@ -114,7 +116,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 		return velocity;
 	}
 
-	public Vector3 hit_state(double delta, Vector3 velocity)
+	public virtual Vector3 hit_state(double delta, Vector3 velocity)
 	{
 		if (!_death_flag)
 		{
@@ -133,7 +135,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 		return velocity;
 	}
 
-	public void hit_me(Node3D _hit_by, float _hit_force, float _jump_force, int _damage)
+	public virtual void hit_me(Node3D _hit_by, float _hit_force, float _jump_force, int _damage)
 	{
 		this._state = HIT_STATE;
 		this._hspd = _hit_force * -Math.Sign(_hit_by.GlobalPosition.X - GlobalPosition.X);
@@ -147,7 +149,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 	}
 	
 
-	public Vector3 death_state(double delta, Vector3 velocity)
+	public virtual Vector3 death_state(double delta, Vector3 velocity)
 	{
 		if (hit_timer <  delay_timer)
 			hit_timer++;
@@ -155,7 +157,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 		{
 			hit_timer = 0;
 			for (int i = 0; i < drop_amount; i++)
-				GLOBAL_FUNCTIONS.Spawn_item(this.Position, 0.2f, 1);
+				GLOBAL_FUNCTIONS.Spawn_item(this.GlobalPosition, 0.2f, 1);
 
 			GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_blood.tscn", true);
 			QueueFree();

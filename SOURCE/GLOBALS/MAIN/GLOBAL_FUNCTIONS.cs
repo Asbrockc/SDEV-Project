@@ -29,6 +29,26 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_audio_emitter._music_run_state = 0;
 	}
 
+	///<summary>
+	/// Universal direction decider for all entities
+	/// Each entity has a string to deside which why they are facing
+	/// this takes the current direction and shifts it as needed based on their
+	/// horizontal and vertical speed.
+	///</summary>
+	static public string Entity_Dir(string _curr, float _hspd, float _vspd)
+	{
+			if (_hspd > 0)
+				return "right_";
+			else if (_hspd < 0)
+				return "left_";
+			else if (_vspd > 0)
+				return "down_";
+			else if (_vspd < 0)
+				return "up_";
+			else 
+				return _curr;
+	}
+
 	static public bool GetFlag(GLOBAL_STATS.FLAG_INDEX _index)
 	{
 		return GLOBAL_STATS._completion_flags[(int)_index];
@@ -79,12 +99,12 @@ public partial class GLOBAL_FUNCTIONS : Node
 		Obj_item _curr_item = (Obj_item)ResourceLoader.Load<PackedScene>("res://SCENES/obj_item_parent.tscn").Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
 
-		_curr_item.Position = _position;
+		_curr_item.GlobalPosition = _position;
 		_curr_item.Scale = new Vector3(_scale,_scale,_scale);
 		Random r = new Random();
 		_curr_item._charge_up = r.Next(_range, _range*2);
-		_curr_item._hspd = r.Next(-_range, _range);
-		_curr_item._vspd = r.Next(-_range, _range);
+		_curr_item._hspd = Choose(-_range, -_range/2, _range/2, _range);
+		_curr_item._vspd = Choose(-_range, -_range/2, _range/2, _range);
 		_curr_item._my_base = Choose<string>("exp","exp","exp","exp","exp","exp","exp","exp","exp","exp","hp");
 	}
 
@@ -112,7 +132,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 		return _curr_item;
 	}
 
-	static public float distance_between_nodes(Node3D first, Node3D second)
+	static public float Distance_Between_Nodes(Node3D first, Node3D second)
 	{
 		return 
 		((second.Position.X - first.Position.X)*(second.Position.X - first.Position.X)) +

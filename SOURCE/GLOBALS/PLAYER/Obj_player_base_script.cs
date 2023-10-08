@@ -18,6 +18,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 	public AudioStreamWav _level_up = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_level_up.wav");
 	public AudioStreamWav _player_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_player_hit.wav");
 	public AudioStreamMP3 _player_bow_shot = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_bow_shot_2.mp3");
+	
 	private string _base = "down_";
 	
 	public Player_hitbox _hitbox = null;
@@ -166,14 +167,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 		{
 			string _motion;
 
-			if (_hspd > 0)
-				_base = "right_";
-			else if (_hspd < 0)
-				_base = "left_";
-			else if (_vspd > 0)
-				_base = "down_";
-			else if (_vspd < 0)
-				_base = "up_";
+			_base = GLOBAL_FUNCTIONS.Entity_Dir(_base, _hspd, _vspd);
 
 			if (_vspd == 0 && _hspd == 0)
 				_motion = "idle";

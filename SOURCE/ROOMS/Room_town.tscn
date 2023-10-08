@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7y241"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="2_ak1ia"]
-[ext_resource type="PackedScene" uid="uid://5n88mst4cn3n" path="res://SCENES/ENEMIES/Enemy_base.tscn" id="4_5pmnv"]
+[ext_resource type="PackedScene" uid="uid://be5puf60jkgrb" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn" id="4_byn6l"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="5_fgn71"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_paqfc"]
@@ -53,15 +53,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0296226, 0.528072, 14.2768
 _desination = "res://SCENES/practice_scene.tscn"
 _y_off = 1.0
 
-[node name="Obj_enemy_base" parent="." instance=ExtResource("4_5pmnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99736, 0.945859, 7.22282)
-
-[node name="Obj_enemy_base2" parent="." instance=ExtResource("4_5pmnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.945859, 7.22282)
-
-[node name="Obj_enemy_base3" parent="." instance=ExtResource("4_5pmnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38189, 0.945859, 7.22282)
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10.0617, 17.0708)
 shadow_bias = 0.1
@@ -75,3 +66,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 4.62391)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570746, -1.76269)
 _desination = "res://ROOMS/Room_one.tscn"
 _y_off = -1.0
+
+[node name="Enemy_Egg" parent="." instance=ExtResource("4_byn6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51696, 5.37094)
