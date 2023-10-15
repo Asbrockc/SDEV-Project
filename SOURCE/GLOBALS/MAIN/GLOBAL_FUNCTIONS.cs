@@ -94,7 +94,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 			_target_node.AddChild(_test);
 	}
 	
-	static public void Spawn_item(Vector3 _position, float _scale, int _range)
+	static public void Spawn_item(Vector3 _position, float _scale, float _range)
 	{
 		Obj_item _curr_item = (Obj_item)ResourceLoader.Load<PackedScene>("res://SCENES/obj_item_parent.tscn").Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
@@ -102,9 +102,9 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_curr_item.GlobalPosition = _position;
 		_curr_item.Scale = new Vector3(_scale,_scale,_scale);
 		Random r = new Random();
-		_curr_item._charge_up = r.Next(_range, _range*2);
-		_curr_item._hspd = Choose(-_range, -_range/2, _range/2, _range);
-		_curr_item._vspd = Choose(-_range, -_range/2, _range/2, _range);
+		_curr_item._charge_up = Choose(_range,_range*1.5f, _range*2.0f);
+		_curr_item._hspd = Choose(-_range, -_range/2.0f, -_range/4.0f, 0.0f ,_range/4.0f,_range/2.0f, _range);
+		_curr_item._vspd = Choose(-_range, -_range/2.0f, -_range/4.0f, 0.0f ,_range/4.0f,_range/2.0f, _range);
 		_curr_item._my_base = Choose<string>("exp","exp","exp","exp","exp","exp","exp","exp","exp","exp","hp");
 	}
 
@@ -122,21 +122,25 @@ public partial class GLOBAL_FUNCTIONS : Node
 		return null;
 	}
 
-	static public Obj_projectile_parent Create_projectile(Node3D _source)
+	static public Obj_projectile_parent Create_projectile(Node3D _source, string _type = "res://SCENES/EFFECTS/Obj_projectile_parent.tscn")
 	{
-		Obj_projectile_parent _curr_item = (Obj_projectile_parent)ResourceLoader.Load<PackedScene>("res://SCENES/EFFECTS/Obj_projectile_parent.tscn").Instantiate();
+		Obj_projectile_parent _curr_item = (Obj_projectile_parent)ResourceLoader.Load<PackedScene>(_type).Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
 		_curr_item._my_parent = _source;
-
 		_curr_item.Position = _source.GlobalPosition;
 		return _curr_item;
+	}
+
+	static public void Shake_Camera(float _amount)
+	{
+		GLOBAL_STATS._Camera._shake = _amount;
 	}
 
 	static public float Distance_Between_Nodes(Node3D first, Node3D second)
 	{
 		return 
-		((second.Position.X - first.Position.X)*(second.Position.X - first.Position.X)) +
-		((second.Position.Y - first.Position.Z)*(second.Position.Y - first.Position.Z));
+		((second.GlobalPosition.X - first.GlobalPosition.X)*(second.GlobalPosition.X - first.GlobalPosition.X)) +
+		((second.GlobalPosition.Y - first.GlobalPosition.Z)*(second.GlobalPosition.Y - first.GlobalPosition.Z));
 	}
 
 	static public void Spawn_enemy(Vector3 _position)

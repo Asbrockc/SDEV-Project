@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1l0gaec5p1ry"
-path.s3tc="res://.godot/imported/Effect_firewall.png-f523a81eba4530bcf4c79baf00be538d.s3tc.ctex"
+uid="uid://crsa25mdj4li5"
+path.s3tc="res://.godot/imported/spr_red_knight.png-eb374856eb1c11b06ca4ab15e1ac73f2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_firewall.png"
-dest_files=["res://.godot/imported/Effect_firewall.png-f523a81eba4530bcf4c79baf00be538d.s3tc.ctex"]
+source_file="res://SPRITES/ENEMY_SPRITES/spr_red_knight.png"
+dest_files=["res://.godot/imported/spr_red_knight.png-eb374856eb1c11b06ca4ab15e1ac73f2.s3tc.ctex"]
 
 [params]
 

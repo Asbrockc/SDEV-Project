@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-
-public partial class UI_level_bar : TextureProgressBar
+public partial class Title_screen_background : MeshInstance3D
 {
+	private Vector3 _spin_speed = new Vector3(0,0.3f,0);
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -12,9 +12,6 @@ public partial class UI_level_bar : TextureProgressBar
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		//GD.Print(this.Value);
-		this.Value = 
-		(float)GLOBAL_STATS._player_stats[GLOBAL_STATS.I_EXPERIENCE]/
-		(float)GLOBAL_STATS._player_stats[GLOBAL_STATS.I_NEXT_LEVEL_IN] * 100.0f;
+		this.RotationDegrees += _spin_speed;
 	}
 }

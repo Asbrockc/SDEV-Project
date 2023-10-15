@@ -5,6 +5,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_scde4"]
 
 [node name="Player_hitbox" type="Area3D"]
+collision_layer = 3855
+collision_mask = 3855
 script = ExtResource("1_vqj4g")
 
 [node name="Player_hitbox_col" type="CollisionShape3D" parent="."]

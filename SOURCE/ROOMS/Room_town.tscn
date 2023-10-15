@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtc8jm8atntj"]
+[gd_scene load_steps=13 format=3 uid="uid://dtc8jm8atntj"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7y241"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="2_ak1ia"]
 [ext_resource type="PackedScene" uid="uid://be5puf60jkgrb" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn" id="4_byn6l"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="5_fgn71"]
+[ext_resource type="PackedScene" uid="uid://cdirf7sk3pbxy" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Golem.tscn" id="5_id5b1"]
+[ext_resource type="PackedScene" uid="uid://3wd3nw0sctge" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Knight.tscn" id="6_ngnif"]
+[ext_resource type="PackedScene" uid="uid://h31ef6fyacfj" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Boss_Dragon.tscn" id="7_378aj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_paqfc"]
 size = Vector3(32.5026, 1, 30.677)
@@ -54,13 +57,37 @@ _desination = "res://SCENES/practice_scene.tscn"
 _y_off = 1.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10.0617, 17.0708)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -5.78168, 10.0617, 17.0708)
+light_energy = 2.0
+shadow_bias = 0.1
+spot_range = 28.5325
+spot_angle = 38.9711
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 5.83974, 10.0617, 7.43284)
+light_energy = 2.0
+shadow_bias = 0.1
+spot_range = 28.5325
+spot_angle = 38.9711
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -5.78168, 10.0617, 7.49891)
+light_energy = 2.0
+shadow_bias = 0.1
+spot_range = 28.5325
+spot_angle = 38.9711
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 5.84592, 10.0617, 17.0708)
+light_energy = 2.0
 shadow_bias = 0.1
 spot_range = 28.5325
 spot_angle = 38.9711
 
 [node name="L_floor_one2" parent="." instance=ExtResource("5_fgn71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 4.62391)
+collision_layer = 7
+collision_mask = 7
 
 [node name="Door_base2" parent="." groups=["Door_2"] instance=ExtResource("2_ak1ia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570746, -1.76269)
@@ -69,3 +96,25 @@ _y_off = -1.0
 
 [node name="Enemy_Egg" parent="." instance=ExtResource("4_byn6l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51696, 5.37094)
+
+[node name="Enemy_Egg2" parent="." instance=ExtResource("5_id5b1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.24336, 1.54333, 2.00396)
+
+[node name="Enemy_Egg3" parent="." instance=ExtResource("6_ngnif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.987961, 0.890977, 0.897338)
+
+[node name="Obj_enemy_base" parent="Enemy_Egg3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.17262, 0, 0)
+curr_color = 1
+
+[node name="Enemy_Egg4" parent="." instance=ExtResource("6_ngnif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70114, 0.890977, 0.897338)
+
+[node name="Obj_enemy_base" parent="Enemy_Egg4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.45503, 0, 0)
+
+[node name="Enemy_Egg5" parent="." instance=ExtResource("7_378aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19942, 0)
+
+[editable path="Enemy_Egg3"]
+[editable path="Enemy_Egg4"]

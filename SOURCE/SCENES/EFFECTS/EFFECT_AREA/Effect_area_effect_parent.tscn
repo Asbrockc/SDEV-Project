@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://yow0wkf3gew1"]
+
+[ext_resource type="Script" path="res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.cs" id="1_ldab4"]
+[ext_resource type="PackedScene" uid="uid://1aiiiyr3natf" path="res://SCENES/EFFECTS/EFFECT_AREA/Area_effect_wave.tscn" id="2_jpnr7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uruvk"]
+size = Vector3(0.115196, 0.123043, 0.13327)
+
+[node name="Effect_area_effect_parent" type="Area3D"]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, -0.143224, 0)
+script = ExtResource("1_ldab4")
+
+[node name="z_pos" parent="." instance=ExtResource("2_jpnr7")]
+transform = Transform3D(0.3, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="z_pos2" parent="." instance=ExtResource("2_jpnr7")]
+transform = Transform3D(0.3, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="z_pos3" parent="." instance=ExtResource("2_jpnr7")]
+transform = Transform3D(0.3, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="z_pos4" parent="." instance=ExtResource("2_jpnr7")]
+transform = Transform3D(0.3, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_uruvk")

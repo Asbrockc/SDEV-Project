@@ -30,11 +30,11 @@ script = ExtResource("2_xrhwh")
 
 [node name="UI_level_field" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 9.0
-offset_right = 43.0
-offset_bottom = 41.0
-scale = Vector2(2.64617, 2.56579)
+offset_left = 13.0
+offset_top = 10.0
+offset_right = 45.0
+offset_bottom = 42.0
+scale = Vector2(2.5, 2.5)
 value = 50.0
 fill_mode = 3
 texture_under = ExtResource("3_sopq8")
@@ -78,7 +78,8 @@ script = ExtResource("6_bwr6x")
 
 [node name="Health_bar_containter" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 420.0
+offset_left = -10.0
+offset_right = 410.0
 offset_bottom = 94.0
 script = ExtResource("7_nnu3d")
 
@@ -89,12 +90,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -107.0
-offset_top = -27.0
-offset_right = -75.0
-offset_bottom = 5.0
+offset_left = -104.0
+offset_top = -17.0
+offset_right = -72.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar2" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -103,12 +105,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = -27.0
-offset_right = -45.0
-offset_bottom = 5.0
+offset_left = -68.0
+offset_top = -17.0
+offset_right = -36.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar3" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -117,12 +120,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -27.0
-offset_right = -15.0
-offset_bottom = 5.0
+offset_left = -32.0
+offset_top = -17.0
+offset_right = 3.05176e-05
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar4" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -131,12 +135,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -17.0
-offset_top = -27.0
-offset_right = 15.0
-offset_bottom = 5.0
+offset_left = 4.0
+offset_top = -17.0
+offset_right = 36.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar5" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -145,12 +150,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 13.0
-offset_top = -27.0
-offset_right = 45.0
-offset_bottom = 5.0
+offset_left = 40.0
+offset_top = -17.0
+offset_right = 72.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar6" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -159,12 +165,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 43.0
-offset_top = -27.0
-offset_right = 75.0
-offset_bottom = 5.0
+offset_left = 76.0
+offset_top = -17.0
+offset_right = 108.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar7" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -173,12 +180,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 73.0
-offset_top = -27.0
-offset_right = 105.0
-offset_bottom = 5.0
+offset_left = 112.0
+offset_top = -17.0
+offset_right = 144.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar8" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -187,12 +195,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 103.0
-offset_top = -27.0
-offset_right = 135.0
-offset_bottom = 5.0
+offset_left = 148.0
+offset_top = -17.0
+offset_right = 180.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar9" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -201,12 +210,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 133.0
-offset_top = -27.0
-offset_right = 165.0
-offset_bottom = 5.0
+offset_left = 184.0
+offset_top = -17.0
+offset_right = 216.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 
 [node name="UI_text_hp_bar10" parent="Health_bar_containter" instance=ExtResource("7_5b76s")]
 layout_mode = 1
@@ -215,9 +225,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 163.0
-offset_top = -27.0
-offset_right = 195.0
-offset_bottom = 5.0
+offset_left = 220.0
+offset_top = -17.0
+offset_right = 252.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)

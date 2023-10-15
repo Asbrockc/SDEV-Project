@@ -10,8 +10,11 @@ public partial class Player_hitbox : Area3D
 	{
 		if (_node.IsInGroup("Enemy_hit_zone"))
 		{
-			GLOBAL_FUNCTIONS.Play_Sound(this._player_parent._sword_hit);
-			((Obj_enemy_base)_node).hit_me(this._player_parent, 2.0f, 3.5f, GLOBAL_STATS._player_stats[GLOBAL_STATS.I_STRENGTH]);
+			if (!((Obj_enemy_base)_node)._immune_to_sword)
+			{
+				((Obj_enemy_base)_node).hit_me(this._player_parent, 2.0f, 3.5f, GLOBAL_STATS._player_stats[GLOBAL_STATS.I_STRENGTH]);
+			}
+			
 			//GD.Print(GLOBAL_STATS._player_stats[GLOBAL_STATS.I_STRENGTH]);
 		}
 	}

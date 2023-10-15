@@ -10,24 +10,41 @@ public partial class Obj_enemy_base : Obj_physics_base
 	public const int HIT_STATE = 2;
 	public const int DEATH_STATE = 3;
 
+	public bool _attack_flag = false;
+
+	public AudioStreamWav _damage_sound = null;
+	public AudioStreamWav _slam_sound = null;
+
+	public float _distance_from_player = 0.1f;
+	public float _shockwave_trigger_frame = 0.3f;
+
+	[Export] public bool _immune_to_sword = false;
+	[Export] public bool _immune_to_bow = false;
+	[Export] public int _health = 4;
+	[Export] public int _max_health = 4;
+	[Export] public int drop_amount = 2;
+	[Export] public float _hit_force = 8.0f;
+	[Export] public int _hit_damage = 1;
+	[Export] public bool _apply_grav = true;
+
 	public string _base = "down_";
 
 	public bool _death_flag = false;
-	public int _health = 4;
-	public int _max_health = 4;
+
 
 	public Node3D _target = null;
 	private int hit_timer = 0;
 	private int delay_timer = 30;
 	
-	public int drop_amount = 2;
 
-	public float _hit_force = 8.0f;
-	public int _hit_damage = 1;
 
     public override void _Ready()
     {
+		_Animator = this.GetNode("Spr_enemy").GetChild<AnimationPlayer>(0);
+		this._damage_sound = GLOBAL_STATS._player._sword_hit;
+		//GLOBAL_FUNCTIONS.Play_Sound(this._player_parent._sword_hit);
 		base._state = 1;
+		this.GetNode<Obj_enemy_hurt_zone>("Obj_enemy_hurt_zone")._enemy_parent = this;
     }
 
 	public override void _PhysicsProcess(double delta)
@@ -49,7 +66,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 	public virtual Vector3 enemy_core_AI(double delta, Vector3 velocity)
 	{
-		if (!IsOnFloor())
+		if (!IsOnFloor() && _apply_grav)
 			velocity.Y -= gravity * (float)delta;
 
 		if (_jump_spd != 0)
@@ -101,11 +118,19 @@ public partial class Obj_enemy_base : Obj_physics_base
 	{
 		if (_target != null)
 		{
-			if (GLOBAL_FUNCTIONS.Distance_Between_Nodes(_target, this) > 0.1)
+			if (GLOBAL_FUNCTIONS.Distance_Between_Nodes(_target, this) > _distance_from_player)
 			{
-				//this.Position += new Vector3(0.1f, 0, 0.1f);
-				_hspd = Math.Sign(_target.GlobalPosition.X - this.GlobalPosition.X) * Speed/2;
-				_vspd = Math.Sign(_target.GlobalPosition.Z - this.GlobalPosition.Z) * Speed/2;
+
+				if (Math.Abs(_target.GlobalPosition.X - this.GlobalPosition.X) > .5)
+					_hspd = Math.Sign(_target.GlobalPosition.X - this.GlobalPosition.X) * Speed/2;
+				else 
+					_hspd = 0;
+
+				if (Math.Abs(_target.GlobalPosition.Z - this.GlobalPosition.Z) > .5)
+					_vspd = Math.Sign(_target.GlobalPosition.Z - this.GlobalPosition.Z) * Speed/2;
+				else 
+					_vspd = 0;
+				
 			}
 			else
 			{
@@ -120,7 +145,6 @@ public partial class Obj_enemy_base : Obj_physics_base
 	{
 		if (!_death_flag)
 		{
-			//GD.Print("hit");
 			if (hit_timer <  delay_timer)
 			{
 				hit_timer++;
@@ -131,19 +155,30 @@ public partial class Obj_enemy_base : Obj_physics_base
 				_state = IDLE_STATE;
 			}
 		}
-		//GD.Print("Will walk to player soon enough");
+
 		return velocity;
 	}
 
-	public virtual void hit_me(Node3D _hit_by, float _hit_force, float _jump_force, int _damage)
+	public virtual void hit_me(Node3D _hit_by, float _hit_force = 0, float _jump_force = 0, int _damage = 0)
 	{
-		this._state = HIT_STATE;
-		this._hspd = _hit_force * -Math.Sign(_hit_by.GlobalPosition.X - GlobalPosition.X);
-		this._vspd = _hit_force * -Math.Sign(_hit_by.GlobalPosition.Z - GlobalPosition.Z);
-		this._jump_spd = _jump_force;
-		this._health -= _damage;
-		GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_hit.tscn", false);
+		if (_damage_sound != null)
+			GLOBAL_FUNCTIONS.Play_Sound(_damage_sound);
 
+		if (_hit_by != null)
+		{
+			if (_hit_force > 0)
+			{
+				this._state = HIT_STATE;
+				this._hspd = _hit_force * -Math.Sign(_hit_by.GlobalPosition.X - GlobalPosition.X);
+				this._vspd = _hit_force * -Math.Sign(_hit_by.GlobalPosition.Z - GlobalPosition.Z);
+			}
+
+			if (_jump_force > 0)
+				this._jump_spd = _jump_force;
+
+			this._health -= _damage;
+			GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_hit.tscn", false);
+		}
 		if (_target == null)
 			_target = GLOBAL_STATS._player;
 	}
@@ -165,5 +200,26 @@ public partial class Obj_enemy_base : Obj_physics_base
 		}
 		//GD.Print("Will walk to player soon enough");
 		return velocity;
+	}
+
+		///<summary>Knights main attack</summary>
+	public void knight_slam_attack(bool _skip = false)
+	{
+		if ((_Animator.CurrentAnimationPosition > _shockwave_trigger_frame && !_attack_flag) || _skip)
+		{
+			GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.tscn");
+			Obj_projectile_parent _boom = GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.tscn");
+			_boom.RotationDegrees = new Vector3(0, 45, 0);
+			
+			GLOBAL_FUNCTIONS.Shake_Camera(.3f);
+
+			if (_slam_sound != null)
+				GLOBAL_FUNCTIONS.Play_Sound(_slam_sound);
+
+			_attack_flag = true;
+		}
+
+		if (!_Animator.IsPlaying() || _skip)
+			_state = MOVE_STATE;
 	}
 }

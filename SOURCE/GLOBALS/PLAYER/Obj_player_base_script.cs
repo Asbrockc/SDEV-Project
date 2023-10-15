@@ -48,7 +48,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 		{
 			//GLOBAL_STATS._Load_Game();
 			//GLOBAL_STATS._Save_Game();
-			GLOBAL_FUNCTIONS.Spawn_enemy(Position);
+			//GLOBAL_FUNCTIONS.Spawn_enemy(Position);
 
 			/*
 			GLOBAL_FUNCTIONS.Change_Music(GLOBAL_FUNCTIONS.Choose(
@@ -207,16 +207,16 @@ public partial class Obj_player_base_script : Obj_physics_base
 					switch (_base)
 					{
 						case "right_":
-							_hitbox.Position = new Vector3(_hitbox_range,0.0f,0.0f);
+							_hitbox.Position = new Vector3(_hitbox_range,0.0f,-_hitbox_range/2);
 						break;
 						case "left_":
-							_hitbox.Position = new Vector3(-_hitbox_range,0.0f,0.0f);
+							_hitbox.Position = new Vector3(-_hitbox_range,0.0f,-_hitbox_range/2);
 						break;
 						case "down_":
 							_hitbox.Position = new Vector3(0.0f,0.0f,_hitbox_range);
 						break;
 						case "up_":
-							_hitbox.Position = new Vector3(0.0f,0.0f,-_hitbox_range);
+							_hitbox.Position = new Vector3(0.0f,0.0f,-_hitbox_range*2);
 						break;
 					}
 				}
@@ -225,7 +225,6 @@ public partial class Obj_player_base_script : Obj_physics_base
 			{
 				_state = 2;
 				_node_in_range.Test_interact_function();
-
 			}
 		}
 	}

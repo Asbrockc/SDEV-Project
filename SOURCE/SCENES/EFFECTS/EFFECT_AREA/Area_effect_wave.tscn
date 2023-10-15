@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://1aiiiyr3natf"]
+
+[ext_resource type="Texture2D" uid="uid://b1l0gaec5p1ry" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_firewall.png" id="1_5kwlx"]
+[ext_resource type="Script" path="res://SCENES/ENEMIES/Obj_enemy_hurt_zone.cs" id="1_lf7bi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oiovu"]
+transparency = 1
+albedo_texture = ExtResource("1_5kwlx")
+uv1_scale = Vector3(0.2, 0.125, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ru7i"]
+material = SubResource("StandardMaterial3D_oiovu")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xobsq"]
+
+[node name="z_pos" type="MeshInstance3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0.1)
+mesh = SubResource("BoxMesh_3ru7i")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_lf7bi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_xobsq")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_player_hurt_zone"]

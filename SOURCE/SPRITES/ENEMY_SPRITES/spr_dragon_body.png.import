@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1l0gaec5p1ry"
-path.s3tc="res://.godot/imported/Effect_firewall.png-f523a81eba4530bcf4c79baf00be538d.s3tc.ctex"
+uid="uid://l05s5yrynh45"
+path.s3tc="res://.godot/imported/spr_dragon_body.png-7b56d36bf909832732d162f546d34c44.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_firewall.png"
-dest_files=["res://.godot/imported/Effect_firewall.png-f523a81eba4530bcf4c79baf00be538d.s3tc.ctex"]
+source_file="res://SPRITES/ENEMY_SPRITES/spr_dragon_body.png"
+dest_files=["res://.godot/imported/spr_dragon_body.png-7b56d36bf909832732d162f546d34c44.s3tc.ctex"]
 
 [params]
 
