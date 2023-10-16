@@ -17,8 +17,6 @@ public partial class Dragon_boss_core_AI : Node3D
     {
 		Dragon_boss_base _base = GetNode<Dragon_boss_base>("Obj_enemy_base");
 
-		
-
 		if (_base._Animator.CurrentAnimation == "")
 			_base_offset.Y = -1.0f;
 		else

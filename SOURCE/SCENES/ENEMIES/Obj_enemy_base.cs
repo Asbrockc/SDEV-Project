@@ -203,13 +203,20 @@ public partial class Obj_enemy_base : Obj_physics_base
 	}
 
 		///<summary>Knights main attack</summary>
-	public void knight_slam_attack(bool _skip = false)
+	public void knight_slam_attack(bool _skip = false, float _x = 0, float _y = 0, float _z = 0)
 	{
 		if ((_Animator.CurrentAnimationPosition > _shockwave_trigger_frame && !_attack_flag) || _skip)
 		{
-			GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.tscn");
 			Obj_projectile_parent _boom = GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.tscn");
-			_boom.RotationDegrees = new Vector3(0, 45, 0);
+			Obj_projectile_parent _boom2 = GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.tscn");
+			_boom2.RotationDegrees = new Vector3(0, 45, 0);
+
+			if (_x != 0 || _y != 0 || _z != 0)
+			{
+				Vector3 _offset = new (_x, _y, _z);
+				_boom.Position += _offset;
+				_boom2.Position += _offset;
+			}
 			
 			GLOBAL_FUNCTIONS.Shake_Camera(.3f);
 

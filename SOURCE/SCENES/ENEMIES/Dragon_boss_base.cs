@@ -44,7 +44,7 @@ public partial class Dragon_boss_base : Obj_enemy_base
 				velocity = death_state(delta, velocity);
 			break;
 			case 4: 
-				knight_slam_attack(true);
+				knight_slam_attack(true, 0, -1, 0);
 			break;
 			case 5: 
 				velocity = jump_state(delta, velocity);
