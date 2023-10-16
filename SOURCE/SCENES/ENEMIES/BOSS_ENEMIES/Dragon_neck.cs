@@ -8,7 +8,7 @@ public partial class Dragon_neck : Path3D
 	{
 		this.Curve = new Curve3D();
 		this.Curve.AddPoint(new Vector3(0,0,0));
-		this.Curve.AddPoint(new Vector3(0,0,0));
+		this.Curve.AddPoint(new Vector3(0,1,0));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

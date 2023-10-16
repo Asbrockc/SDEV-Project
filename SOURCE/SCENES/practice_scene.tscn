@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddsxoieeaomi4"]
+[gd_scene load_steps=21 format=3 uid="uid://ddsxoieeaomi4"]
 
 [ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_tru31"]
@@ -9,9 +9,8 @@
 [ext_resource type="Script" path="res://FLOORS/Joke.cs" id="9_5lurq"]
 [ext_resource type="Script" path="res://SCENES/Path_follower_back_an_forth.cs" id="10_bw1ij"]
 [ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="11_gv6s6"]
-[ext_resource type="PackedScene" uid="uid://yow0wkf3gew1" path="res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.tscn" id="12_fjah0"]
+[ext_resource type="PackedScene" uid="uid://5gjksvosp3dr" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Dragon_neck.tscn" id="12_aa3kv"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="12_nwlkc"]
-[ext_resource type="PackedScene" uid="uid://h31ef6fyacfj" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Boss_Dragon.tscn" id="13_0n26f"]
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="13_vt57t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwoec"]
@@ -96,6 +95,7 @@ sky_mode = 1
 
 [node name="Door_base" parent="." groups=["DOOR_1"] instance=ExtResource("6_jkt5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02894, 0.226821, -16.5299)
+_desination = "res://ROOMS/Room_town.tscn"
 _y_off = -1.0
 
 [node name="L_floor_one2" parent="." groups=["floor"] instance=ExtResource("8_jqc2e")]
@@ -132,8 +132,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.03845, 0, -13.8065)
 [node name="Locked_door_base" parent="." instance=ExtResource("13_vt57t")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.98421, 1.00093, -16.0827)
 
-[node name="Effect_area_effect_parent" parent="." instance=ExtResource("12_fjah0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.97117, 0.416645, -6.21254)
-
-[node name="Enemy_Egg" parent="." instance=ExtResource("13_0n26f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71641, -7.14255)
+[node name="Neck_1" parent="." instance=ExtResource("12_aa3kv")]

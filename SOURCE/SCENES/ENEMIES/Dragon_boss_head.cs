@@ -21,6 +21,7 @@ public partial class Dragon_boss_head : Obj_enemy_base
 		_body = _core.GetChild<Dragon_boss_base>(0);
 		_state = MOVE_STATE;
 		_apply_grav = false;
+		_damage_sound = GLOBAL_STATS._player._sword_hit;
 	}
 
     public override Vector3 move_to_player_state(double delta, Vector3 velocity)

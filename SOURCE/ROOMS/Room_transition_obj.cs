@@ -12,8 +12,14 @@ public partial class Room_transition_obj : NinePatchRect
 	public float _x_off = 0;
 	public float _y_off = 0;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    public override void _Ready()
+    {
+        base._Ready();
+		//GD.Print("CREATED");
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 		switch (_state)
 		{
@@ -32,10 +38,15 @@ public partial class Room_transition_obj : NinePatchRect
 		}
 
 		if (_finished)
-			this.Free();
+		{
+			this.GetParent().RemoveChild(this);
+			GLOBAL_FUNCTIONS._transition = null;
+			this.QueueFree();
+		}
 	}
 	private void transition()
 	{
+		GD.Print(_room + " 0 " + _target_zone);
 		GLOBAL_FUNCTIONS.Change_Scene(_room);
 		_state = 2;
 	}
@@ -101,6 +112,7 @@ public partial class Room_transition_obj : NinePatchRect
 
 			GLOBAL_STATS._player._state = 0;
 		}
+		
 		this.Position += (new Vector2(115.0f, 0));
 		this.SetSize(new Vector2(_scale, this.Size.Y));
 

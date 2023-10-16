@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://5n88mst4cn3n" path="res://SCENES/ENEMIES/Enemy_base.tscn" id="1_htula"]
 [ext_resource type="Script" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Dragon_boss_core_AI.cs" id="1_o5i4e"]
 [ext_resource type="Script" path="res://SCENES/ENEMIES/Dragon_boss_base.cs" id="2_ny30c"]
-[ext_resource type="Texture2D" uid="uid://l05s5yrynh45" path="res://SPRITES/ENEMY_SPRITES/spr_dragon_body.png" id="3_du6ls"]
+[ext_resource type="Texture2D" uid="uid://2y1anwm28eif" path="res://SPRITES/ENEMY_SPRITES/spr_dragon_body_2.png" id="4_utwb0"]
 [ext_resource type="Script" path="res://SCENES/ENEMIES/Dragon_boss_head.cs" id="5_bpewh"]
 [ext_resource type="Texture2D" uid="uid://db4eawehemldb" path="res://SPRITES/ENEMY_SPRITES/spr_dragon_head.png" id="6_ogrhn"]
 [ext_resource type="PackedScene" uid="uid://5gjksvosp3dr" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Dragon_neck.tscn" id="7_2mduq"]
@@ -92,8 +92,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_npdlr"]
 resource_name = "side_walk"
-length = 0.8
-loop_mode = 1
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,10 +100,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+"values": [5, 0, 5, 6, 7, 4, 8]
 }
 
 [sub_resource type="Animation" id="Animation_4ccoo"]
@@ -166,13 +165,14 @@ _immune_to_sword = true
 _immune_to_bow = true
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
-transform = Transform3D(0.22, 0, 0, 0, 0.155563, 0.155563, 0, -0.155563, 0.155563, 0, 0, -0.111515)
+transform = Transform3D(0.22, 0, 0, 0, 0.155563, 0.155563, 0, -0.155563, 0.155563, 0, 0, -0.1)
 shaded = true
-texture = ExtResource("3_du6ls")
+texture = ExtResource("4_utwb0")
 hframes = 4
 vframes = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obj_enemy_base/Spr_enemy"]
+speed_scale = 0.8
 libraries = {
 "": SubResource("AnimationLibrary_144yd")
 }
@@ -182,10 +182,12 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("5_bpewh")
-_head_offset = Vector3(0, -0.4, 0.4)
+_head_offset = Vector3(0, -0.4, 0.3)
+_health = 40
+_max_health = 40
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base_head_1"]
-transform = Transform3D(1.2, 0, 0, 0, 0.848528, 0.848528, 0, -0.848528, 0.848528, 0, 0, 0)
+transform = Transform3D(1.2, 0, 0, 0, 0.848528, 0.848528, 0, -0.848528, 0.848528, 0, 0, 0.2)
 shaded = true
 texture = ExtResource("6_ogrhn")
 region_rect = Rect2(1215, 1195, 133, 144)
@@ -197,10 +199,12 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 1)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("5_bpewh")
-_head_offset = Vector3(0.8, -0.5, 0.3)
+_head_offset = Vector3(0.7, -0.5, 0.2)
+_health = 40
+_max_health = 40
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base_head_2"]
-transform = Transform3D(1.2, 0, 0, 0, 0.848528, 0.848528, 0, -0.848528, 0.848528, 0, 0, 0)
+transform = Transform3D(1.2, 0, 0, 0, 0.848528, 0.848528, 0, -0.848528, 0.848528, 0, 0, 0.1)
 shaded = true
 texture = ExtResource("6_ogrhn")
 region_rect = Rect2(1215, 1195, 133, 144)
@@ -212,10 +216,12 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 1)
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("5_bpewh")
-_head_offset = Vector3(-0.8, -0.5, 0.3)
+_head_offset = Vector3(-0.7, -0.5, 0.2)
+_health = 40
+_max_health = 40
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base_head_3"]
-transform = Transform3D(1.2, 0, 0, 0, 0.848528, 0.848528, 0, -0.848528, 0.848528, 0, 0, 0)
+transform = Transform3D(1.2, 0, 0, 0, 0.848528, 0.848528, 0, -0.848528, 0.848528, 0, 0, 0.1)
 shaded = true
 texture = ExtResource("6_ogrhn")
 region_rect = Rect2(1215, 1195, 133, 144)

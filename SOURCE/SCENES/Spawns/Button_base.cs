@@ -17,7 +17,6 @@ public partial class Button_base : Node3D
 		_pressure = new Vector3(0.0f, 0.01f, 0.0f);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (_button._Player_Zone._player != null)

@@ -7,10 +7,15 @@ public partial class Dragon_boss_base : Obj_enemy_base
 	private int next_jump_in = 400;
 	private bool _move_left = true;
 
+	private AudioStreamWav _flap_sound;
+	private AudioStreamWav _attack_sound;
+
     public override void _Ready()
     {
         base._Ready();
    		_slam_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_heavy_slam.wav");
+		_flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
+		_attack_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_dragon_jump.wav");
     }
 
     public override Vector3 enemy_core_AI(double delta, Vector3 velocity)
@@ -71,7 +76,11 @@ public partial class Dragon_boss_base : Obj_enemy_base
 
     public override Vector3 move_to_player_state(double delta, Vector3 velocity)
     {
-		_Animator.Play("side_walk");
+		if (!_Animator.IsPlaying())
+		{
+				_Animator.Play("side_walk");
+				GLOBAL_FUNCTIONS.Play_Sound(_flap_sound);
+		}
 
 		if (counter < next_jump_in)
 		{
@@ -101,6 +110,7 @@ public partial class Dragon_boss_base : Obj_enemy_base
 
 	private void shift_to_jump_state(float _height)
 	{
+			GLOBAL_FUNCTIONS.Play_Sound(_attack_sound, 1, false);
 			counter = 0;
 			_hspd = 0;
 			_vspd = 0;

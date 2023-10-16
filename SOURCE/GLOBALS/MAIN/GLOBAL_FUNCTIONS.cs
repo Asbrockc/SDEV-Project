@@ -7,6 +7,8 @@ public partial class GLOBAL_FUNCTIONS : Node
 	static public Chat_Box _active_chat = null;
 	static public Audio_Emt _audio_emitter = null;
 	static public Texture2D _broken_arrow = ResourceLoader.Load<Texture2D>("res://SPRITES/FILE/Arrow_2.png");
+
+	static public Room_transition_obj _transition = null;
 	
 	static public void Change_Scene(String _new_scene)
 	{

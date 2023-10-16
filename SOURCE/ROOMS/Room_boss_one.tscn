@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkpt1iegqywcn"]
+
+[ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7kscf"]
+[ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_axs0m"]
+[ext_resource type="PackedScene" uid="uid://h31ef6fyacfj" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Boss_Dragon.tscn" id="4_3bb7m"]
+[ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_glgw1"]
+
+[node name="Room_one" type="Node3D"]
+script = ExtResource("1_7kscf")
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_boss_one_part_1.wav"
+
+[node name="L_floor_one" parent="." instance=ExtResource("2_axs0m")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0389053, 0.754927)
+
+[node name="Door_1_1" parent="." groups=["door_boss_one"] instance=ExtResource("4_glgw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502943, 4.74209)
+_desination = "res://ROOMS/Room_one.tscn"
+_y_off = 1.0
+
+[node name="Door_1_4" parent="." instance=ExtResource("4_glgw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502828, -4.92916)
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
+light_energy = 10.0
+spot_range = 23.8757
+spot_angle = 60.3704
+
+[node name="Enemy_Egg5" parent="." instance=ExtResource("4_3bb7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39626, -1.2506)

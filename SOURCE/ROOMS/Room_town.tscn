@@ -1,12 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtc8jm8atntj"]
+[gd_scene load_steps=10 format=3 uid="uid://dtc8jm8atntj"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7y241"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="2_ak1ia"]
-[ext_resource type="PackedScene" uid="uid://be5puf60jkgrb" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn" id="4_byn6l"]
+[ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="4_axsoo"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="5_fgn71"]
-[ext_resource type="PackedScene" uid="uid://cdirf7sk3pbxy" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Golem.tscn" id="5_id5b1"]
-[ext_resource type="PackedScene" uid="uid://3wd3nw0sctge" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Knight.tscn" id="6_ngnif"]
-[ext_resource type="PackedScene" uid="uid://h31ef6fyacfj" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Boss_Dragon.tscn" id="7_378aj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_paqfc"]
 size = Vector3(32.5026, 1, 30.677)
@@ -94,27 +91,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570746, -1.76269)
 _desination = "res://ROOMS/Room_one.tscn"
 _y_off = -1.0
 
-[node name="Enemy_Egg" parent="." instance=ExtResource("4_byn6l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51696, 5.37094)
-
-[node name="Enemy_Egg2" parent="." instance=ExtResource("5_id5b1")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.24336, 1.54333, 2.00396)
-
-[node name="Enemy_Egg3" parent="." instance=ExtResource("6_ngnif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.987961, 0.890977, 0.897338)
-
-[node name="Obj_enemy_base" parent="Enemy_Egg3" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.17262, 0, 0)
-curr_color = 1
-
-[node name="Enemy_Egg4" parent="." instance=ExtResource("6_ngnif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70114, 0.890977, 0.897338)
-
-[node name="Obj_enemy_base" parent="Enemy_Egg4" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.45503, 0, 0)
-
-[node name="Enemy_Egg5" parent="." instance=ExtResource("7_378aj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19942, 0)
-
-[editable path="Enemy_Egg3"]
-[editable path="Enemy_Egg4"]
+[node name="Save_Game_point" parent="." instance=ExtResource("4_axsoo")]
+transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -2.25442, 0.494341, -0.344567)
