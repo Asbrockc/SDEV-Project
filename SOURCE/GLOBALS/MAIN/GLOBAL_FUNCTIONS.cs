@@ -56,6 +56,11 @@ public partial class GLOBAL_FUNCTIONS : Node
 		return GLOBAL_STATS._completion_flags[(int)_index];
 	}
 
+	static public void SetFlag(GLOBAL_STATS.FLAG_INDEX _index, bool _set = true)
+	{
+		GLOBAL_STATS._completion_flags[(int)_index] = _set;
+	}
+
 	static public T Choose<T>(params T[] _range)
 	{
 		Random _rand = new Random();
@@ -83,7 +88,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_active_chat._y_off = y_off;
 	}
 
-	static public void Create_Effect(Node3D _target_node, String _effect_location, bool _is_global)
+	static public Effect_parent Create_Effect(Node3D _target_node, String _effect_location, bool _is_global, float _x = 0.0f, float _y = 0.0f,float _z = 0.0f)
 	{
 		Effect_parent _test = (Effect_parent)ResourceLoader.Load<PackedScene>("res://SCENES/EFFECTS/" + _effect_location).Instantiate();
 		
@@ -91,9 +96,14 @@ public partial class GLOBAL_FUNCTIONS : Node
 		{
 			GLOBAL_STATS._current_room_reference.AddChild(_test);
 			_test.Position = _target_node.GlobalPosition;
+
+			if (_x != 0 || _y != 0 || _z != 0)
+				_test.Position += new Vector3(_x, _y, _z);
 		}
 		else
 			_target_node.AddChild(_test);
+
+		return _test;
 	}
 	
 	static public void Spawn_item(Vector3 _position, float _scale, float _range)
@@ -145,12 +155,12 @@ public partial class GLOBAL_FUNCTIONS : Node
 		((second.GlobalPosition.Y - first.GlobalPosition.Z)*(second.GlobalPosition.Y - first.GlobalPosition.Z));
 	}
 
-	static public void Spawn_enemy(Vector3 _position)
+	static public void Spawn_enemy(Vector3 _position, string _enemy_path)
 	{
-		Obj_enemy_base _curr_item = (Obj_enemy_base)ResourceLoader.Load<PackedScene>("res://SCENES/ENEMIES/Enemy_base.tscn").Instantiate();
+		Node3D _curr_item = (Node3D)ResourceLoader.Load<PackedScene>(_enemy_path).Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
 
-		_curr_item.Position = _position + new Vector3(3.0f, 0.0f, 0.0f);
+		_curr_item.GlobalPosition = _position;
 		//_curr_item.Scale = new Vector3(.2f, .2f, .2f);
 		//Random r = new Random();
 		//_curr_item._charge_up = r.Next(5, 10);

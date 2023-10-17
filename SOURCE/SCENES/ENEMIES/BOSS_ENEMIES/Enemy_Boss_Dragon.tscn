@@ -162,7 +162,6 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("5_bpewh")
 _head_offset = Vector3(0, -0.4, 0.3)
-_health = 40
 _max_health = 40
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base_head_1"]
@@ -179,7 +178,6 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("5_bpewh")
 _head_offset = Vector3(0.7, -0.5, 0.2)
-_health = 40
 _max_health = 40
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base_head_2"]
@@ -196,7 +194,6 @@ collision_layer = 8
 collision_mask = 8
 script = ExtResource("5_bpewh")
 _head_offset = Vector3(-0.7, -0.5, 0.2)
-_health = 40
 _max_health = 40
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base_head_3"]

@@ -127,9 +127,10 @@ script = ExtResource("10_bw1ij")
 [node name="Moveable_platform" parent="Path3D2/PathFollow3D" instance=ExtResource("11_gv6s6")]
 
 [node name="Button_base" parent="." instance=ExtResource("12_nwlkc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.03845, 0, -13.8065)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0689, 0, -13.8065)
+_flag = 2
 
 [node name="Locked_door_base" parent="." instance=ExtResource("13_vt57t")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.98421, 1.00093, -16.0827)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11.6298, 1.00093, -16.0827)
 
 [node name="Neck_1" parent="." instance=ExtResource("12_aa3kv")]

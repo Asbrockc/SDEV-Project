@@ -28,27 +28,27 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 0)
 metadata/_edit_group_ = true
 
-[node name="Wall_C_2" type="CollisionShape3D" parent="."]
+[node name="Wall_C_2" type="CollisionShape3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9834, 1.50924, 0)
 shape = SubResource("BoxShape3D_3pg4l")
 
-[node name="Wall_C_3" type="CollisionShape3D" parent="."]
+[node name="Wall_C_3" type="CollisionShape3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1131, 1.4083, 0)
 shape = SubResource("BoxShape3D_wc0ge")
 
-[node name="Wall_C_4" type="CollisionShape3D" parent="."]
+[node name="Wall_C_4" type="CollisionShape3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46111, -10.4944)
 shape = SubResource("BoxShape3D_3w1yp")
 
-[node name="Wall_C_5" type="CollisionShape3D" parent="."]
+[node name="Wall_C_5" type="CollisionShape3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54913, 10.5226)
 shape = SubResource("BoxShape3D_2lsea")
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="." groups=["Wall"]]
 transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("BoxMesh_pk6b8")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" groups=["Wall"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" groups=["Wall"]]
 shape = SubResource("ConcavePolygonShape3D_jffm5")

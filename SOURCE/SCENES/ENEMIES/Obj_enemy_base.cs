@@ -33,8 +33,8 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 
 	public Node3D _target = null;
-	private int hit_timer = 0;
-	private int delay_timer = 30;
+	public int hit_timer = 0;
+	public int delay_timer = 30;
 	
 
 
@@ -191,15 +191,19 @@ public partial class Obj_enemy_base : Obj_physics_base
 		else
 		{
 			hit_timer = 0;
-			for (int i = 0; i < drop_amount; i++)
-				GLOBAL_FUNCTIONS.Spawn_item(this.GlobalPosition, 0.2f, 1);
-
+			death_function();
 			GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_blood.tscn", true);
 			QueueFree();
 			_death_flag = true;
 		}
 		//GD.Print("Will walk to player soon enough");
 		return velocity;
+	}
+
+	public virtual void death_function()
+	{
+		for (int i = 0; i < drop_amount; i++)
+			GLOBAL_FUNCTIONS.Spawn_item(this.GlobalPosition, 0.2f, 1);
 	}
 
 		///<summary>Knights main attack</summary>

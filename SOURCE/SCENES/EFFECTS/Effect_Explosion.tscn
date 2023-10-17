@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://cy5fqiu7v0q0s"]
+
+[ext_resource type="Texture2D" uid="uid://qn8y30fdsgde" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_blood.png" id="1_1xtb2"]
+[ext_resource type="Script" path="res://SCENES/EFFECTS/Effect_parent.cs" id="2_afql1"]
+[ext_resource type="Script" path="res://SCENES/ENEMIES/Obj_enemy_hurt_zone.cs" id="3_3q2u3"]
+
+[sub_resource type="Animation" id="Animation_kdsoy"]
+resource_name = "Animate"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 23]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free_myself"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0hd47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d60fx"]
+_data = {
+"Animate": SubResource("Animation_kdsoy"),
+"RESET": SubResource("Animation_0hd47")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rxptq"]
+radius = 0.399328
+
+[node name="Effect_blood" type="Sprite3D"]
+transform = Transform3D(7.5, 0, 0, 0, 5.3033, 5.3033, 0, -5.3033, 5.3033, 0, 0, 0)
+texture = ExtResource("1_1xtb2")
+hframes = 6
+vframes = 5
+script = ExtResource("2_afql1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 4.0
+libraries = {
+"": SubResource("AnimationLibrary_d60fx")
+}
+
+[node name="Explosion_area" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("3_3q2u3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Explosion_area"]
+shape = SubResource("SphereShape3D_rxptq")
+
+[connection signal="body_entered" from="Explosion_area" to="Explosion_area" method="_player_hurt_zone"]

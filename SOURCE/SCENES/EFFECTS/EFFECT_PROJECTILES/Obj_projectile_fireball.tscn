@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuuofj41vnwbj"]
+
+[ext_resource type="Script" path="res://SCENES/EFFECTS/EFFECT_PROJECTILES/Obj_projectile_fireball.cs" id="1_0tgj6"]
+[ext_resource type="Texture2D" uid="uid://dkfpydpbuc8fe" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_elements.png" id="2_0d5ju"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0rine"]
+radius = 0.225616
+
+[node name="Obj_projectile_fireball" type="Area3D"]
+script = ExtResource("1_0tgj6")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+texture = ExtResource("2_0d5ju")
+region_enabled = true
+region_rect = Rect2(519, 574, 40, 52)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0rine")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0, 0, 1)
+omni_range = 4.26391
+
+[connection signal="body_entered" from="." to="." method="_on_hit"]

@@ -29,40 +29,45 @@ public partial class Obj_projectile_parent : Area3D
 		}
 		else
 		{
-			if (_stuck_in == null)
-			{
-				Sprite3D _sprite = this.GetChild<Sprite3D>(0);
-				this.Position += new Vector3(_hspd, 0, _vspd);
-			}
-			else if (_active)
-			{
-				this.GetParent<Node3D>().RemoveChild(this);
-
-
-				if (!((Obj_enemy_base)_stuck_in)._immune_to_bow)
-				{
-					((Obj_enemy_base)_stuck_in).hit_me(this._my_parent, 1.5f, 2.0f, GLOBAL_STATS._player_stats[GLOBAL_STATS.I_DEFENCE]);
-					_stuck_in.AddChild(this);
-					this.Position = new Vector3(0.0f, 0.0f, 0.0f);
-					this._my_sprite.Texture = GLOBAL_FUNCTIONS._broken_arrow;	
-				}
-				else
-				{
-					((Obj_enemy_base)_stuck_in).hit_me(null);	
-					this.QueueFree();
-				}
-				
-				
-				_active = false;
-			}
-			else
-			{
-				//this.GetChild<Sprite3D>(1);
-			}
+			_active_function();
 		}
 	}
 
-	public void _on_hit(Node3D _node)
+	public virtual void _active_function()
+	{
+		if (_stuck_in == null)
+		{
+			Sprite3D _sprite = this.GetChild<Sprite3D>(0);
+			this.Position += new Vector3(_hspd, 0, _vspd);
+		}
+		else if (_active)
+		{
+			this.GetParent<Node3D>().RemoveChild(this);
+
+
+			if (!((Obj_enemy_base)_stuck_in)._immune_to_bow)
+			{
+				((Obj_enemy_base)_stuck_in).hit_me(this._my_parent, 1.5f, 2.0f, GLOBAL_STATS._player_stats[GLOBAL_STATS.I_DEFENCE]);
+				_stuck_in.AddChild(this);
+				this.Position = new Vector3(0.0f, 0.0f, 0.0f);
+				this._my_sprite.Texture = GLOBAL_FUNCTIONS._broken_arrow;	
+			}
+			else
+			{
+				((Obj_enemy_base)_stuck_in).hit_me(null);	
+				this.QueueFree();
+			}
+			
+			
+			_active = false;
+		}
+		else
+		{
+			//this.GetChild<Sprite3D>(1);
+		}
+	}
+
+	public virtual void _on_hit(Node3D _node)
 	{
 		if (_active)
 		{

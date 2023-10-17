@@ -9,6 +9,9 @@ public partial class Dragon_boss_base : Obj_enemy_base
 
 	private AudioStreamWav _flap_sound;
 	private AudioStreamWav _attack_sound;
+	private AudioStreamMP3 _destroy_sound;
+
+	
 
     public override void _Ready()
     {
@@ -16,6 +19,12 @@ public partial class Dragon_boss_base : Obj_enemy_base
    		_slam_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_heavy_slam.wav");
 		_flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
 		_attack_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_dragon_jump.wav");
+		_destroy_sound = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_boom_sound.mp3");
+
+
+
+		delay_timer = 300;
+		drop_amount = 50;
     }
 
     public override Vector3 enemy_core_AI(double delta, Vector3 velocity)
@@ -117,6 +126,44 @@ public partial class Dragon_boss_base : Obj_enemy_base
 			_jump_spd = _height;
 			_Animator.Play("jump");
 			_state = 5;
+	}
+
+	public override Vector3 death_state(double delta, Vector3 velocity)
+	{
+		_hspd = 0;
+		_vspd = 0;
+		velocity.Y = 0;
+		_apply_grav = true;
+
+		if (hit_timer <  delay_timer)
+		{
+			_Animator.Play("side_walk");
+			this._Animator.SpeedScale = 1.2f;
+			hit_timer++;
+
+			if (hit_timer % 10 == 0)
+			{
+				GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_blood.tscn", true,
+						GLOBAL_FUNCTIONS.Choose(-.5f, -.25f, 0, .25f, .5f),
+						GLOBAL_FUNCTIONS.Choose(-.5f, -.25f, 0, .25f, .5f),
+						GLOBAL_FUNCTIONS.Choose(-.5f, -.25f, 0, .25f, .5f));
+				GLOBAL_FUNCTIONS.Play_Sound(_destroy_sound);
+			}
+
+			//this.Position += new Vector3(0,.02f,0);
+		}
+		else
+		{
+			hit_timer = 0;
+			death_function();
+			GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_blood.tscn", true);
+			GLOBAL_FUNCTIONS.SetFlag(GLOBAL_STATS.FLAG_INDEX.Beat_boss_1);
+			//GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
+			QueueFree();
+			_death_flag = true;
+		}
+		//GD.Print("Will walk to player soon enough");
+		return velocity;
 	}
 
 }
