@@ -84,10 +84,18 @@ public partial class Room_transition_obj : NinePatchRect
 			}
 
 			if (_target_Door != null)
+			{
 				GLOBAL_STATS._player.Position = new Vector3(
 					_target_Door.GlobalPosition.X + _x_off,
 					_target_Door.GlobalPosition.Y,
 					_target_Door.GlobalPosition.Z + _y_off);
+
+				if(GLOBAL_STATS._Camera._target != null)
+					GLOBAL_STATS._Camera.Position = new Vector3(
+						GLOBAL_STATS._Camera._target.Position.X , 
+						GLOBAL_STATS._Camera._target.Position.Y + GLOBAL_STATS._Camera._y_dis, 
+						GLOBAL_STATS._Camera._target.Position.Z + GLOBAL_STATS._Camera._z_dis);
+			}
 
 			_state = 3;
 

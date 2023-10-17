@@ -158,7 +158,9 @@ public partial class Dragon_boss_base : Obj_enemy_base
 			death_function();
 			GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_blood.tscn", true);
 			GLOBAL_FUNCTIONS.SetFlag(GLOBAL_STATS.FLAG_INDEX.Beat_boss_1);
-			//GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
+			GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
+			GLOBAL_STATS._Camera._y_dis = 3.0f; //4.0
+			GLOBAL_STATS._Camera._z_dis = 3.0f; //4.0
 			QueueFree();
 			_death_flag = true;
 		}

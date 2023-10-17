@@ -9,6 +9,8 @@ public partial class Obj_player_camera : Camera3D
 	public float _y_dis = 3.0f; //4.0
 	public float _z_dis = 3.0f;
 
+	private Vector3 _head_shift = new (0,0,0);
+
 	public override void _Ready()
 	{
 		GLOBAL_STATS._Camera = this;
@@ -26,10 +28,18 @@ public partial class Obj_player_camera : Camera3D
 			else
 				_shake = 0;
 
+
+			_head_shift.X = (float)Mathf.Lerp(this.Position.X, _target.Position.X + GLOBAL_FUNCTIONS.Choose(-_shake,_shake), .1);
+			_head_shift.Y = (float)Mathf.Lerp(this.Position.Y, _target.Position.Y + _y_dis + GLOBAL_FUNCTIONS.Choose(-_shake,_shake), .1);
+			_head_shift.Z = (float)Mathf.Lerp(this.Position.Z, _target.Position.Z + _z_dis + GLOBAL_FUNCTIONS.Choose(-_shake,_shake), .1);
+			this.Position = _head_shift;
+
+			/*
 			Position = new Vector3(
-				_target.Position.X + GLOBAL_FUNCTIONS.Choose(-_shake,_shake), 
+				_target.Position.X , 
 				_target.Position.Y + _y_dis + GLOBAL_FUNCTIONS.Choose(-_shake,_shake), 
 				_target.Position.Z + _z_dis + GLOBAL_FUNCTIONS.Choose(-_shake,_shake));
+				*/
 		}
 	}
 }
