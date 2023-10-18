@@ -8,7 +8,6 @@
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_7kscf")
-_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_boss_one_part_1.wav"
 
 [node name="L_floor_one" parent="." instance=ExtResource("2_axs0m")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0389053, 0.754927)

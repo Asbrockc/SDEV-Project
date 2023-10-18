@@ -4,7 +4,7 @@ using System;
 public partial class Dragon_boss_base : Obj_enemy_base
 {
 	private int counter = 0;
-	private int next_jump_in = 400;
+	private int next_jump_in = 120;
 	private bool _move_left = true;
 
 	private AudioStreamWav _flap_sound;
@@ -16,6 +16,7 @@ public partial class Dragon_boss_base : Obj_enemy_base
     public override void _Ready()
     {
         base._Ready();
+		_state = 6;
    		_slam_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_heavy_slam.wav");
 		_flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
 		_attack_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_dragon_jump.wav");
@@ -58,6 +59,9 @@ public partial class Dragon_boss_base : Obj_enemy_base
 			case 5: 
 				velocity = jump_state(delta, velocity);
 			break;
+			case 6: 
+				velocity = intro_state(delta, velocity);
+			break;
 
 			default:
 				_hspd = 0;
@@ -82,6 +86,39 @@ public partial class Dragon_boss_base : Obj_enemy_base
 
 		return velocity;
 	}
+
+	public Vector3 intro_state(double delta, Vector3 velocity)
+    {
+		if (!_Animator.IsPlaying())
+		{
+				_Animator.Play("side_walk");
+				GLOBAL_FUNCTIONS.Play_Sound(_flap_sound);
+		}
+
+		if (counter < next_jump_in)
+		{
+			counter++;
+			GLOBAL_STATS._player._base = "up_";
+			GLOBAL_STATS._player._state = 2;
+			GLOBAL_STATS._Camera._target = this;
+			GLOBAL_STATS._Camera._y_dis = 4.0f;
+			GLOBAL_STATS._Camera._z_dis = 2.0f;
+		}
+		else
+		{
+			next_jump_in = GLOBAL_FUNCTIONS.Choose(200,400,500);
+			GLOBAL_FUNCTIONS.Change_Music("res://SOUNDS/ALL_SOUNDS/MUSIC/snd_boss_one_part_1.wav", 100);
+			counter = 0;
+			GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
+			GLOBAL_STATS._Camera._y_dis = 3.0f;
+			GLOBAL_STATS._Camera._z_dis = 3.0f;
+			this.GetParent<Dragon_boss_core_AI>()._intro = false;
+			GLOBAL_STATS._player._state = 0;
+			this._state = MOVE_STATE;
+		}
+
+		return velocity;
+    }
 
     public override Vector3 move_to_player_state(double delta, Vector3 velocity)
     {
@@ -161,6 +198,9 @@ public partial class Dragon_boss_base : Obj_enemy_base
 			GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
 			GLOBAL_STATS._Camera._y_dis = 3.0f; //4.0
 			GLOBAL_STATS._Camera._z_dis = 3.0f; //4.0
+
+			GLOBAL_FUNCTIONS.Change_Music(null, 5);
+
 			QueueFree();
 			_death_flag = true;
 		}

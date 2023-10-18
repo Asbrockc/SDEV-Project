@@ -14,6 +14,8 @@ public partial class Audio_Emt : Node3D
 
 	private float _fade_count = 100;
 
+	public float _fade_rate = 1;
+
 	public float _music_run_state = -1;
 
 	public String _next_song;
@@ -83,14 +85,21 @@ public partial class Audio_Emt : Node3D
 	{
 		if (_fade_count - 10 > 0)
 		{
-			_fade_count -= 1;
+			_fade_count -= _fade_rate;
 		}
 		else
 		{
 			_fade_count = 0;
-			AudioStreamWav _next = ResourceLoader.Load<AudioStreamWav>(_next_song);
-			_music_player.Stream = _next;
-			_music_player.Play();
+
+			if (_next_song != null)
+			{
+				AudioStreamWav _next = ResourceLoader.Load<AudioStreamWav>(_next_song);
+				_music_player.Stream = _next;
+				_music_player.Play();
+			}
+			else
+				_music_player.Stop();
+				
 			_music_run_state = 1;
 		}
 
@@ -112,7 +121,7 @@ public partial class Audio_Emt : Node3D
 	private void fade_in()
 	{
 		if (_fade_count + 10 < 100)
-			_fade_count += 1;
+			_fade_count += _fade_rate;
 		else
 		{
 			_fade_count = 100;

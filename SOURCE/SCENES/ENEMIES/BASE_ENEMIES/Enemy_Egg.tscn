@@ -98,7 +98,7 @@ _data = {
 
 [node name="Enemy_Egg" type="Node3D"]
 
-[node name="Obj_enemy_base" parent="." instance=ExtResource("1_ph75h")]
+[node name="Obj_enemy_base" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("1_ph75h")]
 script = ExtResource("2_1mdru")
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]

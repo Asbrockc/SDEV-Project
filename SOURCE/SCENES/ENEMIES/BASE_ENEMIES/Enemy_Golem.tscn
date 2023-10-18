@@ -116,7 +116,7 @@ _data = {
 [node name="Enemy_Egg" type="Node3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.18377, 0)
 
-[node name="Obj_enemy_base" parent="." instance=ExtResource("1_okc0c")]
+[node name="Obj_enemy_base" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("1_okc0c")]
 script = ExtResource("2_l48u7")
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]

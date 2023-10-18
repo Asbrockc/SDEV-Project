@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://4ytym1vt5x5r" path="res://SPRITES/FILE/Arrow.png" id="2_dteub"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jd4aj"]
-size = Vector3(1, 0.220949, 1)
+size = Vector3(0.402218, 2.98903, 1)
 
 [node name="Obj_projectile_parent" type="Area3D"]
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("1_t4sbs")
 
 [node name="Obj_projectile_spirte" type="Sprite3D" parent="."]
@@ -15,6 +17,7 @@ offset = Vector2(0, -35)
 texture = ExtResource("2_dteub")
 
 [node name="Obj_projectile_col" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.985212, 0)
 shape = SubResource("BoxShape3D_jd4aj")
 
 [connection signal="body_entered" from="." to="." method="_on_hit"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bb11jrbpl5fjo" path="res://SCENES/ENEMIES/Enemy_healthbar.tscn" id="6_53160"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h4o83"]
-size = Vector3(0.491693, 1, 0.491693)
+size = Vector3(0.543864, 1, 0.566118)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7havu"]
 height = 2.4421
@@ -17,7 +17,7 @@ size = Vector3(0.707219, 1.19268, 0.77914)
 [sub_resource type="ViewportTexture" id="ViewportTexture_3v6n8"]
 viewport_path = NodePath("Obj_enemy_health_bar_field")
 
-[node name="Obj_enemy_base" type="CharacterBody3D" groups=["Enemy_hit_zone"]]
+[node name="Obj_enemy_base" type="CharacterBody3D"]
 
 [node name="Obj_enemy_base_collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_h4o83")

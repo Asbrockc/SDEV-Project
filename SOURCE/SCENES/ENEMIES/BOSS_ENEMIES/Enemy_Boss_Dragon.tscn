@@ -157,8 +157,8 @@ libraries = {
 "": SubResource("AnimationLibrary_144yd")
 }
 
-[node name="Obj_enemy_base_head_1" parent="." instance=ExtResource("1_htula")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 1)
+[node name="Obj_enemy_base_head_1" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("1_htula")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.4, 0.3)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("5_bpewh")
@@ -174,8 +174,8 @@ region_rect = Rect2(1215, 1195, 133, 144)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obj_enemy_base_head_1/Spr_enemy"]
 
-[node name="Obj_enemy_base_head_2" parent="." instance=ExtResource("1_htula")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 1)
+[node name="Obj_enemy_base_head_2" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("1_htula")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.7, -0.5, 0.2)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("5_bpewh")
@@ -191,8 +191,8 @@ region_rect = Rect2(1215, 1195, 133, 144)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obj_enemy_base_head_2/Spr_enemy"]
 
-[node name="Obj_enemy_base_head_3" parent="." instance=ExtResource("1_htula")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 1)
+[node name="Obj_enemy_base_head_3" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("1_htula")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.7, -0.5, 0.2)
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("5_bpewh")

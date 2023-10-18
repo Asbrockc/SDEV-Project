@@ -40,7 +40,7 @@ public partial class Dragon_boss_head : Obj_enemy_base
 		_head_shift.Z = (float)Mathf.Lerp(this.Position.Z, _body.Position.Z + _head_offset.Z, .05);
 		this.Position = _head_shift;
 
-		if (_body._state == 1)
+		if (_body._state == 1 && !_core._intro)
 		{
 			if (counter < _next_attack)
 			{

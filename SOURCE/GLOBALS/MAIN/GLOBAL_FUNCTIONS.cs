@@ -25,8 +25,9 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_audio_emitter.play_sound<T>(_sound, _volume_perc, _shift_tone);
 	}
 
-	static public void Change_Music(String _sound_location)
+	static public void Change_Music(String _sound_location, float _rate = 1)
 	{
+		_audio_emitter._fade_rate = _rate;
 		_audio_emitter._next_song = _sound_location;
 		_audio_emitter._music_run_state = 0;
 	}

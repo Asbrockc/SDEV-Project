@@ -5,6 +5,7 @@ public partial class Dragon_boss_core_AI : Node3D
 {
 	//private Path3D[] _neck  = new Path3D[3]; 
 
+	public bool _intro = true;
 	public bool _defeated = false;
 	private Vector3 _base_offset;
 	private Vector3 _main_head_offset;
@@ -85,7 +86,6 @@ public partial class Dragon_boss_core_AI : Node3D
 				GLOBAL_STATS._Camera._target = GetNode<Dragon_boss_base>("Obj_enemy_base");
 				GLOBAL_STATS._Camera._y_dis = 4.0f;
 				GLOBAL_STATS._Camera._z_dis = 2.0f; //4.0
-
 			}
 		}
 

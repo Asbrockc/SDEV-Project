@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dkfpydpbuc8fe" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_elements.png" id="2_0d5ju"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0rine"]
-radius = 0.225616
+radius = 0.158666
 
 [node name="Obj_projectile_fireball" type="Area3D"]
 script = ExtResource("1_0tgj6")

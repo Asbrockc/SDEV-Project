@@ -19,7 +19,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 	public AudioStreamWav _player_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_player_hit.wav");
 	public AudioStreamMP3 _player_bow_shot = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_bow_shot_2.mp3");
 	
-	private string _base = "down_";
+	public string _base = "down_";
 	
 	public Player_hitbox _hitbox = null;
 	private float _hitbox_range = 0.5f;

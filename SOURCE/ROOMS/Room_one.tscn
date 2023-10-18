@@ -8,6 +8,7 @@
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_3c0hp")
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" parent="." instance=ExtResource("1_2twbq")]
 
