@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Effect_area_effect_parent : Obj_projectile_parent
 {

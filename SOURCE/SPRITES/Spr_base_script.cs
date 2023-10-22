@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Spr_base_script : Sprite3D
 {

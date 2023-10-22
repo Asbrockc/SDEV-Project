@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class Locked_boss_door : Locked_door_base
 {
    public override void _door_trigger()

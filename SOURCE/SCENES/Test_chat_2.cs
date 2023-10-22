@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Test_chat_2 : Interactive_Action
 {

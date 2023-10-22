@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Spr_sprite_interact_target : Sprite3D
 {

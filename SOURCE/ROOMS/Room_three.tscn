@@ -18,7 +18,8 @@ _desination = "res://ROOMS/Room_one.tscn"
 _x_off = -1.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.09, 0)
+light_energy = 8.0
 spot_range = 23.8757
 
 [node name="Button_base2" parent="." instance=ExtResource("5_18rfj")]

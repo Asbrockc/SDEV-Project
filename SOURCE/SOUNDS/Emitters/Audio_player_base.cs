@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Linq;
 
 public partial class Audio_player_base : AudioStreamPlayer3D
 {

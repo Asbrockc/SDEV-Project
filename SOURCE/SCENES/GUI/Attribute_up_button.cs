@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Attribute_up_button : Button
 {

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Enemy_Egg_AI : Obj_enemy_base
 {

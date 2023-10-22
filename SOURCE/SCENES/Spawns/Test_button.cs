@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class Test_button : Button_base
 {
     public override void _on_press()

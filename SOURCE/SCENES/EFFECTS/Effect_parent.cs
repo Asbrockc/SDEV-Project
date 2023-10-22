@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Effect_parent : Sprite3D
 {

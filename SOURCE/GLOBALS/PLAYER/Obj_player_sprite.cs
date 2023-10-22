@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class Obj_player_sprite : Spr_base_script
 {
 	// Called when the node enters the scene tree for the first time.

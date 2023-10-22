@@ -15,7 +15,7 @@ public partial class Enemy_big_knight_base : Enemy_Egg_AI
         base._Ready();
 		_damage_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_hit_metal.wav");
 		_slam_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_heavy_slam.wav");
-		_distance_from_player = 50.0f;
+		_distance_from_player = 2.0f;
     }
     
 	public override Vector3 enemy_core_AI(double delta, Vector3 velocity)
@@ -35,7 +35,7 @@ public partial class Enemy_big_knight_base : Enemy_Egg_AI
 				velocity = idle_state(delta, velocity);
 			break;
 			case MOVE_STATE: 
-				velocity = move_to_player_state(delta, velocity);
+				velocity = move_left_right_to_player_state(delta, velocity);
 			break;
 			case HIT_STATE: 
 				velocity = hit_state(delta, velocity);
@@ -65,34 +65,11 @@ public partial class Enemy_big_knight_base : Enemy_Egg_AI
 			_target = GLOBAL_STATS._player;
 	}
 
-	public override Vector3 move_to_player_state(double delta, Vector3 velocity)
-	{
-		_attack_flag = false;
-
-		if (_target != null)
-		{
-			if (_Animator != null)
-				_Animator.Play(_base + "walk");
-	
-			if (Math.Abs(_target.GlobalPosition.X - this.GlobalPosition.X) > 2)
-			{
-				_vspd = 0;
-				_hspd = Math.Sign(_target.GlobalPosition.X - this.GlobalPosition.X) * Speed/2;
-			}
-			else if (Math.Abs(_target.GlobalPosition.Z - this.GlobalPosition.Z) > 2)
-			{
-				_hspd = 0;
-				_vspd = Math.Sign(_target.GlobalPosition.Z - this.GlobalPosition.Z) * Speed/2;
-			}
-			else
-			{
-				_hspd = 0;
-				_vspd = 0;
-				_Animator.Play("slam_attack");
-				_state = SLAM_STATE;
-			}
-		}
-
-		return velocity;
-	}
+    public override void end_move()
+    {
+		_hspd = 0;
+		_vspd = 0;
+		_Animator.Play("slam_attack");
+		_state = SLAM_STATE;
+    }
 }

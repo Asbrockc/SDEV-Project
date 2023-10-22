@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Obj_projectile_fireball : Obj_projectile_parent
 {

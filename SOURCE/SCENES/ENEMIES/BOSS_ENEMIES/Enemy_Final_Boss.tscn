@@ -1,0 +1,157 @@
+[gd_scene load_steps=14 format=3 uid="uid://f48uw10w2fnv"]
+
+[ext_resource type="Script" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Final_Boss_core.cs" id="1_opd54"]
+[ext_resource type="PackedScene" uid="uid://5n88mst4cn3n" path="res://SCENES/ENEMIES/Enemy_base.tscn" id="2_8g7r0"]
+[ext_resource type="Script" path="res://SCENES/ENEMIES/Dragon_boss_base.cs" id="3_3bwsy"]
+[ext_resource type="Texture2D" uid="uid://2y1anwm28eif" path="res://SPRITES/ENEMY_SPRITES/spr_dragon_body_2.png" id="4_niqbx"]
+[ext_resource type="PackedScene" uid="uid://dr5q38sgjawrg" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Boss_hp_bar.tscn" id="8_7ydh1"]
+
+[sub_resource type="Animation" id="Animation_5rmov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tjjba"]
+resource_name = "down_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_432jo"]
+resource_name = "jump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_rcv8c"]
+resource_name = "left_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37, 38, 39]
+}
+
+[sub_resource type="Animation" id="Animation_7ou7w"]
+resource_name = "right_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 53, 54, 55]
+}
+
+[sub_resource type="Animation" id="Animation_npdlr"]
+resource_name = "side_walk"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 0, 5, 6, 7, 4, 8]
+}
+
+[sub_resource type="Animation" id="Animation_4ccoo"]
+resource_name = "up_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_144yd"]
+_data = {
+"RESET": SubResource("Animation_5rmov"),
+"down_walk": SubResource("Animation_tjjba"),
+"jump": SubResource("Animation_432jo"),
+"left_walk": SubResource("Animation_rcv8c"),
+"right_walk": SubResource("Animation_7ou7w"),
+"side_walk": SubResource("Animation_npdlr"),
+"up_walk": SubResource("Animation_4ccoo")
+}
+
+[node name="Enemy_Egg" type="Node3D"]
+script = ExtResource("1_opd54")
+
+[node name="Obj_enemy_base" parent="." instance=ExtResource("2_8g7r0")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("3_3bwsy")
+_immune_to_sword = true
+_immune_to_bow = true
+
+[node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
+transform = Transform3D(0.22, 0, 0, 0, 0.155563, 0.155563, 0, -0.155563, 0.155563, 0, 0, -0.1)
+shaded = true
+texture = ExtResource("4_niqbx")
+hframes = 4
+vframes = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obj_enemy_base/Spr_enemy"]
+speed_scale = 0.8
+libraries = {
+"": SubResource("AnimationLibrary_144yd")
+}
+
+[node name="Boss_hp_bar" parent="." instance=ExtResource("8_7ydh1")]

@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class Door_town_to_area_1 : Door_base
 {
 	// Called when the node enters the scene tree for the first time.

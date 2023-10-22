@@ -21,7 +21,7 @@ public partial class Obj_item : Obj_physics_base
 		{
 			player_grab();
 			GetParent().RemoveChild(this);
-			this.Free();
+			this.QueueFree();
 		}
 		else
 		{

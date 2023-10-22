@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using System.ComponentModel;
-using System.Data;
 
 public partial class Obj_enemy_base : Obj_physics_base
 {
@@ -133,12 +131,41 @@ public partial class Obj_enemy_base : Obj_physics_base
 				
 			}
 			else
-			{
-				//_state = 0;
-			}
+				end_move();
 		}
 
 		return velocity;
+	}
+
+	public virtual Vector3 move_left_right_to_player_state(double delta, Vector3 velocity)
+	{
+		_attack_flag = false;
+
+		if (_target != null)
+		{
+			if (_Animator != null)
+				_Animator.Play(_base + "walk");
+	
+			if (Math.Abs(_target.GlobalPosition.X - this.GlobalPosition.X) > _distance_from_player)
+			{
+				_vspd = 0;
+				_hspd = Math.Sign(_target.GlobalPosition.X - this.GlobalPosition.X) * Speed/2;
+			}
+			else if (Math.Abs(_target.GlobalPosition.Z - this.GlobalPosition.Z) > _distance_from_player)
+			{
+				_hspd = 0;
+				_vspd = Math.Sign(_target.GlobalPosition.Z - this.GlobalPosition.Z) * Speed/2;
+			}
+			else
+				end_move();
+		}
+
+		return velocity;
+	}
+
+	public virtual void end_move()
+	{
+
 	}
 
 	public virtual Vector3 hit_state(double delta, Vector3 velocity)

@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Data;
-using System.Net.Http;
 
 public partial class Chat_Box : NinePatchRect
 {
@@ -90,7 +87,7 @@ public partial class Chat_Box : NinePatchRect
 		{
 			GLOBAL_FUNCTIONS._active_chat = null;
 			this.GetParent().RemoveChild(this);
-			this.Free();
+			this.QueueFree();
 
 			GLOBAL_STATS._player._state = 0;
 		}

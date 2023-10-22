@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Interact_label : Label3D
 {

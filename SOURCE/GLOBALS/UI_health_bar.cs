@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class UI_health_bar : TextureProgressBar
 {

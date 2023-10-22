@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using System.Data;
-using System.Runtime.Versioning;
 
 public partial class Obj_player_base_script : Obj_physics_base
 {
@@ -240,7 +238,7 @@ public partial class Obj_player_base_script : Obj_physics_base
 		if (_hitbox != null)
 		{
 			RemoveChild(_hitbox);
-			_hitbox.Free();
+			_hitbox.QueueFree();
 			_hitbox = null;
 		}
 		_state = 0;

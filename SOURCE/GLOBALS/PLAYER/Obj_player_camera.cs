@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Obj_player_camera : Camera3D
 {
