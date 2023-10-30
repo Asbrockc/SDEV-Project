@@ -1,0 +1,9 @@
+{
+    "dotnet.server.useOmnisharp": true,
+    "omnisharp.autoStart": true,
+    "csharp.maxProjectFileCountForDiagnosticAnalysis": 10000,
+    "csharp.format.enable": true,
+    "csharp.suppressBuildAssetsNotification": false,
+    "csharp.suppressHiddenDiagnostics": false,
+    "godot_tools.editor_path": "c:\\Users\\Chris\\Desktop\\Godot\\Godot\\Godot_v4.1.1-stable_mono_win64.exe"
+}

@@ -497,6 +497,7 @@ script = ExtResource("1_ri1y5")
 
 [node name="Obj_pLayer" type="CharacterBody3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+floor_max_angle = 0.698132
 script = ExtResource("2_jd1tb")
 
 [node name="Obj_player_collision" type="CollisionShape3D" parent="Obj_pLayer"]

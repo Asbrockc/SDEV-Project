@@ -20,6 +20,10 @@ config/icon="res://SPRITES/FILE/icon.svg"
 GlobalScene="*res://GLOBALS/MAIN/GLOBAL_SCENE.tscn"
 GlobalStats="*res://GLOBALS/MAIN/GLOBAL_STATS.cs"
 
+[debug]
+
+file_logging/enable_file_logging.pc=false
+
 [dotnet]
 
 project/assembly_name="Game"

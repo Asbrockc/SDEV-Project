@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5ykq0xmv6yu1"]
+
+[ext_resource type="Script" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Final_Boss_Target.cs" id="1_wdnsr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lsrll"]
+
+[node name="Boss_Target_1" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.83196, 0.934039, 0)
+script = ExtResource("1_wdnsr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lsrll")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+omni_range = 2.92772

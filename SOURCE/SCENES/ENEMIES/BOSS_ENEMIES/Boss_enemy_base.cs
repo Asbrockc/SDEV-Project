@@ -115,7 +115,7 @@ public partial class Boss_enemy_base : Obj_enemy_base
 			GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
 			GLOBAL_STATS._Camera._y_dis = 3.0f;
 			GLOBAL_STATS._Camera._z_dis = 3.0f;
-			this.GetParent<Dragon_boss_core_AI>()._intro = false;
+			this.GetParent<Boss_core_AI>()._intro = false;
 			GLOBAL_STATS._player._state = 0;
 			this._state = MOVE_STATE;
 		}

@@ -37,3 +37,4 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.30561, -4.02318)
 [node name="Boss_Summoner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4252, -2.6175)
 script = ExtResource("6_hsjft")
+_boss_to_summon = "res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Boss_Dragon.tscn"

@@ -2,7 +2,7 @@ using Godot;
 
 public partial class Boss_hp_bar : Control
 {
-	public Dragon_boss_core_AI _core = null;
+	public Boss_core_AI _core = null;
 
 	private ProgressBar _boss_hp = null;	
 	private Label _boss_name = null;
@@ -14,7 +14,7 @@ public partial class Boss_hp_bar : Control
 
 	public override void _Ready()
 	{
-		_core = GetParent<Dragon_boss_core_AI>();
+		_core = GetParent<Boss_core_AI>();
 		_boss_hp = GetChild<ProgressBar>(1);
 		_boss_name = GetChild<Label>(3);
 	}
