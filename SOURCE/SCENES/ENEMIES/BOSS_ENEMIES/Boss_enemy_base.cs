@@ -6,6 +6,8 @@ public partial class Boss_enemy_base : Obj_enemy_base
 	public int counter = 0;
 	public int next_jump_in = 120;
 
+	public bool _dying = true;
+
 	protected AudioStreamMP3 _destroy_sound = null;
 
 	public override Vector3 enemy_core_AI(double delta, Vector3 velocity)
@@ -15,6 +17,7 @@ public partial class Boss_enemy_base : Obj_enemy_base
 
 		if (_jump_spd != 0)
 		{
+			GD.Print("went to jump");
 			velocity.Y = _jump_spd;
 			_jump_spd = 0.0f;
 		}
@@ -31,7 +34,10 @@ public partial class Boss_enemy_base : Obj_enemy_base
 				velocity = hit_state(delta, velocity);
 			break;
 			case DEATH_STATE: 
-				velocity = death_state(delta, velocity);
+				if (_dying)
+					velocity = death_state(delta, velocity);
+				else
+					velocity = death_finale(delta, velocity);
 			break;
 			case 4: 
 				knight_slam_attack(true, 0, -1, 0);
@@ -51,14 +57,21 @@ public partial class Boss_enemy_base : Obj_enemy_base
 
 		_base = GLOBAL_FUNCTIONS.Entity_Dir(_base, _hspd, _vspd);
 
+		GD.Print(velocity.Y);
+
 		return velocity;
 	}
 
 	public virtual Vector3 death_state(double delta, Vector3 velocity)
 	{
+		//GD.Print("death_state");
+		delay_timer = 300;
+		if (!GetParent<Boss_core_AI>()._defeated)
+			GetParent<Boss_core_AI>()._defeated = true;
+
 		_hspd = 0;
 		_vspd = 0;
-		velocity.Y = 0;
+		//velocity.Y = 0;
 		_apply_grav = true;
 
 		if (hit_timer <  delay_timer)
@@ -89,12 +102,33 @@ public partial class Boss_enemy_base : Obj_enemy_base
 
 			GLOBAL_FUNCTIONS.Change_Music(null, 5);
 
-			QueueFree();
-			_death_flag = true;
+			_dying = false;
 		}
 		//GD.Print("Will walk to player soon enough");
 		return velocity;
 	}
+
+	public virtual Vector3 death_finale(double delta, Vector3 velocity)
+	{
+		GD.Print("base final");
+		_death_flag = true;
+		QueueFree();
+		/*
+		counter++;
+		if (IsOnFloor() && counter > 30)
+		{
+			counter = 0;
+			next_jump_in = GLOBAL_FUNCTIONS.Choose(200,400,500);
+			_state = 4;
+		}
+
+		return velocity;
+		*/
+
+		return velocity;
+	}
+
+
 
 	public virtual Vector3 intro_state(double delta, Vector3 velocity)
     {
@@ -123,7 +157,7 @@ public partial class Boss_enemy_base : Obj_enemy_base
 		return velocity;
     }
 
-	public Vector3 jump_state(double delta, Vector3 velocity)
+	public virtual Vector3 jump_state(double delta, Vector3 velocity)
 	{
 		counter++;
 		if (IsOnFloor() && counter > 30)

@@ -29,12 +29,10 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 	public bool _death_flag = false;
 
-
 	public Node3D _target = null;
 	public int hit_timer = 0;
 	public int delay_timer = 30;
 	
-
 
     public override void _Ready()
     {

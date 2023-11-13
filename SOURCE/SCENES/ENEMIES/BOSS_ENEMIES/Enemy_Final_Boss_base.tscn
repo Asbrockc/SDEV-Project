@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://f48uw10w2fnv"]
+[gd_scene load_steps=14 format=3 uid="uid://b2css0oil4lbu"]
 
-[ext_resource type="Script" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Final_Boss_core.cs" id="1_opd54"]
-[ext_resource type="PackedScene" uid="uid://5n88mst4cn3n" path="res://SCENES/ENEMIES/Enemy_base.tscn" id="2_8g7r0"]
-[ext_resource type="Script" path="res://SCENES/ENEMIES/Enemy_Final_boss_base.cs" id="3_7c2ql"]
-[ext_resource type="Texture2D" uid="uid://dg1ffysyy3wxq" path="res://SPRITES/ENEMY_SPRITES/spr_final_boss_3.png" id="4_50e0g"]
-[ext_resource type="PackedScene" uid="uid://dr5q38sgjawrg" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Boss_hp_bar.tscn" id="8_7ydh1"]
+[ext_resource type="Script" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Final_Boss_phase_one_core.cs" id="1_l8avw"]
+[ext_resource type="PackedScene" uid="uid://5n88mst4cn3n" path="res://SCENES/ENEMIES/Enemy_base.tscn" id="2_1kv4k"]
+[ext_resource type="Script" path="res://SCENES/ENEMIES/Final_boss_first_phase.cs" id="3_4st8n"]
+[ext_resource type="Texture2D" uid="uid://bb2mjxckcskwf" path="res://SPRITES/ENEMY_SPRITES/spr_final_boss.png" id="4_osjwc"]
+[ext_resource type="PackedScene" uid="uid://dr5q38sgjawrg" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Boss_hp_bar.tscn" id="5_vp50s"]
 
 [sub_resource type="Animation" id="Animation_5rmov"]
 length = 0.001
@@ -134,19 +134,19 @@ _data = {
 
 [node name="Enemy_Egg" type="Node3D"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
-script = ExtResource("1_opd54")
+script = ExtResource("1_l8avw")
 
-[node name="Obj_enemy_base" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("2_8g7r0")]
+[node name="Obj_enemy_base" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("2_1kv4k")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-script = ExtResource("3_7c2ql")
-_health = 10
-_max_health = 10
+script = ExtResource("3_4st8n")
+_health = 25
+_max_health = 25
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
 transform = Transform3D(0.22, 0, 0, 0, 0.155563, 0.155563, 0, -0.155563, 0.155563, 0, 0, -0.1)
 modulate = Color(0.168627, 0.168627, 0.168627, 1)
 shaded = true
-texture = ExtResource("4_50e0g")
+texture = ExtResource("4_osjwc")
 hframes = 4
 vframes = 16
 
@@ -156,14 +156,4 @@ libraries = {
 "": SubResource("AnimationLibrary_144yd")
 }
 
-[node name="right_light" type="OmniLight3D" parent="Obj_enemy_base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0692422, 0.186272, -0.159499)
-light_color = Color(0.839216, 0, 0, 1)
-light_energy = 5.0
-
-[node name="left_light" type="OmniLight3D" parent="Obj_enemy_base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0755369, 0.182076, -0.159499)
-light_color = Color(0.839216, 0, 0, 1)
-light_energy = 5.0
-
-[node name="Boss_hp_bar" parent="." instance=ExtResource("8_7ydh1")]
+[node name="Boss_hp_bar" parent="." instance=ExtResource("5_vp50s")]

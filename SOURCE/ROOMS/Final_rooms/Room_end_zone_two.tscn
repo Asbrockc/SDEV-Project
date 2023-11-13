@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://loycp1pfjcgu"]
+
+[ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_fy3dj"]
+[ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_w4hx6"]
+[ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="4_bvt00"]
+[ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_jc4gn"]
+
+[node name="Room_one" type="Node3D"]
+script = ExtResource("1_fy3dj")
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
+
+[node name="L_floor_one" parent="." instance=ExtResource("2_w4hx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
+
+[node name="Door_1_1" parent="." groups=["final_door_2"] instance=ExtResource("4_jc4gn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3296, 0.502943, -0.261695)
+_desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
+_x_off = -1.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
+light_energy = 5.0
+spot_range = 23.8757
+
+[node name="Button_base" parent="." instance=ExtResource("4_bvt00")]
+_flag = 6

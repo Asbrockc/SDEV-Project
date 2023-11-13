@@ -29,6 +29,16 @@ public partial class GLOBAL_STATS : Node
 		Beat_boss_2 = 1,
 		Locked_door_1 = 2,
 		Boss_door_1 = 3,
+
+		Dungeon_door_1 = 4,
+		Dungeon_door_2 = 5,
+		Dungeon_door_3 = 6,
+		Dungeon_door_4 = 7,
+		Dungeon_door_5 = 8,
+		Dungeon_door_6 = 9,
+		Dungeon_door_7 = 10,
+		Dungeon_door_8 = 11
+
 	}
 
 	static public bool _pause = false;
@@ -71,7 +81,16 @@ public partial class GLOBAL_STATS : Node
 		false, //first boss not beaten
 		false, //second boss not beaten
 		false, //door_one_open
-		false //boss_door_1
+		false, //boss_door_1
+
+		false,	//Dungeon_door_1 = 4,
+		false,	//Dungeon_door_2 = 5,
+		false,	//Dungeon_door_3 = 6,
+		false,	//Dungeon_door_4 = 7,
+		false,	//Dungeon_door_5 = 8,
+		false,	//Dungeon_door_6 = 9,
+		false,	//Dungeon_door_7 = 10,
+		false	//Dungeon_door_8 = 11,
 	};
 
 	/// <summary>

@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4sh18r135808"]
+
+[ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_hr8wb"]
+[ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_8bsp3"]
+[ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="3_cm658"]
+[ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_owmjr"]
+[ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="5_qefug"]
+[ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="6_mh8k5"]
+
+[node name="Room_one" type="Node3D"]
+script = ExtResource("1_hr8wb")
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
+
+[node name="L_floor_one" parent="." instance=ExtResource("2_8bsp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
+
+[node name="Right_door" parent="." groups=["final_door_4"] instance=ExtResource("3_cm658")]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 4.92327, 0.478994, 0)
+_flag = 7
+
+[node name="Door_1_2" parent="Right_door" groups=["final_door_4"] instance=ExtResource("4_owmjr")]
+transform = Transform3D(-3.64262e-08, 0, 0.833333, 0, 0.833333, 0, -0.833333, 0, -3.64262e-08, 0.0850666, 0.0198617, -0.486316)
+_desination = "res://ROOMS/Final_rooms/Room_end_zone_four.tscn"
+_x_off = 1.0
+
+[node name="Right_door4" parent="." instance=ExtResource("3_cm658")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.038, 1.014, -5.23689)
+_flag = 10
+
+[node name="Door_1_2" parent="Right_door4" groups=["final_boss_door_1"] instance=ExtResource("4_owmjr")]
+transform = Transform3D(0.833333, 0, 0, 0, 0.833333, 0, 0, 0, 0.833333, 0.0850666, 0.0198617, -0.486316)
+_desination = "res://ROOMS/Room_boss_two_start.tscn"
+_y_off = -2.0
+
+[node name="Right_door3" parent="." groups=["final_door_6"] instance=ExtResource("3_cm658")]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 4.92327, 0.478994, -3.3666)
+_flag = 9
+
+[node name="Door_1_2" parent="Right_door3" groups=["final_door_6"] instance=ExtResource("4_owmjr")]
+transform = Transform3D(-3.64262e-08, 0, 0.833333, 0, 0.833333, 0, -0.833333, 0, -3.64262e-08, 0.0850666, 0.0198617, -0.486316)
+_desination = "res://ROOMS/Final_rooms/Room_end_zone_six.tscn"
+_x_off = 1.0
+
+[node name="Right_door2" parent="." groups=["final_door_2"] instance=ExtResource("3_cm658")]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 4.92327, 0.478994, 3.14418)
+_flag = 5
+
+[node name="Door_1_2" parent="Right_door2" groups=["final_door_2"] instance=ExtResource("4_owmjr")]
+transform = Transform3D(-3.64262e-08, 0, 0.833333, 0, 0.833333, 0, -0.833333, 0, -3.64262e-08, 0.0850666, 0.0198617, -0.486316)
+_desination = "res://ROOMS/Final_rooms/Room_end_zone_two.tscn"
+_x_off = 1.0
+
+[node name="Left_door" parent="." groups=["final_door_3"] instance=ExtResource("3_cm658")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -4.8139, 0.478994, 0)
+_flag = 6
+
+[node name="Door_1_2" parent="Left_door" groups=["final_door_3"] instance=ExtResource("4_owmjr")]
+transform = Transform3D(-3.64262e-08, 0, -0.833333, 0, 0.833333, 0, 0.833333, 0, -3.64262e-08, 0.0850666, 0.0198617, -0.486316)
+_desination = "res://ROOMS/Final_rooms/Room_end_zone_three.tscn"
+_x_off = -1.0
+
+[node name="Left_door2" parent="." groups=["final_door_5"] instance=ExtResource("3_cm658")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -4.8139, 0.478994, -3.3666)
+_flag = 8
+
+[node name="Door_1_2" parent="Left_door2" groups=["final_door_5"] instance=ExtResource("4_owmjr")]
+transform = Transform3D(-3.64262e-08, 0, -0.833333, 0, 0.833333, 0, 0.833333, 0, -3.64262e-08, 0.0850666, 0.0198617, -0.486316)
+_desination = "res://ROOMS/Final_rooms/Room_end_zone_five.tscn"
+_x_off = -1.0
+
+[node name="Left_door3" parent="." groups=["final_door_1"] instance=ExtResource("3_cm658")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -4.8139, 0.478994, 3.14418)
+_flag = 4
+
+[node name="Door_1_2" parent="Left_door3" groups=["final_door_1"] instance=ExtResource("4_owmjr")]
+transform = Transform3D(-3.64262e-08, 0, -0.833333, 0, 0.833333, 0, 0.833333, 0, -3.64262e-08, 0.0850666, 0.0198617, -0.486316)
+_desination = "res://ROOMS/Final_rooms/Room_end_zone_one.tscn"
+_x_off = -1.0
+
+[node name="Door_1_1" parent="." groups=["zone_2_one"] instance=ExtResource("4_owmjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502943, 7.2281)
+_desination = "res://ROOMS/Room_boss_one.tscn"
+_y_off = 1.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
+light_energy = 5.0
+spot_range = 23.8757
+
+[node name="Button_base" parent="." instance=ExtResource("5_qefug")]
+_flag = 4
+
+[node name="Save_Game_point" parent="." instance=ExtResource("6_mh8k5")]
+transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -2.25442, 0.494341, 5.12317)
