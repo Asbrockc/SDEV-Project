@@ -1,9 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkqbhhn7by6jw"]
+[gd_scene load_steps=20 format=3 uid="uid://dkqbhhn7by6jw"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_yx5oa"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_f6322"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="4_fokbu"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_s7g8r"]
+[ext_resource type="Script" path="res://ROOMS/Final_rooms/Button_game_control.cs" id="5_uokh7"]
+[ext_resource type="Script" path="res://SCENES/Spawns/Game_button_base.cs" id="6_ti828"]
+[ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="7_3ivgc"]
+[ext_resource type="Texture2D" uid="uid://decm70x82ewav" path="res://FLOORS/spr_block_tile.png" id="8_hkn8f"]
+[ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="9_g0wpm"]
+[ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="9_q3u3h"]
+[ext_resource type="PackedScene" uid="uid://jua8cut00j8r" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Spider.tscn" id="11_hna24"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpo6m"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("8_hkn8f")
+uv1_scale = Vector3(3.005, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8hmd"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gpo6m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8fhe"]
+albedo_texture = ExtResource("9_q3u3h")
+uv1_scale = Vector3(3, 2, 1)
+uv1_offset = Vector3(-1, -1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2s28c"]
+material = SubResource("StandardMaterial3D_m8fhe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8sn6"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("8_hkn8f")
+uv1_scale = Vector3(3.005, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kdpun"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_a8sn6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ackyf"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("8_hkn8f")
+uv1_scale = Vector3(3.005, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_re8vt"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ackyf")
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_yx5oa")
@@ -23,4 +65,102 @@ light_energy = 5.0
 spot_range = 23.8757
 
 [node name="Button_base" parent="." instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
 _flag = 5
+
+[node name="Button_game_control" type="Node3D" parent="."]
+script = ExtResource("5_uokh7")
+
+[node name="Button_base0" type="Node3D" parent="Button_game_control"]
+script = ExtResource("6_ti828")
+
+[node name="Moveable_platform" parent="Button_game_control/Button_base0" instance=ExtResource("7_3ivgc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_l8hmd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button_game_control/Button_base0"]
+transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("BoxMesh_2s28c")
+
+[node name="Button_base1" type="Node3D" parent="Button_game_control"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("6_ti828")
+
+[node name="Moveable_platform" parent="Button_game_control/Button_base1" instance=ExtResource("7_3ivgc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_kdpun")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button_game_control/Button_base1"]
+transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("BoxMesh_2s28c")
+
+[node name="Button_base2" type="Node3D" parent="Button_game_control"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+script = ExtResource("6_ti828")
+
+[node name="Moveable_platform" parent="Button_game_control/Button_base2" instance=ExtResource("7_3ivgc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_re8vt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button_game_control/Button_base2"]
+transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("BoxMesh_2s28c")
+
+[node name="Button_base3" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+script = ExtResource("6_ti828")
+
+[node name="Button_base4" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("6_ti828")
+
+[node name="Button_base5" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+script = ExtResource("6_ti828")
+
+[node name="Button_base6" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+script = ExtResource("6_ti828")
+
+[node name="Button_base7" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+script = ExtResource("6_ti828")
+
+[node name="Button_base8" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("6_ti828")
+
+[node name="Button_base9" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+script = ExtResource("6_ti828")
+
+[node name="Button_base10" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+script = ExtResource("6_ti828")
+
+[node name="Button_base11" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+script = ExtResource("6_ti828")
+
+[node name="Button_base12" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+script = ExtResource("6_ti828")
+
+[node name="Button_base13" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+script = ExtResource("6_ti828")
+
+[node name="Button_base14" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+script = ExtResource("6_ti828")
+
+[node name="Button_base15" parent="Button_game_control" instance=ExtResource("4_fokbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+script = ExtResource("6_ti828")
+
+[node name="Locked_door_base" parent="." instance=ExtResource("9_g0wpm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.976834, 0.518674, -2.39408)
+_flag = 12
+
+[node name="Enemy_Egg" parent="." instance=ExtResource("11_hna24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35886, 1.25032, 0)

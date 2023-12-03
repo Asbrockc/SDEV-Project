@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://i522t55558bi"]
+[gd_scene load_steps=5 format=3 uid="uid://i522t55558bi"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7pqsi"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_vn2ft"]
+[ext_resource type="PackedScene" uid="uid://c4wwyhag0uf84" path="res://3d_prefabs/forestbase/forest_base_back.tscn" id="4_nhibc"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_xlffr"]
 
 [node name="Room_one" type="Node3D"]
@@ -9,6 +10,7 @@ script = ExtResource("1_7pqsi")
 _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" parent="." instance=ExtResource("2_vn2ft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -6.81835)
 
 [node name="Door_1_2" parent="." groups=["door_2_left"] instance=ExtResource("4_xlffr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50685, 0.502828, 0)
@@ -23,3 +25,6 @@ _y_off = -1.0
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
 spot_range = 23.8757
+
+[node name="forest_fix" parent="." instance=ExtResource("4_nhibc")]
+transform = Transform3D(-1.28949e-08, 0, 0.295, 0, 0.295, 0, -0.295, 0, -1.28949e-08, 0, 2.8708, -5.76774)

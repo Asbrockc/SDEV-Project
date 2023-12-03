@@ -7,6 +7,8 @@ public partial class Button_base : Node3D
 
 	public bool _set = false;
 
+	public bool _pressed = false;
+
 	[Export] public GLOBAL_STATS.FLAG_INDEX _flag = GLOBAL_STATS.FLAG_INDEX.Beat_boss_1;
 
 	// Called when the node enters the scene tree for the first time.
@@ -27,15 +29,22 @@ public partial class Button_base : Node3D
 		{
 			if (_button.Position.Y + _pressure.Y < 0.2 && !_set)
 				_button.Position += _pressure;
+			else
+				_pressed = false;
 		}
 
 		if (_button.Position.Y <= -0.2 && !_set)
 		{
 			AudioStreamMP3 _button_sound = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_button_jump.mp3");
 			
-			_set = true;
-			GLOBAL_FUNCTIONS.Play_Sound(_button_sound);
-			_on_press();
+			
+			if (!_pressed)
+			{
+				_set = true;
+				GLOBAL_FUNCTIONS.Play_Sound(_button_sound);
+				_on_press();
+				_pressed = true;
+			}
 		}
 	}
 

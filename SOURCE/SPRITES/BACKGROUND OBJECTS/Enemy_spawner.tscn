@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://h4mtb10i13nx"]
+
+[ext_resource type="Script" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.cs" id="1_bx603"]
+[ext_resource type="Script" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_timer.cs" id="2_f6xf0"]
+
+[node name="Enemy_spawner" type="Node3D" groups=["enemy_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429913, 0)
+script = ExtResource("1_bx603")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="Enemy_timer" type="Timer" parent="."]
+wait_time = 3.0
+script = ExtResource("2_f6xf0")
+
+[connection signal="timeout" from="Enemy_timer" to="Enemy_timer" method="_on_timeout"]

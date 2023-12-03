@@ -37,8 +37,13 @@ public partial class GLOBAL_STATS : Node
 		Dungeon_door_5 = 8,
 		Dungeon_door_6 = 9,
 		Dungeon_door_7 = 10,
-		Dungeon_door_8 = 11
+		Dungeon_door_8 = 11,
 
+		Puzzle_door_1 = 12,
+		Puzzle_door_2 = 13,
+
+		Next_1 = 14,
+		Next_2 = 15
 	}
 
 	static public bool _pause = false;
@@ -90,7 +95,12 @@ public partial class GLOBAL_STATS : Node
 		false,	//Dungeon_door_5 = 8,
 		false,	//Dungeon_door_6 = 9,
 		false,	//Dungeon_door_7 = 10,
-		false	//Dungeon_door_8 = 11,
+		false,	//Dungeon_door_8 = 11,
+		false,   //Puzzle_door_1
+		false,   //Puzzle_door_2
+
+		false,   
+		false
 	};
 
 	/// <summary>
@@ -174,9 +184,14 @@ public partial class GLOBAL_STATS : Node
 		GLOBAL_FUNCTIONS._audio_emitter._music_volume = _player_stats[I_MUSIC_VOLUME];
 		GLOBAL_FUNCTIONS._audio_emitter._game_volume = _player_stats[I_SOUND_VOLUME];
 
-		for (int i = 0; i < _completion_flags.Count; i++)
+	;
+		
+		for (int i = 0; i < _load_configure.GetSectionKeys("Player flags").LongLength; i++)
+		{	
+			GD.Print(i);
 			_completion_flags[i] = bool.Parse(_load_configure.GetValue("Player flags", i.ToString()).ToString());
-
+		}
+		
 		GLOBAL_FUNCTIONS.Room_Transition(_player_room, _save_group, 0, 1);
 	}
 

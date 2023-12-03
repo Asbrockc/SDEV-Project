@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://r8ypjdu5a6dd"]
+[gd_scene load_steps=9 format=3 uid="uid://r8ypjdu5a6dd"]
 
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="1_2twbq"]
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_3c0hp"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="1_6deq7"]
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="2_gs7w2"]
 [ext_resource type="PackedScene" uid="uid://be5puf60jkgrb" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn" id="5_8fsoy"]
+[ext_resource type="PackedScene" uid="uid://c4wwyhag0uf84" path="res://3d_prefabs/forestbase/forest_base_back.tscn" id="6_vqbib"]
+[ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="7_g6rux"]
+[ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="8_wowd4"]
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_3c0hp")
 _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" parent="." instance=ExtResource("1_2twbq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -6.85979)
 
 [node name="Right_door" parent="." instance=ExtResource("2_gs7w2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.92327, 0.478994, 0)
@@ -21,7 +25,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.981937, -4.43765)
 _flag = 3
 
 [node name="Door_1_1" parent="." groups=["Door_2"] instance=ExtResource("1_6deq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502943, 4.74209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502943, 3.10754)
 _desination = "res://ROOMS/Room_town.tscn"
 _y_off = 1.0
 
@@ -50,5 +54,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3455, 0.733075, -3.62952)
 
 [node name="Obj_enemy_base" parent="Enemy_Egg" index="0"]
 drop_amount = 40
+
+[node name="forest_fix" parent="." instance=ExtResource("6_vqbib")]
+transform = Transform3D(-9.61651e-09, 0, 0.22, 0, 0.22, 0, -0.22, 0, -9.61651e-09, 0, 2.16497, -3.15926)
+
+[node name="Tree_base" parent="." instance=ExtResource("7_g6rux")]
+transform = Transform3D(3.815, 0, 0, 0, 3.815, 0, 0, 0, 3.815, -4.04267, 1.49032, -3.32269)
+
+[node name="Enemy_spawner" parent="." instance=ExtResource("8_wowd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87348, 0)
+_spawn_ref = 1
 
 [editable path="Enemy_Egg"]

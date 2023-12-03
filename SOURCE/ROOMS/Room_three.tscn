@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqmk103gho8e4"]
+[gd_scene load_steps=5 format=3 uid="uid://cqmk103gho8e4"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7fhvn"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_5s08l"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_036ms"]
+[ext_resource type="PackedScene" uid="uid://6dfehx4ukkq5" path="res://3d_prefabs/forestbase/forest_2.tscn" id="4_43fr3"]
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_7fhvn")
@@ -21,6 +22,10 @@ _desination = "res://ROOMS/Room_three_b.tscn"
 _y_off = -1.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.09, 0)
+transform = Transform3D(1, 0, 0, 0, 0.472566, 0.881295, 0, -0.881295, 0.472566, 0, 16.09, 2.57558)
 light_energy = 8.0
-spot_range = 23.8757
+spot_range = 48.1084
+spot_angle = 60.5107
+
+[node name="forest" parent="." instance=ExtResource("4_43fr3")]
+transform = Transform3D(-2.92866e-08, 0, 0.67, 0, 0.67, 0, -0.67, 0, -2.92866e-08, -1.99464, 6.67051, 0)

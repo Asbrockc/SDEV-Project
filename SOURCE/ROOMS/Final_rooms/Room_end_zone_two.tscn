@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://loycp1pfjcgu"]
+[gd_scene load_steps=7 format=3 uid="uid://loycp1pfjcgu"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_fy3dj"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_w4hx6"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="4_bvt00"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_jc4gn"]
+[ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="5_o3fsn"]
+[ext_resource type="PackedScene" uid="uid://c2pf6mrhmtgpu" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_wizard.tscn" id="6_713q4"]
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_fy3dj")
@@ -24,3 +26,22 @@ spot_range = 23.8757
 
 [node name="Button_base" parent="." instance=ExtResource("4_bvt00")]
 _flag = 6
+
+[node name="Enemy_spawner" parent="." instance=ExtResource("5_o3fsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2846, 1.40202, -4.19846)
+_active = false
+
+[node name="Enemy_spawner2" parent="." instance=ExtResource("5_o3fsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82566, 1.48772, -2.88283)
+_active = false
+
+[node name="Enemy_spawner3" parent="." instance=ExtResource("5_o3fsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29071, 1.40202, 3.88501)
+_active = false
+
+[node name="Enemy_spawner4" parent="." instance=ExtResource("5_o3fsn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48439, 1.48772, 4.89969)
+_active = false
+
+[node name="Enemy_Egg2" parent="." instance=ExtResource("6_713q4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25967, 1.07354, -0.826166)

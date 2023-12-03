@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4sh18r135808"]
+[gd_scene load_steps=8 format=3 uid="uid://c4sh18r135808"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_hr8wb"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_8bsp3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_owmjr"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="5_qefug"]
 [ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="6_mh8k5"]
+[ext_resource type="PackedScene" uid="uid://db6yo4yb5t8om" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Bat.tscn" id="7_7drcy"]
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_hr8wb")
@@ -92,3 +93,6 @@ _flag = 4
 
 [node name="Save_Game_point" parent="." instance=ExtResource("6_mh8k5")]
 transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -2.25442, 0.494341, 5.12317)
+
+[node name="Enemy_Egg" parent="." instance=ExtResource("7_7drcy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.03773, 4.60395, -2)

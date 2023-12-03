@@ -1,8 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://1surjqne4n5o"]
+[gd_scene load_steps=9 format=3 uid="uid://1surjqne4n5o"]
 
 [ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="1_k0atr"]
 [ext_resource type="Script" path="res://SCENES/Spawns/Button_base.cs" id="1_yf3xf"]
+[ext_resource type="Texture2D" uid="uid://decm70x82ewav" path="res://FLOORS/spr_block_tile.png" id="3_c4xlp"]
 [ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="3_dul36"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6b4sp"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_c4xlp")
+uv1_scale = Vector3(3.005, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kivay"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_6b4sp")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8fhe"]
 albedo_texture = ExtResource("3_dul36")
@@ -17,6 +27,7 @@ script = ExtResource("1_yf3xf")
 
 [node name="Moveable_platform" parent="." instance=ExtResource("1_k0atr")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_kivay")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)

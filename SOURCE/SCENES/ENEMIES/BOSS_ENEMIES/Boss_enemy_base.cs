@@ -6,6 +6,8 @@ public partial class Boss_enemy_base : Obj_enemy_base
 	public int counter = 0;
 	public int next_jump_in = 120;
 
+	public string _boss_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_boss_one_part_1.wav";
+
 	public bool _dying = true;
 
 	protected AudioStreamMP3 _destroy_sound = null;
@@ -57,7 +59,7 @@ public partial class Boss_enemy_base : Obj_enemy_base
 
 		_base = GLOBAL_FUNCTIONS.Entity_Dir(_base, _hspd, _vspd);
 
-		GD.Print(velocity.Y);
+		//GD.Print(velocity.Y);
 
 		return velocity;
 	}
@@ -110,7 +112,7 @@ public partial class Boss_enemy_base : Obj_enemy_base
 
 	public virtual Vector3 death_finale(double delta, Vector3 velocity)
 	{
-		GD.Print("base final");
+		//GD.Print("base final");
 		_death_flag = true;
 		QueueFree();
 		/*
@@ -143,8 +145,12 @@ public partial class Boss_enemy_base : Obj_enemy_base
 		}
 		else
 		{
+			//
 			next_jump_in = GLOBAL_FUNCTIONS.Choose(200,400,500);
-			GLOBAL_FUNCTIONS.Change_Music("res://SOUNDS/ALL_SOUNDS/MUSIC/snd_boss_one_part_1.wav", 100);
+
+			if (_boss_music != "null")
+				GLOBAL_FUNCTIONS.Change_Music(_boss_music, 100);
+
 			counter = 0;
 			GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
 			GLOBAL_STATS._Camera._y_dis = 3.0f;

@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://jua8cut00j8r"]
+
+[ext_resource type="PackedScene" uid="uid://5n88mst4cn3n" path="res://SCENES/ENEMIES/Enemy_base.tscn" id="1_mvfuf"]
+[ext_resource type="Script" path="res://SCENES/ENEMIES/Spider_AI.cs" id="2_22eyp"]
+[ext_resource type="Texture2D" uid="uid://dxjgbniqb276p" path="res://SPRITES/ENEMY_SPRITES/spr_small_monsters.png" id="3_2r872"]
+
+[sub_resource type="Animation" id="Animation_5rmov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tjjba"]
+resource_name = "down_walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_rcv8c"]
+resource_name = "left_walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_7ou7w"]
+resource_name = "right_walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [30, 31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_4ccoo"]
+resource_name = "up_walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [42, 43, 44]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_144yd"]
+_data = {
+"RESET": SubResource("Animation_5rmov"),
+"down_walk": SubResource("Animation_tjjba"),
+"left_walk": SubResource("Animation_rcv8c"),
+"right_walk": SubResource("Animation_7ou7w"),
+"up_walk": SubResource("Animation_4ccoo")
+}
+
+[node name="Enemy_Egg" type="Node3D"]
+
+[node name="Obj_enemy_base" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("1_mvfuf")]
+script = ExtResource("2_22eyp")
+
+[node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+texture = ExtResource("3_2r872")
+hframes = 12
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obj_enemy_base/Spr_enemy"]
+libraries = {
+"": SubResource("AnimationLibrary_144yd")
+}

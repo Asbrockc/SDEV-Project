@@ -8,7 +8,7 @@ public partial class Enemy_Final_Boss_core : Boss_core_AI
 	private OmniLight3D _right;
 	private float light_counter = 0;
 
-	public Final_Boss_Target[] _target = new Final_Boss_Target[5];
+	public Final_Boss_Target[] _target = new Final_Boss_Target[9];
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -22,12 +22,20 @@ public partial class Enemy_Final_Boss_core : Boss_core_AI
 		_right = _base.GetNode<OmniLight3D>("right_light");
 		_left = _base.GetNode<OmniLight3D>("left_light");
 
+		//GD.Print("why is this not showing up?");
 		int i = 0;
 		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Off_Target");
 		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Boss_Target_1");
 		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Boss_Target_2");
 		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Boss_Target_3");
 		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Boss_Target_4");
+		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Boss_Target_5");
+		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Boss_Target_6");
+		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Boss_Target_7");
+		_target[i++] = this.GetParent().GetNode<Final_Boss_Target>("Boss_Target_8");
+
+		//GD.Print("after the list?");
+		//GD.Print(i);
 
 		
 	}
@@ -35,8 +43,11 @@ public partial class Enemy_Final_Boss_core : Boss_core_AI
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		//GD.Print(_left.Position.ToString() + " - " + _right.Position.ToString());
+
 		if (!_defeated)
 		{
+			
 			light_counter += 0.02f;
 
 			if (light_counter >= 180)

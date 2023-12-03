@@ -12,4 +12,6 @@ script = ExtResource("1_wdnsr")
 shape = SubResource("BoxShape3D_lsrll")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-omni_range = 2.92772
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.5
+omni_range = 7.03645

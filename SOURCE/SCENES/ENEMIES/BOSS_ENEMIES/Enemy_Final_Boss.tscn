@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://f48uw10w2fnv"]
+[gd_scene load_steps=15 format=3 uid="uid://f48uw10w2fnv"]
 
 [ext_resource type="Script" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Enemy_Final_Boss_core.cs" id="1_opd54"]
 [ext_resource type="PackedScene" uid="uid://5n88mst4cn3n" path="res://SCENES/ENEMIES/Enemy_base.tscn" id="2_8g7r0"]
@@ -121,6 +121,22 @@ tracks/0/keys = {
 "values": [16, 17, 18, 19, 20, 21, 22, 23]
 }
 
+[sub_resource type="Animation" id="Animation_qvvhb"]
+resource_name = "spell"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 8, 9, 10, 11]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_144yd"]
 _data = {
 "RESET": SubResource("Animation_5rmov"),
@@ -129,6 +145,7 @@ _data = {
 "left_walk": SubResource("Animation_rcv8c"),
 "right_walk": SubResource("Animation_7ou7w"),
 "side_walk": SubResource("Animation_npdlr"),
+"spell": SubResource("Animation_qvvhb"),
 "up_walk": SubResource("Animation_4ccoo")
 }
 

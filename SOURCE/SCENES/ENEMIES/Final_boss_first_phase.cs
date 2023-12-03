@@ -5,12 +5,18 @@ public partial class Final_boss_first_phase : Boss_enemy_base
 {
     private bool _death_set_up = false;
 
-	public override Vector3 death_finale(double delta, Vector3 velocity)
+    public override void _Ready()
+    {
+        base._Ready();
+		_state = 6;
+    }
+
+    public override Vector3 death_finale(double delta, Vector3 velocity)
 	{
 		
 		if (!_death_set_up)
         {
-            GD.Print("CLICKED");
+            //GD.Print("CLICKED");
             //velocity.Y = 10;
             _jump_spd = 10;
             _death_set_up = true;
@@ -21,9 +27,11 @@ public partial class Final_boss_first_phase : Boss_enemy_base
 		{
 			counter = 0;
 		
-            GD.Print("CLICKED _boom");
+            //GD.Print("CLICKED _boom");
             _death_flag = true;
             QueueFree();
+
+			GLOBAL_FUNCTIONS.Change_Music("res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss.wav", 100);
 
 			GLOBAL_STATS._current_room_reference.GetNode("L_floor_one").QueueFree();
 		}

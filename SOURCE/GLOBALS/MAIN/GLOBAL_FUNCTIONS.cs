@@ -11,7 +11,9 @@ public partial class GLOBAL_FUNCTIONS : Node
 	
 	static public void Change_Scene(String _new_scene)
 	{
+		GD.Print("BEFORE");
 		GLOBAL_STATS._main_scene.GetTree().ChangeSceneToFile(_new_scene);
+		GD.Print("AFTER");
 	}
 
 	static public void UI_Visibiity(bool _visible)

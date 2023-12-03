@@ -4,11 +4,13 @@ using System;
 public partial class Obj_enemy_hurt_zone : Area3D
 {
 	public Obj_enemy_base _enemy_parent = null;
+	public bool _hit_player = false;
 
 	public void _player_hurt_zone(Node3D _node)
 	{
 		if (_node.IsInGroup("Player") && _enemy_parent != null)
 		{
+			_hit_player = true;
 			((Obj_player_base_script)_node)._hurt_hspd = _enemy_parent._hit_force * -Math.Sign(_enemy_parent.GlobalPosition.X - _node.GlobalPosition.X);
 			((Obj_player_base_script)_node)._hurt_vspd = _enemy_parent._hit_force * -Math.Sign(_enemy_parent.GlobalPosition.Z -_node.GlobalPosition.Z);
 			((Obj_player_base_script)_node)._hurt_up_speed = _enemy_parent._hit_force/2;

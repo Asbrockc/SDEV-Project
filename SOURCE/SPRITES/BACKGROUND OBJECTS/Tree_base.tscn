@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://1q7dkppj7noq"]
+
+[ext_resource type="Texture2D" uid="uid://d2rtxdax4cin4" path="res://SPRITES/FILE/Tree_SpriteSheet_Outlined.png" id="1_0albt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fu356"]
+size = Vector3(0.267195, 1.36448, 0.310253)
+
+[node name="Tree_base" type="Node3D"]
+transform = Transform3D(2.17, 0, 0, 0, 2.17, 0, 0, 0, 2.17, 0, 0.652308, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.249273)
+shape = SubResource("BoxShape3D_fu356")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+texture = ExtResource("1_0albt")
+hframes = 5
+vframes = 2

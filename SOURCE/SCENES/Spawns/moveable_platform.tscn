@@ -5,10 +5,12 @@
 [ext_resource type="Script" path="res://SCENES/Spawns/Standing_platform.cs" id="2_unitr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0nogx"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("1_o0vsi")
 uv1_scale = Vector3(3.005, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lhjko"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_0nogx")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ontl0"]
