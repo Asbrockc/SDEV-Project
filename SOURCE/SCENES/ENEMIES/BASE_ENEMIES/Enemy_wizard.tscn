@@ -35,6 +35,23 @@ tracks/0/keys = {
 "values": [57, 58, 59]
 }
 
+[sub_resource type="Animation" id="Animation_fgg66"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 4, 3]
+}
+
 [sub_resource type="Animation" id="Animation_rcv8c"]
 resource_name = "left_walk"
 length = 0.4
@@ -69,6 +86,22 @@ tracks/0/keys = {
 "values": [30, 31, 32]
 }
 
+[sub_resource type="Animation" id="Animation_ptmhy"]
+resource_name = "summon"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [52, 61, 76, 85, 52, 61, 76, 85]
+}
+
 [sub_resource type="Animation" id="Animation_4ccoo"]
 resource_name = "up_walk"
 length = 0.4
@@ -84,39 +117,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [42, 43, 44]
-}
-
-[sub_resource type="Animation" id="Animation_fgg66"]
-resource_name = "idle"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 4, 3]
-}
-
-[sub_resource type="Animation" id="Animation_ptmhy"]
-resource_name = "summon"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [52, 61, 76, 85, 52, 61, 76, 85]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_144yd"]

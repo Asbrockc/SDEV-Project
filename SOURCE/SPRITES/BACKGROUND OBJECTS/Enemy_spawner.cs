@@ -27,7 +27,10 @@ public partial class Enemy_spawner : Node3D
 		if (_trigger)
 		{
 			if (_active)
+			{
+				Effect_parent _test = GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_Explosion.tscn", true);
 				_spawn_function();
+			}
 
 			_trigger = false;
 		}
@@ -44,7 +47,8 @@ public partial class Enemy_spawner : Node3D
 				GLOBAL_FUNCTIONS.Spawn_enemy(this.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn");
 			break;
 			case SUMMON_INDEX.KNIGHT_RED:
-				GLOBAL_FUNCTIONS.Spawn_enemy(this.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Knight.tscn");
+				Enemy_Knight_base _temp = (Enemy_Knight_base)GLOBAL_FUNCTIONS.Spawn_enemy(this.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Knight.tscn");
+				//_temp.
 			break;
 			case SUMMON_INDEX.KNIGHT_BLUE:
 				GLOBAL_FUNCTIONS.Spawn_enemy(this.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Knight.tscn");

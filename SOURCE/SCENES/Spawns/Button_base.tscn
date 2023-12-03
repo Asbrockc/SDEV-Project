@@ -10,7 +10,7 @@ resource_local_to_scene = true
 albedo_texture = ExtResource("3_c4xlp")
 uv1_scale = Vector3(3.005, 2, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_kivay"]
+[sub_resource type="BoxMesh" id="BoxMesh_fxnom"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_6b4sp")
 
@@ -27,7 +27,7 @@ script = ExtResource("1_yf3xf")
 
 [node name="Moveable_platform" parent="." instance=ExtResource("1_k0atr")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
-mesh = SubResource("BoxMesh_kivay")
+mesh = SubResource("BoxMesh_fxnom")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)

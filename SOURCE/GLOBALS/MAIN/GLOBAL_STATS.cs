@@ -48,7 +48,6 @@ public partial class GLOBAL_STATS : Node
 
 	static public bool _pause = false;
 
-
 	static public Obj_player_base_script _player;
 	static public Obj_player_camera _Camera;
 	static public Room_set_up _current_room_reference = null;

@@ -114,6 +114,9 @@ public partial class Obj_enemy_base : Obj_physics_base
 	{
 		if (_target != null)
 		{
+			if (_Animator != null)
+				_Animator.Play(_base + "walk");
+				
 			if (GLOBAL_FUNCTIONS.Distance_Between_Nodes(_target, this) > _distance_from_player)
 			{
 

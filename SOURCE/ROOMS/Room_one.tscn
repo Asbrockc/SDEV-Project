@@ -27,22 +27,19 @@ _flag = 3
 [node name="Door_1_1" parent="." groups=["Door_2"] instance=ExtResource("1_6deq7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502943, 3.10754)
 _desination = "res://ROOMS/Room_town.tscn"
-_y_off = 1.0
 
 [node name="Door_1_2" parent="." groups=["door_3"] instance=ExtResource("1_6deq7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50685, 0.502828, 0.10208)
 _desination = "res://ROOMS/Room_three.tscn"
-_x_off = 1.0
 
 [node name="Door_1_3" parent="." groups=["door_2_left"] instance=ExtResource("1_6deq7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41225, 0.586633, 0.301351)
 _desination = "res://ROOMS/Room_two.tscn"
-_x_off = -1.0
 
 [node name="Door_1_4" parent="." groups=["door_boss_one"] instance=ExtResource("1_6deq7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502828, -4.92916)
 _desination = "res://ROOMS/Room_boss_one.tscn"
-_y_off = -1.0
+_y_off = -2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)

@@ -22,12 +22,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 66.0921, 10.5226)
 [node name="Door_1_1" parent="." groups=["door_boss_one"] instance=ExtResource("4_glgw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03496, 5.68339)
 _desination = "res://ROOMS/Room_one.tscn"
-_y_off = 1.0
+_y_off = 2
 
 [node name="Door_1_4" parent="." groups=["zone_2_one"] instance=ExtResource("4_glgw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38888, 1.18136, 2.02028)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
-_y_off = -1.0
+_y_off = -1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.017086, 0.999854, 0, -0.999854, -0.017086, 0, 11.3193, -3.27889)

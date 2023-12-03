@@ -10,6 +10,7 @@ public partial class GLOBAL_SCENE : Node3D
 
     public override void _Process(double delta)
     {
+		//GD.Print(GLOBAL_STATS._current_room_reference);
         GLOBAL_STATS._Level_Manager();
     }
 }

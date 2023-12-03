@@ -8,6 +8,10 @@ public partial class Final_boss_first_phase : Boss_enemy_base
     public override void _Ready()
     {
         base._Ready();
+        //_slam_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_heavy_slam.wav");
+		//_flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
+		//_attack_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_dragon_jump.wav");
+		_destroy_sound = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_boom_sound.mp3");
 		_state = 6;
     }
 

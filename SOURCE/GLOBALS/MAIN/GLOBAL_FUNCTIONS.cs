@@ -9,11 +9,11 @@ public partial class GLOBAL_FUNCTIONS : Node
 
 	static public Room_transition_obj _transition = null;
 	
-	static public void Change_Scene(String _new_scene)
+	static public void Change_Scene(Room_transition_obj _source, PackedScene _new_scene)
 	{
-		GD.Print("BEFORE");
-		GLOBAL_STATS._main_scene.GetTree().ChangeSceneToFile(_new_scene);
-		GD.Print("AFTER");
+		//GD.Print("BEFORE");
+		//_source.GetTree().ChangeSceneToPacked(_new_scene);
+		//GD.Print("AFTER");
 	}
 
 	static public void UI_Visibiity(bool _visible)
@@ -82,12 +82,18 @@ public partial class GLOBAL_FUNCTIONS : Node
 
 	static public void Room_Transition(string _room, string _group, int x_off, int y_off)
 	{
-		Room_transition_obj _active_chat = (Room_transition_obj)ResourceLoader.Load<PackedScene>("res://ROOMS/Room_transition_obj.tscn").Instantiate();
-		GLOBAL_STATS._main_scene.AddChild(_active_chat);
-		_active_chat._room = _room;
-		_active_chat._target_zone = _group;
-		_active_chat._x_off = x_off;
-		_active_chat._y_off = y_off;
+		//GD.Print("BEFORE " + GLOBAL_STATS._current_room_reference);
+		if (_transition == null && GLOBAL_STATS._current_room_reference != null)
+		{
+			//GD.Print("AFTER " + GLOBAL_STATS._current_room_reference);
+			_transition = (Room_transition_obj)ResourceLoader.Load<PackedScene>("res://ROOMS/Room_transition_obj.tscn").Instantiate();
+			GLOBAL_STATS._main_scene.AddChild(_transition);
+			_transition._old_room = GLOBAL_STATS._current_room_reference;
+			_transition._room = _room;
+			_transition._target_zone = _group;
+			_transition._x_off = x_off;
+			_transition._y_off = y_off;
+		}
 	}
 
 	static public Effect_parent Create_Effect(Node3D _target_node, String _effect_location, bool _is_global, float _x = 0.0f, float _y = 0.0f,float _z = 0.0f)
@@ -157,7 +163,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 		((second.GlobalPosition.Y - first.GlobalPosition.Z)*(second.GlobalPosition.Y - first.GlobalPosition.Z));
 	}
 
-	static public void Spawn_enemy(Vector3 _position, string _enemy_path)
+	static public Node3D Spawn_enemy(Vector3 _position, string _enemy_path)
 	{
 		Node3D _curr_item = (Node3D)ResourceLoader.Load<PackedScene>(_enemy_path).Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
@@ -168,6 +174,8 @@ public partial class GLOBAL_FUNCTIONS : Node
 		//_curr_item._charge_up = r.Next(5, 10);
 		//_curr_item._hspd = r.Next(-5, 5);
 		//_curr_item._vspd = r.Next(-5, 5);
+
+		return _curr_item;
 	}
 
 	static public float Gradual_Stop(float _start_number, float _rate)

@@ -17,7 +17,7 @@ resource_local_to_scene = true
 albedo_texture = ExtResource("8_hkn8f")
 uv1_scale = Vector3(3.005, 2, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_l8hmd"]
+[sub_resource type="BoxMesh" id="BoxMesh_aa7uv"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_gpo6m")
 
@@ -34,7 +34,7 @@ resource_local_to_scene = true
 albedo_texture = ExtResource("8_hkn8f")
 uv1_scale = Vector3(3.005, 2, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_kdpun"]
+[sub_resource type="BoxMesh" id="BoxMesh_5m8gf"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_a8sn6")
 
@@ -43,7 +43,7 @@ resource_local_to_scene = true
 albedo_texture = ExtResource("8_hkn8f")
 uv1_scale = Vector3(3.005, 2, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_re8vt"]
+[sub_resource type="BoxMesh" id="BoxMesh_ekm0e"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ackyf")
 
@@ -57,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
 [node name="Door_1_1" parent="." groups=["final_door_1"] instance=ExtResource("4_s7g8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5687, 0.502943, -0.261695)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
-_x_off = 1.0
+_x_off = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
@@ -76,7 +76,7 @@ script = ExtResource("6_ti828")
 
 [node name="Moveable_platform" parent="Button_game_control/Button_base0" instance=ExtResource("7_3ivgc")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
-mesh = SubResource("BoxMesh_l8hmd")
+mesh = SubResource("BoxMesh_aa7uv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Button_game_control/Button_base0"]
 transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)
@@ -88,7 +88,7 @@ script = ExtResource("6_ti828")
 
 [node name="Moveable_platform" parent="Button_game_control/Button_base1" instance=ExtResource("7_3ivgc")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
-mesh = SubResource("BoxMesh_kdpun")
+mesh = SubResource("BoxMesh_5m8gf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Button_game_control/Button_base1"]
 transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)
@@ -100,7 +100,7 @@ script = ExtResource("6_ti828")
 
 [node name="Moveable_platform" parent="Button_game_control/Button_base2" instance=ExtResource("7_3ivgc")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
-mesh = SubResource("BoxMesh_re8vt")
+mesh = SubResource("BoxMesh_ekm0e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Button_game_control/Button_base2"]
 transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)

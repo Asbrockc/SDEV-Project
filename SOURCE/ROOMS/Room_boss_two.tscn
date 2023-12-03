@@ -66,7 +66,7 @@ shape = SubResource("ConcavePolygonShape3D_jffm5")
 [node name="Door_1_1" parent="." groups=["door_boss_two"] instance=ExtResource("3_qkuec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502943, 5.63904)
 _desination = "res://ROOMS/Room_one.tscn"
-_y_off = 1.0
+_y_off = -2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.943234, 0.332128, 0, -0.332128, -0.943234, 0, 4.9684, 6.72377)

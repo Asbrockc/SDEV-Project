@@ -15,12 +15,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -6.81835)
 [node name="Door_1_2" parent="." groups=["door_2_left"] instance=ExtResource("4_xlffr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50685, 0.502828, 0)
 _desination = "res://ROOMS/Room_one.tscn"
-_x_off = 1.0
 
 [node name="Door_1_4" parent="." groups=["door_2_b"] instance=ExtResource("4_xlffr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502828, -7.50695)
 _desination = "res://ROOMS/Room_two_b.tscn"
-_y_off = -1.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)

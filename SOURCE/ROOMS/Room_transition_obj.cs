@@ -7,10 +7,16 @@ public partial class Room_transition_obj : NinePatchRect
 	private float _scale = 0.0f;
 	private bool _finished = false;
 
+	public Room_set_up _old_room = null;
+
+	private PackedScene _scene = null;
+
 	public String _room = null;
 	public String _target_zone = "null";
 	public float _x_off = 0;
 	public float _y_off = 0;
+
+	public bool run_once = true;
 
 	public int _hold_off_a_second = 0;
 
@@ -25,32 +31,35 @@ public partial class Room_transition_obj : NinePatchRect
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
-		switch (_state)
+		//GD.Print("this is functioning");
+		if (!_finished)
 		{
-			case 0:
-				//GD.Print("step 0");
-				open_state();
-			break;
-			case 1:
-				//GD.Print("step 1");
-				transition();
-			break;
-			case 2:
-				//GD.Print("step 2");
-				move_room();
-			break;
-			case 3:
-				//GD.Print("step 3");
-				close_state();
-			break;
-			case 4:
-				//GD.Print("step 4");
-				hold_state();
-			break;
+			switch (_state)
+			{
+				case 0:
+					//GD.Print("step 0");
+					open_state();
+				break;
+				case 1:
+					//GD.Print("step 1");
+					transition();
+				break;
+				case 2:
+					//GD.Print("step 2");
+					move_room();
+				break;
+				case 3:
+					//GD.Print("step 3");
+					close_state();
+				break;
+				case 4:
+					//GD.Print("step 4");
+					hold_state();
+				break;
 
+			}
 		}
-
-		if (_finished)
+		else 
 		{
 			this.GetParent().RemoveChild(this);
 			GLOBAL_FUNCTIONS._transition = null;
@@ -59,18 +68,16 @@ public partial class Room_transition_obj : NinePatchRect
 	}
 	private void transition()
 	{
-		GD.Print(_room + " 0 " + _target_zone);
-		GLOBAL_FUNCTIONS.Change_Scene(_room);
+		GD.Print("BEFORE IN FUNCTION");
+		_old_room.change_scene(_room);
+		GD.Print("AFTER IN FUNCTION");
 		_state = 2; //4
 	}
 
 	private void hold_state()
 	{
 		if (_count < 30)
-		{
 			_count++;
-			//GD.Print(_count);
-		}
 		else
 			_state = 2;
 	}
@@ -138,13 +145,13 @@ public partial class Room_transition_obj : NinePatchRect
 							0 + GLOBAL_STATS._Camera._z_dis);
 				}
 
-				_state = 3;
-
 				if (GLOBAL_STATS._current_room_reference._room_music != "null")
 				{
 					if (GLOBAL_STATS._current_room_reference._room_music != GLOBAL_FUNCTIONS._audio_emitter._next_song)
 						GLOBAL_FUNCTIONS.Change_Music(GLOBAL_STATS._current_room_reference._room_music);
 				}
+
+				_state = 3;
 			}
 		}
 		else

@@ -11,6 +11,8 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
     private int _warp_index = 0;
     private int _warp_max = 60;
 
+    private bool spell_flag = true;
+
     private int _jump_count = 0;
     private int _fire_count = 0;
 
@@ -21,7 +23,10 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
 
     public override void _Ready()
     {
-       
+        _slam_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_heavy_slam.wav");
+		//_flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
+		//_attack_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_dragon_jump.wav");
+		_destroy_sound = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_boom_sound.mp3");
         Speed = 7.0f;
         base._Ready();
         _state = 6;
@@ -69,19 +74,39 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                         _jump_count = 0;
                         return move_left_right_to_player_state(delta, velocity);
                     case 3:
-                    if (_fire_count < 60)
-                    {
-                        _Animator.Play("spell");  
-                        _fire_count++;
-                    }
-                    else
+
+                    if (spell_flag)
                     {
                         _warp_index = GLOBAL_FUNCTIONS.Choose(1,2,3,4,5,6,7,8);
                         //GD.Print(this.GetParent<Enemy_Final_Boss_core>()._target.Length);
                         Final_Boss_Target _targ = this.GetParent<Enemy_Final_Boss_core>()._target[_warp_index];
                         this.GlobalPosition = _targ.GlobalPosition;
                         Effect_parent _test = GLOBAL_FUNCTIONS.Create_Effect(_targ, "Effect_Explosion.tscn", true);
-                        
+
+                        _Animator.Play("spell");  
+                        spell_flag = false;
+                    }
+
+                    if (_Animator.IsPlaying())
+                    {
+                        /*
+                        if (spell_flag)
+                        {
+                            _warp_index = GLOBAL_FUNCTIONS.Choose(1,2,3,4,5,6,7,8);
+                            //GD.Print(this.GetParent<Enemy_Final_Boss_core>()._target.Length);
+                            Final_Boss_Target _targ = this.GetParent<Enemy_Final_Boss_core>()._target[_warp_index];
+                            this.GlobalPosition = _targ.GlobalPosition;
+                            Effect_parent _test = GLOBAL_FUNCTIONS.Create_Effect(_targ, "Effect_Explosion.tscn", true);
+
+                            _Animator.Play("spell");  
+                            spell_flag = false;
+                        }
+                        _fire_count++;*/
+                    }
+                    else
+                    {
+                        //_Animator.Play("down_walk");  
+                        spell_flag = true;
                         //_Animator.Play("spell");  
                         //GD.Print("SHOT FROM --" + this.ToString());
                         GLOBAL_FUNCTIONS.Play_Sound(GLOBAL_STATS._player._player_bow_shot, 0.9f);
