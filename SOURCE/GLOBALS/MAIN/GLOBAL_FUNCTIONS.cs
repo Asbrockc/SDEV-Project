@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+///<summary>
+/// Functions that are always avalable for the various in game objects
+/// most just handle data, however any that control in game objects will always refence 
+/// the current rooms made Node as a baseline
+///</summary>
 public partial class GLOBAL_FUNCTIONS : Node
 {
 	static public Chat_Box _active_chat = null;
@@ -9,6 +14,10 @@ public partial class GLOBAL_FUNCTIONS : Node
 
 	static public Room_transition_obj _transition = null;
 	
+	///<summary>
+	/// defunct change scene function 
+	/// (But I might want this again so it can hang around for a bit)
+	///</summary>
 	static public void Change_Scene(Room_transition_obj _source, PackedScene _new_scene)
 	{
 		//GD.Print("BEFORE");
@@ -16,16 +25,27 @@ public partial class GLOBAL_FUNCTIONS : Node
 		//GD.Print("AFTER");
 	}
 
+	///<summary>
+	/// toggles the visibility of the players UI
+	/// i.e., their health and level
+	///</summary>
 	static public void UI_Visibiity(bool _visible)
 	{
 		GLOBAL_STATS._main_scene.GetNode<Control>("UI_Player_stats").Visible = _visible;
 	}
 
+	///<summary>
+	/// sends a signal to the audio emiters to play a sound
+	/// the sound can be wither WAV or MP3
+	///</summary>
 	static public void Play_Sound<T>(T _sound, float _volume_perc = 1.0f, bool _shift_tone = true)
 	{
 		_audio_emitter.play_sound<T>(_sound, _volume_perc, _shift_tone);
 	}
 
+	///<summary>
+	/// sends a signal to the audio emiter to change the music and the rate the music will change at.
+	///</summary>
 	static public void Change_Music(String _sound_location, float _rate = 1)
 	{
 		_audio_emitter._fade_rate = _rate;
@@ -53,22 +73,34 @@ public partial class GLOBAL_FUNCTIONS : Node
 				return _curr;
 	}
 
+	///<summary>
+	/// gets the current value of a global flag
+	///</summary>
 	static public bool GetFlag(GLOBAL_STATS.FLAG_INDEX _index)
 	{
 		return GLOBAL_STATS._completion_flags[(int)_index];
 	}
 
+	///<summary>
+	/// sets a global flag
+	///</summary>
 	static public void SetFlag(GLOBAL_STATS.FLAG_INDEX _index, bool _set = true)
 	{
 		GLOBAL_STATS._completion_flags[(int)_index] = _set;
 	}
 
+	///<summary>
+	/// Takes in as many paramters as it needs and just returns one of them randomly
+	///</summary>
 	static public T Choose<T>(params T[] _range)
 	{
 		Random _rand = new Random();
 		return _range[_rand.NextInt64(_range.Length)];
 	}
 
+	///<summary>
+	/// calls a chatbox with the given message
+	///</summary>
 	static public void Call_Chatbox(params string[] _messages)
 	{
 		//GD.Print("make chat");
@@ -80,6 +112,9 @@ public partial class GLOBAL_FUNCTIONS : Node
 		}
 	}
 
+	///<summary>
+	/// creates a transition parrent
+	///</summary>
 	static public void Room_Transition(string _room, string _group, int x_off, int y_off)
 	{
 		//GD.Print("BEFORE " + GLOBAL_STATS._current_room_reference);
@@ -96,6 +131,12 @@ public partial class GLOBAL_FUNCTIONS : Node
 		}
 	}
 
+	///<summary>
+	/// creates a effect object
+	/// plays effects that destorys itself after it is finished
+	/// _is_global will define who the object belongs to, it will always create it at the _target_node. 
+	/// however, if it is global it will be parented to the rooms base node instead. 
+	///</summary>
 	static public Effect_parent Create_Effect(Node3D _target_node, String _effect_location, bool _is_global, float _x = 0.0f, float _y = 0.0f,float _z = 0.0f)
 	{
 		Effect_parent _test = (Effect_parent)ResourceLoader.Load<PackedScene>("res://SCENES/EFFECTS/" + _effect_location).Instantiate();
@@ -113,7 +154,11 @@ public partial class GLOBAL_FUNCTIONS : Node
 
 		return _test;
 	}
-	
+
+	///<summary>
+	/// spawns an item
+	/// defines the scale of the item and gives some velocity so it bounces around.
+	///</summary>
 	static public void Spawn_item(Vector3 _position, float _scale, float _range)
 	{
 		Obj_item _curr_item = (Obj_item)ResourceLoader.Load<PackedScene>("res://SCENES/obj_item_parent.tscn").Instantiate();
@@ -128,6 +173,9 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_curr_item._my_base = Choose<string>("exp","exp","exp","exp","exp","exp","exp","exp","exp","exp","hp");
 	}
 
+	///<summary>
+	/// Create the stat menu
+	///</summary>
 	static public Level_up_menu Summon_stat_menu()
 	{
 		if (GLOBAL_STATS._current_room_reference != null)
@@ -142,6 +190,10 @@ public partial class GLOBAL_FUNCTIONS : Node
 		return null;
 	}
 
+	///<summary>
+	/// Creates a projectile object
+	/// also returns a reference to the created object in case any extra changes need to be made to it
+	///</summary>
 	static public Obj_projectile_parent Create_projectile(Node3D _source, string _type = "res://SCENES/EFFECTS/Obj_projectile_parent.tscn")
 	{
 		Obj_projectile_parent _curr_item = (Obj_projectile_parent)ResourceLoader.Load<PackedScene>(_type).Instantiate();
@@ -151,11 +203,17 @@ public partial class GLOBAL_FUNCTIONS : Node
 		return _curr_item;
 	}
 
+	///<summary>
+	/// Adds some shake to the camera
+	///</summary>
 	static public void Shake_Camera(float _amount)
 	{
 		GLOBAL_STATS._Camera._shake = _amount;
 	}
 
+	///<summary>
+	/// Simple caluclation to find the distance between two nodes 
+	///</summary>
 	static public float Distance_Between_Nodes(Node3D first, Node3D second)
 	{
 		return 
@@ -163,21 +221,24 @@ public partial class GLOBAL_FUNCTIONS : Node
 		((second.GlobalPosition.Y - first.GlobalPosition.Z)*(second.GlobalPosition.Y - first.GlobalPosition.Z));
 	}
 
+	///<summary>
+	/// spawns an enemy at the postion passed in. 
+	/// will also return a reference to the enemy in case any extra changes need to be
+	/// made after the spawn.
+	///</summary>
 	static public Node3D Spawn_enemy(Vector3 _position, string _enemy_path)
 	{
 		Node3D _curr_item = (Node3D)ResourceLoader.Load<PackedScene>(_enemy_path).Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
 
 		_curr_item.GlobalPosition = _position;
-		//_curr_item.Scale = new Vector3(.2f, .2f, .2f);
-		//Random r = new Random();
-		//_curr_item._charge_up = r.Next(5, 10);
-		//_curr_item._hspd = r.Next(-5, 5);
-		//_curr_item._vspd = r.Next(-5, 5);
-
 		return _curr_item;
 	}
 
+	///<summary>
+	/// Takes a number and returns a portion of the number back
+	/// used to gradually stop hspd or vspd
+	///</summary>
 	static public float Gradual_Stop(float _start_number, float _rate)
 	{
 		if (_rate != 0)

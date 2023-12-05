@@ -1,13 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://ddsxoieeaomi4"]
+[gd_scene load_steps=24 format=3 uid="uid://ddsxoieeaomi4"]
 
-[ext_resource type="Script" path="res://SCENES/Interactive_Action.cs" id="1_r8gkx"]
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_tru31"]
-[ext_resource type="Texture2D" uid="uid://cilwigrf1kmtc" path="res://SPRITES/FILE/d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" id="3_u3uav"]
+[ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="2_uqdux"]
 [ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="4_g3q3e"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="6_jkt5d"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="8_jqc2e"]
 [ext_resource type="Script" path="res://FLOORS/Joke.cs" id="9_5lurq"]
 [ext_resource type="Script" path="res://SCENES/Path_follower_back_an_forth.cs" id="10_bw1ij"]
+[ext_resource type="Texture2D" uid="uid://decm70x82ewav" path="res://FLOORS/spr_block_tile.png" id="10_k6qb8"]
 [ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="11_gv6s6"]
 [ext_resource type="PackedScene" uid="uid://5gjksvosp3dr" path="res://SCENES/ENEMIES/BOSS_ENEMIES/Dragon_neck.tscn" id="12_aa3kv"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="12_nwlkc"]
@@ -28,15 +28,21 @@ size = Vector3(34.5728, 4.0385, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lsea"]
 size = Vector3(34.5728, 3.93287, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_chcaa"]
-size = Vector3(1, 6.3633, 1)
-
 [sub_resource type="Curve3D" id="Curve3D_yww7q"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.43774, 0.48553, -2.22403, 0, 0, 0, 0, 0, 0, 1.66407, 0.844305, -0.425037, 0, 0, 0, 0, 0, 0, -3.28763, 0.0267195, -2.18033, 0, 0, 0, 0, 0, 0, 0.151047, 1.74279, -3.3076, 0, 0, 0, 0, 0, 0, 3.16814, 1.8525, -1.4469),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydw3d"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("10_k6qb8")
+uv1_scale = Vector3(3.005, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bebq5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ydw3d")
 
 [sub_resource type="Curve3D" id="Curve3D_yiao8"]
 _data = {
@@ -45,7 +51,16 @@ _data = {
 }
 point_count = 4
 
-[node name="Room_Town" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5mu4"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("10_k6qb8")
+uv1_scale = Vector3(3.005, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mgixn"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_u5mu4")
+
+[node name="Room_one" type="Node3D"]
 script = ExtResource("1_tru31")
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
@@ -72,19 +87,7 @@ shape = SubResource("BoxShape3D_3w1yp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54913, 16.0127)
 shape = SubResource("BoxShape3D_2lsea")
 
-[node name="Test_tree" type="Area3D" parent="." groups=["Interact"]]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.175237, 1.43167, -10.3886)
-script = ExtResource("1_r8gkx")
-_label = "TREE"
-_message = PackedStringArray("I am just a Tree.", "All I do is stand here", "I have no collision though, so you\'ll walk right through me.")
-
-[node name="spr_tree" type="Sprite3D" parent="Test_tree"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-shaded = true
-texture = ExtResource("3_u3uav")
-
-[node name="tree_col" type="CollisionShape3D" parent="Test_tree"]
-shape = SubResource("BoxShape3D_chcaa")
+[node name="Test_tree" parent="." instance=ExtResource("2_uqdux")]
 
 [node name="Save_Game_point" parent="." instance=ExtResource("4_g3q3e")]
 
@@ -96,7 +99,6 @@ sky_mode = 1
 [node name="Door_base" parent="." groups=["DOOR_1"] instance=ExtResource("6_jkt5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02894, 0.226821, -16.5299)
 _desination = "res://ROOMS/Room_town.tscn"
-_y_off = -1.0
 
 [node name="L_floor_one2" parent="." groups=["floor"] instance=ExtResource("8_jqc2e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47, -6.29)
@@ -113,6 +115,7 @@ script = ExtResource("10_bw1ij")
 
 [node name="Moveable_platform" parent="Path3D/Path_follower_back_an_forth" instance=ExtResource("11_gv6s6")]
 transform = Transform3D(3, 0, 0, 0, 0.3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("BoxMesh_bebq5")
 skeleton = NodePath("../../..")
 
 [node name="Path3D2" type="Path3D" parent="."]
@@ -125,6 +128,7 @@ rotation_mode = 0
 script = ExtResource("10_bw1ij")
 
 [node name="Moveable_platform" parent="Path3D2/PathFollow3D" instance=ExtResource("11_gv6s6")]
+mesh = SubResource("BoxMesh_mgixn")
 
 [node name="Button_base" parent="." instance=ExtResource("12_nwlkc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0689, 0, -13.8065)

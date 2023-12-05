@@ -1,5 +1,9 @@
 using Godot;
 
+/// <summary>
+/// global camera object
+/// if there is a target the camera will move towards it
+/// </summary>
 public partial class Obj_player_camera : Camera3D
 {
 	public Node3D _target = null;
@@ -17,6 +21,10 @@ public partial class Obj_player_camera : Camera3D
 		//GLOBAL_SCENE _scene = GetParent<GLOBAL_SCENE>();
 	}
 
+	/// <summary>
+	/// if there is a target the camera uses to the Lerp function to returns locations that are 
+	/// gradually close and closer to the target to give a smooth camera
+	/// </summary>
 	public override void _Process(double delta)
 	{
 		if (_target != null)

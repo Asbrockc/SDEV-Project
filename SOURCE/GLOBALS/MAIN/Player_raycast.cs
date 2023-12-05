@@ -1,5 +1,9 @@
 using Godot;
 
+///<summary>
+/// Unused class to define a player raycast 
+/// just bounces off the player and gets a refenece to items that are around them
+///</summary>
 public partial class Player_raycast : RayCast3D
 {
 	Node3D _current_surface = null;

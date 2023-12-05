@@ -12,17 +12,17 @@ albedo_texture = ExtResource("3_tajhk")
 [sub_resource type="TorusMesh" id="TorusMesh_t338u"]
 material = SubResource("StandardMaterial3D_63kna")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pub17"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsm1m"]
 albedo_texture = ExtResource("3_tajhk")
 uv1_scale = Vector3(1, 0.4, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_autgc"]
-material = SubResource("StandardMaterial3D_pub17")
+material = SubResource("StandardMaterial3D_xsm1m")
 flip_faces = true
 cap_top = false
 cap_bottom = false
 
-[node name="Title_Screen" type="Node3D"]
+[node name="Room_one" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 script = ExtResource("1_6lx6u")
 

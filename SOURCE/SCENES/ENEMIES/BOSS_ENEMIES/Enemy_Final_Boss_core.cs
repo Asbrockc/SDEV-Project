@@ -16,6 +16,7 @@ public partial class Enemy_Final_Boss_core : Boss_core_AI
 		 _name = "Shadow";
 		_boss_hp = 100;
 		_boss_max_hp = 1000;
+		
 
 		_base = this.GetNode<Enemy_Final_boss_base>("Obj_enemy_base");
 
@@ -47,6 +48,9 @@ public partial class Enemy_Final_Boss_core : Boss_core_AI
 
 		if (!_defeated)
 		{
+
+			_boss_hp = _base._health;
+			_boss_max_hp = _base._max_health;
 			
 			light_counter += 0.02f;
 

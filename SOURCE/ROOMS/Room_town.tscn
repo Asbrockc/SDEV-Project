@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtc8jm8atntj"]
+[gd_scene load_steps=12 format=3 uid="uid://dtc8jm8atntj"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7y241"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="2_ak1ia"]
 [ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="4_axsoo"]
+[ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="5_a5fge"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="5_fgn71"]
+[ext_resource type="PackedScene" uid="uid://xlcayjt5b1n" path="res://NPC/npc_base_2.tscn" id="6_gxg8h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_paqfc"]
 size = Vector3(32.5026, 1, 30.677)
@@ -20,7 +22,7 @@ size = Vector3(34.5728, 4.0385, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhocp"]
 size = Vector3(34.5728, 3.93287, 1)
 
-[node name="Room_town" type="Node3D"]
+[node name="Room_one" type="Node3D"]
 script = ExtResource("1_7y241")
 _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_town_theme.wav"
 
@@ -51,7 +53,6 @@ shape = SubResource("BoxShape3D_yhocp")
 [node name="Door_base" parent="." groups=["DOOR_1"] instance=ExtResource("2_ak1ia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0296226, 0.528072, 14.2768)
 _desination = "res://SCENES/practice_scene.tscn"
-_y_off = 1.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -5.78168, 10.0617, 17.0708)
@@ -87,9 +88,42 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="Door_base2" parent="." groups=["Door_2"] instance=ExtResource("2_ak1ia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570746, -1.76269)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0188261, -1.76269)
 _desination = "res://ROOMS/Room_one.tscn"
-_y_off = -1.0
 
 [node name="Save_Game_point" parent="." instance=ExtResource("4_axsoo")]
 transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -2.25442, 0.494341, -0.344567)
+
+[node name="Test_tree" parent="." instance=ExtResource("5_a5fge")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.78219, 0.613084, 3.7171)
+_label = "Guy"
+
+[node name="Test_tree2" parent="." instance=ExtResource("5_a5fge")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.22553, 0.613084, 4.43334)
+_core = 4
+_label = "Steve"
+
+[node name="Test_tree3" parent="." instance=ExtResource("5_a5fge")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.882672, 0.613084, 4.16911)
+_core = 2
+_label = "Dude"
+
+[node name="Test_tree4" parent="." instance=ExtResource("5_a5fge")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.99172, 0.613084, 2.84802)
+_core = 3
+_label = "Bro"
+
+[node name="Test_tree5" parent="." instance=ExtResource("6_gxg8h")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.57069, 0.613084, 0)
+
+[node name="Test_tree6" parent="." instance=ExtResource("6_gxg8h")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.17209, 0.613084, 2.18998)
+_core = 2
+
+[node name="Test_tree7" parent="." instance=ExtResource("6_gxg8h")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.35713, 0.613084, 4.89155)
+_core = 3
+
+[node name="Test_tree8" parent="." instance=ExtResource("6_gxg8h")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.613084, 6.11179)
+_core = 4

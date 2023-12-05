@@ -7,7 +7,11 @@ public partial class Path_follower_back_an_forth : PathFollow3D
 	private Vector3 _curr_zone;
 	private Move_player_zone _platform;
 
-	private float _rate = 0.0002f;
+	public bool _active = true;
+
+	private float _rate = 1.0f;
+	[Export] private float _div = 1000.0f;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -20,26 +24,32 @@ public partial class Path_follower_back_an_forth : PathFollow3D
 	{
 		_curr_zone = GlobalPosition;
 
-		switch (_forward)
+		if (Input.IsKeyPressed(Key.J))
 		{
-			case 0:
-				moveforward();
-			break;
-			case 1:
-				moveback();
-			break;
+			_active = !_active;
+		}
+		if (_active)
+		{
+			switch (_forward)
+			{
+				case 0:
+					moveforward();
+				break;
+				case 1:
+					moveback();
+				break;
+			}
 		}
 
 		if (_platform._player != null)
 			_platform._player.GlobalPosition -= (_curr_zone - GlobalPosition);
-
-
 	}
 
 	private void moveforward()
 	{
-			if (this.ProgressRatio + _rate < 1)
-				this.ProgressRatio += _rate;
+		float _new_rate = _rate/_div;
+			if (this.ProgressRatio + _new_rate < 1)
+				this.ProgressRatio += _new_rate;
 			else
 			{
 				this.ProgressRatio = 1;
@@ -49,8 +59,9 @@ public partial class Path_follower_back_an_forth : PathFollow3D
 
 	private void moveback()
 	{
-			if (this.ProgressRatio - _rate > 0)
-				this.ProgressRatio -= _rate;
+		float _new_rate = _rate/_div;
+			if (this.ProgressRatio - _new_rate > 0)
+				this.ProgressRatio -= _new_rate;
 			else
 			{
 				this.ProgressRatio = 0;

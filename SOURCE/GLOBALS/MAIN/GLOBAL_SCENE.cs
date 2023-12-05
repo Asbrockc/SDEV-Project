@@ -1,5 +1,8 @@
 using Godot;
 
+///<summary>
+/// simple class that just defines the global Node for the GLobal scripts
+///</summary>
 public partial class GLOBAL_SCENE : Node3D
 {
 	// Called when the node enters the scene tree for the first time.

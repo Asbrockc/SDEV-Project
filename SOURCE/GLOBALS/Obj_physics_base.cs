@@ -30,6 +30,12 @@ public partial class Obj_physics_base : CharacterBody3D
 	{
 	}
 
+	/// <summary>
+	/// defines hspd and vspd so every physics class can just handle how they move through variables 
+	/// that can be interupted 
+	/// i.e., every class calls thisapply speed so to prevent unwanted movement anywhere in the code before this point
+	/// the _hspd and _vspd can just be zerod out. 
+	/// </summary>
 	protected Vector3 apply_speed(Vector3 velocity)
 	{
 		velocity.X = _hspd;

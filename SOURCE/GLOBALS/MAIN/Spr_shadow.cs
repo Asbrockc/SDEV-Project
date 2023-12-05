@@ -1,5 +1,9 @@
 using Godot;
 
+///<summary>
+/// Old code to eumalte a shadow for the player
+/// Unused, butcould be implemented in the future
+///</summary>
 public partial class Spr_shadow : Sprite3D
 {
 	CharacterBody3D _shadow_caster = null;

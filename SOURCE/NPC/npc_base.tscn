@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvpwoyvfkigww"]
+
+[ext_resource type="Script" path="res://NPC/Npc_base_code.cs" id="1_24rv7"]
+[ext_resource type="Texture2D" uid="uid://df5hd14gfumht" path="res://SPRITES/NPCS/spr_npc_1.png" id="2_26ent"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chcaa"]
+size = Vector3(1, 6.3633, 1)
+
+[sub_resource type="Animation" id="Animation_qoih3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_1fl8r"]
+resource_name = "npc_four"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [10, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_hilig"]
+resource_name = "npc_one"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_jvji6"]
+resource_name = "npc_three"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_6rlpf"]
+resource_name = "npc_two"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7opf"]
+_data = {
+"RESET": SubResource("Animation_qoih3"),
+"npc_four": SubResource("Animation_1fl8r"),
+"npc_one": SubResource("Animation_hilig"),
+"npc_three": SubResource("Animation_jvji6"),
+"npc_two": SubResource("Animation_6rlpf")
+}
+
+[node name="Test_tree" type="Area3D" groups=["Interact"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.613084, 0)
+script = ExtResource("1_24rv7")
+
+[node name="tree_col" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_chcaa")
+
+[node name="spr_npc" type="Sprite3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, 4.94975, 4.94975, 0, -4.94975, 4.94975, 0, -0.266519, 0)
+shaded = true
+texture = ExtResource("2_26ent")
+hframes = 12
+vframes = 8
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="spr_npc"]
+libraries = {
+"": SubResource("AnimationLibrary_x7opf")
+}
+speed_scale = 0.2

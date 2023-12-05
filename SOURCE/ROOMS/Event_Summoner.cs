@@ -8,6 +8,7 @@ public partial class Event_Summoner : Node3D
 
     public override void _Process(double delta)
     {
+	   //GD.Print("Event_Summoner");
        if (!_triggered)
 	   {
 			if (!GLOBAL_FUNCTIONS.GetFlag(_flag))

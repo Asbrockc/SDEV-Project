@@ -31,7 +31,7 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
         base._Ready();
         _state = 6;
         //delay_timer = 300;
-        _warp_max = 120;
+        _warp_max = 150;
         _boss_music = "null"; //"res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss.wav";
     }
 
@@ -63,7 +63,6 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
             _immune_to_sword = false;
             _immune_to_bow = false;
            
-            //if (!_between_turns)
             {
                 switch (_random_move)
                 {
@@ -75,21 +74,6 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                         return move_left_right_to_player_state(delta, velocity);
                     case 3:
 
-                    if (spell_flag)
-                    {
-                        _warp_index = GLOBAL_FUNCTIONS.Choose(1,2,3,4,5,6,7,8);
-                        //GD.Print(this.GetParent<Enemy_Final_Boss_core>()._target.Length);
-                        Final_Boss_Target _targ = this.GetParent<Enemy_Final_Boss_core>()._target[_warp_index];
-                        this.GlobalPosition = _targ.GlobalPosition;
-                        Effect_parent _test = GLOBAL_FUNCTIONS.Create_Effect(_targ, "Effect_Explosion.tscn", true);
-
-                        _Animator.Play("spell");  
-                        spell_flag = false;
-                    }
-
-                    if (_Animator.IsPlaying())
-                    {
-                        /*
                         if (spell_flag)
                         {
                             _warp_index = GLOBAL_FUNCTIONS.Choose(1,2,3,4,5,6,7,8);
@@ -101,26 +85,41 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                             _Animator.Play("spell");  
                             spell_flag = false;
                         }
-                        _fire_count++;*/
-                    }
-                    else
-                    {
-                        //_Animator.Play("down_walk");  
-                        spell_flag = true;
-                        //_Animator.Play("spell");  
-                        //GD.Print("SHOT FROM --" + this.ToString());
-                        GLOBAL_FUNCTIONS.Play_Sound(GLOBAL_STATS._player._player_bow_shot, 0.9f);
-                        for (int i = 0; i < 4; i++)
+
+                        if (!_Animator.IsPlaying())
                         {
-                            Obj_projectile_fireball _arrow = (Obj_projectile_fireball)GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_PROJECTILES/Obj_projectile_fireball.tscn");
-                            _arrow._base_location = this.GlobalPosition;
-                            _arrow._target_location = GLOBAL_STATS._player.GlobalPosition;
-                            _arrow._parent = this;
+                            spell_flag = true;
+                    
+                            GLOBAL_FUNCTIONS.Play_Sound(GLOBAL_STATS._player._player_bow_shot, 0.9f);
+                            for (int i = 0; i < 4; i++)
+                            {
+                                Obj_projectile_fireball _arrow = (Obj_projectile_fireball)GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_PROJECTILES/Obj_projectile_fireball.tscn");
+                                _arrow._base_location = this.GlobalPosition;
+                                _arrow._target_location = GLOBAL_STATS._player.GlobalPosition;
+                                _arrow._parent = this;
+                            }
+
+                            _fire_count = 0;
+                    
+                        }
+                    break;
+                    case 4:
+                        //_warp_max = 
+                        if (_warp_count == 20)
+                        {
+                            bool skip = true;
+                            foreach (Node3D _node in this.GetParent<Enemy_Final_Boss_core>()._target)
+                            {
+                                if (skip)
+                                    skip = false;
+                                else
+                                {
+                                    GLOBAL_FUNCTIONS.Spawn_enemy(_node.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn");
+                                }
+                            }
                         }
 
-                        _fire_count = 0;
-                        //_state = MOVE_STATE;
-                    }
+                        //GD.Print("hidden for a sec");
                     break;
                 }
             }
@@ -130,11 +129,11 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
         {
             _hspd = 0;
             _vspd = 0;
-            if (_between_turns)
+            if (_between_turns || _random_move == 4)
             {
                 _prior_move =_random_move;
                 while (_prior_move == _random_move)
-                    _random_move = GLOBAL_FUNCTIONS.Choose(0,1,2,3);
+                    _random_move = GLOBAL_FUNCTIONS.Choose(0,1,2,3,4);
 
                 this.GlobalPosition = this.GetParent<Enemy_Final_Boss_core>()._target[0].GlobalPosition;
             }

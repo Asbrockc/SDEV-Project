@@ -68,9 +68,24 @@ public partial class Room_transition_obj : NinePatchRect
 	}
 	private void transition()
 	{
-		GD.Print("BEFORE IN FUNCTION");
-		_old_room.change_scene(_room);
-		GD.Print("AFTER IN FUNCTION");
+		//GD.Print("BEFORE IN FUNCTION");
+		ResourceLoader.LoadThreadedRequest(_room);
+		//_old_room.change_scene(_room);
+
+		//GetTree().Chan
+		var level = this.GetTree().Root.GetNode("Room_one");
+		this.GetTree().Root.RemoveChild(level);
+		level.CallDeferred("free");
+
+		GLOBAL_STATS._save_current_room = _room;
+
+		var new_level_resource = (PackedScene)ResourceLoader.LoadThreadedGet(_room);
+		//ResourceLoader.Load<PackedScene>(_room);
+		var next_level = new_level_resource.Instantiate();
+
+		this.GetTree().Root.AddChild(next_level);
+
+		//GD.Print("AFTER IN FUNCTION");
 		_state = 2; //4
 	}
 
@@ -100,9 +115,10 @@ public partial class Room_transition_obj : NinePatchRect
 
 	private void move_room()
 	{
-
+		GD.Print("MoveStart");
 		if (_hold_off_a_second > 30)
 		{
+			GD.Print("AfterHold");
 			GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
 			Node3D _target_Door = null;
 
@@ -110,7 +126,7 @@ public partial class Room_transition_obj : NinePatchRect
 			{
 				foreach (Node node in GLOBAL_STATS._current_room_reference.GetChildren())
 				{
-					
+					GD.Print("foreach");
 					if (node.IsInGroup(_target_zone))
 					{
 						_target_Door = (Node3D)node;

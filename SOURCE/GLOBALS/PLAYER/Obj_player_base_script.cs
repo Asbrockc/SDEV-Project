@@ -1,9 +1,11 @@
 using Godot;
 using System;
 
+///<summary>
+/// PLayers functionality
+///</summary>
 public partial class Obj_player_base_script : Obj_physics_base
 {
-
 	public GLOBAL_SCENE _Global_accessor;
 	public Interactive_Action _node_in_range = null;
 	public Level_up_menu _current_menu = null;
@@ -30,6 +32,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 	private bool _jumped = false;
 	private float _arrow_speed = 0.3f;
 
+	///<summary>
+	/// gives a refernece of the player to the GLobal stats
+	///</summary>
 	public override void _Ready()
 	{
 		GLOBAL_STATS._player = this;
@@ -39,6 +44,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 	}
 
+	///<summary>
+	/// uses the _state variable in a switch to validate the players input
+	///</summary>
 	public override void _PhysicsProcess(double delta)
 	{
 		//GD.Print(GetTree().CurrentScene.Name);
@@ -67,6 +75,8 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 		}
 
+		//core input validation, only one state will play at a time depending on what the 
+		//user presses
 		switch (_state)
 		{
 			case 0:

@@ -144,16 +144,15 @@ _max_health = 25
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
 transform = Transform3D(0.22, 0, 0, 0, 0.155563, 0.155563, 0, -0.155563, 0.155563, 0, 0, -0.1)
-modulate = Color(0.168627, 0.168627, 0.168627, 1)
 shaded = true
 texture = ExtResource("4_osjwc")
 hframes = 4
 vframes = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obj_enemy_base/Spr_enemy"]
-speed_scale = 0.8
 libraries = {
 "": SubResource("AnimationLibrary_144yd")
 }
+speed_scale = 0.8
 
 [node name="Boss_hp_bar" parent="." instance=ExtResource("5_vp50s")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://loycp1pfjcgu"]
+[gd_scene load_steps=17 format=3 uid="uid://loycp1pfjcgu"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_fy3dj"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_w4hx6"]
@@ -6,6 +6,36 @@
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_jc4gn"]
 [ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="5_o3fsn"]
 [ext_resource type="PackedScene" uid="uid://c2pf6mrhmtgpu" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_wizard.tscn" id="6_713q4"]
+[ext_resource type="Script" path="res://SCENES/Path_follower_back_an_forth.cs" id="7_hsl8f"]
+[ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="8_ji31r"]
+[ext_resource type="Texture2D" uid="uid://decm70x82ewav" path="res://FLOORS/spr_block_tile.png" id="9_sk0st"]
+[ext_resource type="PackedScene" uid="uid://db6yo4yb5t8om" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Bat.tscn" id="10_uy04x"]
+
+[sub_resource type="Curve3D" id="Curve3D_h4eyu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.5, 0.4, -2, 0, 0, 0, 0, 0, 0, -3.5, 0.4, -2, 0, 0, 0, 0, 0, 0, -3.38218, 0.835416, -9.15252, 0, 0, 0, 0, 0, 0, 3.32531, 2.72497, -8.50783, 0, 0, 0, 0, 0, 0, 3.76079, 3.80071, 0.436233, 0, 0, 0, 0, 0, 0, -0.600758, 4.93138, -3.14654),
+"tilts": PackedFloat32Array(0, 1.57083, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8aot"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("9_sk0st")
+uv1_scale = Vector3(3.005, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7ipk"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_b8aot")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gk4n"]
+albedo_texture = ExtResource("9_sk0st")
+uv1_scale = Vector3(96, 64, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pk6b8"]
+material = SubResource("StandardMaterial3D_3gk4n")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jffm5"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_fy3dj")
@@ -25,6 +55,7 @@ light_energy = 5.0
 spot_range = 23.8757
 
 [node name="Button_base" parent="." instance=ExtResource("4_bvt00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.252349, 5.00517, -0.994603)
 _flag = 6
 
 [node name="Enemy_spawner" parent="." instance=ExtResource("5_o3fsn")]
@@ -44,4 +75,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48439, 1.48772, 4.89969)
 _active = false
 
 [node name="Enemy_Egg2" parent="." instance=ExtResource("6_713q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25967, 1.07354, -0.826166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00193, 1.07354, 3.36689)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16237, 0.00339508, 4.37024)
+curve = SubResource("Curve3D_h4eyu")
+
+[node name="Path_follower_back_an_forth" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.5, 0.4, -2)
+rotation_mode = 0
+script = ExtResource("7_hsl8f")
+_div = 500.0
+
+[node name="Moveable_platform" parent="Path3D/Path_follower_back_an_forth" instance=ExtResource("8_ji31r")]
+transform = Transform3D(3, 0, 0, 0, 0.3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("BoxMesh_p7ipk")
+skeleton = NodePath("../../..")
+
+[node name="Floor" type="MeshInstance3D" parent="." groups=["Wall"]]
+transform = Transform3D(1, 0, 0, 0, 9.69, 0, 0, 0, 1, -0.210978, 0, -0.997128)
+mesh = SubResource("BoxMesh_pk6b8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_jffm5")
+
+[node name="Enemy_Egg" parent="." instance=ExtResource("10_uy04x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87247, 5.62124, -0.93512)
+
+[node name="Enemy_Egg3" parent="." instance=ExtResource("10_uy04x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70916, 5.62124, -0.93512)
+
+[node name="Enemy_Egg4" parent="." instance=ExtResource("10_uy04x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147652, 5.62124, -5.95524)
+
+[node name="Enemy_Egg5" parent="." instance=ExtResource("10_uy04x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147652, 5.62124, 4.57717)
+
+[editable path="L_floor_one"]

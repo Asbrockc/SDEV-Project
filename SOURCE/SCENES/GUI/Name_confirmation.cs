@@ -29,7 +29,7 @@ public partial class Name_confirmation : Button
 		else
 		{
 			GLOBAL_STATS._player_name = this.GetParent<LineEdit>().Text;
-			GLOBAL_FUNCTIONS.Room_Transition("res://SCENES/practice_scene.tscn", "Save_Point", 0, 1);
+			GLOBAL_FUNCTIONS.Room_Transition("res://ROOMS/Room_town.tscn", "Save_Point", 0, 1);
 			GLOBAL_FUNCTIONS.UI_Visibiity(true);
 		}
     }

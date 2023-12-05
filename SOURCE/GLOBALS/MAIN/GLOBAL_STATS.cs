@@ -54,6 +54,7 @@ public partial class GLOBAL_STATS : Node
 	static public GLOBAL_SCENE _main_scene;
 
 	static public int _current_save_slot = 0;
+	static public string _save_current_room = null;
 	static public String _save_location = "user://save";
 	static public String _save_file_type = ".save";
 	
@@ -127,11 +128,11 @@ public partial class GLOBAL_STATS : Node
 	}
 
 	/// <summary>
-	/// Function that will take the players name, current stats, and 
+	/// Function that will take the players name, current stats, and global flags
+	/// and write them all to a file
 	/// </summary>
 	static public void _Save_Game(int slot)
 	{
-
 		String _current_save_location = _save_location + slot.ToString() + _save_file_type;
 		ConfigFile _save_configure = new ConfigFile();
 
@@ -140,7 +141,12 @@ public partial class GLOBAL_STATS : Node
 
 		_save_group = "Save_Point";
 
-		_player_room = _current_room_reference.GetTree().CurrentScene.SceneFilePath;
+		//GD.Print(_current_room_reference);
+		//GD.Print(_current_room_reference.GetTree().CurrentScene.SceneFilePath);
+		//GD.Print(_current_room_reference.GetTree().CurrentScene);
+		//GD.Print(_current_room_reference.GetTree().CurrentScene.SceneFilePath);
+
+		_player_room = _save_current_room;//_current_room_reference.GetTree().CurrentScene.SceneFilePath;
 
 		_save_configure.SetValue("Player Name", 0.ToString(), _player_name);
 		_save_configure.SetValue("Player Loc", 0.ToString(), _player_room);
@@ -156,16 +162,21 @@ public partial class GLOBAL_STATS : Node
 		_save_configure.Save(_current_save_location);
 	}
 
-
+	///<summary>
+	/// Just a quick function to take a slot number and make sure the file exists
+	///</summary>
 	static public bool _File_Exists(int slot)
 	{
 		String _current_save_location = _save_location + slot.ToString() + _save_file_type;
 		return FileAccess.FileExists(_current_save_location);
 	}
 
-	/// <summary>
-	/// Class <c>Point</c> models a point in a two-dimensional plane.
-	/// </summary>
+	///<summary>
+	/// _load the current game
+	/// takes the slot number (1-3) and opens th file with ConfigFile
+	/// differnt keys are then referenced to retrive the infromation and overwrite
+	/// the defualt values.
+	///</summary>
 	static public void _Load_Game(int slot)
 	{
 		ConfigFile _load_configure = _Load_Game_info(slot);
@@ -183,8 +194,8 @@ public partial class GLOBAL_STATS : Node
 		GLOBAL_FUNCTIONS._audio_emitter._music_volume = _player_stats[I_MUSIC_VOLUME];
 		GLOBAL_FUNCTIONS._audio_emitter._game_volume = _player_stats[I_SOUND_VOLUME];
 
-	;
-		
+		//very important step, counts the FOUND flags, Not the current flags.
+		//this will ensure I can update the game without currupting the current saves.
 		for (int i = 0; i < _load_configure.GetSectionKeys("Player flags").LongLength; i++)
 		{	
 			GD.Print(i);
@@ -194,6 +205,9 @@ public partial class GLOBAL_STATS : Node
 		GLOBAL_FUNCTIONS.Room_Transition(_player_room, _save_group, 0, 1);
 	}
 
+	///<summary>
+	/// takes a slot and creates a config file that opens the file and grabs the information
+	///</summary>
 	static public ConfigFile _Load_Game_info(int slot)
 	{
 		String _current_save_location = _save_location + slot.ToString() + _save_file_type;

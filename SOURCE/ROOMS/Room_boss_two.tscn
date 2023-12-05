@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceh8a5pl83wu4"]
+[gd_scene load_steps=19 format=3 uid="uid://ceh8a5pl83wu4"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_qq21q"]
 [ext_resource type="Texture2D" uid="uid://decm70x82ewav" path="res://FLOORS/spr_block_tile.png" id="2_ex362"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://ROOMS/Boss_Summoner.cs" id="5_dblva"]
 [ext_resource type="PackedScene" uid="uid://3sh4uckh0clo" path="res://3d_prefabs/finalBossRoom/finalfloor.glb" id="6_0vx7s"]
 [ext_resource type="Script" path="res://ROOMS/Shifting_light.cs" id="7_kmwa0"]
+[ext_resource type="Texture2D" uid="uid://b1l0gaec5p1ry" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_firewall.png" id="8_2l021"]
+[ext_resource type="Script" path="res://SCENES/Title_screen_background.cs" id="9_l7viv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3pg4l"]
 size = Vector3(1, 26.2403, 30.8166)
@@ -30,8 +32,19 @@ material = SubResource("StandardMaterial3D_3gk4n")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jffm5"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pub17"]
+albedo_texture = ExtResource("8_2l021")
+uv1_scale = Vector3(1, 0.4, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d6cjs"]
+material = SubResource("StandardMaterial3D_pub17")
+flip_faces = true
+cap_top = false
+cap_bottom = false
+
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_qq21q")
+_test_sting = "BOSS ROOM"
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0389053, 0.0380939)
@@ -117,3 +130,8 @@ light_color = Color(1, 0.654902, 0.6, 1)
 light_energy = 4.0
 omni_range = 15.8238
 script = ExtResource("7_kmwa0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(31.519, 0, 0, 0, 9.055, 0, 0, 0, 31.519, 0, -0.00982666, 0)
+mesh = SubResource("CylinderMesh_d6cjs")
+script = ExtResource("9_l7viv")

@@ -156,8 +156,8 @@ script = ExtResource("1_opd54")
 [node name="Obj_enemy_base" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("2_8g7r0")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("3_7c2ql")
-_health = 10
-_max_health = 10
+_health = 1000
+_max_health = 1000
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
 transform = Transform3D(0.22, 0, 0, 0, 0.155563, 0.155563, 0, -0.155563, 0.155563, 0, 0, -0.1)
@@ -168,10 +168,10 @@ hframes = 4
 vframes = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obj_enemy_base/Spr_enemy"]
-speed_scale = 0.8
 libraries = {
 "": SubResource("AnimationLibrary_144yd")
 }
+speed_scale = 0.8
 
 [node name="right_light" type="OmniLight3D" parent="Obj_enemy_base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0692422, 0.186272, -0.159499)
