@@ -53,19 +53,18 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" parent="." instance=ExtResource("2_5s08l")]
 
-[node name="global_wall2" parent="L_floor_one" index="6"]
-transform = Transform3D(-2.5, 2.18557e-07, 0, -2.18557e-07, -2.5, 0, 0, 0, 2.5, 0, -9, 0)
-
 [node name="global_wall3" parent="L_floor_one" index="7"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.775, 3.015, 0.14)
 
 [node name="Door_1_3" parent="." groups=["door_3"] instance=ExtResource("4_036ms")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.34388, 0.778138, 7.8905)
 _desination = "res://ROOMS/Room_one.tscn"
+_x_off = -2
 
 [node name="Door_1_4" parent="." groups=["door_3_B"] instance=ExtResource("4_036ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11575, 0.701999, 4.11519)
 _desination = "res://ROOMS/Room_three_b.tscn"
+_y_off = -2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.472566, 0.881295, 0, -0.881295, 0.472566, 0, 16.09, 2.57558)
@@ -172,3 +171,7 @@ transform = Transform3D(0.865, 0, 0, 0, 0.865, 0, 0, 0, 0.865, -2.14805, 0.6086,
 _flag = 12
 
 [editable path="L_floor_one"]
+[editable path="L_floor_one/global_wall"]
+[editable path="L_floor_one/global_wall2"]
+[editable path="L_floor_one/global_wall3"]
+[editable path="L_floor_one/global_wall4"]

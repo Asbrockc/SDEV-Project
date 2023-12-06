@@ -13,8 +13,9 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
 
 [node name="Door_1_1" parent="." groups=["final_door_3"] instance=ExtResource("3_ivfib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5687, 0.502943, -0.261695)
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.17932, 0.847334, -0.261695)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
+_x_off = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)

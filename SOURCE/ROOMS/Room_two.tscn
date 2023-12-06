@@ -44,6 +44,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06375, 1.30148, 0)
 [node name="Wall_C_5" parent="L_floor_one" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.9558, 8.38022)
 
+[node name="global_wall3" parent="L_floor_one" index="7"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 12.1438, -12.165)
+
 [node name="Door_1_2" parent="." groups=["door_2_left"] instance=ExtResource("4_xlffr")]
 transform = Transform3D(0.00898416, 0.000110866, -1.29997, -0.016041, 1.2999, 1.12529e-10, 1.29987, 0.0160406, 0.00898484, 8.86765, 0.872878, -4.2581)
 _desination = "res://ROOMS/Room_one.tscn"
@@ -85,4 +88,8 @@ mesh = SubResource("BoxMesh_mo804")
 skeleton = NodePath("../../..")
 
 [editable path="L_floor_one"]
+[editable path="L_floor_one/global_wall"]
+[editable path="L_floor_one/global_wall2"]
+[editable path="L_floor_one/global_wall3"]
+[editable path="L_floor_one/global_wall4"]
 [editable path="jump_puzzle_one_fix"]

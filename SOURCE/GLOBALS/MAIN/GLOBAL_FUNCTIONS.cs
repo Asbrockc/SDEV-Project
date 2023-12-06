@@ -159,7 +159,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 	/// spawns an item
 	/// defines the scale of the item and gives some velocity so it bounces around.
 	///</summary>
-	static public void Spawn_item(Vector3 _position, float _scale, float _range)
+	static public void Spawn_item(Vector3 _position, float _scale, float _range, string[] _items)
 	{
 		Obj_item _curr_item = (Obj_item)ResourceLoader.Load<PackedScene>("res://SCENES/obj_item_parent.tscn").Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
@@ -170,7 +170,7 @@ public partial class GLOBAL_FUNCTIONS : Node
 		_curr_item._charge_up = Choose(_range,_range*1.5f, _range*2.0f);
 		_curr_item._hspd = Choose(-_range, -_range/2.0f, -_range/4.0f, 0.0f ,_range/4.0f,_range/2.0f, _range);
 		_curr_item._vspd = Choose(-_range, -_range/2.0f, -_range/4.0f, 0.0f ,_range/4.0f,_range/2.0f, _range);
-		_curr_item._my_base = Choose<string>("exp","exp","exp","exp","exp","exp","exp","exp","exp","exp","hp");
+		_curr_item._my_base = Choose<string>(_items);
 	}
 
 	///<summary>
@@ -226,12 +226,12 @@ public partial class GLOBAL_FUNCTIONS : Node
 	/// will also return a reference to the enemy in case any extra changes need to be
 	/// made after the spawn.
 	///</summary>
-	static public Node3D Spawn_enemy(Vector3 _position, string _enemy_path)
+	static public Node Spawn_enemy(Vector3 _position, string _enemy_path)
 	{
-		Node3D _curr_item = (Node3D)ResourceLoader.Load<PackedScene>(_enemy_path).Instantiate();
+		Node _curr_item = ResourceLoader.Load<PackedScene>(_enemy_path).Instantiate();
 		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
 
-		_curr_item.GlobalPosition = _position;
+		((Node3D)_curr_item).GlobalPosition = _position;
 		return _curr_item;
 	}
 

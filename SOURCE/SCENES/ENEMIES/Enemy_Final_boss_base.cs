@@ -21,13 +21,16 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
     private int _random_move = 0;
     private int _prior_move = 0;
 
+    private AudioStreamWav _chirp_sound = null;
+
     public override void _Ready()
     {
+        _chirp_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_bat_chirp.wav");
         _slam_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_heavy_slam.wav");
 		//_flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
 		//_attack_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_dragon_jump.wav");
 		_destroy_sound = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_boom_sound.mp3");
-        Speed = 7.0f;
+        Speed = 4.5f;//7.0f;
         base._Ready();
         _state = 6;
         //delay_timer = 300;
@@ -70,8 +73,18 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                         _jump_count = 0;
                         return base.move_to_player_state(delta, velocity);
                     case 1:
+                        if (_warp_count == 20 && GLOBAL_FUNCTIONS.Choose(1,2,3,4) == 1)
+                        {
+                            {
+                                Final_Boss_Target _node = this.GetParent<Enemy_Final_Boss_core>()._target[GLOBAL_FUNCTIONS.Choose(1,2,3,4,5,6,7,8)];
+
+                                Node _temp = GLOBAL_FUNCTIONS.Spawn_enemy(_node.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn");
+                                _temp.GetChild<Obj_enemy_base>(0)._drops = new string[]{"hp"};
+                            }
+                        }
                         _jump_count = 0;
-                        return move_left_right_to_player_state(delta, velocity);
+                        return base.move_to_player_state(delta, velocity);
+                        //return move_left_right_to_player_state(delta, velocity);
                     case 3:
 
                         if (spell_flag)
@@ -107,15 +120,11 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                         //_warp_max = 
                         if (_warp_count == 20)
                         {
-                            bool skip = true;
-                            foreach (Node3D _node in this.GetParent<Enemy_Final_Boss_core>()._target)
                             {
-                                if (skip)
-                                    skip = false;
-                                else
-                                {
-                                    GLOBAL_FUNCTIONS.Spawn_enemy(_node.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn");
-                                }
+                                Final_Boss_Target _node = this.GetParent<Enemy_Final_Boss_core>()._target[GLOBAL_FUNCTIONS.Choose(1,2,3,4,5,6,7,8)];
+
+                                Node _temp = GLOBAL_FUNCTIONS.Spawn_enemy(_node.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn");
+                                _temp.GetChild<Obj_enemy_base>(0)._drops = new string[]{"hp"};
                             }
                         }
 
@@ -133,7 +142,7 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
             {
                 _prior_move =_random_move;
                 while (_prior_move == _random_move)
-                    _random_move = GLOBAL_FUNCTIONS.Choose(0,1,2,3,4);
+                    _random_move = GLOBAL_FUNCTIONS.Choose(0,1,2,3);
 
                 this.GlobalPosition = this.GetParent<Enemy_Final_Boss_core>()._target[0].GlobalPosition;
             }
@@ -154,14 +163,51 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
             
             }
 
-            Speed = GLOBAL_FUNCTIONS.Choose(6.5f, 4.5f);
+            //Speed = GLOBAL_FUNCTIONS.Choose(6.5f, 4.5f);
             _warp_count = 0;
         }
 
         return velocity;
     }
 
-  
+    public override void hit_me(Node3D _hit_by, float _hit_force = 0, float _jump_force = 0, int _damage = 0)
+    {
+        base.hit_me(_hit_by, 0, 0, _damage);
+        this._state = HIT_STATE;
+    }
+
+
+
+    public override Vector3 hit_state(double delta, Vector3 velocity)
+	{
+		if (!_death_flag)
+		{
+            _hspd = 0;
+            _vspd = 0;
+            GLOBAL_FUNCTIONS.Play_Sound(_chirp_sound);
+            GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_Explosion.tscn", true);
+
+            Final_Boss_Target _targ = this.GetParent<Enemy_Final_Boss_core>()._target[_warp_index];
+            Effect_parent _test = GLOBAL_FUNCTIONS.Create_Effect(_targ, "Effect_Explosion.tscn", true);
+            this.GlobalPosition = _targ.GlobalPosition;
+            _state = MOVE_STATE;
+            
+
+            /*
+			if (hit_timer <  delay_timer)
+			{
+				hit_timer++;
+			}
+			else
+			{
+				hit_timer = 0;
+				_state = IDLE_STATE;
+			}*/
+		}
+
+		return velocity;
+	}
+
     public override Vector3 jump_state(double delta, Vector3 velocity)
 	{
 		counter++;

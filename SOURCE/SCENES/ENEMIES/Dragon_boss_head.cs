@@ -20,6 +20,7 @@ public partial class Dragon_boss_head : Obj_enemy_base
 
 	public override void _Ready()
 	{
+		_drops = new string[]{"hp"};
 		_next_attack = GLOBAL_FUNCTIONS.Choose(50,150,300,33,400,500);
 		_core = GetParent<Dragon_boss_core_AI>();
 		_body = _core.GetChild<Dragon_boss_base>(0);
@@ -92,7 +93,7 @@ public partial class Dragon_boss_head : Obj_enemy_base
     public override void death_function()
 	{
 		for (int i = 0; i < drop_amount; i++)
-			GLOBAL_FUNCTIONS.Spawn_item(this.GlobalPosition, 0.2f, 1);
+			GLOBAL_FUNCTIONS.Spawn_item(this.GlobalPosition, 0.2f, 1, _drops);
 		
 		_core._head[_head_id] = null;
 	}

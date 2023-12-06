@@ -13,7 +13,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 	public AudioStreamWav _damage_sound = null;
 	public AudioStreamWav _slam_sound = null;
 
-	public float _distance_from_player = 0.1f;
+	public float _distance_from_player = 0.001f;
 	public float _shockwave_trigger_frame = 0.3f;
 
 	[Export] public bool _immune_to_sword = false;
@@ -25,6 +25,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 	[Export] public int _hit_damage = 1;
 	[Export] public bool _apply_grav = true;
 
+	public string[] _drops = {"exp","exp","exp","exp","exp","exp","exp","exp","hp"};
 	public string _base = "down_";
 
 	public bool _death_flag = false;
@@ -230,8 +231,9 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 	public virtual void death_function()
 	{
+		//string[] drops = {"exp","exp","exp","exp","exp","exp","exp","exp","hp"};
 		for (int i = 0; i < drop_amount; i++)
-			GLOBAL_FUNCTIONS.Spawn_item(this.GlobalPosition, 0.2f, 1);
+			GLOBAL_FUNCTIONS.Spawn_item(this.GlobalPosition, 0.2f, 1, _drops);
 	}
 
 		///<summary>Knights main attack</summary>

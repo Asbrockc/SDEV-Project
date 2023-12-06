@@ -35,7 +35,7 @@ public partial class Final_boss_first_phase : Boss_enemy_base
             _death_flag = true;
             QueueFree();
 
-			GLOBAL_FUNCTIONS.Change_Music("res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss.wav", 100);
+			GLOBAL_FUNCTIONS.Change_Music("res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss_part_1.wav", 100);
 
 			GLOBAL_STATS._current_room_reference.GetNode("L_floor_one").QueueFree();
 		}

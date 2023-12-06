@@ -12,9 +12,19 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" parent="." instance=ExtResource("2_ktfhc")]
 
+[node name="global_wall" parent="L_floor_one" index="5"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 11.468, 0, 0)
+
+[node name="global_wall3" parent="L_floor_one" index="7"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -17.773)
+
+[node name="global_wall4" parent="L_floor_one" index="8"]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, -11.0994, 0, 0)
+
 [node name="Door_1_4" parent="." groups=["door_3_B"] instance=ExtResource("3_2emmt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29614, 0.586633, 8.51893)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0464523, 0.411546, 10.08)
 _desination = "res://ROOMS/Room_three.tscn"
+_y_off = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.09, 0)
@@ -22,8 +32,14 @@ light_energy = 8.0
 spot_range = 23.8757
 
 [node name="Button_base2" parent="." instance=ExtResource("4_2wt7d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.392624, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.392624, 0, -5.98822)
 _flag = 3
 
 [node name="Enemy_Egg2" parent="." instance=ExtResource("5_lpjkm")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.42489, 1.54333, -2.33149)
+
+[editable path="L_floor_one"]
+[editable path="L_floor_one/global_wall"]
+[editable path="L_floor_one/global_wall2"]
+[editable path="L_floor_one/global_wall3"]
+[editable path="L_floor_one/global_wall4"]

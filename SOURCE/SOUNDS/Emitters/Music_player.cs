@@ -17,8 +17,11 @@ public partial class Music_player : AudioStreamPlayer3D
 			_parent._next_song = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_boss_one_part_2.wav";
 			this.Stream = ResourceLoader.Load<AudioStreamWav>(_parent._next_song);
 		}
-		
-		
+		if (_parent._next_song == "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss_part_1.wav")
+		{
+			_parent._next_song = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss_part_2.wav";
+			this.Stream = ResourceLoader.Load<AudioStreamWav>(_parent._next_song);
+		}
 		
 		this.Play();
 	}

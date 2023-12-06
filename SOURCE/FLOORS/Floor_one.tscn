@@ -10,7 +10,7 @@ size = Vector3(1, 3.97854, 30.8166)
 size = Vector3(1, 15.8223, 30.92)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3w1yp"]
-size = Vector3(34.5728, 4.0385, 1)
+size = Vector3(3196.45, 17.7479, 1.17749)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lsea"]
 size = Vector3(34.5728, 12.6855, 1)
@@ -66,36 +66,44 @@ mesh = SubResource("BoxMesh_pk6b8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" groups=["Wall"]]
 shape = SubResource("ConcavePolygonShape3D_jffm5")
 
-[node name="global_wall" parent="." instance=ExtResource("2_tnqxv")]
+[node name="global_wall" parent="." groups=["Wall"] instance=ExtResource("2_tnqxv")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 18, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="global_wall/Cube" index="0"]
+[node name="Cube" parent="global_wall" index="0" groups=["Wall"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall/Cube/StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="global_wall/Cube" index="0" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall/Cube/StaticBody3D" groups=["Wall"]]
 shape = SubResource("ConcavePolygonShape3D_gw57q")
 
-[node name="global_wall2" parent="." instance=ExtResource("2_tnqxv")]
+[node name="global_wall2" parent="." groups=["Wall"] instance=ExtResource("2_tnqxv")]
 transform = Transform3D(-2.5, 2.18557e-07, 0, -2.18557e-07, -2.5, 0, 0, 0, 2.5, 0, -9, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="global_wall2/Cube" index="0"]
+[node name="Cube" parent="global_wall2" index="0" groups=["Wall"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall2/Cube/StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="global_wall2/Cube" index="0" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall2/Cube/StaticBody3D" groups=["Wall"]]
 shape = SubResource("ConcavePolygonShape3D_e7u8q")
 
-[node name="global_wall3" parent="." instance=ExtResource("2_tnqxv")]
+[node name="global_wall3" parent="." groups=["Wall"] instance=ExtResource("2_tnqxv")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -20)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="global_wall3/Cube" index="0"]
+[node name="Cube" parent="global_wall3" index="0" groups=["Wall"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall3/Cube/StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="global_wall3/Cube" index="0" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall3/Cube/StaticBody3D" groups=["Wall"]]
 shape = SubResource("ConcavePolygonShape3D_mh621")
 
-[node name="global_wall4" parent="." instance=ExtResource("2_tnqxv")]
+[node name="global_wall4" parent="." groups=["Wall"] instance=ExtResource("2_tnqxv")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -18, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="global_wall4/Cube" index="0"]
+[node name="Cube" parent="global_wall4" index="0" groups=["Wall"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall4/Cube/StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="global_wall4/Cube" index="0" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall4/Cube/StaticBody3D" groups=["Wall"]]
 shape = SubResource("ConcavePolygonShape3D_05qfs")
 
 [editable path="global_wall"]
