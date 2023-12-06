@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://loycp1pfjcgu"]
+[gd_scene load_steps=18 format=3 uid="uid://loycp1pfjcgu"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_fy3dj"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_w4hx6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_jc4gn"]
 [ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="5_o3fsn"]
 [ext_resource type="PackedScene" uid="uid://c2pf6mrhmtgpu" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_wizard.tscn" id="6_713q4"]
+[ext_resource type="Script" path="res://ROOMS/Final_rooms/Puzzle_room_rotating_path.cs" id="7_g267y"]
 [ext_resource type="Script" path="res://SCENES/Path_follower_back_an_forth.cs" id="7_hsl8f"]
 [ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="8_ji31r"]
 [ext_resource type="Texture2D" uid="uid://decm70x82ewav" path="res://FLOORS/spr_block_tile.png" id="9_sk0st"]
@@ -13,10 +14,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_h4eyu"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.5, 0.4, -2, 0, 0, 0, 0, 0, 0, -3.5, 0.4, -2, 0, 0, 0, 0, 0, 0, -3.38218, 0.835416, -9.15252, 0, 0, 0, 0, 0, 0, 3.32531, 2.72497, -8.50783, 0, 0, 0, 0, 0, 0, 3.76079, 3.80071, 0.436233, 0, 0, 0, 0, 0, 0, -0.600758, 4.93138, -3.14654),
-"tilts": PackedFloat32Array(0, 1.57083, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3, 0, -3, 0, 0, 0, 0, 0, 0, 3, 0, -3, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 0, -3, 0, 3, 0, 0, 0, 0, 0, 0, -3, 5, -3, 0, 0, 0, 0, 0, 0, 3, 5, -3, 0, 0, 0, 0, 0, 0, 3, 5, 3, 0, 0, 0, 0, 0, 0, -3, 5, 3, 0, 0, 0, 0, 0, 0, -3, 10, -3, 0, 0, 0, 0, 0, 0, 3, 10, -3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 6
+point_count = 10
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8aot"]
 resource_local_to_scene = true
@@ -44,8 +45,20 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 [node name="L_floor_one" parent="." instance=ExtResource("2_w4hx6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
 
+[node name="global_wall" parent="L_floor_one" index="5"]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 18, 9.1196, 0)
+
+[node name="global_wall2" parent="L_floor_one" index="6"]
+transform = Transform3D(2.5, 0, 0, 0, -1.09278e-07, -2.5, 0, 2.5, -1.09278e-07, 0, -9, 0)
+
+[node name="global_wall3" parent="L_floor_one" index="7"]
+transform = Transform3D(2.98122e-08, 0, -2.5, 0, 2.5, 0, 2.5, 0, 2.98122e-08, 0, 9.1196, -20)
+
+[node name="global_wall4" parent="L_floor_one" index="8"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -18, 9.1196, 0)
+
 [node name="Door_1_1" parent="." groups=["final_door_2"] instance=ExtResource("4_jc4gn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3296, 0.502943, -0.261695)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -8.21688, 1.67112, -0.261695)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
 _x_off = -1
 
@@ -55,7 +68,7 @@ light_energy = 5.0
 spot_range = 23.8757
 
 [node name="Button_base" parent="." instance=ExtResource("4_bvt00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.252349, 5.00517, -0.994603)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 _flag = 6
 
 [node name="Enemy_spawner" parent="." instance=ExtResource("5_o3fsn")]
@@ -78,8 +91,9 @@ _active = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00193, 1.07354, 3.36689)
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16237, 0.00339508, 4.37024)
+transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0.92, 0)
 curve = SubResource("Curve3D_h4eyu")
+script = ExtResource("7_g267y")
 
 [node name="Path_follower_back_an_forth" type="PathFollow3D" parent="Path3D"]
 transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.5, 0.4, -2)
@@ -93,7 +107,7 @@ mesh = SubResource("BoxMesh_p7ipk")
 skeleton = NodePath("../../..")
 
 [node name="Floor" type="MeshInstance3D" parent="." groups=["Wall"]]
-transform = Transform3D(1, 0, 0, 0, 9.69, 0, 0, 0, 1, -0.210978, 0, -0.997128)
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_pk6b8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor" groups=["Wall"]]
@@ -114,3 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147652, 5.62124, -5.95524)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147652, 5.62124, 4.57717)
 
 [editable path="L_floor_one"]
+[editable path="L_floor_one/global_wall"]
+[editable path="L_floor_one/global_wall2"]
+[editable path="L_floor_one/global_wall3"]
+[editable path="L_floor_one/global_wall4"]

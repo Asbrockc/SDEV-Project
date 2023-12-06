@@ -17,34 +17,39 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -6.85979)
 
 [node name="Right_door" parent="." instance=ExtResource("2_gs7w2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.92327, 0.478994, 0)
+transform = Transform3D(-5.50763e-08, 0, -1.26, 0, 1.26, 0, 1.26, 0, -5.50763e-08, 6.55649, 0.759502, 0.162601)
 _flag = 2
 
 [node name="Boss_1_door" parent="." instance=ExtResource("2_gs7w2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.981937, -4.43765)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.80462, -4.596)
 _flag = 3
 
 [node name="Door_1_1" parent="." groups=["Door_2"] instance=ExtResource("1_6deq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502943, 3.10754)
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0.502943, 3.10754)
 _desination = "res://ROOMS/Room_town.tscn"
+_y_off = 2
 
 [node name="Door_1_2" parent="." groups=["door_3"] instance=ExtResource("1_6deq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50685, 0.502828, 0.10208)
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 6.82047, 0.827883, 0.10208)
 _desination = "res://ROOMS/Room_three.tscn"
+_x_off = 2
 
 [node name="Door_1_3" parent="." groups=["door_2_left"] instance=ExtResource("1_6deq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41225, 0.586633, 0.301351)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -6.93358, 0.940689, 0.301351)
 _desination = "res://ROOMS/Room_two.tscn"
+_x_off = -2
+metadata/_edit_group_ = true
 
 [node name="Door_1_4" parent="." groups=["door_boss_one"] instance=ExtResource("1_6deq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502828, -4.92916)
+transform = Transform3D(1.82, 0, 0, 0, 1.82, 0, 0, 0, 1.82, 0, 0.962072, -4.86707)
 _desination = "res://ROOMS/Room_boss_one.tscn"
 _y_off = -2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
 light_energy = 5.0
-spot_range = 23.8757
+spot_range = 369.946
+spot_angle = 89.99
 
 [node name="Enemy_Egg" parent="." instance=ExtResource("5_8fsoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3455, 0.733075, -3.62952)
@@ -53,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3455, 0.733075, -3.62952)
 drop_amount = 40
 
 [node name="forest_fix" parent="." instance=ExtResource("6_vqbib")]
-transform = Transform3D(-9.61651e-09, 0, 0.22, 0, 0.22, 0, -0.22, 0, -9.61651e-09, 0, 2.16497, -3.15926)
+transform = Transform3D(-9.61651e-09, 0, 0.22, 0, 0.37, 0, -0.22, 0, -9.61651e-09, 0, 3.67337, -3.15926)
 
 [node name="Tree_base" parent="." instance=ExtResource("7_g6rux")]
 transform = Transform3D(3.815, 0, 0, 0, 3.815, 0, 0, 0, 3.815, -4.04267, 1.49032, -3.32269)

@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dvp4gqpqbtpk7" path="res://GLOBALS/UI_Player_stats.tscn" id="12_58p2h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv78r"]
-size = Vector3(0.507363, 1.2178, 0.504795)
+size = Vector3(0.220525, 0.781989, 0.264035)
 
 [sub_resource type="Animation" id="Animation_0hjqt"]
 length = 0.001
@@ -503,6 +503,7 @@ floor_max_angle = 0.698132
 script = ExtResource("2_jd1tb")
 
 [node name="Obj_player_collision" type="CollisionShape3D" parent="Obj_pLayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00217403, -0.217906, -0.00224322)
 shape = SubResource("BoxShape3D_bv78r")
 
 [node name="Obj_player_sprite" type="Sprite3D" parent="Obj_pLayer"]

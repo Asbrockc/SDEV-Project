@@ -22,4 +22,4 @@ light_energy = 5.0
 spot_range = 23.8757
 
 [node name="Button_base" parent="." instance=ExtResource("4_x2eua")]
-_flag = 8
+_flag = 10

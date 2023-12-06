@@ -59,15 +59,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29.8049, -0.038887)
 [node name="Wall_C_5" parent="L_floor_one" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.7425, 6.84718)
 
+[node name="global_wall" parent="L_floor_one" index="5"]
+transform = Transform3D(2.98122e-08, 0, -2.5, 0, 2.5, 0, 2.5, 0, 2.98122e-08, 21.3668, 29.0271, -2.82432)
+
+[node name="global_wall3" parent="L_floor_one" index="7"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 2.52637, 29.0271, -16.2616)
+
+[node name="global_wall4" parent="L_floor_one" index="8"]
+transform = Transform3D(2.98122e-08, 0, 2.5, 0, 2.5, 0, -2.5, 0, 2.98122e-08, -12.2123, 29.0271, -2.82432)
+
 [node name="Door_1_1" parent="." groups=["final_door_1"] instance=ExtResource("4_s7g8r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5687, 0.502943, -0.261695)
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 9.2291, -1.9851, -1.0288)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
-_x_off = 1
+_x_off = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
 light_energy = 5.0
 spot_range = 23.8757
+spot_angle = 89.99
 
 [node name="Button_base" parent="." instance=ExtResource("4_fokbu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.64402, 3.09407, -4.13224)
@@ -141,4 +151,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35092, 0, 0.529912)
 script = ExtResource("11_vqf6v")
 
 [editable path="L_floor_one"]
+[editable path="L_floor_one/global_wall"]
+[editable path="L_floor_one/global_wall2"]
+[editable path="L_floor_one/global_wall3"]
+[editable path="L_floor_one/global_wall4"]
 [editable path="baseforjumpingpuzzletwo"]

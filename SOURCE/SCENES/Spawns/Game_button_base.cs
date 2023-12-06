@@ -8,12 +8,12 @@ public partial class Game_button_base : Button_base
 
 	public bool game_on = false;
 
-	public Button_game_control _control;
+	//public Button_game_control _control;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
-		_control = GetParent<Button_game_control>();
+		//_control = GetParent<Button_game_control>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,9 +36,9 @@ public partial class Game_button_base : Button_base
 
     public override void _on_press()
     {
-		_control.pressed_x = my_x;
-		_control.pressed_y = my_y;
-		_control.pressed_active = true;
+		GetParent<Button_game_control>().pressed_x = my_x;
+		GetParent<Button_game_control>().pressed_y = my_y;
+		GetParent<Button_game_control>().pressed_active = true;
         //base._on_press();
     }
 }
