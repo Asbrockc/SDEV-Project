@@ -188,7 +188,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45591, -0.556681, 5.60668)
 curve = SubResource("Curve3D_4pwwo")
 
 [node name="Path_follower_back_an_forth" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.5, 0.4, -2)
+transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, -10.375, 0.4, -2)
+progress = 13.875
 rotation_mode = 0
 script = ExtResource("7_hmdyb")
 
@@ -232,7 +233,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.20627, -0.556681, 0.300438)
 curve = SubResource("Curve3D_4pwwo")
 
 [node name="Path_follower_back_an_forth" type="PathFollow3D" parent="Path3D3"]
-transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.5, 0.4, -2)
+transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, -3.10172, 0.4, -2)
+progress = 6.60172
 rotation_mode = 0
 script = ExtResource("7_hmdyb")
 _div = 500.0

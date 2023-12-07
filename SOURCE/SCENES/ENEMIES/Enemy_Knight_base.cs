@@ -8,9 +8,9 @@ public partial class Enemy_Knight_base : Enemy_Egg_AI
 		BLUE
 	}
 
-	[Export] private COLOR curr_color = COLOR.RED;
+	[Export] public COLOR curr_color = COLOR.RED;
 	
-	private bool _knight_set_up = false;
+	public bool _knight_set_up = false;
 
 
     public override void _Ready()

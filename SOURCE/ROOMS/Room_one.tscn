@@ -52,7 +52,7 @@ spot_range = 369.946
 spot_angle = 89.99
 
 [node name="Enemy_Egg" parent="." instance=ExtResource("5_8fsoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3455, 0.733075, -3.62952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48004, 0.733075, -2.69456)
 
 [node name="Obj_enemy_base" parent="Enemy_Egg" index="0"]
 drop_amount = 40
@@ -61,10 +61,17 @@ drop_amount = 40
 transform = Transform3D(-9.61651e-09, 0, 0.22, 0, 0.37, 0, -0.22, 0, -9.61651e-09, 0, 3.67337, -3.15926)
 
 [node name="Tree_base" parent="." instance=ExtResource("7_g6rux")]
-transform = Transform3D(3.815, 0, 0, 0, 3.815, 0, 0, 0, 3.815, -4.04267, 1.49032, -3.32269)
+transform = Transform3D(4.82, 0, 0, 0, 4.82, 0, 0, 0, 4.82, -4.38835, 1.97076, -3.78941)
+
+[node name="Tree_base2" parent="." instance=ExtResource("7_g6rux")]
+transform = Transform3D(4.82, 0, 0, 0, 4.82, 0, 0, 0, 4.82, 4.57589, 1.97076, -4.35053)
+
+[node name="Sprite3D" parent="Tree_base2" index="1"]
+frame = 1
 
 [node name="Enemy_spawner" parent="." instance=ExtResource("8_wowd4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87348, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19921, 0.87348, 2.34363)
 _spawn_ref = 1
 
 [editable path="Enemy_Egg"]
+[editable path="Tree_base2"]

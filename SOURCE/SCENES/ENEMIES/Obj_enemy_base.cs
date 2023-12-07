@@ -14,7 +14,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 	public AudioStreamWav _damage_sound = null;
 	public AudioStreamWav _slam_sound = null;
 
-	public float _distance_from_player = 0.001f;
+	public float _distance_from_player = 0.2f;
 	public float _shockwave_trigger_frame = 0.3f;
 
 	[Export] public bool _immune_to_sword = false;
@@ -119,7 +119,7 @@ public partial class Obj_enemy_base : Obj_physics_base
 			if (_Animator != null)
 				_Animator.Play(_base + "walk");
 				
-			if (GLOBAL_FUNCTIONS.Distance_Between_Nodes(_target, this) > _distance_from_player)
+			//if (GLOBAL_FUNCTIONS.Distance_Between_Nodes(_target, this) > _distance_from_player)
 			{
 
 				if (Math.Abs(_target.GlobalPosition.X - this.GlobalPosition.X) > .5)
@@ -133,8 +133,8 @@ public partial class Obj_enemy_base : Obj_physics_base
 					_vspd = 0;
 				
 			}
-			else
-				end_move();
+			//else
+				//end_move();
 		}
 
 		return velocity;
@@ -246,13 +246,17 @@ public partial class Obj_enemy_base : Obj_physics_base
 		{
 			Obj_projectile_parent _boom = GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.tscn");
 			Obj_projectile_parent _boom2 = GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_AREA/Effect_area_effect_parent.tscn");
-			_boom2.RotationDegrees = new Vector3(0, 45, 0);
-
-			if (_x != 0 || _y != 0 || _z != 0)
+			
+			if (_boom != null && _boom2 != null)
 			{
-				Vector3 _offset = new (_x, _y, _z);
-				_boom.Position += _offset;
-				_boom2.Position += _offset;
+				_boom2.RotationDegrees = new Vector3(0, 45, 0);
+
+				if (_x != 0 || _y != 0 || _z != 0)
+				{
+					Vector3 _offset = new (_x, _y, _z);
+					_boom.Position += _offset;
+					_boom2.Position += _offset;
+				}
 			}
 			
 			GLOBAL_FUNCTIONS.Shake_Camera(.3f);

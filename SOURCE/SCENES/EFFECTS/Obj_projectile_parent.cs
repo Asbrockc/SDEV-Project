@@ -69,8 +69,12 @@ public partial class Obj_projectile_parent : Area3D
 				_des_count++;
 			else
 			{
-				this.GetParent().RemoveChild(this);
-				this.QueueFree();
+				//GetParentOrNull
+				if (this.GetParentOrNull<Node3D>() != null)
+				{
+					this.GetParent().RemoveChild(this);
+					this.QueueFree();
+				}
 			}
 			//this.GetChild<Sprite3D>(1);
 		}

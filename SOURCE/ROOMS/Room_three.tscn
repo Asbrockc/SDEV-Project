@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7fhvn"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_5s08l"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_036ms"]
-[ext_resource type="PackedScene" uid="uid://6dfehx4ukkq5" path="res://3d_prefabs/forestbase/forest_2.tscn" id="4_43fr3"]
 [ext_resource type="Script" path="res://ROOMS/Final_rooms/Button_game_control.cs" id="5_w3kn7"]
 [ext_resource type="Script" path="res://SCENES/Spawns/Game_button_base.cs" id="6_fax0g"]
 [ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="7_ggn67"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="9_hvrdp"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="10_dk431"]
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="11_j75nv"]
+[ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="12_ojmsc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpo6m"]
 resource_local_to_scene = true
@@ -53,8 +53,14 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" parent="." instance=ExtResource("2_5s08l")]
 
+[node name="global_wall" parent="L_floor_one" index="5"]
+transform = Transform3D(1.84, 0, 0, 0, 1.84, 0, 0, 0, 1.84, 8.31958, 0, 2.72932)
+
 [node name="global_wall3" parent="L_floor_one" index="7"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.775, 3.015, 0.14)
+
+[node name="global_wall4" parent="L_floor_one" index="8"]
+transform = Transform3D(-1.38, 0, -1.20643e-07, 0, 1.38, 0, 1.20643e-07, 0, -1.38, -10.6599, 1.97111, 4.63483)
 
 [node name="Door_1_3" parent="." groups=["door_3"] instance=ExtResource("4_036ms")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.34388, 0.778138, 7.8905)
@@ -67,13 +73,10 @@ _desination = "res://ROOMS/Room_three_b.tscn"
 _y_off = -2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.472566, 0.881295, 0, -0.881295, 0.472566, 0, 16.09, 2.57558)
+transform = Transform3D(1, 0, 0, 0, 0.472566, 0.881295, 0, -0.881295, 0.472566, 0, 16.09, 9.21122)
 light_energy = 8.0
-spot_range = 48.1084
+spot_range = 1948.54
 spot_angle = 60.5107
-
-[node name="forest" parent="." instance=ExtResource("4_43fr3")]
-transform = Transform3D(-1.35505e-08, 0, 0.31, 0, 0.31, 0, -0.31, 0, -1.35505e-08, -1.99464, 3.04696, 5.35864)
 
 [node name="Button_game_control" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22096, 0, 6.29937)
@@ -169,6 +172,12 @@ script = ExtResource("6_fax0g")
 [node name="Locked_door_base" parent="." instance=ExtResource("11_j75nv")]
 transform = Transform3D(0.865, 0, 0, 0, 0.865, 0, 0, 0, 0.865, -2.14805, 0.6086, 4.26188)
 _flag = 12
+
+[node name="Test_tree2" parent="." instance=ExtResource("12_ojmsc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.612247, 0.624, 4.53449)
+_core = 4
+_label = "Steve"
+_message = PackedStringArray("Legends say that this door will only open when everything is blue.", "What could that possibly mean?!?")
 
 [editable path="L_floor_one"]
 [editable path="L_floor_one/global_wall"]

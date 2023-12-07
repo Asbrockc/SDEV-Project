@@ -1,22 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds5rk10u60akf"]
+[gd_scene load_steps=10 format=3 uid="uid://bna1ome7d5kvg"]
 
-[ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_6lx6u"]
-[ext_resource type="PackedScene" uid="uid://47bt7y7re2wa" path="res://SCENES/GUI/Title_screen_menu.tscn" id="1_unjaa"]
-[ext_resource type="Script" path="res://SCENES/Player_title_screen_lock.cs" id="2_vetmm"]
-[ext_resource type="Texture2D" uid="uid://b1l0gaec5p1ry" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_firewall.png" id="3_tajhk"]
-[ext_resource type="Script" path="res://SCENES/Title_screen_background.cs" id="4_bwnli"]
-[ext_resource type="Texture2D" uid="uid://biv0ublgb3fb2" path="res://SPRITES/FILE/forest_background.jpg" id="6_u4lm0"]
+[ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_q4cxn"]
+[ext_resource type="PackedScene" uid="uid://cc3b7uyg43wwd" path="res://SCENES/GUI/game_over_screen_menu.tscn" id="2_5oggg"]
+[ext_resource type="Script" path="res://SCENES/Player_title_screen_lock.cs" id="3_hx6l1"]
+[ext_resource type="Texture2D" uid="uid://b1l0gaec5p1ry" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_firewall.png" id="4_i63v7"]
+[ext_resource type="Script" path="res://SCENES/Title_screen_background.cs" id="5_4ws31"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63kna"]
-albedo_texture = ExtResource("3_tajhk")
+albedo_texture = ExtResource("4_i63v7")
 
 [sub_resource type="TorusMesh" id="TorusMesh_t338u"]
 material = SubResource("StandardMaterial3D_63kna")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsm1m"]
-albedo_texture = ExtResource("6_u4lm0")
-uv1_scale = Vector3(1, 1.26, 1)
-uv1_offset = Vector3(0, 0.17, 0)
+albedo_texture = ExtResource("4_i63v7")
+uv1_scale = Vector3(1, 0.4, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_autgc"]
 material = SubResource("StandardMaterial3D_xsm1m")
@@ -26,19 +24,19 @@ cap_bottom = false
 
 [node name="Room_one" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-script = ExtResource("1_6lx6u")
+script = ExtResource("1_q4cxn")
 
-[node name="Title_screen_menu" parent="." instance=ExtResource("1_unjaa")]
+[node name="Title_screen_menu" parent="." instance=ExtResource("2_5oggg")]
 
 [node name="Player_title_screen_lock" type="Node3D" parent="." groups=["LOCK_PLAYER"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3636, 0, 2.04675)
-script = ExtResource("2_vetmm")
+script = ExtResource("3_hx6l1")
 
 [node name="Title_screen_background" type="MeshInstance3D" parent="."]
 transform = Transform3D(30, 0, 0, 0, 100, 0, 0, 0, 30, 0, 0, 0)
 visible = false
 mesh = SubResource("TorusMesh_t338u")
-script = ExtResource("4_bwnli")
+script = ExtResource("5_4ws31")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 light_energy = 2.0
@@ -53,4 +51,4 @@ spot_angle = 65.6267
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(60, 0, 0, 0, 32, 0, 0, 0, 60, 0, 0, 0)
 mesh = SubResource("CylinderMesh_autgc")
-script = ExtResource("4_bwnli")
+script = ExtResource("5_4ws31")

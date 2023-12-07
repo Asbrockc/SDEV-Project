@@ -42,7 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42607, 7.28821, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06375, 1.30148, 0)
 
 [node name="Wall_C_5" parent="L_floor_one" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.9558, 8.38022)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.9558, 9.27002)
 
 [node name="global_wall3" parent="L_floor_one" index="7"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 12.1438, -12.165)
@@ -59,7 +59,8 @@ _y_off = -2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
-spot_range = 23.8757
+spot_range = 81.6075
+spot_angle = 80.8089
 
 [node name="forest_fix" parent="." instance=ExtResource("4_nhibc")]
 transform = Transform3D(-1.22392e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, -1.22392e-08, 0, 2.87971, -6.05919)

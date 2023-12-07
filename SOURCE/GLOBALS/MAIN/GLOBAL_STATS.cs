@@ -110,6 +110,21 @@ public partial class GLOBAL_STATS : Node
 		true //locked_behind_player_puzzle
 	};
 
+	static public void _Reset_Stats()
+	{
+		_player_stats[I_HEALTH] = 6;
+		_player_stats[I_EXPERIENCE] = 0;
+		_player_stats[I_LEVEL] = 1;
+		_player_stats[I_STRENGTH] = 1;
+		_player_stats[I_DEFENCE] = 1;
+		_player_stats[I_NEXT_LEVEL_IN] = 10;
+		_player_stats[I_MUSIC_VOLUME] = 0;
+		_player_stats[I_SOUND_VOLUME] = 0;
+		_player_stats[I_ZZ] = 0;
+		_player_stats[I_BONUS_POINTS] = 0;
+		_player_stats[I_MAX_HEALTH] = 6;
+	}
+
 	/// <summary>
 	/// Static function that will keep track of the experience the player is collecting 
 	/// Once enough is collected it will update the level, experence needed for next level

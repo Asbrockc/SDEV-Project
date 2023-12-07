@@ -196,11 +196,16 @@ public partial class GLOBAL_FUNCTIONS : Node
 	///</summary>
 	static public Obj_projectile_parent Create_projectile(Node3D _source, string _type = "res://SCENES/EFFECTS/Obj_projectile_parent.tscn")
 	{
-		Obj_projectile_parent _curr_item = (Obj_projectile_parent)ResourceLoader.Load<PackedScene>(_type).Instantiate();
-		GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
-		_curr_item._my_parent = _source;
-		_curr_item.Position = _source.GlobalPosition;
-		return _curr_item;
+		if (_source != null)
+		{
+			Obj_projectile_parent _curr_item = (Obj_projectile_parent)ResourceLoader.Load<PackedScene>(_type).Instantiate();
+			GLOBAL_STATS._current_room_reference.AddChild(_curr_item);
+			_curr_item._my_parent = _source;
+			_curr_item.Position = _source.GlobalPosition;
+			return _curr_item;
+		}
+		else 
+			return null;
 	}
 
 	///<summary>
@@ -216,9 +221,12 @@ public partial class GLOBAL_FUNCTIONS : Node
 	///</summary>
 	static public float Distance_Between_Nodes(Node3D first, Node3D second)
 	{
-		return 
-		((second.GlobalPosition.X - first.GlobalPosition.X)*(second.GlobalPosition.X - first.GlobalPosition.X)) +
-		((second.GlobalPosition.Y - first.GlobalPosition.Z)*(second.GlobalPosition.Y - first.GlobalPosition.Z));
+		if (first != null && second != null)
+			return 
+			((second.GlobalPosition.X - first.GlobalPosition.X)*(second.GlobalPosition.X - first.GlobalPosition.X)) +
+			((second.GlobalPosition.Y - first.GlobalPosition.Z)*(second.GlobalPosition.Y - first.GlobalPosition.Z));
+		else
+			return 0;
 	}
 
 	///<summary>

@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5dt503agden8"
-path.s3tc="res://.godot/imported/spr_crack.jpg-7837a51cb814a18f325f35bd236561cb.s3tc.ctex"
+uid="uid://bcqv2j3p5rqd2"
+path.s3tc="res://.godot/imported/house_base_Untitled.png-323ec0471f998da6aa2eb7c0fc5626e6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://SPRITES/FILE/spr_crack.jpg"
-dest_files=["res://.godot/imported/spr_crack.jpg-7837a51cb814a18f325f35bd236561cb.s3tc.ctex"]
+source_file="res://3d_prefabs/House/house_base_Untitled.png"
+dest_files=["res://.godot/imported/house_base_Untitled.png-323ec0471f998da6aa2eb7c0fc5626e6.s3tc.ctex"]
 
 [params]
 

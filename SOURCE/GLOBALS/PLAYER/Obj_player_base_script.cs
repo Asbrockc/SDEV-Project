@@ -10,6 +10,8 @@ public partial class Obj_player_base_script : Obj_physics_base
 	public Interactive_Action _node_in_range = null;
 	public Level_up_menu _current_menu = null;
 
+	private int _dead_timer = 0;
+
 	public AudioStreamWav _sword_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_hit.wav");
 	public AudioStreamWav _sword_swing = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_swing.wav");
 	public AudioStreamWav _item_pickup = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_item_pickup.wav");
@@ -75,6 +77,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 		}
 
+		if (GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] <= 0 && _state != 6)
+			_state = 5;
+
 		//core input validation, only one state will play at a time depending on what the 
 		//user presses
 		switch (_state)
@@ -94,12 +99,34 @@ public partial class Obj_player_base_script : Obj_physics_base
 			case 4:
 				velocity = Player_shoot_state(delta, velocity);
 				break;
+			case 5:
+				_Animator.Play("dead");
+				_state = 6;
+				break;
+			case 6:
+				_hspd = 0;
+				_vspd = 0;
+				_hurt_hspd = 0;
+				_hurt_vspd = 0;
+				_hurt_up_speed = 0;
+				if (!_Animator.IsPlaying() && _dead_timer > 200)
+				{
+					_dead_timer = 0;
+					GLOBAL_FUNCTIONS.Change_Music(null);
+					GLOBAL_FUNCTIONS.Room_Transition("res://SCENES/Game_over_Screen.tscn", "LOCK_PLAYER", 0 ,0);
+					GLOBAL_STATS._Reset_Stats();
+				}
+				else
+					_dead_timer++;
+				break;
 		}
 
 		velocity = manage_hurt_velocity(velocity);
 
 		Velocity = velocity;
-		MoveAndSlide();
+		
+		if (_state != 6)
+			MoveAndSlide();
 	}
 
 	private Vector3 manage_hurt_velocity(Vector3 velocity)

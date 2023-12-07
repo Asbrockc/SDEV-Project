@@ -18,7 +18,12 @@ public partial class Enemy_timer : Timer
 	public void _on_timeout()
 	{
 		GetParent<Enemy_spawner>()._trigger = true;
-		WaitTime = GLOBAL_FUNCTIONS.Choose(5,10,15);
+		
+		if (GetParent<Enemy_spawner>()._time == -4)
+			WaitTime = GLOBAL_FUNCTIONS.Choose(5,10,15);
+		else
+			WaitTime = GetParent<Enemy_spawner>()._time;
+			
 		Start();
 	}
 }

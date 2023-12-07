@@ -109,9 +109,13 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                             for (int i = 0; i < 4; i++)
                             {
                                 Obj_projectile_fireball _arrow = (Obj_projectile_fireball)GLOBAL_FUNCTIONS.Create_projectile(this, "res://SCENES/EFFECTS/EFFECT_PROJECTILES/Obj_projectile_fireball.tscn");
-                                _arrow._base_location = this.GlobalPosition;
-                                _arrow._target_location = GLOBAL_STATS._player.GlobalPosition;
-                                _arrow._parent = this;
+                                
+                                if (_arrow != null)
+                                {
+                                    _arrow._base_location = this.GlobalPosition;
+                                    _arrow._target_location = GLOBAL_STATS._player.GlobalPosition;
+                                    _arrow._parent = this;
+                                }
                             }
 
                             _fire_count = 0;
