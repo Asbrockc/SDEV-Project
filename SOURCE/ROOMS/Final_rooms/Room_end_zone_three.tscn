@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://v0x2i1bfq6ef"]
+[gd_scene load_steps=8 format=3 uid="uid://v0x2i1bfq6ef"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_f4lxu"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_wvwys"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="3_ivfib"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="4_ywbqt"]
+[ext_resource type="Script" path="res://SCENES/Spawns/After_Enemy_Button.cs" id="5_0f3bp"]
+[ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="6_dewe7"]
+[ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="7_atkhy"]
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_f4lxu")
@@ -12,15 +15,70 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 [node name="L_floor_one" parent="." instance=ExtResource("2_wvwys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
 
+[node name="Wall_C_5" parent="L_floor_one" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05113, 9.20341)
+
+[node name="global_wall" parent="L_floor_one" index="5"]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 18, 0, 0)
+
+[node name="global_wall2" parent="L_floor_one" index="6"]
+transform = Transform3D(3.27835e-07, -2.5, -1.09278e-07, -9.55343e-15, 1.09278e-07, -2.5, 2.5, 3.27835e-07, 4.77671e-15, 0, -9.91074, 0)
+
+[node name="global_wall3" parent="L_floor_one" index="7"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 1.15359, 0, -15.6435)
+
+[node name="global_wall4" parent="L_floor_one" index="8"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -15.8233, 0, 0)
+
 [node name="Door_1_1" parent="." groups=["final_door_3"] instance=ExtResource("3_ivfib")]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.17932, 0.847334, -0.261695)
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.17932, 0.847334, 2.39469)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
 _x_off = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
+transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 6.52342, 11.9914)
 light_energy = 5.0
 spot_range = 23.8757
+spot_angle = 79.7603
 
 [node name="Button_base" parent="." instance=ExtResource("4_ywbqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13549, 0, 2.25665)
+script = ExtResource("5_0f3bp")
 _flag = 7
+
+[node name="Label3D" type="Label3D" parent="Button_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7546, 0)
+
+[node name="Enemy_spawner1" parent="." instance=ExtResource("6_dewe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04286, 0.429913, 5.90936)
+_active = false
+
+[node name="Enemy_spawner2" parent="." instance=ExtResource("6_dewe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3151, 0.429913, 0)
+_active = false
+
+[node name="Enemy_spawner4" parent="." instance=ExtResource("6_dewe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15989, 0.429913, 0)
+_active = false
+
+[node name="Enemy_spawner6" parent="." instance=ExtResource("6_dewe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.07476, 0.429913, 5.6091)
+_active = false
+
+[node name="Enemy_spawner5" parent="." instance=ExtResource("6_dewe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.276415, 0.429913, 3.47946)
+_active = false
+
+[node name="Enemy_spawner3" parent="." instance=ExtResource("6_dewe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.24354, -3.67402)
+_active = false
+
+[node name="Locked_door_base" parent="." instance=ExtResource("7_atkhy")]
+transform = Transform3D(-5.79176e-08, 0, 0.865, 0, 1.385, 0, -1.325, 0, -3.78104e-08, 7.81092, 0.746278, 2.45315)
+_flag = 17
+
+[editable path="L_floor_one"]
+[editable path="L_floor_one/global_wall"]
+[editable path="L_floor_one/global_wall2"]
+[editable path="L_floor_one/global_wall3"]
+[editable path="L_floor_one/global_wall4"]

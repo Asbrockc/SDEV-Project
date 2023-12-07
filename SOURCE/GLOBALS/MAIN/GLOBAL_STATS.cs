@@ -43,7 +43,11 @@ public partial class GLOBAL_STATS : Node
 		Puzzle_door_2 = 13,
 
 		Next_1 = 14,
-		Next_2 = 15
+		Next_2 = 15,
+
+		dragon_v2 = 16,
+
+		locked_behind_player_puzzle = 17
 	}
 
 	static public bool _pause = false;
@@ -100,7 +104,10 @@ public partial class GLOBAL_STATS : Node
 		false,   //Puzzle_door_2
 
 		false,   
-		false
+		false,
+
+		false, //dragon_v2
+		true //locked_behind_player_puzzle
 	};
 
 	/// <summary>

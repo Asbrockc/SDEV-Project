@@ -3,6 +3,7 @@ using System;
 
 public partial class Obj_enemy_base : Obj_physics_base
 {
+	public Func<int> _on_death = null;
 	public const int IDLE_STATE = 0;
 	public const int MOVE_STATE = 1;
 	public const int HIT_STATE = 2;
@@ -231,6 +232,8 @@ public partial class Obj_enemy_base : Obj_physics_base
 
 	public virtual void death_function()
 	{
+		if (_on_death != null) 
+			_on_death();
 		//string[] drops = {"exp","exp","exp","exp","exp","exp","exp","exp","hp"};
 		for (int i = 0; i < drop_amount; i++)
 			GLOBAL_FUNCTIONS.Spawn_item(this.GlobalPosition, 0.2f, 1, _drops);

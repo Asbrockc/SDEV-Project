@@ -13,7 +13,7 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
 
 [node name="Door_1_1" parent="." groups=["final_door_5"] instance=ExtResource("3_stych")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5687, 0.502943, -0.261695)
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.13425, 0.736321, 6.57436)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -22,4 +22,5 @@ light_energy = 5.0
 spot_range = 23.8757
 
 [node name="Button_base" parent="." instance=ExtResource("4_gmp12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87081, 0, -8.21195)
 _flag = 9

@@ -19,14 +19,14 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_syru7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kykng"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("8_gdc3o")
 uv1_scale = Vector3(3.005, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mo804"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_syru7")
+material = SubResource("StandardMaterial3D_kykng")
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_7pqsi")

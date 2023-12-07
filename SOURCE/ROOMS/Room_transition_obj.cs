@@ -16,6 +16,9 @@ public partial class Room_transition_obj : NinePatchRect
 	public float _x_off = 0;
 	public float _y_off = 0;
 
+	private float _max;
+	private float _div;
+
 	public bool run_once = true;
 
 	public int _hold_off_a_second = 0;
@@ -24,6 +27,11 @@ public partial class Room_transition_obj : NinePatchRect
 
     public override void _Ready()
     {
+		//winWidth = (int)GetViewport().GetVisibleRect().Size.X;
+		//winheight = (int)GetViewport().GetVisibleRect().Size.Y;	
+		//GetViewport().Get
+		_max = GetViewport().GetVisibleRect().Size.X;
+		_div = _max/10;
         base._Ready();
 		//GD.Print("CREATED");
     }
@@ -101,11 +109,11 @@ public partial class Room_transition_obj : NinePatchRect
 	{
 		GLOBAL_STATS._current_room_reference = null;
 
-		if (_scale + 115 < 1152)
-			_scale += 115;
+		if (_scale + _div < _max)
+			_scale += _div;
 		else
 		{
-			_scale = 1152;
+			_scale = _max;
 			_state = 1;
 		}
 
@@ -176,9 +184,9 @@ public partial class Room_transition_obj : NinePatchRect
 
 	private void close_state()
 	{
-		if (_scale - 115 > 0)
+		if (_scale - _div > 0)
 		{
-			_scale -= 115;
+			_scale -= _div;
 		}
 		else
 		{
@@ -188,7 +196,7 @@ public partial class Room_transition_obj : NinePatchRect
 			GLOBAL_STATS._player._state = 0;
 		}
 		
-		this.Position += (new Vector2(115.0f, 0));
+		this.Position += (new Vector2(_div, 0));
 		this.SetSize(new Vector2(_scale, this.Size.Y));
 
 		//GC.Collect();
