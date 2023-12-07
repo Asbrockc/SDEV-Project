@@ -18,6 +18,8 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
 
     private Vector3 _jump_height = new Vector3(0,10,0);
 
+    private AudioStreamWav _attack_sound;
+
     private int _random_move = 0;
     private int _prior_move = 0;
 
@@ -28,7 +30,7 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
         _chirp_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_bat_chirp.wav");
         _slam_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_heavy_slam.wav");
 		//_flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
-		//_attack_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_dragon_jump.wav");
+		_attack_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_dragon_jump.wav");
 		_destroy_sound = ResourceLoader.Load<AudioStreamMP3>("res://SOUNDS/ALL_SOUNDS/snd_boom_sound.mp3");
         Speed = 4.5f;//7.0f;
         base._Ready();
@@ -155,6 +157,7 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                  switch (_random_move)
                 {
                     case 2:
+                        GLOBAL_FUNCTIONS.Play_Sound(_attack_sound);
                         _jump_spd = 10;
                         _Animator.Play("jump");  
                         _state = 5;

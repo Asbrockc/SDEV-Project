@@ -33,11 +33,13 @@ public partial class Final_boss_first_phase : Boss_enemy_base
 		
             //GD.Print("CLICKED _boom");
             _death_flag = true;
+            Effect_parent _test = GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_Explosion.tscn", true);
+            GLOBAL_FUNCTIONS.Shake_Camera(1);
             QueueFree();
+            
+			//GLOBAL_FUNCTIONS.Change_Music("res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss_part_1.wav", 100);
 
-			GLOBAL_FUNCTIONS.Change_Music("res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss_part_1.wav", 100);
-
-			GLOBAL_STATS._current_room_reference.GetNode("L_floor_one").QueueFree();
+			GLOBAL_STATS._current_room_reference.GetNode<Final_floor_break>("global_wall2")._broken = true; //QueueFree();
 		}
 
 		return velocity;

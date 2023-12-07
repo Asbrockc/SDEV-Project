@@ -5,6 +5,8 @@ public partial class Obj_projectile_parent : Area3D
 	public float _hspd = 0;
 	public float _vspd = 0;
 
+	private int _des_count = 0;
+
 	public Node3D _stuck_in = null;
 	public bool _active = true;
 	public bool _destroy = false;
@@ -54,6 +56,7 @@ public partial class Obj_projectile_parent : Area3D
 			else
 			{
 				((Obj_enemy_base)_stuck_in).hit_me(null);	
+				this.GetParent().RemoveChild(this);
 				this.QueueFree();
 			}
 			
@@ -62,6 +65,13 @@ public partial class Obj_projectile_parent : Area3D
 		}
 		else
 		{
+			if (_des_count < 200)
+				_des_count++;
+			else
+			{
+				this.GetParent().RemoveChild(this);
+				this.QueueFree();
+			}
 			//this.GetChild<Sprite3D>(1);
 		}
 	}
