@@ -55,13 +55,13 @@ _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
 
 [node name="Wall_C_5" parent="L_floor_one" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.66467, 10.012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.66467, 10.0117)
 
 [node name="Floor" parent="L_floor_one" index="4"]
 transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 20, 0, 7.43125, -18.5756)
 
 [node name="global_wall" parent="L_floor_one" index="5"]
-transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 18, 9.1196, 0)
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 13.5587, 9.1196, 0)
 
 [node name="global_wall2" parent="L_floor_one" index="6"]
 transform = Transform3D(2.5, 0, 0, 0, -1.09278e-07, -2.5, 0, 2.5, -1.09278e-07, 0, -9, 0)
@@ -70,12 +70,13 @@ transform = Transform3D(2.5, 0, 0, 0, -1.09278e-07, -2.5, 0, 2.5, -1.09278e-07, 
 transform = Transform3D(2.98122e-08, 0, -2.5, 0, 2.5, 0, 2.5, 0, 2.98122e-08, 0, 9.1196, -20)
 
 [node name="global_wall4" parent="L_floor_one" index="8"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -18, 9.1196, 0)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -13.7216, 9.1196, 0)
 
 [node name="Door_1_1" parent="." groups=["final_door_2"] instance=ExtResource("4_jc4gn")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -8.21688, 1.67112, -0.261695)
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, -0.0221405, 1.67112, 9.00755)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
 _x_off = -2
+_y_off = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 12.1204, 13.2568)
@@ -88,23 +89,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 _flag = 6
 
 [node name="Enemy_spawner" parent="." instance=ExtResource("5_o3fsn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56458, 8.32221, -9.04544)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199542, 8.32221, -8.80888)
 _active = false
 
 [node name="Enemy_spawner2" parent="." instance=ExtResource("5_o3fsn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74574, 8.40791, -9.11156)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01536, 4.36411, 8.48781)
 _active = false
 
 [node name="Enemy_spawner3" parent="." instance=ExtResource("5_o3fsn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17079, 8.32221, -9.16612)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02191, 8.32221, -8.81917)
 _active = false
 
 [node name="Enemy_spawner4" parent="." instance=ExtResource("5_o3fsn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.36436, 8.40791, -9.10139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61747, 8.40791, -8.78598)
 _active = false
 
 [node name="Enemy_Egg2" parent="." groups=["enem"] instance=ExtResource("6_713q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00193, 1.07354, 3.36689)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0845928, 1.07354, -7.50463)
 
 [node name="Enemy_Egg" parent="." groups=["enem"] instance=ExtResource("10_uy04x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87247, 11.4694, -0.93512)
@@ -162,4 +163,6 @@ shape = SubResource("ConcavePolygonShape3D_jffm5")
 [editable path="L_floor_one/global_wall2"]
 [editable path="L_floor_one/global_wall3"]
 [editable path="L_floor_one/global_wall4"]
+[editable path="Door_1_1"]
+[editable path="Door_1_1/doorbase"]
 [editable path="Enemy_Egg"]

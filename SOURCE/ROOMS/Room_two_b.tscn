@@ -27,6 +27,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.709
 _desination = "res://ROOMS/Room_two.tscn"
 _y_off = 2
 
+[node name="doorbase" parent="Door_1_4" index="2"]
+visible = false
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 10.5354)
 spot_range = 25.3205
@@ -68,6 +71,8 @@ shape = SubResource("ConcavePolygonShape3D_rst1t")
 [editable path="L_floor_one/global_wall2"]
 [editable path="L_floor_one/global_wall3"]
 [editable path="L_floor_one/global_wall4"]
+[editable path="Door_1_4"]
+[editable path="Door_1_4/doorbase"]
 [editable path="Enemy_Egg3"]
 [editable path="Enemy_Egg4"]
 [editable path="doorbase"]

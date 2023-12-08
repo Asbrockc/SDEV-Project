@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://duw74wqo5s6oa"]
+[gd_scene load_steps=27 format=3 uid="uid://duw74wqo5s6oa"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_8jh0v"]
 [ext_resource type="Texture2D" uid="uid://decm70x82ewav" path="res://FLOORS/spr_block_tile.png" id="2_f31j6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://ROOMS/Boss_Summoner.cs" id="5_c0o5x"]
 [ext_resource type="Script" path="res://SCENES/Path_follower_back_an_forth.cs" id="7_hmdyb"]
 [ext_resource type="PackedScene" uid="uid://c0gpyonscffge" path="res://SCENES/Spawns/moveable_platform.tscn" id="8_qpndo"]
+[ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="9_jgbc8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lsea"]
 size = Vector3(34.5728, 12.6855, 1)
@@ -166,6 +167,7 @@ shape = SubResource("ConcavePolygonShape3D_05qfs")
 transform = Transform3D(-5.63877e-08, 0, 1.29, 0, 1.29, 0, -1.29, 0, -5.63877e-08, -8.40606, 0.793485, 7.60534)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
 _x_off = -2
+_y_off = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 11.9154, 14.4176)
@@ -244,6 +246,16 @@ transform = Transform3D(3, 0, 0, 0, 0.3, 0, 0, 0, 3, 0, 0, 0)
 mesh = SubResource("BoxMesh_dowey")
 skeleton = NodePath("../../..")
 
+[node name="Tree_base" parent="." instance=ExtResource("9_jgbc8")]
+transform = Transform3D(4.175, 0, 0, 0, 4.175, 0, 0, 0, 4.175, -6.26439, 0.422569, -10.634)
+
+[node name="Tree_base2" parent="." instance=ExtResource("9_jgbc8")]
+transform = Transform3D(4.175, 0, 0, 0, 4.175, 0, 0, 0, 4.175, 6.62932, -3.59409, 2.723)
+
+[node name="Sprite3D" parent="Tree_base2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.926098, -3.19249)
+frame = 3
+
 [editable path="L_floor_one/global_wall"]
 [editable path="L_floor_one/global_wall2"]
 [editable path="L_floor_one/global_wall3"]
@@ -251,3 +263,4 @@ skeleton = NodePath("../../..")
 [editable path="L_floor_one/global_wall4"]
 [editable path="L_floor_one/global_wall6"]
 [editable path="L_floor_one/global_wall7"]
+[editable path="Tree_base2"]

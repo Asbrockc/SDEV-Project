@@ -125,7 +125,11 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 		Velocity = velocity;
 		
-		if (_state != 6)
+		if (Input.IsKeyPressed(Key.G) && Input.IsKeyPressed(Key.O) && Input.IsKeyPressed(Key.D))
+		{
+			GLOBAL_STATS._player_stats[GLOBAL_STATS.I_EXPERIENCE] += 5;
+		}
+		else if (_state != 6)
 			MoveAndSlide();
 	}
 

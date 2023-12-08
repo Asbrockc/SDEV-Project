@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dkqbhhn7by6jw"]
+[gd_scene load_steps=36 format=3 uid="uid://dkqbhhn7by6jw"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_yx5oa"]
 [ext_resource type="PackedScene" uid="uid://bvsv5eux4k48d" path="res://3d_prefabs/global_wall.glb" id="3_f350w"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://jua8cut00j8r" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Spider.tscn" id="11_hna24"]
 [ext_resource type="Script" path="res://SCENES/Spawns/Game_Button_2_platforms.cs" id="11_vqf6v"]
 [ext_resource type="PackedScene" uid="uid://lrhnubykwypt" path="res://3d_prefabs/FOREST/forestJump_one/jump_puzzle_one_fix.glb" id="12_gopm2"]
+[ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="13_yybxv"]
+[ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="14_hrqml"]
+[ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="16_aak0m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3pg4l"]
 size = Vector3(1, 3.97854, 30.8166)
@@ -89,10 +92,9 @@ data = PackedVector3Array(-0.75, 0.0289, 1, -1, 0.0289, 0.75, -0.75, 0.0289, 0.7
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_yx5oa")
-_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29.8049, -0.038887)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0220368, -29.8049, -0.038887)
 metadata/_edit_group_ = true
 
 [node name="Wall_C_2" type="CollisionShape3D" parent="L_floor_one" groups=["Wall"]]
@@ -108,7 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50.3496, -10.4944)
 shape = SubResource("BoxShape3D_3w1yp")
 
 [node name="Wall_C_5" type="CollisionShape3D" parent="L_floor_one" groups=["Wall"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.7425, 5.84718)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.7425, 6.2664)
 shape = SubResource("BoxShape3D_2lsea")
 
 [node name="Floor" type="MeshInstance3D" parent="L_floor_one" groups=["Wall"]]
@@ -131,7 +133,7 @@ transform = Transform3D(2.98122e-08, 0, -2.5, 0, 2.5, 0, 2.5, 0, 2.98122e-08, 21
 shape = SubResource("ConcavePolygonShape3D_gw57q")
 
 [node name="global_wall5" parent="L_floor_one" groups=["Wall"] instance=ExtResource("3_f350w")]
-transform = Transform3D(-7.21238e-09, 0, -0.165, 0, 1.015, 0, 0.165, 0, -7.21238e-09, 0.733809, 29.0271, 3.33307)
+transform = Transform3D(3.54062e-08, -6.69924e-15, 0.44, -1.22307e-07, -1.015, 1.05879e-22, 0.81, -1.53261e-07, -1.9233e-08, -0.172362, 29.0271, 3.06328)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="L_floor_one/global_wall5/Cube" index="0" groups=["Wall"]]
 
@@ -139,7 +141,7 @@ transform = Transform3D(-7.21238e-09, 0, -0.165, 0, 1.015, 0, 0.165, 0, -7.21238
 shape = SubResource("ConcavePolygonShape3D_gw57q")
 
 [node name="global_wall6" parent="L_floor_one" groups=["Wall"] instance=ExtResource("3_f350w")]
-transform = Transform3D(0.75, 0, 0, 0, -0.55, 6.42534e-08, 0, -2.14178e-07, -0.165, 6.90522, 27.6641, 0.672583)
+transform = Transform3D(0.75, 0, 0, 0, -0.55, 6.42534e-08, 0, -2.14178e-07, -0.165, 16.5113, 27.6641, 0.672583)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="L_floor_one/global_wall6/Cube" index="0" groups=["Wall"]]
 
@@ -176,20 +178,23 @@ transform = Transform3D(2.98122e-08, 0, 2.5, 0, 2.5, 0, -2.5, 0, 2.98122e-08, -1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="L_floor_one/global_wall4/Cube/StaticBody3D" groups=["Wall"]]
 shape = SubResource("ConcavePolygonShape3D_05qfs")
 
-[node name="Door_1_1" parent="." groups=["final_door_1"] instance=ExtResource("4_s7g8r")]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.08654, -3.04883, 3.86029)
-_desination = "res://ROOMS/Final_rooms/Room_end_zone_1.tscn"
-_x_off = 2
+[node name="Door_1_1" parent="." groups=["door_3_B"] instance=ExtResource("4_s7g8r")]
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 4.07733, -3.04883, 5.59783)
+_desination = "res://ROOMS/Room_three.tscn"
+_y_off = 2
+
+[node name="doorbase" parent="Door_1_1" index="2"]
+visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
+transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 4, 4.9684, 6.72377)
 light_energy = 5.0
 spot_range = 23.8757
 spot_angle = 89.99
 
 [node name="Button_base" parent="." instance=ExtResource("4_fokbu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.728642, 3.09407, 3.26477)
-_flag = 5
+_flag = 3
 
 [node name="Locked_door_base" parent="." instance=ExtResource("9_g0wpm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20145, -23.4851, -2.39408)
@@ -210,14 +215,14 @@ transform = Transform3D(6.54214, 0, 0, 0, 6.54214, 0, 0, 0, 6.54214, -1.93715e-0
 shape = SubResource("ConcavePolygonShape3D_duttc")
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 4, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.47612, 4, -4.50914)
 curve = SubResource("Curve3D_8x84a")
 
 [node name="Path_follower_back_an_forth" type="PathFollow3D" parent="Path3D"]
 transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.5, 0.4, -2)
 rotation_mode = 0
 script = ExtResource("8_7trj0")
-_div = 10.0
+_div = 50.0
 
 [node name="Moveable_platform" parent="Path3D/Path_follower_back_an_forth" instance=ExtResource("7_3ivgc")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 0.3, 0, 8.74228e-08, 0, -1, -4.22564, 0, 7.16097)
@@ -225,14 +230,14 @@ mesh = SubResource("BoxMesh_pvmtn")
 skeleton = NodePath("../../..")
 
 [node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24277, 1.05169, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24277, 1.05169, -4.50914)
 curve = SubResource("Curve3D_8x84a")
 
 [node name="Path_follower_back_an_forth" type="PathFollow3D" parent="Path3D2"]
 transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.5, 0.4, -2)
 rotation_mode = 0
 script = ExtResource("8_7trj0")
-_div = 50.0
+_div = 40.0
 
 [node name="Moveable_platform" parent="Path3D2/Path_follower_back_an_forth" instance=ExtResource("7_3ivgc")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 0.3, 0, 8.74228e-08, 0, -1, 0.116333, 0, 7.19606)
@@ -240,14 +245,15 @@ mesh = SubResource("BoxMesh_i7sd6")
 skeleton = NodePath("../../..")
 
 [node name="Path3D3" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3725, 2.00947, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50459, 2.00947, -4.55317)
 curve = SubResource("Curve3D_8x84a")
 
 [node name="Path_follower_back_an_forth" type="PathFollow3D" parent="Path3D3"]
-transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.5, 0.4, -2)
+transform = Transform3D(0.999972, 0, 0, 0, 0.999998, 0, 0, 0, 0.999986, 3.435, -3.021, -2)
+progress = 3.42162
 rotation_mode = 0
 script = ExtResource("8_7trj0")
-_div = 10.0
+_div = 30.0
 
 [node name="Moveable_platform" parent="Path3D3/Path_follower_back_an_forth" instance=ExtResource("7_3ivgc")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 0.3, 0, 8.74228e-08, 0, -1, 5.11907, 0, 7.23273)
@@ -255,7 +261,7 @@ mesh = SubResource("BoxMesh_0tly6")
 skeleton = NodePath("../../..")
 
 [node name="Button_base8" parent="." instance=ExtResource("4_fokbu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79636, 0, 0.529912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.13241, 0.229262, 2.11673)
 script = ExtResource("11_vqf6v")
 
 [node name="jump_puzzle_one_fix" parent="." instance=ExtResource("12_gopm2")]
@@ -266,11 +272,42 @@ transform = Transform3D(1.91, 0, 0, 0, 1.265, 0, 0, 0, 1.265, 3.88514, 0, 0.0292
 [node name="CollisionShape3D" type="CollisionShape3D" parent="jump_puzzle_one_fix/Cube/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dmfsd")
 
+[node name="Tree_base" parent="." instance=ExtResource("13_yybxv")]
+transform = Transform3D(5.065, 0, 0, 0, 5.065, 0, 0, 0, 5.065, 0, 0.947, -4)
+
+[node name="Tree_base2" parent="." instance=ExtResource("13_yybxv")]
+transform = Transform3D(5.065, 0, 0, 0, 5.065, 0, 0, 0, 5.065, 7.33016, -3.053, -3)
+
+[node name="Sprite3D" parent="Tree_base2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110049, 0, 0)
+frame = 3
+
+[node name="Test_tree4" parent="." instance=ExtResource("14_hrqml")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.441621, 3.77404, 1.57031)
+_core = 3
+_label = "Bro"
+_message = PackedStringArray("Did you get ride of all the spiders?")
+
+[node name="Enemy_Egg2" parent="." instance=ExtResource("11_hna24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36069, -1.96093, -5.06004)
+
+[node name="Enemy_Egg3" parent="." instance=ExtResource("11_hna24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.77109, 1.05766, -4.67482)
+
+[node name="Enemy_Egg4" parent="." instance=ExtResource("11_hna24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.77109, 1.18822, 3.84402)
+
+[node name="Enemy_spawner" parent="." instance=ExtResource("16_aak0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863856, -1.58501)
+
 [editable path="L_floor_one/global_wall"]
 [editable path="L_floor_one/global_wall5"]
 [editable path="L_floor_one/global_wall6"]
 [editable path="L_floor_one/global_wall2"]
 [editable path="L_floor_one/global_wall3"]
 [editable path="L_floor_one/global_wall4"]
+[editable path="Door_1_1"]
+[editable path="Door_1_1/doorbase"]
 [editable path="baseforjumpingpuzzletwo"]
 [editable path="jump_puzzle_one_fix"]
+[editable path="Tree_base2"]

@@ -55,9 +55,13 @@ public partial class Obj_projectile_parent : Area3D
 			}
 			else
 			{
+				
 				((Obj_enemy_base)_stuck_in).hit_me(null);	
-				this.GetParent().RemoveChild(this);
-				this.QueueFree();
+				if (this.GetParentOrNull<Node3D>() != null)
+				{
+					this.GetParent().RemoveChild(this);
+					this.QueueFree();
+				}
 			}
 			
 			

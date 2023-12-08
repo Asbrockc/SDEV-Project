@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqmk103gho8e4"]
+[gd_scene load_steps=21 format=3 uid="uid://cqmk103gho8e4"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7fhvn"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_5s08l"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://5c2pguvtx8fa" path="res://SPRITES/FILE/spr_nine_slice.png" id="9_hvrdp"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="10_dk431"]
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="11_j75nv"]
+[ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="12_4fw0l"]
 [ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="12_ojmsc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpo6m"]
@@ -69,7 +70,7 @@ _x_off = -2
 
 [node name="Door_1_4" parent="." groups=["door_3_B"] instance=ExtResource("4_036ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11575, 0.701999, 4.11519)
-_desination = "res://ROOMS/Room_three_b.tscn"
+_desination = "res://ROOMS/Final_rooms/Room_end_zone_one.tscn"
 _y_off = -2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -179,8 +180,15 @@ _core = 4
 _label = "Steve"
 _message = PackedStringArray("Legends say that this door will only open when everything is blue.", "What could that possibly mean?!?")
 
+[node name="Tree_base" parent="." instance=ExtResource("12_4fw0l")]
+transform = Transform3D(2.17, 0, 0, 0, 2.17, 0, 0, 0, 2.17, -5.98267, -2.19423, 3.55362)
+
+[node name="Sprite3D" parent="Tree_base" index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.753279, 1.35678, 0.546383)
+
 [editable path="L_floor_one"]
 [editable path="L_floor_one/global_wall"]
 [editable path="L_floor_one/global_wall2"]
 [editable path="L_floor_one/global_wall3"]
 [editable path="L_floor_one/global_wall4"]
+[editable path="Tree_base"]

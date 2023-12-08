@@ -10,11 +10,11 @@
 [ext_resource type="Script" path="res://GLOBALS/PLAYER/Obj_player_camera.cs" id="7_odlsd"]
 [ext_resource type="Texture2D" uid="uid://cxp7oymg2746r" path="res://SPRITES/FILE/spr_transition_nine_slice.png" id="8_1x563"]
 [ext_resource type="Script" path="res://GLOBALS/Obj_temp_label_stats.cs" id="8_g7bsr"]
-[ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="9_1kh05"]
 [ext_resource type="Script" path="res://GLOBALS/MAIN/Spr_shadow.cs" id="9_wmjs3"]
 [ext_resource type="Script" path="res://GLOBALS/Spr_sprite_interact_target.cs" id="10_yva51"]
 [ext_resource type="Script" path="res://GLOBALS/Interact_label.cs" id="11_fj1xl"]
 [ext_resource type="PackedScene" uid="uid://dvp4gqpqbtpk7" path="res://GLOBALS/UI_Player_stats.tscn" id="12_58p2h"]
+[ext_resource type="Texture2D" uid="uid://cmhkt8cx7jnbj" path="res://SPRITES/FILE/spr_arrow.png" id="12_de0ol"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv78r"]
 size = Vector3(0.220525, 0.781989, 0.264035)
@@ -566,12 +566,12 @@ offset_bottom = 23.0
 script = ExtResource("8_g7bsr")
 
 [node name="Spr_sprite_interact_target" type="Sprite3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.212132, 0.212132, 0, -0.212132, 0.212132, 0, 0, 0)
-texture = ExtResource("9_1kh05")
+transform = Transform3D(0.03, 0, 0, 0, 0.0212132, 0.0212132, 0, -0.0212132, 0.0212132, 0, -0.0595647, 0.0668599)
+texture = ExtResource("12_de0ol")
 script = ExtResource("10_yva51")
 
 [node name="Interact_label" type="Label3D" parent="Spr_sprite_interact_target"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(7.92, 0, 0, 0, 7.92, 0, 0, 0, 7.92, 0, 6.86562, 4.17473)
 text = "???"
 font_size = 120
 script = ExtResource("11_fj1xl")

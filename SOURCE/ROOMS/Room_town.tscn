@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7y241"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="2_ak1ia"]
 [ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="4_axsoo"]
-[ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="5_a5fge"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="5_fgn71"]
 [ext_resource type="PackedScene" uid="uid://xlcayjt5b1n" path="res://NPC/npc_base_2.tscn" id="6_gxg8h"]
 [ext_resource type="Texture2D" uid="uid://c1ilut56njcng" path="res://SPRITES/FILE/spr_bed.png" id="7_er6ue"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://hebtkef1la1v" path="res://3d_prefabs/House/house_side.glb" id="9_hiuhi"]
 [ext_resource type="PackedScene" uid="uid://ceatqbdof52vd" path="res://3d_prefabs/House/house_base.glb" id="10_i8h3m"]
 [ext_resource type="Script" path="res://ROOMS/House_enter_script.cs" id="11_4ks8c"]
+[ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="12_277lv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_paqfc"]
 size = Vector3(32.5026, 1, 30.677)
@@ -119,38 +119,21 @@ transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, 
 transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, -18.6565, 6.545, 0)
 
 [node name="Door_base2" parent="." groups=["Door_2"] instance=ExtResource("2_ak1ia")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.31313, 1.05862, -5.36574)
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.04032, 0.742477, -5.17626)
 _desination = "res://ROOMS/Room_one.tscn"
 _y_off = -2
 
 [node name="Save_Game_point" parent="." instance=ExtResource("4_axsoo")]
 transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -8.40956, 0.494341, -1.11661)
 
-[node name="Test_tree" parent="." instance=ExtResource("5_a5fge")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.78219, 0.613084, 3.7171)
-_label = "Guy"
-
-[node name="Test_tree3" parent="." instance=ExtResource("5_a5fge")]
-transform = Transform3D(0.499859, 0.0118671, 0, -0.0118671, 0.499859, 0, 0, 0, 0.5, -0.882672, 0.613084, 4.16911)
-_core = 2
-_label = "Dude"
-
-[node name="Test_tree4" parent="." instance=ExtResource("5_a5fge")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.99172, 0.613084, 2.84802)
-_core = 3
-_label = "Bro"
-
 [node name="Test_tree5" parent="." instance=ExtResource("6_gxg8h")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.91624, 0.613084, 2.54931)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.63266, 0.613084, -0.833411)
+_message = PackedStringArray("If there is an ARROW over an object, you can hit the UP arrow to interact with it.", "...", "But... I guess you already knew that,")
 
 [node name="Test_tree6" parent="." instance=ExtResource("6_gxg8h")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.62909, 0.613084, -1.95195)
 _core = 2
 _message = PackedStringArray("If your low on health you can use the bed to heal yourself.")
-
-[node name="Test_tree7" parent="." instance=ExtResource("6_gxg8h")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.44353, 0.613084, 1.34929)
-_core = 3
 
 [node name="Test_tree8" parent="." instance=ExtResource("6_gxg8h")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.172794, 0.613084, -4.299)
@@ -233,6 +216,15 @@ script = ExtResource("11_4ks8c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0558472, -0.262939, 0.167511)
 shape = SubResource("BoxShape3D_h1pen")
 
+[node name="Tree_base" parent="." instance=ExtResource("12_277lv")]
+transform = Transform3D(3.8, 0, 0, 0, 3.8, 0, 0, 0, 3.8, 2.08498, 0.624153, -3.73049)
+
+[node name="Tree_base2" parent="." instance=ExtResource("12_277lv")]
+transform = Transform3D(3.8, 0, 0, 0, 3.8, 0, 0, 0, 3.8, -4.09512, 0.624153, -3.73049)
+
+[node name="Sprite3D" parent="Tree_base2" index="1"]
+frame = 2
+
 [connection signal="body_entered" from="BED/Bed_area_healer" to="BED/Bed_area_healer" method="_enter_bed"]
 [connection signal="body_exited" from="BED/Bed_area_healer" to="BED/Bed_area_healer" method="_leave_bed"]
 [connection signal="body_entered" from="house_base/Area3D" to="house_base/Area3D" method="_enter"]
@@ -245,3 +237,4 @@ shape = SubResource("BoxShape3D_h1pen")
 [editable path="L_floor_one2/global_wall4"]
 [editable path="house_side"]
 [editable path="house_base"]
+[editable path="Tree_base2"]

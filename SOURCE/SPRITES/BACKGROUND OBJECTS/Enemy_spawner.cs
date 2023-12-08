@@ -42,6 +42,7 @@ public partial class Enemy_spawner : Node3D
 	{
 		Node _enem = null;
 
+ 		GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_Explosion.tscn", true);
 		switch (_spawn_ref)
 		{
 			case SUMMON_INDEX.SPIDER:

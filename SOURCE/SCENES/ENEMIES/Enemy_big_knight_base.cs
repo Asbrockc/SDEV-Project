@@ -44,7 +44,7 @@ public partial class Enemy_big_knight_base : Enemy_Egg_AI
 				velocity = death_state(delta, velocity);
 			break;
 			case SLAM_STATE: 
-					knight_slam_attack();
+				knight_slam_attack(false, 0, -1, 0);
 			break;
 
 			default:

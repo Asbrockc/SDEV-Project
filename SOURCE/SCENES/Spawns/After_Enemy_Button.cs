@@ -80,7 +80,7 @@ public partial class After_Enemy_Button : Button_base
 				{   
 					_counter = 0;
 					Node _enemy = null;
-				
+
 					if (_amount_spawned != 0 && _amount_spawned % 40 == 0)
 					{
 						_enemy = GLOBAL_FUNCTIONS.Spawn_enemy(_spawn_points[GLOBAL_FUNCTIONS.Choose(0,1,2,3,4)].GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Golem.tscn");
@@ -111,6 +111,8 @@ public partial class After_Enemy_Button : Button_base
 						_enemy.GetChild<Obj_enemy_base>(0)._target = GLOBAL_STATS._player;
 						_enemy.GetChild<Obj_enemy_base>(0)._on_death = () => _amount_defeated++;
 					}
+
+					GLOBAL_FUNCTIONS.Create_Effect((Node3D)_enemy, "Effect_Explosion.tscn", false);
 					
 				
 					_amount_spawned++;

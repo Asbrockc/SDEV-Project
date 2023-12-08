@@ -89,13 +89,21 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 18, 6.78192, 0)
 shape = SubResource("ConcavePolygonShape3D_gw57q")
 
 [node name="global_wall2" parent="L_floor_one" groups=["Wall"] instance=ExtResource("3_1vw7x")]
-transform = Transform3D(-2.5, 2.18557e-07, 0, -2.18557e-07, -2.5, 0, 0, 0, 2.5, 0, -9, 0)
+transform = Transform3D(-2.5, 2.18557e-07, 0, -2.18557e-07, -2.5, 0, 0, 0, 2.5, 0, -9, -0.0431318)
 
 [node name="Cube" parent="L_floor_one/global_wall2" index="0" groups=["Wall"]]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="L_floor_one/global_wall2/Cube" index="0" groups=["Wall"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="L_floor_one/global_wall2/Cube/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_e7u8q")
+
+[node name="global_wall5" parent="L_floor_one" groups=["Wall"] instance=ExtResource("3_1vw7x")]
+transform = Transform3D(-7.43, -3.77489e-07, -1.65006e-14, 0, -1.09278e-07, 2.5, -1.1219e-06, 2.5, 1.09278e-07, 0, -12.3139, 1.02276)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="L_floor_one/global_wall5/Cube" index="0" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="L_floor_one/global_wall5/Cube/StaticBody3D" groups=["Wall"]]
 shape = SubResource("ConcavePolygonShape3D_e7u8q")
 
 [node name="global_wall3" parent="L_floor_one" groups=["Wall"] instance=ExtResource("3_1vw7x")]
@@ -120,9 +128,11 @@ shape = SubResource("ConcavePolygonShape3D_05qfs")
 
 [node name="Door_1_1" parent="." groups=["door_boss_one"] instance=ExtResource("4_glgw1")]
 transform = Transform3D(-1.455, 0, 2.19699e-07, 0, 1.455, 0, -2.19699e-07, 0, -1.455, 0, 1.2133, 5.5033)
-visible = false
 _desination = "res://ROOMS/Room_one.tscn"
 _y_off = 2
+
+[node name="doorbase" parent="Door_1_1" index="2"]
+visible = false
 
 [node name="Door_1_4" parent="." groups=["zone_2_one"] instance=ExtResource("4_glgw1")]
 transform = Transform3D(2.55, 0, 0, 0, 2.55, 0, 0, 0, 2.55, -0.065011, 2.51266, -5.7178)
@@ -166,8 +176,11 @@ transform = Transform3D(-8.74228e-08, 0, 0.8, 0, 0.8, 0, -2, 0, -3.49691e-08, 0,
 
 [editable path="L_floor_one/global_wall"]
 [editable path="L_floor_one/global_wall2"]
+[editable path="L_floor_one/global_wall5"]
 [editable path="L_floor_one/global_wall3"]
 [editable path="L_floor_one/global_wall4"]
+[editable path="Door_1_1"]
+[editable path="Door_1_1/doorbase"]
 [editable path="Door_1_4"]
 [editable path="Door_1_4/doorbase"]
 [editable path="boss"]

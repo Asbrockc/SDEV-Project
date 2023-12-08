@@ -81,4 +81,18 @@ public partial class Enemy_Knight_base : Enemy_Egg_AI
 
 		return velocity;
 	}
+
+    public override void hit_me(Node3D _hit_by, float _hit_force = 0, float _jump_force = 0, int _damage = 0)
+    {
+			switch (curr_color)
+			{
+				case COLOR.RED:
+					base.hit_me(_hit_by, _hit_force, _jump_force, _damage);
+				break;
+				case COLOR.BLUE:
+					base.hit_me(_hit_by, 0, 0, _damage);
+				break;
+			}
+        
+    }
 }

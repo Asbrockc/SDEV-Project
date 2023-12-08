@@ -50,6 +50,7 @@ public partial class Button_base : Node3D
 
 	public virtual void _on_press()
 	{
+		GLOBAL_FUNCTIONS.Shake_Camera(1);
 		GLOBAL_STATS._completion_flags[(int)_flag] = true;
 	}
 }
