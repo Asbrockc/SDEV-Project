@@ -2,16 +2,6 @@ using Godot;
 
 public partial class Load_Button : Button
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
     public override void _Pressed()
     {
 		Save_Load_menu_base _active_chat = (Save_Load_menu_base)ResourceLoader.Load<PackedScene>("res://SCENES/GUI/Save_Load_menu_base.tscn").Instantiate();

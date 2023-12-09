@@ -10,15 +10,14 @@ public partial class Effect_area_effect_parent : Obj_projectile_parent
 	private Vector3 _y_driver = new Vector3(0,5,0);
 	private Vector3 _x_driver = new Vector3(0.2f,0,0);
 	private Vector3 _z_driver = new Vector3(0,0,0.2f);
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+
+    public override void _Ready()
+    {
+        
+    }
+
+    public override void _Process(double delta)
 	{
-
-	}
-
-	public override void _Process(double delta)
-	{
-
 		this.RotationDegrees += _y_driver;
 
 		if (!_set_parent && _my_parent != null)
@@ -53,7 +52,5 @@ public partial class Effect_area_effect_parent : Obj_projectile_parent
 			this.GetParent().RemoveChild(this);
 			this.QueueFree();
 		}
-
-		
 	}
 }

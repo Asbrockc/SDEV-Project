@@ -27,18 +27,15 @@ public partial class Room_transition_obj : NinePatchRect
 
     public override void _Ready()
     {
-		//winWidth = (int)GetViewport().GetVisibleRect().Size.X;
-		//winheight = (int)GetViewport().GetVisibleRect().Size.Y;	
-		//GetViewport().Get
 		_max = GetViewport().GetVisibleRect().Size.X;
 		_div = _max/10;
         base._Ready();
-		//GD.Print("CREATED");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
+		/*
 		//GD.Print("this is functioning");
 		if (!_finished)
 		{
@@ -73,6 +70,7 @@ public partial class Room_transition_obj : NinePatchRect
 			GLOBAL_FUNCTIONS._transition = null;
 			this.QueueFree();
 		}
+		*/
 	}
 	private void transition()
 	{
@@ -123,10 +121,10 @@ public partial class Room_transition_obj : NinePatchRect
 
 	private void move_room()
 	{
-		GD.Print("MoveStart");
+		//GD.Print("MoveStart");
 		if (_hold_off_a_second > 30)
 		{
-			GD.Print("AfterHold");
+			//GD.Print("AfterHold");
 			GLOBAL_STATS._Camera._target = GLOBAL_STATS._player;
 			Node3D _target_Door = null;
 
@@ -134,7 +132,7 @@ public partial class Room_transition_obj : NinePatchRect
 			{
 				foreach (Node node in GLOBAL_STATS._current_room_reference.GetChildren())
 				{
-					GD.Print("foreach");
+					//GD.Print("foreach");
 					if (node.IsInGroup(_target_zone))
 					{
 						_target_Door = (Node3D)node;

@@ -10,8 +10,6 @@ public partial class Save_Load_menu_base : Control
 
 	public string _save_group = "";
 
-
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		load_update();

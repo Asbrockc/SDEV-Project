@@ -118,6 +118,9 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.18377, 0)
 
 [node name="Obj_enemy_base" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("1_okc0c")]
 script = ExtResource("2_l48u7")
+_health = 40
+_max_health = 40
+drop_amount = 50
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
 transform = Transform3D(0.3, 0, 0, 0, 0.212132, 0.212132, 0, -0.212132, 0.212132, 0, -0.0561826, 0)

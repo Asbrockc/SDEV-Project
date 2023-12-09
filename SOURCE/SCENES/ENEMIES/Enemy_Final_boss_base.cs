@@ -199,21 +199,16 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
             this.GlobalPosition = _targ.GlobalPosition;
             _state = MOVE_STATE;
             
-
-            /*
-			if (hit_timer <  delay_timer)
-			{
-				hit_timer++;
-			}
-			else
-			{
-				hit_timer = 0;
-				_state = IDLE_STATE;
-			}*/
 		}
 
 		return velocity;
 	}
+
+    public void _on_tree_exiting()
+    {
+        GD.Print("Destroyed");
+        GLOBAL_STATS._game_finished = true;
+    }
 
     public override Vector3 jump_state(double delta, Vector3 velocity)
 	{

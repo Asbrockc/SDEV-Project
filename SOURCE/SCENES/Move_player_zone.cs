@@ -6,7 +6,8 @@ public partial class Move_player_zone : Area3D
 
 	public Vector3 _prior_position;
 	public Vector3 _position_difference;
-	// Called when the node enters the scene tree for the first time.
+
+
 	public override void _Ready()
 	{
 		_prior_position = this.Position;

@@ -11,7 +11,7 @@ public partial class Button_base : Node3D
 
 	[Export] public GLOBAL_STATS.FLAG_INDEX _flag = GLOBAL_STATS.FLAG_INDEX.Beat_boss_1;
 
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		_button = this.GetChild<Standing_platform>(0);

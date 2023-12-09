@@ -14,13 +14,11 @@ public partial class Obj_projectile_parent : Area3D
 	public Sprite3D _my_sprite = null;
 	public Node3D _my_parent = null;
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_my_sprite = this.GetChild<Sprite3D>(0);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (_destroy)

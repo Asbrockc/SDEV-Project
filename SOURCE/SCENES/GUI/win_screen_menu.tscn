@@ -15,16 +15,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.002
 anchor_bottom = 1.0
-offset_top = 64.0
+offset_top = -71.0
 offset_right = -0.304077
-offset_bottom = -131.0
+offset_bottom = -266.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.572549, 0.619608, 0.635294, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 121
-text = "GAME OVER"
+theme_override_font_sizes/font_size = 100
+text = "CONGRATULATIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -36,13 +36,50 @@ anchor_top = 1.082
 anchor_right = 0.586
 anchor_bottom = 1.214
 offset_left = 0.551971
-offset_top = -51.146
+offset_top = 118.854
 offset_right = -0.244019
-offset_bottom = -50.942
+offset_bottom = 119.058
 grow_horizontal = 2
 grow_vertical = 0
 text = "Back To Title Screen
 "
 script = ExtResource("1_21lhk")
+
+[node name="Game_title2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_top = 80.0
+offset_right = -0.304077
+offset_bottom = -115.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.572549, 0.619608, 0.635294, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Game Designer: 
+Christopher Asbrock"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game_title3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_top = 252.0
+offset_right = -0.304077
+offset_bottom = 57.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.572549, 0.619608, 0.635294, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "THANKS FOR PLAYING!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Game_title/Load_Button" to="Game_title/Load_Button" method="_on_pressed"]

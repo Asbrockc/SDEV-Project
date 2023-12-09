@@ -14,9 +14,6 @@ public partial class Player_raycast : RayCast3D
         _shadow = this.GetChild<Sprite3D>(0);
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    
-
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
@@ -24,7 +21,7 @@ public partial class Player_raycast : RayCast3D
 		if (_test2 != null && _test2.IsInGroup("floor"))
 		{
 			_current_surface = _test2;
-			GD.Print(_test2);
+			//GD.Print(_test2);
 
 			_shadow.GlobalPosition = 
 			new (this.GetParentNode3D().GlobalPosition.X,

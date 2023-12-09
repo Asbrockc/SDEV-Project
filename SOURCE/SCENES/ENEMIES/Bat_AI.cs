@@ -22,25 +22,20 @@ public partial class Bat_AI : Enemy_Egg_AI
 	
     public override void _Ready()
     {
-		//_attack_timer = _attack_timer_max;
-		//_base_location = this.Position;
 		base._Ready();
-		
-		this._chirp_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_bat_chirp.wav");
-		this._flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
-		_apply_grav = false;
-
-		_hit_zone = GetNode<Obj_enemy_hurt_zone>("Obj_enemy_hurt_zone");
     }
 
     public override void _PhysicsProcess(double delta)
     {
 		if (!_set_base)
 		{
+			this._chirp_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_bat_chirp.wav");
+			this._flap_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_flap_small.wav");
+			_apply_grav = false;
+
+			_hit_zone = GetNode<Obj_enemy_hurt_zone>("Obj_enemy_hurt_zone");
 			_base_location = this.GlobalPosition;
 			_set_base = true;
-
-			GD.Print(_base_location);
 		}
 
         base._PhysicsProcess(delta);
@@ -78,7 +73,7 @@ public partial class Bat_AI : Enemy_Egg_AI
 				{
 					if (!_Animator.IsPlaying())
 					{
-						GD.Print("flap");
+						//GD.Print("flap");
 						_Animator.Play("down_walk");
 						GLOBAL_FUNCTIONS.Play_Sound(_flap_sound);
 					}

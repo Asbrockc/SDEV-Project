@@ -7,7 +7,7 @@ public partial class Effect_parent : Sprite3D
 		this.GetChild<AnimationPlayer>(0).Play("Animate");
 	}	
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+
 	public override void _Process(double delta)
 	{
 	}

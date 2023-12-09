@@ -12,8 +12,6 @@ public partial class Final_floor_break : Node3D
 
 	private int current_countdown = 0;
 	private int current_max = 200;
-
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		current_countdown = current_max;

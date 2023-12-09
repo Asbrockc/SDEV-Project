@@ -5,13 +5,13 @@ public partial class Name_confirmation : Button
 {
 	private Label _error_label;
 	private string _error_message;
-	// Called when the node enters the scene tree for the first time.
+
+
 	public override void _Ready()
 	{
 		_error_label = this.GetChild<Label>(0);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		_error_label.Text = _error_message;

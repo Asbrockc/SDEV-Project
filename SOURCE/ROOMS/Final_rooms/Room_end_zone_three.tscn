@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://v0x2i1bfq6ef"]
+[gd_scene load_steps=11 format=3 uid="uid://v0x2i1bfq6ef"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_f4lxu"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_wvwys"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="3_ivfib"]
+[ext_resource type="Script" path="res://ROOMS/Core_spotLight.cs" id="4_vvk8h"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="4_ywbqt"]
 [ext_resource type="Script" path="res://SCENES/Spawns/After_Enemy_Button.cs" id="5_0f3bp"]
 [ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="6_dewe7"]
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="7_atkhy"]
+[ext_resource type="PackedScene" uid="uid://bvsv5eux4k48d" path="res://3d_prefabs/global_wall.glb" id="9_dt88c"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_abger"]
+data = PackedVector3Array(3.7387, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7388, 3.8021, -4.1588, 3.7387, 3.8021, -4.1588, 3.7387, 3.8021, 4.1588, -3.7388, 3.8021, 4.1588, 3.7387, -3.8022, 4.1588, -3.7388, 3.8021, 4.1588, 3.7387, 3.8021, 4.1588, 3.7387, -3.8022, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, 3.8021, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, -3.8022, -4.1588, -3.7388, 3.8021, -4.1588, -3.7388, -3.8022, -4.1588, 3.7387, -3.8022, 4.1588, 3.7387, -3.8022, -4.1588, -3.7388, -3.8022, -4.1588, -3.7388, -3.8022, 4.1588, 3.7387, -3.8022, 4.1588, 3.7387, -3.8022, -4.1588, 3.7387, 3.8021, 4.1588, 3.7387, 3.8021, -4.1588, 3.7387, -3.8022, -4.1588, 3.7387, -3.8022, 4.1588, 3.7387, 3.8021, 4.1588, -3.7388, -3.8022, -4.1588, 3.7387, 3.8021, -4.1588, -3.7388, 3.8021, -4.1588, -3.7388, -3.8022, -4.1588, 3.7387, -3.8022, -4.1588, 3.7387, 3.8021, -4.1588)
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_f4lxu")
@@ -41,6 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 
 light_energy = 5.0
 spot_range = 23.8757
 spot_angle = 79.7603
+script = ExtResource("4_vvk8h")
 
 [node name="Button_base" parent="." instance=ExtResource("4_ywbqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13549, 0, 2.25665)
@@ -78,8 +84,17 @@ _active = false
 transform = Transform3D(-5.79176e-08, 0, 0.865, 0, 1.385, 0, -1.325, 0, -3.78104e-08, 7.81092, 0.746278, 2.45315)
 _flag = 17
 
+[node name="global_wall5" parent="." groups=["Wall"] instance=ExtResource("9_dt88c")]
+transform = Transform3D(-7.44, -4.12974e-07, -1.65006e-14, 0, -1.19551e-07, 2.5, -1.12341e-06, 2.735, 1.09278e-07, 0, -11.8846, 0.17096)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="global_wall5/Cube" index="0" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall5/Cube/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_abger")
+
 [editable path="L_floor_one"]
 [editable path="L_floor_one/global_wall"]
 [editable path="L_floor_one/global_wall2"]
 [editable path="L_floor_one/global_wall3"]
 [editable path="L_floor_one/global_wall4"]
+[editable path="global_wall5"]

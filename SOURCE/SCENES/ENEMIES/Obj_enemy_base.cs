@@ -40,7 +40,6 @@ public partial class Obj_enemy_base : Obj_physics_base
     {
 		_Animator = this.GetNode("Spr_enemy").GetChild<AnimationPlayer>(0);
 		this._damage_sound = GLOBAL_STATS._player._sword_hit;
-		//GLOBAL_FUNCTIONS.Play_Sound(this._player_parent._sword_hit);
 		base._state = 1;
 		this.GetNode<Obj_enemy_hurt_zone>("Obj_enemy_hurt_zone")._enemy_parent = this;
     }

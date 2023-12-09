@@ -12,7 +12,7 @@ public partial class Path_follower_back_an_forth : PathFollow3D
 	private float _rate = 1.0f;
 	[Export] private float _div = 1000.0f;
 
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		_platform = this.GetChild<Standing_platform>(0)._Player_Zone;

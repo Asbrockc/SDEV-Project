@@ -3,7 +3,7 @@ using Godot;
 public partial class Music_player : AudioStreamPlayer3D
 {
 	private Audio_Emt _parent;
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		_parent = this.GetParent<Audio_Emt>();

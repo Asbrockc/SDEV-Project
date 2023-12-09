@@ -10,8 +10,6 @@ public partial class attribute_leveler_parent : Control
 
 	public int _current_level = 0;
 
-
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_parent_node = this.GetParent<Level_up_menu>();
@@ -22,7 +20,6 @@ public partial class attribute_leveler_parent : Control
 		_attribute_label = this.GetChild<Label>(5);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		_bonus_label.Text = _current_level.ToString();

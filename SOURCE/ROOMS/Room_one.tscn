@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://r8ypjdu5a6dd"]
+[gd_scene load_steps=23 format=3 uid="uid://r8ypjdu5a6dd"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_3c0hp"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="1_6deq7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="2_gs7w2"]
 [ext_resource type="PackedScene" uid="uid://bvsv5eux4k48d" path="res://3d_prefabs/global_wall.glb" id="3_moya0"]
 [ext_resource type="PackedScene" uid="uid://be5puf60jkgrb" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn" id="5_8fsoy"]
+[ext_resource type="Script" path="res://ROOMS/Core_spotLight.cs" id="6_awaas"]
 [ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="7_g6rux"]
 [ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="8_wowd4"]
 [ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="9_4cf02"]
@@ -127,7 +128,7 @@ transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 
 shape = SubResource("ConcavePolygonShape3D_05qfs")
 
 [node name="Right_door" parent="." instance=ExtResource("2_gs7w2")]
-transform = Transform3D(-5.50763e-08, 0, -1.26, 0, 1.26, 0, 1.26, 0, -5.50763e-08, 6.55649, 0.759502, 0.162601)
+transform = Transform3D(-5.50763e-08, 0, -1.26, 0, 1.26, 0, 1.26, 0, -5.50763e-08, 6.55649, 0.662816, 0.162601)
 _flag = 2
 
 [node name="Boss_1_door" parent="." instance=ExtResource("2_gs7w2")]
@@ -140,22 +141,21 @@ _desination = "res://ROOMS/Room_town.tscn"
 _y_off = 2
 
 [node name="doorbase" parent="Door_1_1" index="2"]
-transform = Transform3D(-1.31134e-08, 0, -0.4, 0, 0.3, 0, 0.3, 0, -1.74846e-08, 0, -0.618862, 0)
 visible = false
 
 [node name="Door_1_2" parent="." groups=["door_3"] instance=ExtResource("1_6deq7")]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 6.82047, 0.827883, 0.10208)
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 6.82047, 0.778584, 0.10208)
 _desination = "res://ROOMS/Room_three.tscn"
 _x_off = 2
 
 [node name="Door_1_3" parent="." groups=["door_2_left"] instance=ExtResource("1_6deq7")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -6.93358, 0.940689, 0.301351)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -6.93358, 0.742348, 0.301351)
 _desination = "res://ROOMS/Room_two.tscn"
 _x_off = -2
 metadata/_edit_group_ = true
 
 [node name="Door_1_4" parent="." groups=["door_boss_one"] instance=ExtResource("1_6deq7")]
-transform = Transform3D(1.82, 0, 0, 0, 1.82, 0, 0, 0, 1.82, 0, 0.962072, -4.86707)
+transform = Transform3D(1.82, 0, 0, 0, 1.82, 0, 0, 0, 1.82, 0, 0.899443, -4.86707)
 _desination = "res://ROOMS/Room_boss_one.tscn"
 _y_off = -2
 
@@ -164,6 +164,7 @@ transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 
 light_energy = 5.0
 spot_range = 369.946
 spot_angle = 89.99
+script = ExtResource("6_awaas")
 
 [node name="Enemy_Egg" parent="." instance=ExtResource("5_8fsoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48004, 0.733075, -2.69456)

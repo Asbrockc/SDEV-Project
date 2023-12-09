@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://n5y6hj1jbex8"]
+[gd_scene load_steps=6 format=3 uid="uid://n5y6hj1jbex8"]
 
 [ext_resource type="Script" path="res://SCENES/Test_chat_2.cs" id="1_1p8j6"]
 [ext_resource type="Texture2D" uid="uid://cnq12crt6nsq1" path="res://SPRITES/FILE/icon.svg" id="2_2hk76"]
 [ext_resource type="Texture2D" uid="uid://bvcn7unsq4dsr" path="res://SPRITES/FILE/spr_save_statue.png" id="3_vldq6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_syhhy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6cvhy"]
+size = Vector3(1, 1.61572, 1.35449)
 
 [node name="Save_Game_point" type="Area3D" groups=["Interact", "Save_Point"]]
 transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -9.6146, 0.475301, 0)
@@ -21,7 +24,13 @@ shaded = true
 texture = ExtResource("2_2hk76")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1.775, 0, 0, 0, 1.25511, 1.25511, 0, -1.25511, 1.25511, 0, 0, 0)
+transform = Transform3D(2.57, 0, 0, 2.32831e-10, 1.81726, 1.81726, 0, -1.81726, 1.81726, 0.000120163, 0.428666, 0)
 texture = ExtResource("3_vldq6")
 region_enabled = true
 region_rect = Rect2(711, 154, 44, 87)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0, 0.307861, 0.0673844)
+shape = SubResource("BoxShape3D_6cvhy")

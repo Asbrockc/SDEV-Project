@@ -19,7 +19,6 @@ public partial class Audio_Emt : Node3D
 	public float _music_run_state = -1;
 
 	public String _next_song;
-	//public AudioStreamWav _next_song;
 
 	public override void _Ready()
 	{

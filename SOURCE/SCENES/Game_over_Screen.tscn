@@ -25,6 +25,7 @@ cap_bottom = false
 [node name="Room_one" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 script = ExtResource("1_q4cxn")
+_create_transition = false
 
 [node name="Title_screen_menu" parent="." instance=ExtResource("2_5oggg")]
 

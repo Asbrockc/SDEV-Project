@@ -6,8 +6,4 @@ public partial class Audio_player_base : AudioStreamPlayer3D
 	{
 		this.GetParent<Audio_Emt>()._audio_player_list.Add(this);
 	}
-
-	public override void _Process(double delta)
-	{
-	}
 }

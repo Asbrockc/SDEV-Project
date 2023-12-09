@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bswupu2hbeu5h"]
+[gd_scene load_steps=42 format=3 uid="uid://bswupu2hbeu5h"]
 
 [ext_resource type="Script" path="res://GLOBALS/MAIN/GLOBAL_SCENE.cs" id="1_ri1y5"]
 [ext_resource type="Script" path="res://GLOBALS/PLAYER/Obj_player_base_script.cs" id="2_jd1tb"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cmhkt8cx7jnbj" path="res://SPRITES/FILE/spr_arrow.png" id="12_de0ol"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv78r"]
-size = Vector3(0.220525, 0.781989, 0.264035)
+size = Vector3(0.220525, 0.783814, 0.264035)
 
 [sub_resource type="Animation" id="Animation_0hjqt"]
 length = 0.001
@@ -32,6 +32,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [36]
+}
+
+[sub_resource type="Animation" id="Animation_arads"]
+resource_name = "WIN"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [62, 62, 63, 62, 61, 60, 59, 58, 57, 56, 61]
 }
 
 [sub_resource type="Animation" id="Animation_jjvj3"]
@@ -484,6 +500,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3xrod"]
 _data = {
 "RESET": SubResource("Animation_0hjqt"),
+"WIN": SubResource("Animation_arads"),
 "dead": SubResource("Animation_jjvj3"),
 "down_attack": SubResource("Animation_plhnx"),
 "down_bow": SubResource("Animation_7vf75"),
@@ -520,7 +537,7 @@ floor_max_angle = 0.698132
 script = ExtResource("2_jd1tb")
 
 [node name="Obj_player_collision" type="CollisionShape3D" parent="Obj_pLayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00217403, -0.217906, -0.00224322)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00217403, 0.111989, -0.00224322)
 shape = SubResource("BoxShape3D_bv78r")
 
 [node name="Obj_player_sprite" type="Sprite3D" parent="Obj_pLayer"]
@@ -561,6 +578,7 @@ script = ExtResource("7_odlsd")
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, -11.3137)
 
 [node name="Obj_temp_label_stats" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("8_g7bsr")
@@ -578,6 +596,11 @@ script = ExtResource("11_fj1xl")
 
 [node name="UI_Player_stats" parent="." instance=ExtResource("12_58p2h")]
 visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.287177, 0.957878, 0, -0.957878, 0.287177, 0, 15.5939, 4.06355)
+light_energy = 0.1
+shadow_enabled = true
 
 [connection signal="area_entered" from="Obj_pLayer/Obj_player_search_area" to="Obj_pLayer/Obj_player_search_area" method="_on_area_entered"]
 [connection signal="area_exited" from="Obj_pLayer/Obj_player_search_area" to="Obj_pLayer/Obj_player_search_area" method="_on_area_exited"]

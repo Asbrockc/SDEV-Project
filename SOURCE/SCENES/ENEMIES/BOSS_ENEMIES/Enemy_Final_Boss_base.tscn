@@ -143,7 +143,7 @@ _health = 25
 _max_health = 25
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
-transform = Transform3D(0.22, 0, 0, 0, 0.155563, 0.155563, 0, -0.155563, 0.155563, 0, 0, -0.1)
+transform = Transform3D(0.22, 0, 0, 0, 0.155563, 0.155563, 0, -0.155563, 0.155563, 0, -0.18, -0.1)
 shaded = true
 texture = ExtResource("4_osjwc")
 hframes = 4

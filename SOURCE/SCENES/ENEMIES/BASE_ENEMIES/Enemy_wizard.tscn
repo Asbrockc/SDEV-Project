@@ -134,6 +134,9 @@ _data = {
 
 [node name="Obj_enemy_base" parent="." groups=["Enemy_hit_zone"] instance=ExtResource("1_y61ca")]
 script = ExtResource("2_1ch1f")
+_health = 25
+_max_health = 25
+drop_amount = 25
 
 [node name="Spr_enemy" type="Sprite3D" parent="Obj_enemy_base"]
 transform = Transform3D(5, 0, 0, 0, 3.53553, 3.53553, 0, -3.53553, 3.53553, 0, 0.245691, 0)

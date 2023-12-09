@@ -9,11 +9,10 @@ public partial class Puzzle_room_rotating_path : Path3D
 	{
 		foreach (Node3D _node in GetParent().GetChildren())
 		{
-			GD.Print(_node);
 			if (_node.IsInGroup("enem"))
 				_node.GetChild<Obj_enemy_base>(0)._target = GLOBAL_STATS._player;
 		}
-		//_rotate = new Vector3(0,0.1f,0);
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

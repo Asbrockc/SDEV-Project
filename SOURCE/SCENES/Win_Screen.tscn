@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://wxck8hj3nx1j"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_d12or"]
-[ext_resource type="PackedScene" uid="uid://cc3b7uyg43wwd" path="res://SCENES/GUI/game_over_screen_menu.tscn" id="2_d657r"]
+[ext_resource type="PackedScene" uid="uid://dc5ahc3alo0gm" path="res://SCENES/GUI/win_screen_menu.tscn" id="2_uqm3m"]
 [ext_resource type="Script" path="res://SCENES/Player_title_screen_lock.cs" id="3_p55w5"]
 [ext_resource type="Texture2D" uid="uid://b1l0gaec5p1ry" path="res://SCENES/EFFECTS/EFFECT_SPRITES/Effect_firewall.png" id="4_rycqn"]
 [ext_resource type="Script" path="res://SCENES/Title_screen_background.cs" id="5_0m8kp"]
@@ -27,8 +27,9 @@ cap_bottom = false
 [node name="Room_one" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 script = ExtResource("1_d12or")
+_create_transition = false
 
-[node name="Title_screen_menu" parent="." instance=ExtResource("2_d657r")]
+[node name="Title_screen_menu" parent="." instance=ExtResource("2_uqm3m")]
 
 [node name="Player_title_screen_lock" type="Node3D" parent="." groups=["LOCK_PLAYER"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3636, 0, 2.04675)

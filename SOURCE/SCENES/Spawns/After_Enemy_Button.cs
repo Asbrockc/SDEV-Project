@@ -17,9 +17,8 @@ public partial class After_Enemy_Button : Button_base
 	private Color _red = new Color(1,0,0);
 
 	private AudioStreamWav _bad_noise;
-
 	private StandardMaterial3D _test;
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		_test = GetChild<Standing_platform>(0).Mesh.SurfaceGetMaterial(0) as StandardMaterial3D;
@@ -42,7 +41,6 @@ public partial class After_Enemy_Button : Button_base
 		}
 
 	
-	//private Color _blue = new Color(0,0,1);
 		_label = this.GetNode<Label3D>("Label3D");
 		base._Ready();
 	}

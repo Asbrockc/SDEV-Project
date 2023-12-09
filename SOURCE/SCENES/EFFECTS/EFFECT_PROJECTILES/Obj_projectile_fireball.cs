@@ -24,7 +24,7 @@ public partial class Obj_projectile_fireball : Obj_projectile_parent
 				_vspd = 0;
 				Effect_parent _test = GLOBAL_FUNCTIONS.Create_Effect(this, "Effect_Explosion.tscn", true);
 				_test.GetNode<Obj_enemy_hurt_zone>("Explosion_area")._enemy_parent = _parent;
-				GD.Print(_test.GetNode<Obj_enemy_hurt_zone>("Explosion_area")._enemy_parent);
+				//GD.Print(_test.GetNode<Obj_enemy_hurt_zone>("Explosion_area")._enemy_parent);
 				_destroy = true;
 			}
 		}

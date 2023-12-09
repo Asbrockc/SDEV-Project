@@ -9,12 +9,7 @@ public partial class Bed_area_healer : Area3D
 
 	private Vector3 _sheets_up = new Vector3(0, -.25f, -.15f);
 	private Vector3 _sheets_down = new Vector3(0, -.55f, -.55f);
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (_healing)

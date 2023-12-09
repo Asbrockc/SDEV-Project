@@ -19,7 +19,7 @@ public partial class Boss_enemy_base : Obj_enemy_base
 
 		if (_jump_spd != 0)
 		{
-			GD.Print("went to jump");
+			//GD.Print("went to jump");
 			velocity.Y = _jump_spd;
 			_jump_spd = 0.0f;
 		}

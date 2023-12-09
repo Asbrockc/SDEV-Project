@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4sh18r135808"]
+[gd_scene load_steps=13 format=3 uid="uid://c4sh18r135808"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_hr8wb"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_8bsp3"]
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="3_cm658"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_owmjr"]
+[ext_resource type="Script" path="res://ROOMS/Core_spotLight.cs" id="5_2ybm7"]
 [ext_resource type="PackedScene" uid="uid://1surjqne4n5o" path="res://SCENES/Spawns/Button_base.tscn" id="5_qefug"]
 [ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="6_mh8k5"]
 [ext_resource type="PackedScene" uid="uid://db6yo4yb5t8om" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Bat.tscn" id="7_7drcy"]
 [ext_resource type="PackedScene" uid="uid://bvsv5eux4k48d" path="res://3d_prefabs/global_wall.glb" id="8_2c0vk"]
+[ext_resource type="PackedScene" uid="uid://3wd3nw0sctge" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Knight.tscn" id="10_0xkws"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_klh6r"]
 data = PackedVector3Array(3.7387, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7388, 3.8021, -4.1588, 3.7387, 3.8021, -4.1588, 3.7387, 3.8021, 4.1588, -3.7388, 3.8021, 4.1588, 3.7387, -3.8022, 4.1588, -3.7388, 3.8021, 4.1588, 3.7387, 3.8021, 4.1588, 3.7387, -3.8022, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, 3.8021, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, -3.8022, -4.1588, -3.7388, 3.8021, -4.1588, -3.7388, -3.8022, -4.1588, 3.7387, -3.8022, 4.1588, 3.7387, -3.8022, -4.1588, -3.7388, -3.8022, -4.1588, -3.7388, -3.8022, 4.1588, 3.7387, -3.8022, 4.1588, 3.7387, -3.8022, -4.1588, 3.7387, 3.8021, 4.1588, 3.7387, 3.8021, -4.1588, 3.7387, -3.8022, -4.1588, 3.7387, -3.8022, 4.1588, 3.7387, 3.8021, 4.1588, -3.7388, -3.8022, -4.1588, 3.7387, 3.8021, -4.1588, -3.7388, 3.8021, -4.1588, -3.7388, -3.8022, -4.1588, 3.7387, -3.8022, -4.1588, 3.7387, 3.8021, -4.1588)
@@ -17,7 +19,6 @@ data = PackedVector3Array(3.7387, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_hr8wb")
-_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
 
 [node name="L_floor_one" parent="." instance=ExtResource("2_8bsp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, -0.038887)
@@ -114,11 +115,12 @@ visible = false
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.929796, 0.368076, 0, -0.368076, 0.929796, 0, 4.9684, 6.72377)
 light_energy = 5.0
-shadow_enabled = true
 spot_range = 97.7612
 spot_angle = 89.99
+script = ExtResource("5_2ybm7")
 
 [node name="Button_base" parent="." instance=ExtResource("5_qefug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9945, 0, 2.29064)
 _flag = 4
 
 [node name="Save_Game_point" parent="." instance=ExtResource("6_mh8k5")]
@@ -144,6 +146,18 @@ transform = Transform3D(1.76777, 0, -1.76777, 0, 2.5, 0, 1.76777, 0, 1.76777, 17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall2/Cube/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_m067y")
 
+[node name="Enemy" parent="." instance=ExtResource("10_0xkws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20347, 0.482196, -6.91918)
+
+[node name="Obj_enemy_base" parent="Enemy" index="0"]
+curr_color = 1
+
+[node name="Enemy2" parent="." instance=ExtResource("10_0xkws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9119, 0.482196, -6.91918)
+
+[node name="Obj_enemy_base" parent="Enemy2" index="0"]
+curr_color = 1
+
 [editable path="L_floor_one"]
 [editable path="L_floor_one/global_wall"]
 [editable path="L_floor_one/global_wall2"]
@@ -153,3 +167,5 @@ shape = SubResource("ConcavePolygonShape3D_m067y")
 [editable path="Door_1_1/doorbase"]
 [editable path="global_wall"]
 [editable path="global_wall2"]
+[editable path="Enemy"]
+[editable path="Enemy2"]

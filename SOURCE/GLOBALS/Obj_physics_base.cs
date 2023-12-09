@@ -21,15 +21,6 @@ public partial class Obj_physics_base : CharacterBody3D
 	public float _vspd = 0.0f;
 	public float _jump_spd = 0.0f;
 
-
-	public override void _Ready()
-	{
-	}
-
-	public override void _Process(double delta)
-	{
-	}
-
 	/// <summary>
 	/// defines hspd and vspd so every physics class can just handle how they move through variables 
 	/// that can be interupted 

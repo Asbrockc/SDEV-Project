@@ -12,7 +12,7 @@ public partial class Button_game_control : Node3D
 	public int pressed_x = 0;
 	public int pressed_y = 0;
 	public bool pressed_active = false;
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		_button_grid =  new Game_button_base[,]
@@ -27,17 +27,10 @@ public partial class Button_game_control : Node3D
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < 4; j++)
 			{
-				//StandardMaterial3D _temp = new StandardMaterial3D();
-				//_button_grid[i,j].GetChild<Standing_platform>(0).Mesh.SurfaceSetMaterial(0, _temp);
-
 				_button_grid[i,j].my_x = i;
 				_button_grid[i,j].my_y = j;
 				var _test = _button_grid[i,j].GetChild<Standing_platform>(0).Mesh.SurfaceGetMaterial(0) as StandardMaterial3D;
-				_test!.AlbedoColor = _red; //GLOBAL_FUNCTIONS.Choose(_red, _blue);
-					//GLOBAL_FUNCTIONS.Choose(0,1),
-					//GLOBAL_FUNCTIONS.Choose(0,1),
-					//GLOBAL_FUNCTIONS.Choose(0,1));
-					
+				_test!.AlbedoColor = _red; 	
 			}
 		
 		for (int i = 0; i < 10; i++)
@@ -60,7 +53,6 @@ public partial class Button_game_control : Node3D
 		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (pressed_active)
@@ -91,11 +83,11 @@ public partial class Button_game_control : Node3D
 			{
 				GLOBAL_STATS.FLAG_INDEX _flag = GLOBAL_STATS.FLAG_INDEX.Puzzle_door_1;
 				GLOBAL_STATS._completion_flags[(int)_flag] = true;
-				GD.Print("WINNER");
+				//GD.Print("WINNER");
 			}
 
-			GD.Print(pressed_x);
-			GD.Print(pressed_y);
+			//GD.Print(pressed_x);
+			//GD.Print(pressed_y);
 			pressed_active = false;
 		}
 		/*

@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cqmk103gho8e4"]
+[gd_scene load_steps=24 format=3 uid="uid://cqmk103gho8e4"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7fhvn"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="2_5s08l"]
+[ext_resource type="Script" path="res://ROOMS/Core_spotLight.cs" id="4_0l2hn"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="4_036ms"]
 [ext_resource type="Script" path="res://ROOMS/Final_rooms/Button_game_control.cs" id="5_w3kn7"]
 [ext_resource type="Script" path="res://SCENES/Spawns/Game_button_base.cs" id="6_fax0g"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="11_j75nv"]
 [ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="12_4fw0l"]
 [ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="12_ojmsc"]
+[ext_resource type="PackedScene" uid="uid://bvsv5eux4k48d" path="res://3d_prefabs/global_wall.glb" id="13_c1jpy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpo6m"]
 resource_local_to_scene = true
@@ -48,6 +50,9 @@ uv1_scale = Vector3(3.005, 2, 1)
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ackyf")
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mce4j"]
+data = PackedVector3Array(3.7387, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7388, 3.8021, -4.1588, 3.7387, 3.8021, -4.1588, 3.7387, 3.8021, 4.1588, -3.7388, 3.8021, 4.1588, 3.7387, -3.8022, 4.1588, -3.7388, 3.8021, 4.1588, 3.7387, 3.8021, 4.1588, 3.7387, -3.8022, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, 3.8021, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, -3.8022, -4.1588, -3.7388, 3.8021, -4.1588, -3.7388, -3.8022, -4.1588, 3.7387, -3.8022, 4.1588, 3.7387, -3.8022, -4.1588, -3.7388, -3.8022, -4.1588, -3.7388, -3.8022, 4.1588, 3.7387, -3.8022, 4.1588, 3.7387, -3.8022, -4.1588, 3.7387, 3.8021, 4.1588, 3.7387, 3.8021, -4.1588, 3.7387, -3.8022, -4.1588, 3.7387, -3.8022, 4.1588, 3.7387, 3.8021, 4.1588, -3.7388, -3.8022, -4.1588, 3.7387, 3.8021, -4.1588, -3.7388, 3.8021, -4.1588, -3.7388, -3.8022, -4.1588, 3.7387, -3.8022, -4.1588, 3.7387, 3.8021, -4.1588)
+
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_7fhvn")
 _room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
@@ -64,12 +69,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.775
 transform = Transform3D(-1.38, 0, -1.20643e-07, 0, 1.38, 0, 1.20643e-07, 0, -1.38, -10.6599, 1.97111, 4.63483)
 
 [node name="Door_1_3" parent="." groups=["door_3"] instance=ExtResource("4_036ms")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.34388, 0.778138, 7.8905)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.34388, 0.577078, 7.8905)
 _desination = "res://ROOMS/Room_one.tscn"
 _x_off = -2
 
 [node name="Door_1_4" parent="." groups=["door_3_B"] instance=ExtResource("4_036ms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11575, 0.701999, 4.11519)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11575, 0.522025, 4.11519)
 _desination = "res://ROOMS/Final_rooms/Room_end_zone_one.tscn"
 _y_off = -2
 
@@ -78,6 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 0.472566, 0.881295, 0, -0.881295, 0.472566, 
 light_energy = 8.0
 spot_range = 1948.54
 spot_angle = 60.5107
+script = ExtResource("4_0l2hn")
 
 [node name="Button_game_control" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22096, 0, 6.29937)
@@ -186,9 +192,18 @@ transform = Transform3D(2.17, 0, 0, 0, 2.17, 0, 0, 0, 2.17, -5.98267, -2.19423, 
 [node name="Sprite3D" parent="Tree_base" index="1"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.753279, 1.35678, 0.546383)
 
+[node name="global_wall5" parent="." groups=["Wall"] instance=ExtResource("13_c1jpy")]
+transform = Transform3D(-7.44, -4.12974e-07, -1.65006e-14, 0, -1.19551e-07, 2.5, -1.12341e-06, 2.735, 1.09278e-07, 0, -12.5761, 0.0263538)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="global_wall5/Cube" index="0" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall5/Cube/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_mce4j")
+
 [editable path="L_floor_one"]
 [editable path="L_floor_one/global_wall"]
 [editable path="L_floor_one/global_wall2"]
 [editable path="L_floor_one/global_wall3"]
 [editable path="L_floor_one/global_wall4"]
 [editable path="Tree_base"]
+[editable path="global_wall5"]

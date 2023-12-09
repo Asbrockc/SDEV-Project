@@ -7,7 +7,7 @@ public partial class Attribute_up_button : Button
         attribute_leveler_parent _parent = this.GetParent<attribute_leveler_parent>();
 		Label _label = _parent.GetNode<Label>("Attribute_label");
 
-		GD.Print(_label.Text);
+		//GD.Print(_label.Text);
 
 
 		
@@ -35,8 +35,8 @@ public partial class Attribute_up_button : Button
 				_parent._current_level++;
 				_parent._parent_node._avalable_level--;
 			}
-			else
-				GD.Print("Maxed out");
+			//else
+				//GD.Print("Maxed out");
 		}
 
     }

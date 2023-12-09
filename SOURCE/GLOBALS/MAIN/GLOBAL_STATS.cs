@@ -22,6 +22,8 @@ public partial class GLOBAL_STATS : Node
 	public const int I_BONUS_POINTS = 9;
 	public const int I_MAX_HEALTH = 10;
 
+	public static bool _game_finished = false;
+
 	/// <summary>Enums with int value that correspond to the completion flags lists</summary>
 	public enum FLAG_INDEX : ushort
 	{
@@ -47,7 +49,9 @@ public partial class GLOBAL_STATS : Node
 
 		dragon_v2 = 16,
 
-		locked_behind_player_puzzle = 17
+		locked_behind_player_puzzle = 17,
+
+		show_shadows = 18
 	}
 
 	static public bool _pause = false;
@@ -58,7 +62,7 @@ public partial class GLOBAL_STATS : Node
 	static public GLOBAL_SCENE _main_scene;
 
 	static public int _current_save_slot = 0;
-	static public string _save_current_room = null;
+	//static public string _save_current_room = null;
 	static public String _save_location = "user://save";
 	static public String _save_file_type = ".save";
 	
@@ -66,6 +70,12 @@ public partial class GLOBAL_STATS : Node
 	static public String _player_name = "???";
 	static public String _player_room = "???";	
 	static public String _save_group = "???";
+
+	static public bool _changing_rooms = false;
+	static public string _save_current_room = null;
+	static public String _group = "";
+	static public float _x_off = 0;
+	static public float _y_off = 0;
 
 	/// <summary>List that holds all of the player stats</summary>
 	static public List<int> _player_stats = new List<int>()
@@ -107,7 +117,9 @@ public partial class GLOBAL_STATS : Node
 		false,
 
 		false, //dragon_v2
-		true //locked_behind_player_puzzle
+		true, //locked_behind_player_puzzle
+
+		false //shadows
 	};
 
 	static public void _Reset_Stats()
@@ -141,7 +153,7 @@ public partial class GLOBAL_STATS : Node
 			GLOBAL_FUNCTIONS.Play_Sound(_player._level_up, 1, false);
 			int _remainder = _exp - _next_in;
 
-			_player_stats[I_NEXT_LEVEL_IN] += _player_stats[I_NEXT_LEVEL_IN]/2;
+			_player_stats[I_NEXT_LEVEL_IN] += (int)Math.Ceiling(_player_stats[I_NEXT_LEVEL_IN] * .1);
 			_player_stats[I_EXPERIENCE] = 0;
 
 			_player_stats[I_LEVEL]++;

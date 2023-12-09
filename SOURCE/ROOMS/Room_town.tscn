@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtc8jm8atntj"]
+[gd_scene load_steps=25 format=3 uid="uid://dtc8jm8atntj"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7y241"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="2_ak1ia"]
+[ext_resource type="Script" path="res://ROOMS/Core_spotLight.cs" id="3_0kmfx"]
 [ext_resource type="PackedScene" uid="uid://n5y6hj1jbex8" path="res://SCENES/Save_Game_Point.tscn" id="4_axsoo"]
 [ext_resource type="PackedScene" uid="uid://40y866h85akr" path="res://FLOORS/Floor_one.tscn" id="5_fgn71"]
 [ext_resource type="PackedScene" uid="uid://xlcayjt5b1n" path="res://NPC/npc_base_2.tscn" id="6_gxg8h"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ceatqbdof52vd" path="res://3d_prefabs/House/house_base.glb" id="10_i8h3m"]
 [ext_resource type="Script" path="res://ROOMS/House_enter_script.cs" id="11_4ks8c"]
 [ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="12_277lv"]
+[ext_resource type="PackedScene" uid="uid://bvsv5eux4k48d" path="res://3d_prefabs/global_wall.glb" id="12_b00j3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_paqfc"]
 size = Vector3(32.5026, 1, 30.677)
@@ -40,6 +42,9 @@ data = PackedVector3Array(0, 1.0005, -1.5608, 1, 1, -1, 1.0893, 1.0005, -1.5608,
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1pen"]
 size = Vector3(2.1488, 1.52588, 2.78485)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nn7w7"]
+data = PackedVector3Array(3.7387, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7388, 3.8021, -4.1588, 3.7387, 3.8021, -4.1588, 3.7387, 3.8021, 4.1588, -3.7388, 3.8021, 4.1588, 3.7387, -3.8022, 4.1588, -3.7388, 3.8021, 4.1588, 3.7387, 3.8021, 4.1588, 3.7387, -3.8022, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, 3.8021, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7388, -3.8022, 4.1588, -3.7388, -3.8022, -4.1588, -3.7388, 3.8021, -4.1588, -3.7388, -3.8022, -4.1588, 3.7387, -3.8022, 4.1588, 3.7387, -3.8022, -4.1588, -3.7388, -3.8022, -4.1588, -3.7388, -3.8022, 4.1588, 3.7387, -3.8022, 4.1588, 3.7387, -3.8022, -4.1588, 3.7387, 3.8021, 4.1588, 3.7387, 3.8021, -4.1588, 3.7387, -3.8022, -4.1588, 3.7387, -3.8022, 4.1588, 3.7387, 3.8021, 4.1588, -3.7388, -3.8022, -4.1588, 3.7387, 3.8021, -4.1588, -3.7388, 3.8021, -4.1588, -3.7388, -3.8022, -4.1588, 3.7387, -3.8022, -4.1588, 3.7387, 3.8021, -4.1588)
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_7y241")
@@ -79,6 +84,7 @@ light_energy = 2.0
 shadow_bias = 0.1
 spot_range = 28.5325
 spot_angle = 38.9711
+script = ExtResource("3_0kmfx")
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 5.83974, 10.0617, 7.43284)
@@ -86,6 +92,7 @@ light_energy = 2.0
 shadow_bias = 0.1
 spot_range = 28.5325
 spot_angle = 38.9711
+script = ExtResource("3_0kmfx")
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -5.78168, 10.0617, 7.49891)
@@ -93,6 +100,7 @@ light_energy = 2.0
 shadow_bias = 0.1
 spot_range = 28.5325
 spot_angle = 38.9711
+script = ExtResource("3_0kmfx")
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 5.84592, 10.0617, 17.0708)
@@ -100,6 +108,7 @@ light_energy = 2.0
 shadow_bias = 0.1
 spot_range = 28.5325
 spot_angle = 38.9711
+script = ExtResource("3_0kmfx")
 
 [node name="L_floor_one2" parent="." instance=ExtResource("5_fgn71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470497, 4.62391)
@@ -121,7 +130,7 @@ transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 
 [node name="Door_base2" parent="." groups=["Door_2"] instance=ExtResource("2_ak1ia")]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.04032, 0.742477, -5.17626)
 _desination = "res://ROOMS/Room_one.tscn"
-_y_off = -2
+_y_off = -1
 
 [node name="Save_Game_point" parent="." instance=ExtResource("4_axsoo")]
 transform = Transform3D(1, -0.000279253, 0, 0.000279253, 1, 0, 0, 0, 1, -8.40956, 0.494341, -1.11661)
@@ -141,28 +150,30 @@ _core = 4
 _message = PackedStringArray("It\'s dangerious to go alone.", "Good thing you have a sword.")
 
 [node name="BED" type="Node3D" parent="."]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -8.76762, 0.784383, -3.91754)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -8.76762, 0.665446, -4.35154)
 
 [node name="Bed_Top" type="Sprite3D" parent="BED"]
-transform = Transform3D(0.145, 0, 0, 0, 0.10253, 0.10253, 0, -0.10253, 0.10253, 0, -0.55, -0.55)
+transform = Transform3D(0.145, 0, 0, 0, 0.0777817, 0.10253, 0, -0.0777817, 0.10253, 0, -0.55, -0.55)
 texture = ExtResource("7_er6ue")
 region_enabled = true
 region_rect = Rect2(0, 382, 1080, 898)
 
 [node name="Bed_Top2" type="Sprite3D" parent="BED/Bed_Top"]
 transform = Transform3D(-1.38556e-08, -3.09086e-08, 1, 0, 1, 3.09086e-08, -0.448276, 0, -3.09086e-08, 4.55048, -0.0279007, -2.39875)
+visible = false
 texture = ExtResource("7_er6ue")
 region_enabled = true
 region_rect = Rect2(0, 382, 1080, 898)
 
 [node name="Bed_Top3" type="Sprite3D" parent="BED/Bed_Top"]
 transform = Transform3D(-1.38556e-08, -3.09086e-08, 1, 0, 1, 3.09086e-08, -0.448276, 0, -3.09086e-08, -4.55173, -0.0296326, -2.39858)
+visible = false
 texture = ExtResource("7_er6ue")
 region_enabled = true
 region_rect = Rect2(0, 382, 1080, 898)
 
 [node name="Bed_Bottom" type="Sprite3D" parent="BED"]
-transform = Transform3D(0.165, 0, 0, 0, 0.10253, 0.10253, 0, -0.10253, 0.10253, 0, -0.420389, -0.825704)
+transform = Transform3D(0.165, 0, 0, 0, 0.0919239, 0.10253, 0, -0.0919239, 0.10253, 0, -0.420389, -0.825704)
 texture = ExtResource("7_er6ue")
 region_rect = Rect2(0, 382, 1080, 898)
 
@@ -170,14 +181,14 @@ region_rect = Rect2(0, 382, 1080, 898)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.548474, -1.45854)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BED/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.032311)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.205429)
 shape = SubResource("BoxShape3D_dv5xm")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="BED"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.548474, -0.0983686)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BED/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.552246, 0.110573)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.552246, 0.289612)
 shape = SubResource("BoxShape3D_dv5xm")
 
 [node name="Bed_area_healer" type="Area3D" parent="BED"]
@@ -191,7 +202,7 @@ shape = SubResource("BoxShape3D_nsknb")
 transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1, 0, 1.5, 0, -6.55671e-08, -7.86891, 1.22139, -4.16431)
 
 [node name="Cube_002" parent="house_side" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1.17, 0, 0, 0, 1, -0.0464165, -0.0128396, -0.138513)
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1.17, 0, 3.55271e-15, 0, 1, -0.0464165, -0.0128396, -0.138513)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="house_side/Cube_002" index="0"]
 
@@ -225,6 +236,14 @@ transform = Transform3D(3.8, 0, 0, 0, 3.8, 0, 0, 0, 3.8, -4.09512, 0.624153, -3.
 [node name="Sprite3D" parent="Tree_base2" index="1"]
 frame = 2
 
+[node name="global_wall5" parent="." groups=["Wall"] instance=ExtResource("12_b00j3")]
+transform = Transform3D(-7.44, -4.12974e-07, -1.65006e-14, 0, -1.19551e-07, 2.5, -1.12341e-06, 2.735, 1.09278e-07, 0, -12.5761, 4.71957)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="global_wall5/Cube" index="0" groups=["Wall"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="global_wall5/Cube/StaticBody3D" groups=["Wall"]]
+shape = SubResource("ConcavePolygonShape3D_nn7w7")
+
 [connection signal="body_entered" from="BED/Bed_area_healer" to="BED/Bed_area_healer" method="_enter_bed"]
 [connection signal="body_exited" from="BED/Bed_area_healer" to="BED/Bed_area_healer" method="_leave_bed"]
 [connection signal="body_entered" from="house_base/Area3D" to="house_base/Area3D" method="_enter"]
@@ -238,3 +257,4 @@ frame = 2
 [editable path="house_side"]
 [editable path="house_base"]
 [editable path="Tree_base2"]
+[editable path="global_wall5"]

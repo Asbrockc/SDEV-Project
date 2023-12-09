@@ -18,10 +18,6 @@ public partial class Enemy_spawner : Node3D
 	[Export] private bool _active = true;
 	[Export] private SUMMON_INDEX _spawn_ref = SUMMON_INDEX.SPIDER;
 	public bool _trigger = false;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

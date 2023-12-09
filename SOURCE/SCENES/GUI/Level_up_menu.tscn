@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1h3f6gqr6nws"]
+[gd_scene load_steps=10 format=3 uid="uid://b1h3f6gqr6nws"]
 
 [ext_resource type="Script" path="res://SCENES/GUI/Level_up_menu.cs" id="1_88vbo"]
 [ext_resource type="PackedScene" uid="uid://dtex21kuo44di" path="res://SCENES/GUI/attribute_leveler.tscn" id="1_vlrkc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://SCENES/GUI/Music_volume_bar.cs" id="6_d4rcm"]
 [ext_resource type="Script" path="res://SCENES/GUI/Sound_volume_bar.cs" id="7_hixjh"]
 [ext_resource type="Script" path="res://SCENES/GUI/Player_stats_menu.cs" id="8_g2tlw"]
+[ext_resource type="Script" path="res://SCENES/GUI/Back_to_title_Button.cs" id="9_6gcvo"]
 
 [node name="Level_up_menu" type="Control"]
 layout_mode = 3
@@ -180,9 +181,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -182.0
-offset_top = 62.0
+offset_top = 9.0
 offset_right = 178.0
-offset_bottom = 89.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 10.0
@@ -196,9 +197,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -182.0
-offset_top = 143.0
+offset_top = 90.0
 offset_right = 178.0
-offset_bottom = 170.0
+offset_bottom = 117.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 10.0
@@ -212,9 +213,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.5
-offset_top = 117.0
+offset_top = 64.0
 offset_right = 64.5
-offset_bottom = 143.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "SOUND VOLUME"
@@ -227,9 +228,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.5
-offset_top = 37.0
+offset_top = -16.0
 offset_right = 64.5
-offset_bottom = 63.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "MUSIC VOLUME"
@@ -371,3 +372,22 @@ grow_vertical = 2
 text = "SOUND VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Load_Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -553.0
+offset_top = 161.0
+offset_right = -391.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back To Title Screen
+"
+script = ExtResource("9_6gcvo")
+
+[connection signal="pressed" from="Load_Button" to="Load_Button" method="_on_pressed"]
