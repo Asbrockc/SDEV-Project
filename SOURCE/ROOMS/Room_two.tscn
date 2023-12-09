@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://i522t55558bi"]
+[gd_scene load_steps=29 format=3 uid="uid://i522t55558bi"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_7pqsi"]
 [ext_resource type="PackedScene" uid="uid://bvsv5eux4k48d" path="res://3d_prefabs/global_wall.glb" id="3_bbn18"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bvpwoyvfkigww" path="res://NPC/npc_base.tscn" id="9_bc3iy"]
 [ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="10_f3w0g"]
 [ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="11_ubn0y"]
+[ext_resource type="PackedScene" uid="uid://be5puf60jkgrb" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn" id="12_ayhww"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3pg4l"]
 size = Vector3(1, 3.97854, 30.8166)
@@ -70,7 +71,7 @@ data = PackedVector3Array(3.7387, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_7pqsi")
-_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_town_theme.wav"
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.2559, -6.81835)
@@ -229,6 +230,13 @@ _spawn_ref = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.42034, 1.59138, -7.22214)
 _spawn_ref = 1
 
+[node name="Enemy_Egg" parent="." instance=ExtResource("12_ayhww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3983, 0.57289, -4.93541)
+
+[node name="Obj_enemy_base" parent="Enemy_Egg" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.334436, 0, -0.360396)
+drop_amount = 40
+
 [editable path="L_floor_one/global_wall"]
 [editable path="L_floor_one/global_wall2"]
 [editable path="L_floor_one/global_wall5"]
@@ -238,3 +246,4 @@ _spawn_ref = 1
 [editable path="global_wall5"]
 [editable path="Tree_base2"]
 [editable path="Tree_base3"]
+[editable path="Enemy_Egg"]

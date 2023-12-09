@@ -117,26 +117,13 @@ public partial class GLOBAL_FUNCTIONS : Node
 	///</summary>
 	static public void Room_Transition(string _room, string _group, int x_off, int y_off)
 	{
-		//GD.Print("BEFORE " + GLOBAL_STATS._current_room_reference);
 		if (_transition == null && GLOBAL_STATS._current_room_reference != null)
 		{
-			/*
-			//GD.Print("AFTER " + GLOBAL_STATS._current_room_reference);
-			_transition = (Room_transition_obj)ResourceLoader.Load<PackedScene>("res://ROOMS/Room_transition_obj.tscn").Instantiate();
-			GLOBAL_STATS._main_scene.AddChild(_transition);
-			_transition._old_room = GLOBAL_STATS._current_room_reference;
-			_transition._room = _room;
-			_transition._target_zone = _group;
-			_transition._x_off = x_off;
-			_transition._y_off = y_off;
-			*/
-			
 			GLOBAL_STATS._group = _group;
 			GLOBAL_STATS._x_off = x_off;
 			GLOBAL_STATS._y_off = y_off;
 
 			GLOBAL_STATS._current_room_reference.change_scene(_room);
-			//GLOBAL_STATS._current_room_reference.GetTree().ChangeSceneToFile(_room);
 		}
 	}
 

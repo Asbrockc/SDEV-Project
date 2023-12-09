@@ -96,6 +96,7 @@ data = PackedVector3Array(3.7387, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_yx5oa")
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_town_theme.wav"
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0220368, -29.8049, -0.038887)

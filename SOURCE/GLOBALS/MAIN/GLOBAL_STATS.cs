@@ -54,6 +54,8 @@ public partial class GLOBAL_STATS : Node
 		show_shadows = 18
 	}
 
+	static private String _save_code = "1n3wSav3";
+
 	static public bool _pause = false;
 
 	static public Obj_player_base_script _player;
@@ -61,6 +63,7 @@ public partial class GLOBAL_STATS : Node
 	static public Room_set_up _current_room_reference = null;
 	static public GLOBAL_SCENE _main_scene;
 
+	
 	static public int _current_save_slot = 0;
 	//static public string _save_current_room = null;
 	static public String _save_location = "user://save";
@@ -124,17 +127,48 @@ public partial class GLOBAL_STATS : Node
 
 	static public void _Reset_Stats()
 	{
-		_player_stats[I_HEALTH] = 6;
-		_player_stats[I_EXPERIENCE] = 0;
-		_player_stats[I_LEVEL] = 1;
-		_player_stats[I_STRENGTH] = 1;
-		_player_stats[I_DEFENCE] = 1;
-		_player_stats[I_NEXT_LEVEL_IN] = 10;
-		_player_stats[I_MUSIC_VOLUME] = 0;
-		_player_stats[I_SOUND_VOLUME] = 0;
-		_player_stats[I_ZZ] = 0;
-		_player_stats[I_BONUS_POINTS] = 0;
-		_player_stats[I_MAX_HEALTH] = 6;
+		_player_stats = new List<int>()
+		{
+			6, //player health
+			0, //base experience
+			1, //base level
+			1, //base strength
+			1, //base defence
+			10, //next level in 
+			0, // sound_volumne
+			0, // music_volumne
+			0, // z player location
+			0, //bonus points
+			6 //max health
+
+		};
+
+		_completion_flags = new List<bool>()
+		{
+			false, //first boss not beaten
+			false, //second boss not beaten
+			false, //door_one_open
+			false, //boss_door_1
+
+			false,	//Dungeon_door_1 = 4,
+			false,	//Dungeon_door_2 = 5,
+			false,	//Dungeon_door_3 = 6,
+			false,	//Dungeon_door_4 = 7,
+			false,	//Dungeon_door_5 = 8,
+			false,	//Dungeon_door_6 = 9,
+			false,	//Dungeon_door_7 = 10,
+			false,	//Dungeon_door_8 = 11,
+			false,   //Puzzle_door_1
+			false,   //Puzzle_door_2
+
+			false,   
+			false,
+
+			false, //dragon_v2
+			true, //locked_behind_player_puzzle
+
+			false //shadows
+		};
 	}
 
 	/// <summary>
@@ -175,25 +209,17 @@ public partial class GLOBAL_STATS : Node
 
 		_save_group = "Save_Point";
 
-		//GD.Print(_current_room_reference);
-		//GD.Print(_current_room_reference.GetTree().CurrentScene.SceneFilePath);
-		//GD.Print(_current_room_reference.GetTree().CurrentScene);
-		//GD.Print(_current_room_reference.GetTree().CurrentScene.SceneFilePath);
-
-		_player_room = _save_current_room;//_current_room_reference.GetTree().CurrentScene.SceneFilePath;
-
 		_save_configure.SetValue("Player Name", 0.ToString(), _player_name);
-		_save_configure.SetValue("Player Loc", 0.ToString(), _player_room);
+		_save_configure.SetValue("Player Loc", 0.ToString(), _save_current_room);
 		_save_configure.SetValue("Player Target", 0.ToString(), _save_group);
 		
-
 		for (int i = 0; i < _player_stats.Count; i++)
 			_save_configure.SetValue("Player Stat", i.ToString(), _player_stats[i]);
 
 		for (int i = 0; i < _completion_flags.Count; i++)
 			_save_configure.SetValue("Player flags", i.ToString(), _completion_flags[i]);
 
-		_save_configure.Save(_current_save_location);
+		_save_configure.SaveEncryptedPass(_current_save_location, _save_code);
 	}
 
 	///<summary>
@@ -211,32 +237,60 @@ public partial class GLOBAL_STATS : Node
 	/// differnt keys are then referenced to retrive the infromation and overwrite
 	/// the defualt values.
 	///</summary>
-	static public void _Load_Game(int slot)
+	static public bool _Load_Game(int slot)
 	{
-		ConfigFile _load_configure = _Load_Game_info(slot);
+		try
+		{
+			ConfigFile _load_configure = _Load_Game_info(slot);
 
-		_player_name = _load_configure.GetValue("Player Name", 0.ToString()).ToString();
-		_player_room = _load_configure.GetValue("Player Loc", 0.ToString()).ToString();
-		_save_group = _load_configure.GetValue("Player Target", 0.ToString()).ToString();
+			if (_load_configure != null)
+			{
+				_player_name = _load_configure.GetValue("Player Name", 0.ToString()).ToString();
+				_player_room = _load_configure.GetValue("Player Loc", 0.ToString()).ToString();
+				_save_group = _load_configure.GetValue("Player Target", 0.ToString()).ToString();
 
-		_player_stats[I_MUSIC_VOLUME] = GLOBAL_FUNCTIONS._audio_emitter._music_volume;
-		_player_stats[I_SOUND_VOLUME] = GLOBAL_FUNCTIONS._audio_emitter._game_volume;
+				if (String.IsNullOrEmpty(_player_name))
+					throw new Exception("Bad Player Info"); 
+				
+				if (String.IsNullOrEmpty(_player_room))
+					throw new Exception("Bad Group Info"); 
 
-		for (int i = 0; i < _player_stats.Count; i++)
-			_player_stats[i] = _load_configure.GetValue("Player Stat", i.ToString()).ToString().ToInt();
+				if (String.IsNullOrEmpty(_save_group))
+					throw new Exception("Bad Room Info"); 
 
-		GLOBAL_FUNCTIONS._audio_emitter._music_volume = _player_stats[I_MUSIC_VOLUME];
-		GLOBAL_FUNCTIONS._audio_emitter._game_volume = _player_stats[I_SOUND_VOLUME];
+				_save_current_room = _player_room;
 
-		//very important step, counts the FOUND flags, Not the current flags.
-		//this will ensure I can update the game without currupting the current saves.
-		for (int i = 0; i < _load_configure.GetSectionKeys("Player flags").LongLength; i++)
-		{	
-			GD.Print(i);
-			_completion_flags[i] = bool.Parse(_load_configure.GetValue("Player flags", i.ToString()).ToString());
+				_player_stats[I_MUSIC_VOLUME] = GLOBAL_FUNCTIONS._audio_emitter._music_volume;
+				_player_stats[I_SOUND_VOLUME] = GLOBAL_FUNCTIONS._audio_emitter._game_volume;
+
+				for (int i = 0; i < _player_stats.Count; i++)
+					_player_stats[i] = _load_configure.GetValue("Player Stat", i.ToString()).ToString().ToInt();
+
+				GLOBAL_FUNCTIONS._audio_emitter._music_volume = _player_stats[I_MUSIC_VOLUME];
+				GLOBAL_FUNCTIONS._audio_emitter._game_volume = _player_stats[I_SOUND_VOLUME];
+
+				//very important step, counts the FOUND flags, Not the current flags.
+				//this will ensure I can update the game without currupting the current saves.
+				for (int i = 0; i < _load_configure.GetSectionKeys("Player flags").LongLength; i++)
+					_completion_flags[i] = bool.Parse(_load_configure.GetValue("Player flags", i.ToString()).ToString());
+				
+				//if the room referece in't there it is a currpted save
+				if (!FileAccess.FileExists(_player_room))
+					throw new Exception("No file"); 
+
+				GLOBAL_FUNCTIONS.Room_Transition(_player_room, _save_group, 0, 1);
+
+				return true;
+			}
+			else
+				return false;
 		}
-		
-		GLOBAL_FUNCTIONS.Room_Transition(_player_room, _save_group, 0, 1);
+		catch (Exception e)
+		{
+			GD.Print("Error opening file: " + e.Message + "\n" + e.StackTrace);
+
+			return false;
+		}
 	}
 
 	///<summary>
@@ -244,11 +298,19 @@ public partial class GLOBAL_STATS : Node
 	///</summary>
 	static public ConfigFile _Load_Game_info(int slot)
 	{
-		String _current_save_location = _save_location + slot.ToString() + _save_file_type;
+		try
+		{
+			String _current_save_location = _save_location + slot.ToString() + _save_file_type;
 
-		ConfigFile _load_configure = new ConfigFile();
-		_load_configure.Load(_current_save_location);
+			ConfigFile _load_configure = new ConfigFile();
+			_load_configure.LoadEncryptedPass(_current_save_location, _save_code);
 
-		return _load_configure;
+			return _load_configure;
+		}
+		catch (Exception e)
+		{
+			GD.Print(e.Message);
+			return null;
+		}
 	}
 }

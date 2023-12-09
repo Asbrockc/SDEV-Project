@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://r8ypjdu5a6dd"]
+[gd_scene load_steps=22 format=3 uid="uid://r8ypjdu5a6dd"]
 
 [ext_resource type="Script" path="res://SCENES/Room_set_up.cs" id="1_3c0hp"]
 [ext_resource type="PackedScene" uid="uid://baqvljgsu2v5m" path="res://SCENES/Spawns/Door_base.tscn" id="1_6deq7"]
 [ext_resource type="Texture2D" uid="uid://decm70x82ewav" path="res://FLOORS/spr_block_tile.png" id="2_epfyc"]
 [ext_resource type="PackedScene" uid="uid://c7yc86s2wxaxc" path="res://SCENES/Spawns/Locked_door_base.tscn" id="2_gs7w2"]
 [ext_resource type="PackedScene" uid="uid://bvsv5eux4k48d" path="res://3d_prefabs/global_wall.glb" id="3_moya0"]
-[ext_resource type="PackedScene" uid="uid://be5puf60jkgrb" path="res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn" id="5_8fsoy"]
 [ext_resource type="Script" path="res://ROOMS/Core_spotLight.cs" id="6_awaas"]
 [ext_resource type="PackedScene" uid="uid://1q7dkppj7noq" path="res://SPRITES/BACKGROUND OBJECTS/Tree_base.tscn" id="7_g6rux"]
 [ext_resource type="PackedScene" uid="uid://h4mtb10i13nx" path="res://SPRITES/BACKGROUND OBJECTS/Enemy_spawner.tscn" id="8_wowd4"]
@@ -48,7 +47,7 @@ data = PackedVector3Array(3.7387, 3.8021, -4.1588, -3.7388, 3.8021, 4.1588, -3.7
 
 [node name="Room_one" type="Node3D"]
 script = ExtResource("1_3c0hp")
-_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_forest_theme.wav"
+_room_music = "res://SOUNDS/ALL_SOUNDS/MUSIC/snd_town_theme.wav"
 
 [node name="L_floor_one" type="StaticBody3D" parent="." groups=["Wall"]]
 transform = Transform3D(0.815, 0, 0, 0, 0.815, 0, 0, 0, 0.815, 0, -0.470497, 2.73205)
@@ -166,13 +165,6 @@ spot_range = 369.946
 spot_angle = 89.99
 script = ExtResource("6_awaas")
 
-[node name="Enemy_Egg" parent="." instance=ExtResource("5_8fsoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48004, 0.733075, -2.69456)
-
-[node name="Obj_enemy_base" parent="Enemy_Egg" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.334436, 0, -0.360396)
-drop_amount = 40
-
 [node name="Tree_base" parent="." instance=ExtResource("7_g6rux")]
 transform = Transform3D(4.82, 0, 0, 0, 4.82, 0, 0, 0, 4.82, -4.38835, 0.818089, -3.78941)
 
@@ -202,5 +194,4 @@ _message = PackedStringArray("Careful there is bats in the next room.", "You\'ll
 [editable path="L_floor_one/global_wall4"]
 [editable path="Door_1_1"]
 [editable path="Door_1_1/doorbase"]
-[editable path="Enemy_Egg"]
 [editable path="Tree_base2"]
