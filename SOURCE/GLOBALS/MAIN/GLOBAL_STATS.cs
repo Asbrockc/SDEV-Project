@@ -87,7 +87,7 @@ public partial class GLOBAL_STATS : Node
 		0, //base experience
 		1, //base level
 		1, //base strength
-		1, //base defence
+		1, //base arrow bow
 		10, //next level in 
 		0, // sound_volumne
 		0, // music_volumne
@@ -275,8 +275,8 @@ public partial class GLOBAL_STATS : Node
 					_completion_flags[i] = bool.Parse(_load_configure.GetValue("Player flags", i.ToString()).ToString());
 				
 				//if the room referece in't there it is a currpted save
-				if (!FileAccess.FileExists(_player_room))
-					throw new Exception("No file"); 
+				//if (!FileAccess.FileExists(_player_room))
+					//throw new Exception("No file"); 
 
 				GLOBAL_FUNCTIONS.Room_Transition(_player_room, _save_group, 0, 1);
 

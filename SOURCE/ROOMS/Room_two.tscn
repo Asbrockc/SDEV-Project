@@ -234,7 +234,7 @@ _spawn_ref = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3983, 0.57289, -4.93541)
 
 [node name="Obj_enemy_base" parent="Enemy_Egg" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.334436, 0, -0.360396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33154, 0, 3.38963)
 drop_amount = 40
 
 [editable path="L_floor_one/global_wall"]

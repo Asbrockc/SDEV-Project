@@ -51,9 +51,9 @@ public partial class Room_transition_improvement : NinePatchRect
 		}
 		else 
 		{
-			//this.GetParent().RemoveChild(this);
+			this.GetParent().RemoveChild(this);
 			//GLOBAL_FUNCTIONS._transition = null;
-			//this.QueueFree();
+			this.QueueFree();
 		}
 	}
 

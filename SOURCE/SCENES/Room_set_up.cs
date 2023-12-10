@@ -20,7 +20,8 @@ public partial class Room_set_up : Node3D
 			Room_transition_improvement _tran = (Room_transition_improvement)ResourceLoader.Load<PackedScene>("res://ROOMS/Room_transition_obj_v2.tscn").Instantiate();
 			AddChild(_tran);
 			_tran._parent = this;
-
+			
+			GLOBAL_STATS._player._state = 0;
 			if (_room_music != "null")
 			{
 				if (_room_music != GLOBAL_FUNCTIONS._audio_emitter._next_song)
