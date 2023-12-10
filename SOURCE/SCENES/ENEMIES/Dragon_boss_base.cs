@@ -1,5 +1,8 @@
 using Godot;
 
+///<summary>
+/// Dragon boss main AI controls
+///</summary>
 public partial class Dragon_boss_base : Boss_enemy_base
 {
 
@@ -21,6 +24,11 @@ public partial class Dragon_boss_base : Boss_enemy_base
 		drop_amount = 50;
     }
 
+	///<summary>
+	/// He doesnt move to the player
+	/// instead he jsut shifts back and forth occationlly jumping 
+	/// to cause a shockwave 
+	///</summary>
     public override Vector3 move_to_player_state(double delta, Vector3 velocity)
     {
 		if (!_Animator.IsPlaying())
@@ -55,6 +63,9 @@ public partial class Dragon_boss_base : Boss_enemy_base
 		return velocity;
     }
 
+	///<summary>
+	/// death animation speeds him up
+	///</summary>
     public override Vector3 death_state(double delta, Vector3 velocity)
     {
 		_Animator.Play("side_walk");

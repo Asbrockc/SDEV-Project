@@ -1,6 +1,12 @@
 using Godot;
 using System;
 
+///<summary>
+/// Parent boss class
+/// inherits the enemy_base and physics base
+/// defines the more advanced boss switch methods 
+/// also defines their death animation to be a bit more dramatic
+///</summary>
 public partial class Boss_enemy_base : Obj_enemy_base
 {
 	public int counter = 0;
@@ -12,6 +18,11 @@ public partial class Boss_enemy_base : Obj_enemy_base
 
 	protected AudioStreamMP3 _destroy_sound = null;
 
+	///<summary>
+	/// core boss AI add more states to the switch driver
+	/// Notably the intro state that will showcase the boss with the camera 
+	/// and start the boss song
+	///</summary>
 	public override Vector3 enemy_core_AI(double delta, Vector3 velocity)
 	{
 		if (!IsOnFloor())
@@ -64,6 +75,9 @@ public partial class Boss_enemy_base : Obj_enemy_base
 		return velocity;
 	}
 
+	///<summary>
+	/// Death animation plays a bunch of explotions before the boss is destroyed
+	///</summary>
 	public virtual Vector3 death_state(double delta, Vector3 velocity)
 	{
 		//GD.Print("death_state");
@@ -78,7 +92,6 @@ public partial class Boss_enemy_base : Obj_enemy_base
 
 		if (hit_timer <  delay_timer)
 		{
-
 			hit_timer++;
 
 			if (hit_timer % 10 == 0)
@@ -110,10 +123,14 @@ public partial class Boss_enemy_base : Obj_enemy_base
 		return velocity;
 	}
 
+	///<summary>
+	/// 
+	///</summary>
 	public virtual Vector3 death_finale(double delta, Vector3 velocity)
 	{
 		//GD.Print("base final");
 		_death_flag = true;
+		GetParent().RemoveChild(this);
 		QueueFree();
 		/*
 		counter++;
@@ -130,8 +147,14 @@ public partial class Boss_enemy_base : Obj_enemy_base
 		return velocity;
 	}
 
-
-
+	///<summary>
+	/// cinematic for boss enemies 
+	/// locks the player
+	/// moves the camera to the boss to show them off
+	/// starts the boss music
+	/// moves everything back to normal 
+	/// initilizes the boss and lets the player move again
+	///</summary>
 	public virtual Vector3 intro_state(double delta, Vector3 velocity)
     {
 		if (counter < next_jump_in)

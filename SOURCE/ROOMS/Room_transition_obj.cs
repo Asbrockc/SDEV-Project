@@ -1,6 +1,18 @@
 using Godot;
 using System;
 
+
+///<summary>
+/// Old transition class
+/// WARNING: there is unsettle bugs with this transition 
+/// It seems to be caused by either it's call from a collision event 
+/// which causes instibility
+/// or when it is frequently added and removed from the global tree
+/// which also seems to cause instibility
+///
+/// Currently not in use and it is recommended it stays that way untill the true 
+/// root of the glich is found.
+///</summary>
 public partial class Room_transition_obj : NinePatchRect
 {
 	private int _state = 0;

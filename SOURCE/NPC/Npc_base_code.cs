@@ -1,11 +1,17 @@
 using Godot;
 using System;
 
+///<summary>
+/// NPC base code, inherits the interactive_action class
+/// and the chatbox it creates
+///</summary>
 public partial class Npc_base_code : Interactive_Action
 {
 	[Export] private int _core = 1; 
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	///<summary>
+	/// decides the sprite it will use based on the core number
+	///</summary>
 	public override void _Process(double delta)
 	{
 		string _npc = "_one";

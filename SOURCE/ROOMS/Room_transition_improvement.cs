@@ -1,6 +1,10 @@
 using Godot;
 using System;
 
+///<summary>
+/// Transition revamp that just block the screen and wipes itself away
+/// afterwards it will active the player
+///</summary>
 public partial class Room_transition_improvement : NinePatchRect
 {
 	private int _state = 0;
@@ -20,7 +24,11 @@ public partial class Room_transition_improvement : NinePatchRect
         base._Ready();
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
+	///<summary>
+	/// shifts between two modes, 
+	/// on that just hesitates for a moment
+	/// then it moves the transition screen
+	///</summary>
     public override void _Process(double delta)
 	{
 		
@@ -53,7 +61,7 @@ public partial class Room_transition_improvement : NinePatchRect
 	{
 		//GLOBAL_STATS._current_room_reference = null;
 
-		if (_scale < 15)
+		if (_scale < 20)
 			_scale++;
 		else
 		{

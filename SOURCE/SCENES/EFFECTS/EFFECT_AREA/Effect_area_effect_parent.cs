@@ -1,5 +1,8 @@
 using Godot;
 
+///<summary>
+/// 
+///</summary>
 public partial class Effect_area_effect_parent : Obj_projectile_parent
 {
 	//public bool _driver = 0;
@@ -11,11 +14,16 @@ public partial class Effect_area_effect_parent : Obj_projectile_parent
 	private Vector3 _x_driver = new Vector3(0.2f,0,0);
 	private Vector3 _z_driver = new Vector3(0,0,0.2f);
 
-    public override void _Ready()
-    {
-        
-    }
 
+	public override void _Ready()
+	{
+		//just needs to stop the base script from trying to read a sprite that doesnt exist
+	}
+
+	///<summary>
+	/// Takes the parts of the projectile and expands them outwards
+	/// can be called with anohter set at a 45 degree angle to create a circle
+	///</summary>
     public override void _Process(double delta)
 	{
 		this.RotationDegrees += _y_driver;

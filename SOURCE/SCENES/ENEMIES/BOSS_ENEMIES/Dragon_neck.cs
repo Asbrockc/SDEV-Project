@@ -1,12 +1,21 @@
 using Godot;
 
+///<summary>
+/// dragon neck segmnets 
+/// 
+///</summary>
 public partial class Dragon_neck : Path3D
 {
 	public bool _dead = false;
 	public int _destroy_count = 0;
 	public int _head_id = -1;
 
-	// Called when the node enters the scene tree for the first time.
+	///<summary>
+	/// The necks are a path that need two points
+	/// one for the body
+	/// one for the head 
+	/// the segmnets will be evenly distriputed sprites along the path 
+	///</summary>
 	public override void _Ready()
 	{
 		this.Curve = new Curve3D();
@@ -15,7 +24,10 @@ public partial class Dragon_neck : Path3D
 		_destroy_count = GetChildren().Count - 1;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	///<summary>
+	/// if the head is destroyed it will destroy the neck one 
+	/// segmnet at a time 
+	///</summary>
 	public override void _Process(double delta)
 	{
 		float _div = 0.1f;

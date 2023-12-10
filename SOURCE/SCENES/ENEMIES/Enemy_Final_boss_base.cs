@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+///<summary>
+/// The final boss base AI
+///</summary>
 public partial class Enemy_Final_boss_base : Boss_enemy_base
 {
 
@@ -25,6 +28,9 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
 
     private AudioStreamWav _chirp_sound = null;
 
+    ///<summary>
+    /// sets up the final bosses specifics
+    ///</summary>
     public override void _Ready()
     {
         _chirp_sound = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_bat_chirp.wav");
@@ -40,6 +46,10 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
         _boss_music = "null"; //"res://SOUNDS/ALL_SOUNDS/MUSIC/snd_final_boss.wav";
     }
 
+    ///<summary>
+    /// the boss vanishes between moves 
+    /// therefor, his base process only runs when he is activily on the feild
+    ///</summary>
     public override void _PhysicsProcess(double delta)
     {
        // if (Input.IsKeyPressed(Key.L))
@@ -51,8 +61,16 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
             this.GlobalPosition = this.GetParent<Enemy_Final_Boss_core>()._target[0].GlobalPosition;
     }
 
+    ///<summary>
+    /// His move to player state has a nested switch that shifts between 4 attacks
+    /// move to player
+    /// move to player with spawn
+    /// fireball barrage warp
+    /// shockwave chain
+    ///</summary>
     public override Vector3 move_to_player_state(double delta, Vector3 velocity)
     {
+        GD.Print(_random_move);
         //_Animator.Play("down_walk");
         if (_warp_count <= _warp_max)
         {
@@ -72,9 +90,11 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                 switch (_random_move)
                 {
                     case 0:
+                        spell_flag = true; 
                         _jump_count = 0;
                         return base.move_to_player_state(delta, velocity);
                     case 1:
+                        spell_flag = true; 
                         if (_warp_count == 20 && GLOBAL_FUNCTIONS.Choose(1,2,3,4) == 1)
                         {
                             {
@@ -87,8 +107,10 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                         _jump_count = 0;
                         return base.move_to_player_state(delta, velocity);
                         //return move_left_right_to_player_state(delta, velocity);
+                    case 2:
+                        spell_flag = true; 
+                        break;
                     case 3:
-
                         if (spell_flag)
                         {
                             _warp_index = GLOBAL_FUNCTIONS.Choose(1,2,3,4,5,6,7,8);
@@ -119,7 +141,6 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
                             }
 
                             _fire_count = 0;
-                    
                         }
                     break;
                     case 4:
@@ -131,6 +152,7 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
 
                                 Node _temp = GLOBAL_FUNCTIONS.Spawn_enemy(_node.GlobalPosition, "res://SCENES/ENEMIES/BASE_ENEMIES/Enemy_Egg.tscn");
                                 _temp.GetChild<Obj_enemy_base>(0)._drops = new string[]{"hp"};
+                                _temp.GetChild<Obj_enemy_base>(0).drop_amount = 1;
                             }
                         }
 
@@ -206,8 +228,8 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
 
     public void _on_tree_exiting()
     {
-        GD.Print("Destroyed");
-        GLOBAL_STATS._game_finished = true;
+        if (_health <= 0)
+            GLOBAL_STATS._game_finished = true;
     }
 
     public override Vector3 jump_state(double delta, Vector3 velocity)
@@ -224,6 +246,7 @@ public partial class Enemy_Final_boss_base : Boss_enemy_base
 
         
 			counter = 0;
+            _Animator.Play("down_walk");  
 			//next_jump_in = GLOBAL_FUNCTIONS.Choose(200,400,500);
 			_state = 4;
 		}

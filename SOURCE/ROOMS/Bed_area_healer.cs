@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+///<summary>
+/// Code for the healing bed the player can rest in. 
+/// just adjust the sprite to look like is over the player
+/// then if they enter the area, it will heal them one health ever 50 steps
+///</summary>
 public partial class Bed_area_healer : Area3D
 {
 	private bool _healing = false;
@@ -14,7 +19,7 @@ public partial class Bed_area_healer : Area3D
 	{
 		if (_healing)
 		{
-			if (_timer > 100)
+			if (_timer > 50)
 			{
 				GLOBAL_FUNCTIONS.Play_Sound(GLOBAL_STATS._player._item_pickup);
 				if (GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] < GLOBAL_STATS._player_stats[GLOBAL_STATS.I_MAX_HEALTH])

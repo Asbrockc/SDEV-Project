@@ -1,6 +1,10 @@
 using Godot;
 using System;
 
+///<summary>
+/// simple script to hide the outside of the player house 
+/// so the player can see the bed
+///</summary>
 public partial class House_enter_script : Area3D
 {
 	public void _enter(Node3D _node)

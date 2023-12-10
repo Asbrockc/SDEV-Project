@@ -1,6 +1,10 @@
 using Godot;
 using System;
 
+
+///<summary>
+/// Shared spotlight script that can enable shadows or not
+///</summary>
 public partial class Core_spotLight : SpotLight3D
 {
 	// Called when the node enters the scene tree for the first time.

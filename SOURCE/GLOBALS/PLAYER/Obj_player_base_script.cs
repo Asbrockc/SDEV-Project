@@ -15,6 +15,8 @@ public partial class Obj_player_base_script : Obj_physics_base
 	private Vector3 _mid_angle = new Vector3(-60, 0, 0);
 	private Vector3 _attack_angle = new Vector3(-70, 0, 0);
 
+	public int _hit_timer = 0;
+
 	public AudioStreamWav _sword_hit = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_hit.wav");
 	public AudioStreamWav _sword_swing = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_sword_swing.wav");
 	public AudioStreamWav _item_pickup = ResourceLoader.Load<AudioStreamWav>("res://SOUNDS/ALL_SOUNDS/snd_item_pickup.wav");
@@ -56,7 +58,6 @@ public partial class Obj_player_base_script : Obj_physics_base
 	///</summary>
 	public override void _PhysicsProcess(double delta)
 	{
-	
 		Vector3 velocity = Velocity;
 
 		if (!IsOnFloor())
@@ -68,6 +69,12 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 		if (!GLOBAL_STATS._game_finished)
 		{
+			if (_hit_timer > 0)
+				_hit_timer--;
+			else
+				_hit_timer = 0;
+
+			//if the health is 0 or less cut the _state instantly becomes the death state
 			if (GLOBAL_STATS._player_stats[GLOBAL_STATS.I_HEALTH] <= 0 && _state != 6)
 				_state = 5;
 
@@ -139,14 +146,18 @@ public partial class Obj_player_base_script : Obj_physics_base
 
 		Velocity = velocity;
 		
+		//hidden cheat that levels the player very quickly. A joke at "God mode" from older games.
 		if (Input.IsKeyPressed(Key.G) && Input.IsKeyPressed(Key.O) && Input.IsKeyPressed(Key.D))
 		{
-			GLOBAL_STATS._player_stats[GLOBAL_STATS.I_EXPERIENCE] += 5;
+			GLOBAL_STATS._player_stats[GLOBAL_STATS.I_EXPERIENCE] += 10;
 		}
 		else if (_state != 6)
 			MoveAndSlide();
 	}
 
+	///<summary>
+	/// An extra function that will manage the velocity applied when hit by enemies
+	///</summary>
 	private Vector3 manage_hurt_velocity(Vector3 velocity)
 	{
 		velocity.X += _hurt_hspd;
@@ -171,6 +182,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 		return velocity;
 	}
 
+	///<summary>
+	/// the jump state that gives full mobility, but stops the players ability to attack
+	///</summary>
 	private Vector3 Player_jump_handle(double delta, Vector3 velocity)
 	{
 		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
@@ -188,6 +202,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 	}
 
 
+	///<summary>
+	/// base player script that allows the player to move around, jump, and attack
+	///</summary>
 	public Vector3 Player_move_state(double delta, Vector3 velocity)
 	{
 		_shoot_arrow = false;
@@ -241,7 +258,11 @@ public partial class Obj_player_base_script : Obj_physics_base
 	}
 
 
-
+	///<summary>
+	/// A branching path for what the action key does
+	/// if there is a interactive node in range they interact with it
+	/// if not they swing the sword
+	///</summary>
 	private void handle_action_key()
 	{
 		if (Input.IsKeyPressed(Key.Up))
@@ -282,12 +303,18 @@ public partial class Obj_player_base_script : Obj_physics_base
 		}
 	}
 
+	///<summary>
+	/// Takes a hitbox and turns it on, if it exists
+	///</summary>
 	public void activate_hitbox()
 	{
 		if (_hitbox != null)
 			_hitbox._active = true;
 	}
 
+	///<summary>
+	/// ends attacks, fixes his attack angle, then shifts the player back into the move state
+	///</summary>
 	public void back_to_move_state()
 	{
 		GetNode<Sprite3D>("Obj_player_sprite").RotationDegrees = _base_angle;
@@ -300,6 +327,11 @@ public partial class Obj_player_base_script : Obj_physics_base
 		_state = 0;
 	}
 	
+	///<summary>
+	/// removes some of the players controls and starts the attack animation
+	/// also shifts the players sprite, so they do not clip, and direction, so they attack
+	/// in the direction they are facing
+	///</summary>
 	public Vector3 Player_attack_state(double delta, Vector3 velocity)
 	{
 		if (_Animator.CurrentAnimationPosition > .2 && _hitbox != null && _hitbox._active)
@@ -332,6 +364,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 		return velocity;
 	}
 
+	///<summary>
+	/// removed function that let the player hit a direction to aim the bow.
+	///</summary>
 	public Vector3 Player_aim_state(double delta, Vector3 velocity)
 	{
 		_hspd = 0;
@@ -360,6 +395,9 @@ public partial class Obj_player_base_script : Obj_physics_base
 		return velocity;
 	}
 
+	///<summary>
+	/// removes the players ability to move and makes them draw and arrow and fire a projectle
+	///</summary>
 	public Vector3 Player_shoot_state(double delta, Vector3 velocity)
 	{
 		_hspd = 0;
@@ -399,6 +437,11 @@ public partial class Obj_player_base_script : Obj_physics_base
 		return velocity;
 	}
 
+	///<summary>
+	/// a specific state that just stops the player and removes all input 
+	/// the object they are interacting with will shift them back into the move state
+	/// when it is done.
+	///</summary>
 	public Vector3 Player_interact_state(double delta, Vector3 velocity)
 	{
 		_Animator.Play(_base + "idle");

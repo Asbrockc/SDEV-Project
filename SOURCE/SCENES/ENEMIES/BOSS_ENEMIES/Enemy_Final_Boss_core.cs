@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+///<summary>
+/// final boss phase 2 core AI
+/// this tracks down sever boss warp points for the boss to reference 
+/// it also tracks his glowing eyes. 
+///</summary>
 public partial class Enemy_Final_Boss_core : Boss_core_AI
 {
 	private Enemy_Final_boss_base _base; 
@@ -10,7 +15,6 @@ public partial class Enemy_Final_Boss_core : Boss_core_AI
 
 	public Final_Boss_Target[] _target = new Final_Boss_Target[9];
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		 _name = "Shadow";
@@ -41,7 +45,9 @@ public partial class Enemy_Final_Boss_core : Boss_core_AI
 		
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	///<summary>
+	/// Shifts the lights in the bosses eyes eerily using a sin wave
+	///</summary>
 	public override void _Process(double delta)
 	{
 		//GD.Print(_left.Position.ToString() + " - " + _right.Position.ToString());

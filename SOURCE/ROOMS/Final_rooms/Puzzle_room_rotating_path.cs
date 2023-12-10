@@ -1,6 +1,10 @@
 using Godot;
 using System;
 
+
+///<summary>
+/// puzzle with a rotating path.
+///</summary>
 public partial class Puzzle_room_rotating_path : Path3D
 {
 	//private Vector3 _rotate;

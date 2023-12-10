@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+///<summary>
+/// dragon bosses head base AI
+///</summary>
 public partial class Dragon_boss_head : Obj_enemy_base
 {
 	private Dragon_boss_core_AI _core;
@@ -14,10 +17,14 @@ public partial class Dragon_boss_head : Obj_enemy_base
 	private int counter = 0;
 	private int _next_attack = 0;
 
+	//the head is slughtly offset from one another, it is easier to do this in the editor
 	[Export] public Vector3 _head_offset = new Vector3(0,0,0);
 
 	private Vector3 _head_shift = new Vector3(0,0,0);
 
+	///<summary>
+	/// Shifts a few base stats and gives each head a refernce to the main body and neck
+	///</summary>
 	public override void _Ready()
 	{
 		_drops = new string[]{"hp"};
@@ -29,6 +36,10 @@ public partial class Dragon_boss_head : Obj_enemy_base
 		_damage_sound = GLOBAL_STATS._player._sword_hit;
 	}
 
+	///<summary>
+	/// Does not actually mvoe to player instead each head just randomly raises and 
+	/// shoots a fireball at the player.
+	///</summary>
     public override Vector3 move_to_player_state(double delta, Vector3 velocity)
     {
 		_head_shift.X = (float)Mathf.Lerp(velocity.X, 0, .1);
@@ -94,6 +105,9 @@ public partial class Dragon_boss_head : Obj_enemy_base
         return "Dragon head Object";
     }
 
+	///<summary>
+	/// Dragon heads only drop HP
+	///</summary>
     public override void death_function()
 	{
 		for (int i = 0; i < drop_amount; i++)

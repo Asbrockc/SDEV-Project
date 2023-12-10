@@ -1,5 +1,9 @@
 using Godot;
 
+///<summary>
+/// Projectile overridden into a fireball that shoots at the player 
+/// the speed is based on the distance from the player. 
+///</summary>
 public partial class Obj_projectile_fireball : Obj_projectile_parent
 {
 	public Vector3 _base_location;
@@ -14,6 +18,9 @@ public partial class Obj_projectile_fireball : Obj_projectile_parent
 		this.GlobalPosition -= (_base_location - _target_location)/_div;
 	}
 
+	///<summary>
+	/// When it hits the player or a wall it will explode
+	///</summary>
 	public override void _on_hit(Node3D _node)
 	{
 		if (_active)

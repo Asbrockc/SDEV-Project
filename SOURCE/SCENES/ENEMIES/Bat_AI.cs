@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+///<summary>
+/// Bat AI
+///</summary>
 public partial class Bat_AI : Enemy_Egg_AI
 {
 	private int _attack_timer = 0; 
@@ -25,6 +28,10 @@ public partial class Bat_AI : Enemy_Egg_AI
 		base._Ready();
     }
 
+	///<summary>
+	/// uses the normal enemy AI switch set up, but needs a few extra setting 
+	/// since the bat does not use gravity
+	///</summary>
     public override void _PhysicsProcess(double delta)
     {
 		if (!_set_base)
@@ -41,6 +48,10 @@ public partial class Bat_AI : Enemy_Egg_AI
         base._PhysicsProcess(delta);
     }
 
+	///<summary>
+	/// shifts between moving directly at the player and back to its spawn point 
+	/// based on a timer
+	///</summary>
     public override Vector3 move_to_player_state(double delta, Vector3 velocity)
 	{
 		if (_target != null)

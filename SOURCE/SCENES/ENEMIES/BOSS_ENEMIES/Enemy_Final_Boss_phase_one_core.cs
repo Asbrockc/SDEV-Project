@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+///<summary>
+/// final boss Phase I core AI
+/// very simple joke boss that just runs at you
+/// he is very simple and his ai does little other then set up the hp bar
+///</summary>
 public partial class Enemy_Final_Boss_phase_one_core : Boss_core_AI
 {
 	private Final_boss_first_phase _base;

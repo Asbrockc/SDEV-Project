@@ -1,5 +1,11 @@
 using Godot;
 
+
+///<summary>
+/// Handles the bosses HP bar
+/// this is a 2D GUI and will drop down from the top left 
+/// Once the boss is defeated it will retreat back into the top again
+///</summary>
 public partial class Boss_hp_bar : Control
 {
 	public Boss_core_AI _core = null;

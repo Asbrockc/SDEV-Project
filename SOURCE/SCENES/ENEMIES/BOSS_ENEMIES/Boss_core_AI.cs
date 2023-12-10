@@ -1,6 +1,10 @@
 using Godot;
 using System;
 
+///<summary>
+/// parent boss core AI
+/// this will set up the general boss envirnemnt and handle the bosses status
+///</summary>
 public partial class Boss_core_AI : Node3D
 {	
 	public bool _intro = true;

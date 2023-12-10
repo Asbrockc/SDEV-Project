@@ -9,6 +9,12 @@ public partial class Dragon_boss_core_AI : Boss_core_AI
 	public Dragon_boss_head[] _head = new Dragon_boss_head[3];
 	public Dragon_neck[] _neck = new Dragon_neck[3];
 
+
+	///<summary>
+	/// Dragon boss core AI
+	/// sets up the dragon and his various parts
+	/// 3 heads and 3 neck segments
+	///</summary>
     public override void _Ready()
     {
 		_name = "DRAGON";
@@ -37,6 +43,9 @@ public partial class Dragon_boss_core_AI : Boss_core_AI
 			_boss_max_hp += _head[i]._max_health;
     }
 
+	///<summary>
+	/// This shifts the path the neck segmnets are made out of to keep them connected to the heads
+	///</summary>
 	public override void _main_function()
 	{
 		Dragon_boss_base _base = GetNode<Dragon_boss_base>("Obj_enemy_base");
@@ -63,10 +72,11 @@ public partial class Dragon_boss_core_AI : Boss_core_AI
 					_neck[i]._dead = true;
 			}
 			else
-				_head_count++;
+				_head_count++; //counts defeated heads
 
 		}
-
+		
+		//if it is all three the boss is over, trigger the body to finish
 		if (_head_count == 3)
 		{
 			GetNode<Dragon_boss_base>("Obj_enemy_base")._health = 0;

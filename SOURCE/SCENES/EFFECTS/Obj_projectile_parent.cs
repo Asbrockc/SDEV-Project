@@ -1,5 +1,10 @@
 using Godot;
 
+///<summary>
+/// Projectitle parent 
+/// ment for objects that fly in various direction and interact with the wall
+/// player or enemies. 
+///</summary>
 public partial class Obj_projectile_parent : Area3D
 {
 	public float _hspd = 0;
@@ -32,6 +37,12 @@ public partial class Obj_projectile_parent : Area3D
 		}
 	}
 
+	///<summary>
+	/// Core logic for the arrow
+	/// this will be overriten in other projectiles to act in the way
+	/// that specific projectile needs
+	/// the defualt arrow gets the ID of the object it hits and sticks into it
+	///</summary>
 	public virtual void _active_function()
 	{
 		if (_stuck_in == null)
@@ -53,7 +64,6 @@ public partial class Obj_projectile_parent : Area3D
 			}
 			else
 			{
-				
 				((Obj_enemy_base)_stuck_in).hit_me(null);	
 				if (this.GetParentOrNull<Node3D>() != null)
 				{
@@ -82,6 +92,11 @@ public partial class Obj_projectile_parent : Area3D
 		}
 	}
 
+	///<summary>
+	/// manages what the projectile will do when it hits an object 	
+	/// ment to be overritten for other porjectiles
+	/// defualts to hitting enemy hitzones and handle itself like an arrow
+	///</summary>
 	public virtual void _on_hit(Node3D _node)
 	{
 		if (_active)

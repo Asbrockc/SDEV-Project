@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+///<summary>
+/// A shiney effect for the drops in the game
+/// just runs through the animation repeatedly and shifts the scale
+/// depending on if it is an HP drop or an EXP drop
+///</summary>
 public partial class Effects_drops_sprite : Sprite3D
 {
 	public AnimationPlayer _animator = null;

@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+///<summary>
+/// shifting light for the last boss
+/// it just cycles around and make the unsettling fight a bit more
+/// unsettling. 
+///</summary>
 public partial class Shifting_light : OmniLight3D
 {
 	private float _count = 0;

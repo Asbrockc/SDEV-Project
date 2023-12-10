@@ -1,6 +1,10 @@
 using Godot;
 using System;
 
+///<summary>
+/// Dispite the name...
+/// this is the Golem AI (refactoring is difficualt with Godot)
+///</summary>
 public partial class Enemy_big_knight_base : Enemy_Egg_AI
 {
 	public const int SLAM_STATE = 4;
@@ -58,6 +62,9 @@ public partial class Enemy_big_knight_base : Enemy_Egg_AI
 		return velocity;
 	}
 
+	///<summary>
+	/// the golem does not flinch like other enemies 
+	///</summary>
 	public override void hit_me(Node3D _hit_by, float _hit_force = 0, float _jump_force = 0, int _damage = 0)
 	{
 		base.hit_me(_hit_by, 0, 0, _damage);

@@ -1,5 +1,10 @@
 using Godot;
 
+///<summary>
+/// Just an egg enemy
+/// nothing really special, just uses base AI to interact and go 
+/// after the player
+///</summary>
 public partial class Enemy_Egg_AI : Obj_enemy_base
 {
     //public AnimationPlayer _animator = null;

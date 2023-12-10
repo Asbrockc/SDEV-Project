@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+///<summary>
+/// Programming for the colored button mini game
+/// ALl the buttons are red and the player needs to change them to blue
+/// however, once a button is pressed it also changes the ones next to, below, and above it.
+///</summary>
 public partial class Button_game_control : Node3D
 {
 	private int BUTTON_COUNT = 16;
@@ -13,6 +18,9 @@ public partial class Button_game_control : Node3D
 	public int pressed_y = 0;
 	public bool pressed_active = false;
 
+	///<summary>
+	/// Grabs all of the buttons that are children of this class and makes a quick 4x4 array out of them
+	///</summary>
 	public override void _Ready()
 	{
 		_button_grid =  new Game_button_base[,]
@@ -23,7 +31,7 @@ public partial class Button_game_control : Node3D
 			{ this.GetChild<Game_button_base>(12), this.GetChild<Game_button_base>(13),this.GetChild<Game_button_base>(14),this.GetChild<Game_button_base>(15) } 
 		};
 
-
+		//change them all to red
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < 4; j++)
 			{
@@ -40,6 +48,9 @@ public partial class Button_game_control : Node3D
 			
 	}
 
+	///<summary>
+	/// shift the buttons surroning the passed in button to the opposite color
+	///</summary>
 	private void shift_button(int xx, int yy)
 	{
 		if (xx >= 0 && xx < 4 && yy >= 0 && yy < 4)
@@ -53,6 +64,10 @@ public partial class Button_game_control : Node3D
 		}
 	}
 
+	///<summary>
+	/// if a button is pressed it will alert this class and this will adjust the surounding buttons while
+	/// also checking if all the buttons are blue
+	///</summary>
 	public override void _Process(double delta)
 	{
 		if (pressed_active)

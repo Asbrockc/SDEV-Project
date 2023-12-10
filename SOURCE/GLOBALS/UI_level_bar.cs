@@ -1,6 +1,9 @@
 using Godot;
 
-
+///<summary>
+/// GUI class to show the users current experience and expeirnce needed to next level
+/// looks like a blue orb filling up
+///</summary>
 public partial class UI_level_bar : TextureProgressBar
 {
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
